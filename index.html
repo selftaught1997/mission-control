@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mission Control — Aaron Storey</title>
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --surface2: #1e1e1e;
+      --border: #2a2a2a;
+      --accent: #e63946;
+      --accent2: #f4a261;
+      --gold: #f4c430;
+      --green: #2ecc71;
+      --blue: #3a86ff;
+      --purple: #8338ec;
+      --text: #f0f0f0;
+      --muted: #888;
+      --radius: 10px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    header h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.5px; }
+    header h1 span { color: var(--accent); }
+    .timestamp { color: var(--muted); font-size: 0.85rem; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+    }
+    .badge {
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+    .badge-green { background: rgba(46,204,113,0.15); color: var(--green); }
+    .badge-yellow { background: rgba(244,196,48,0.15); color: var(--gold); }
+    .badge-red { background: rgba(230,57,70,0.15); color: var(--accent); }
+    .badge-blue { background: rgba(58,134,255,0.15); color: var(--blue); }
+
+    /* Goals */
+    .goal {
+      margin-bottom: 16px;
+    }
+    .goal-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+    }
+    .goal-label span:last-child { color: var(--muted); font-size: 0.82rem; }
+    .progress-bar {
+      height: 8px;
+      background: var(--surface2);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+    .fill-red { background: var(--accent); }
+    .fill-gold { background: var(--gold); }
+    .fill-green { background: var(--green); }
+    .fill-blue { background: var(--blue); }
+
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .stat-box {
+      background: var(--surface2);
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .stat-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-label { font-size: 0.75rem; color: var(--muted); }
+
+    /* Tasks */
+    .task-list { list-style: none; }
+    .task-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+    .task-item:last-child { border-bottom: none; }
+    .task-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+    .dot-red { background: var(--accent); }
+    .dot-gold { background: var(--gold); }
+    .dot-green { background: var(--green); }
+    .dot-blue { background: var(--blue); }
+    .dot-purple { background: var(--purple); }
+    .task-meta { color: var(--muted); font-size: 0.75rem; margin-top: 2px; }
+
+    /* Projects */
+    .project-item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .project-item:last-child { border-bottom: none; }
+    .project-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .project-name { font-size: 0.9rem; font-weight: 600; }
+    .project-desc { font-size: 0.78rem; color: var(--muted); margin-bottom: 6px; }
+
+    /* Content calendar */
+    .content-item {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
+    }
+    .content-item:last-child { border-bottom: none; }
+    .content-platform {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      width: 70px;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+
+    /* Full-width span */
+    .span-full { grid-column: 1 / -1; }
+
+    /* Status row */
+    .status-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .status-chip {
+      font-size: 0.72rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: var(--surface2);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    footer {
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Mission Control <span>// Aaron Storey</span></h1>
+  <div class="timestamp">Last updated: <span id="lastUpdated">28 March 2026</span></div>
+</header>
+
+<div class="grid">
+
+  <!-- BIG GOALS -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">🎯 Big Goals</div>
+    </div>
+
+    <div class="goal">
+      <div class="goal-label">
+        <span>Club Members</span>
+        <span>110 / 200</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill fill-red" style="width: 55%"></div></div>
+    </div>
+
+    <div class="goal">
+      <div class="goal-label">
+        <span>Sunday Class Fill Rate</span>
+        <span>~11 / 30</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill fill-gold" style="width: 37%"></div></div>
+    </div>
+
+    <div class="goal">
+      <div class="goal-label">
+        <span>Trading Consistency</span>
+        <span>In progress</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill fill-blue" style="width: 20%"></div></div>
+    </div>
+
+    <div class="goal" style="margin-bottom:0">
+      <div class="goal-label">
+        <span>Financial Freedom</span>
+        <span>Long-term</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill fill-green" style="width: 10%"></div></div>
+    </div>
+  </div>
+
+  <!-- CLUB STATS -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">🥋 Club Snapshot</div>
+      <span class="badge badge-yellow">Stratford Karate</span>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="stat-value" style="color: var(--accent)">~110</div>
+        <div class="stat-label">Total Members</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" style="color: var(--gold)">~11</div>
+        <div class="stat-label">Sunday 10am Avg</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" style="color: var(--green)">30</div>
+        <div class="stat-label">Sunday Capacity</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" style="color: var(--blue)">11</div>
+        <div class="stat-label">Classes / Week</div>
+      </div>
+    </div>
+    <div class="status-row">
+      <div class="status-chip">📍 Weekdays: E15 4RU</div>
+      <div class="status-chip">📍 Sundays: E16 4NP</div>
+      <div class="status-chip">🌐 stratford-karate.london</div>
+    </div>
+  </div>
+
+  <!-- ACTIVE PROJECTS -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">🚀 Active Projects</div>
+      <span class="badge badge-blue">4 active</span>
+    </div>
+
+    <div class="project-item">
+      <div class="project-row">
+        <span class="project-name">Sunday Class Growth Campaign</span>
+        <span class="badge badge-yellow">In progress</span>
+      </div>
+      <div class="project-desc">Referral push, social content, Nextdoor, Meta ad brief. Target: 30 students.</div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-row">
+        <span class="project-name">Social Media Strategy</span>
+        <span class="badge badge-yellow">In progress</span>
+      </div>
+      <div class="project-desc">Club account + personal account content plan. Instagram, Facebook, TikTok.</div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-row">
+        <span class="project-name">Trading Consistency Framework</span>
+        <span class="badge badge-blue">Queued</span>
+      </div>
+      <div class="project-desc">Journal structure, rule-based system, risk management framework.</div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-row">
+        <span class="project-name">Club Growth to 200 Members</span>
+        <span class="badge badge-blue">Ongoing</span>
+      </div>
+      <div class="project-desc">Long-term strategy: ads, referrals, schools outreach, retention.</div>
+    </div>
+  </div>
+
+  <!-- TASK BOARD -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">✅ Task Board</div>
+      <span class="badge badge-red">Gustav's queue</span>
+    </div>
+    <ul class="task-list">
+      <li class="task-item">
+        <div class="task-dot dot-green"></div>
+        <div>
+          <div>Mission Control dashboard built</div>
+          <div class="task-meta">✅ Complete — 28 Mar 2026</div>
+        </div>
+      </li>
+      <li class="task-item">
+        <div class="task-dot dot-gold"></div>
+        <div>
+          <div>Social media content strategy</div>
+          <div class="task-meta">🔄 In progress</div>
+        </div>
+      </li>
+      <li class="task-item">
+        <div class="task-dot dot-gold"></div>
+        <div>
+          <div>Referral campaign draft</div>
+          <div class="task-meta">🔄 In progress</div>
+        </div>
+      </li>
+      <li class="task-item">
+        <div class="task-dot dot-gold"></div>
+        <div>
+          <div>Nextdoor post draft</div>
+          <div class="task-meta">🔄 In progress</div>
+        </div>
+      </li>
+      <li class="task-item">
+        <div class="task-dot dot-blue"></div>
+        <div>
+          <div>Meta ad brief (Sunday class)</div>
+          <div class="task-meta">⏳ Queued</div>
+        </div>
+      </li>
+      <li class="task-item">
+        <div class="task-dot dot-blue"></div>
+        <div>
+          <div>Trading consistency framework</div>
+          <div class="task-meta">⏳ Queued</div>
+        </div>
+      </li>
+      <li class="task-item">
+        <div class="task-dot dot-purple"></div>
+        <div>
+          <div>Set up cron job schedule</div>
+          <div class="task-meta">⏳ Awaiting Aaron input</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- CONTENT PIPELINE -->
+  <div class="card span-full">
+    <div class="card-header">
+      <div class="card-title">📱 Content Pipeline — Week 1</div>
+      <span class="badge badge-blue">Drafts pending review</span>
+    </div>
+    <div class="content-item">
+      <div class="content-platform">Instagram<br/>(Club)</div>
+      <div>
+        <div><strong>Sunday spotlight post</strong> — "Our Sunday morning class has space. 10am, all ages, all abilities. First trial free." + class photo/reel</div>
+        <div class="task-meta">📅 Draft ready for review</div>
+      </div>
+    </div>
+    <div class="content-item">
+      <div class="content-platform">Instagram<br/>(Personal)</div>
+      <div>
+        <div><strong>Your story post</strong> — European medal background → "Why I coach" angle. Credibility driver.</div>
+        <div class="task-meta">📅 Draft ready for review</div>
+      </div>
+    </div>
+    <div class="content-item">
+      <div class="content-platform">Nextdoor</div>
+      <div>
+        <div><strong>Local community post</strong> — Sunday class spaces available, neighbourhood-friendly tone</div>
+        <div class="task-meta">📅 Draft ready for review</div>
+      </div>
+    </div>
+    <div class="content-item">
+      <div class="content-platform">WhatsApp/<br/>Email</div>
+      <div>
+        <div><strong>Member referral message</strong> — "Bring a friend to Sunday's free trial" push to existing members</div>
+        <div class="task-meta">📅 Draft ready for review</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Gustav 🦾 — Operations Partner</span>
+  <span>stratford-karate.london</span>
+</footer>
+
+</body>
+</html>
