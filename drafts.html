@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Drafts — Aaron Storey</title>
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --surface2: #1e1e1e;
+      --border: #2a2a2a;
+      --accent: #e63946;
+      --gold: #f4c430;
+      --green: #2ecc71;
+      --blue: #3a86ff;
+      --text: #f0f0f0;
+      --muted: #888;
+      --radius: 10px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 24px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    header h1 { font-size: 1.4rem; font-weight: 700; }
+    header h1 span { color: var(--accent); }
+    .back-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+    .back-link:hover { color: var(--text); border-color: var(--muted); }
+
+    .draft-nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .nav-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .nav-btn.active, .nav-btn:hover {
+      background: var(--surface2);
+      color: var(--text);
+      border-color: var(--accent);
+    }
+
+    .draft-section {
+      display: none;
+    }
+    .draft-section.active {
+      display: block;
+    }
+
+    .draft-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .draft-card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .draft-card h3 {
+      font-size: 0.95rem;
+      color: var(--gold);
+      margin: 20px 0 8px;
+    }
+    .draft-card h4 {
+      font-size: 0.88rem;
+      color: var(--blue);
+      margin: 16px 0 6px;
+    }
+    .draft-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .draft-card p {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: #ccc;
+      margin-bottom: 10px;
+    }
+    .draft-card ul, .draft-card ol {
+      padding-left: 20px;
+      margin-bottom: 10px;
+    }
+    .draft-card li {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: #ccc;
+      margin-bottom: 4px;
+    }
+    .message-block {
+      background: var(--surface2);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 16px;
+      margin: 12px 0;
+      font-size: 0.87rem;
+      line-height: 1.7;
+      color: #ddd;
+      white-space: pre-wrap;
+    }
+    .recommend-badge {
+      display: inline-block;
+      background: rgba(46,204,113,0.15);
+      color: var(--green);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+    .tag {
+      display: inline-block;
+      background: var(--surface2);
+      color: var(--muted);
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-right: 6px;
+      margin-bottom: 4px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 0.83rem;
+    }
+    th {
+      text-align: left;
+      padding: 8px 10px;
+      background: var(--surface2);
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+    }
+    td {
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border);
+      color: #ccc;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 20px 0;
+    }
+    .footer-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    footer {
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Drafts <span>// For Review</span></h1>
+  <a href="index.html" class="back-link">← Mission Control</a>
+</header>
+
+<div class="draft-nav">
+  <a class="nav-btn active" onclick="show('social')" href="#">📱 Social Strategy</a>
+  <a class="nav-btn" onclick="show('referral')" href="#">🤝 Referral Campaign</a>
+  <a class="nav-btn" onclick="show('nextdoor')" href="#">🏘️ Nextdoor Post</a>
+</div>
+
+<!-- SOCIAL MEDIA STRATEGY -->
+<div id="social" class="draft-section active">
+  <div class="draft-card">
+    <h2>Social Media Content Strategy</h2>
+    <div class="draft-meta">Stratford Karate Club + Personal Brand &nbsp;·&nbsp; Goal: Fill Sunday 10am class &nbsp;·&nbsp; 28 Mar 2026</div>
+
+    <h3>The Big Picture</h3>
+    <p>Two accounts, two jobs:</p>
+    <table>
+      <tr><th>Account</th><th>Job</th></tr>
+      <tr><td><strong>Club account</strong> (Instagram / Facebook / TikTok)</td><td>Drive trial sign-ups, showcase the environment</td></tr>
+      <tr><td><strong>Personal</strong> (@aaron.storey.9)</td><td>Build credibility — make people choose <em>you</em> over any other club</td></tr>
+    </table>
+    <p>They feed each other. Personal account builds trust. Trust converts on the club account.</p>
+
+    <h3>Your Unfair Advantage</h3>
+    <p>Most local karate instructors can't say any of this:</p>
+    <ul>
+      <li>🥉 First male from England to medal in kata at JKA Europeans</li>
+      <li>🥇 3 consecutive English national kata titles</li>
+      <li>🏆 Held kata AND kumite national titles simultaneously (2023)</li>
+      <li>🏴󠁧󠁢󠁥󠁮󠁧󠁿 10 years on the JKA England national team</li>
+    </ul>
+    <p>This is your hook. A parent choosing between two local clubs — one run by a qualified instructor, one run by a national champion and European medallist — it's not a choice. We need this front and centre.</p>
+
+    <hr class="divider"/>
+
+    <h3>Club Account — Phase 1 (Weeks 1–4)</h3>
+    <p><strong>Posting frequency:</strong> 4x per week (Mon, Wed, Fri, Sun)<br/>
+    <strong>Format mix:</strong> 60% Reels/short video, 30% static posts, 10% stories</p>
+
+    <h4>1. Sunday Spotlight (every Sunday)</h4>
+    <p>Goal: make Sunday 10am feel unmissable. Short video of the Sunday class in action. Caption: capacity, what beginners can expect, free trial CTA.</p>
+    <div class="message-block"><em>"Sunday mornings at Stratford Karate — all ages, all abilities, 10am. We've got space. First trial is free. Link in bio."</em></div>
+
+    <h4>2. Student Stories (2x per month)</h4>
+    <p>Goal: social proof. Short testimonial clip or quote card. Parents talking about kids' progress work especially well. Beginners &gt; advanced — more relatable to new sign-ups.</p>
+
+    <h4>3. Technique/Training Clips (2x per week)</h4>
+    <p>Goal: demonstrate quality. 15–30 sec drills, kata breakdowns, kumite combos. Keep it accessible. Caption with a learning angle: <em>"This is the first thing new students learn..."</em></p>
+
+    <h4>4. Behind the Scenes (1x per week)</h4>
+    <p>Goal: warmth and community feel. Setting up the dojo, pre-class warmups, post-class moments. Shows the culture, not just the karate.</p>
+
+    <hr class="divider"/>
+
+    <h3>Personal Account (@aaron.storey.9) — Phase 1</h3>
+    <p><strong>Posting frequency:</strong> 2–3x per week &nbsp;·&nbsp; <strong>Tone:</strong> Authentic, confident, not boastful.</p>
+
+    <h4>1. The Origin Story (Week 1 — pin this)</h4>
+    <p>Your story: started 2011 → national team → Europeans medal → coaching in East London. Most powerful piece of content. Pin it.</p>
+    <div class="message-block"><em>"I'm the first male from England to win a kata medal at the JKA European Championships. I teach karate in Stratford on Sunday mornings. Here's why."</em></div>
+
+    <h4>2. Champion's Perspective (weekly)</h4>
+    <p>Short takes on karate, competition, coaching, discipline, mindset:</p>
+    <ul>
+      <li><em>"What I learned losing at Nationals before winning 3 in a row"</em></li>
+      <li><em>"The difference between a student who improves fast and one who doesn't"</em></li>
+      <li><em>"Why kata competition is the hardest test in karate"</em></li>
+    </ul>
+
+    <h4>3. Training Content (weekly)</h4>
+    <p>Your own training, competition prep, S&C work. The PT crossover is an angle worth using.</p>
+
+    <h4>4. Club Tie-ins (occasional)</h4>
+    <p>Tag the club when relevant: <em>"If you want to learn this, come to Sunday morning class — link in bio"</em></p>
+
+    <hr class="divider"/>
+
+    <h3>Week 1 Content Calendar</h3>
+    <table>
+      <tr><th>Day</th><th>Account</th><th>Format</th><th>Content</th></tr>
+      <tr><td>Mon</td><td>Club</td><td>Reel</td><td>Class in action — technique drill</td></tr>
+      <tr><td>Mon</td><td>Personal</td><td>Static</td><td>Credentials / origin story intro</td></tr>
+      <tr><td>Wed</td><td>Club</td><td>Static</td><td>Student testimonial quote card</td></tr>
+      <tr><td>Wed</td><td>Personal</td><td>Reel</td><td>Training clip with coaching commentary</td></tr>
+      <tr><td>Fri</td><td>Club</td><td>Reel</td><td>Behind the scenes — setting up Sunday</td></tr>
+      <tr><td>Sun</td><td>Club</td><td>Reel + Story</td><td>Sunday spotlight — spaces available, free trial CTA</td></tr>
+    </table>
+
+    <hr class="divider"/>
+    <h3>CTA to Use Everywhere</h3>
+    <p><strong>Primary:</strong> "First trial is free — book via link in bio"<br/>
+    <strong>Booking:</strong> stratford-karate.london &nbsp;·&nbsp; <strong>Phone:</strong> +447907711552</p>
+
+    <div class="footer-note">Draft prepared by Gustav — for Aaron's review. Nothing goes live without approval.</div>
+  </div>
+</div>
+
+<!-- REFERRAL CAMPAIGN -->
+<div id="referral" class="draft-section">
+  <div class="draft-card">
+    <h2>Referral Campaign — "Bring a Friend"</h2>
+    <div class="draft-meta">Sunday Class Push &nbsp;·&nbsp; For existing members &nbsp;·&nbsp; 28 Mar 2026</div>
+
+    <p><strong>Goal:</strong> Fill Sunday 10am class (currently ~11, capacity 30)<br/>
+    <strong>Method:</strong> Personal message to all current members<br/>
+    <strong>Channels:</strong> WhatsApp, in-class announcement, email</p>
+
+    <hr class="divider"/>
+
+    <h3>Option A — WhatsApp (short, warm) <span class="recommend-badge">✅ Recommended</span></h3>
+    <div class="message-block">Hey [first name] 👋
+
+Quick one — our Sunday morning class (10am) has some space at the moment and I'd love to fill it with the right people.
+
+If you know anyone who's been thinking about trying karate — a friend, family member, neighbour, colleague — send them our way. First trial is completely free, no pressure, all abilities welcome.
+
+Sunday 10am at Eastlea Community School, E16 4NP.
+
+They can book here: [booking link] or just reply to this message and I'll sort it.
+
+Cheers,
+Aaron 🥋</div>
+
+    <h3>Option B — WhatsApp (direct, social proof)</h3>
+    <div class="message-block">Hi [first name],
+
+I wanted to reach out personally — our Sunday 10am class has space right now and I'm looking to grow it.
+
+If you know anyone who might enjoy karate — any age, any level, complete beginners very welcome — I'd love for you to pass on the word. First trial session is on us.
+
+It's one of the friendliest sessions we run and a great entry point for anyone curious about the club.
+
+Sunday 10am, Eastlea Community School E16 4NP. Booking: [booking link]
+
+If they mention your name when they book, even better 😊
+
+Thanks,
+Sensei Aaron</div>
+
+    <h3>Option C — In-Class Announcement Script</h3>
+    <div class="message-block">"Before we finish today — I want to mention that our Sunday morning class has some space. It's 10am at Eastlea Community School, all grades, all ages. If you know anyone who's been thinking about trying karate — a friend, a family member, anyone — please point them our way. First trial is free. You can show them the website or just tell them to message me directly."</div>
+
+    <h3>Email Version</h3>
+    <p><strong>Subject:</strong> Know anyone who'd love karate? 🥋</p>
+    <div class="message-block">Hi [first name],
+
+I hope you're well and training's going great.
+
+I'm reaching out because our Sunday morning class — 10am at Eastlea Community School — has some space and I'd love to see it full of great people like you.
+
+If you know anyone who's ever been curious about karate, martial arts, or just looking for something active and social to do on a Sunday morning, please send them our way. All ages welcome, all abilities, complete beginners included.
+
+First trial session is completely free.
+
+They can book directly here: [booking link]
+Or call/WhatsApp: +447907711552
+
+Thanks for being part of the club — you're the reason it's such a great place to train.
+
+Best,
+Sensei Aaron Storey
+Chief Instructor, Stratford Karate Club
+stratford-karate.london</div>
+
+    <hr class="divider"/>
+    <h3>Recommended Approach</h3>
+    <ol>
+      <li>Send Option A via WhatsApp to all members you have numbers for</li>
+      <li>Make the in-class announcement (Option C) in every class this week</li>
+      <li>Follow up in 2 weeks if Sunday hasn't moved — send a second nudge</li>
+    </ol>
+    <p style="margin-top:12px"><strong>Optional incentive:</strong> If organic referrals don't move the needle — "Refer a friend who signs up and get a free month upgrade" (e.g. Lite → Standard). Low cost, gives members a reason to actively push.</p>
+
+    <div class="footer-note">Draft prepared by Gustav — for Aaron's review. Nothing goes live without approval.</div>
+  </div>
+</div>
+
+<!-- NEXTDOOR POST -->
+<div id="nextdoor" class="draft-section">
+  <div class="draft-card">
+    <h2>Nextdoor Post Draft</h2>
+    <div class="draft-meta">Sunday Class — Local Community Tone &nbsp;·&nbsp; 28 Mar 2026</div>
+
+    <h3>Option A — Community/Family Focus</h3>
+    <p><strong>Title:</strong> Sunday morning karate in E16 — spaces available for beginners 🥋</p>
+    <div class="message-block">Hi neighbours,
+
+I'm Aaron — Chief Instructor at Stratford Karate Club. We run karate classes across East London throughout the week, and I wanted to reach out to the local community about our Sunday morning session at Eastlea Community School (E16 4NP).
+
+The 10am class is open to all ages and all abilities — complete beginners very welcome. It's a friendly, structured session focused on learning the fundamentals in a safe and supportive environment.
+
+Whether you're looking for something active for yourself, or an activity for your child, Sunday morning karate is a great option.
+
+📅 Every Sunday, 10am–11am
+📍 Eastlea Community School, E16 4NP
+🎯 All ages | All abilities | Beginners welcome
+✅ First trial session is completely free
+
+You can book a free trial at stratford-karate.london or message me directly.
+
+Happy to answer any questions below!
+
+Sensei Aaron 🥋</div>
+
+    <h3>Option B — Personal/Story-Led <span class="recommend-badge">✅ Recommended</span></h3>
+    <p><strong>Title:</strong> Local karate club looking to welcome more Sunday morning students 🥋</p>
+    <div class="message-block">Hi everyone,
+
+I'm Aaron, I've been teaching karate in Stratford for several years and I run Stratford Karate Club — we were even a Nextdoor Neighbourhood Favourite back in 2023, which meant a lot to us!
+
+Our Sunday morning class at Eastlea Community School (E16 4NP) is one of my favourite sessions of the week. It's relaxed, welcoming, and a great mix of ages and backgrounds. We currently have space and I'd love to fill it with local people.
+
+It's perfect for:
+- Complete beginners who've always wanted to try karate
+- Kids looking for a martial art that builds confidence and discipline
+- Adults who want something active, focused, and different on a Sunday morning
+
+📅 Every Sunday, 10am–11am
+📍 Eastlea Community School, E16 4NP
+✅ First trial free — no commitment
+
+Book online at stratford-karate.london or drop me a message here.
+
+Aaron</div>
+
+    <hr class="divider"/>
+    <h3>Timing Recommendation</h3>
+    <p>Post on a <strong>Thursday or Friday</strong> so it's visible over the weekend when people are thinking about Sunday plans.</p>
+
+    <div class="footer-note">Draft prepared by Gustav — for Aaron's review. Nothing goes live without approval.</div>
+  </div>
+</div>
+
+<footer>
+  <span>Gustav 🦾 — Operations Partner</span>
+  <span><a href="index.html" style="color:var(--muted);text-decoration:none">← Mission Control</a></span>
+</footer>
+
+<script>
+  function show(id) {
+    document.querySelectorAll('.draft-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+    return false;
+  }
+</script>
+
+</body>
+</html>
