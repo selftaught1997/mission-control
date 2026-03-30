@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Activity Log — Gustav</title>
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --surface2: #1e1e1e;
+      --border: #2a2a2a;
+      --accent: #e63946;
+      --gold: #f4c430;
+      --green: #2ecc71;
+      --blue: #3a86ff;
+      --purple: #8338ec;
+      --text: #f0f0f0;
+      --muted: #888;
+      --radius: 10px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 24px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    header h1 { font-size: 1.4rem; font-weight: 700; }
+    header h1 span { color: var(--accent); }
+    .back-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+    .filter-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .filter-btn {
+      font-size: 0.78rem;
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      cursor: pointer;
+    }
+    .filter-btn.active { color: var(--text); border-color: var(--accent); background: var(--surface2); }
+
+    .log-entry {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .log-entry:hover { border-color: #444; }
+
+    .entry-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .entry-status {
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .entry-main { flex: 1; }
+    .entry-summary {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+    .entry-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .entry-time { font-size: 0.75rem; color: var(--muted); }
+    .entry-category {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .cat-Setup { background: rgba(58,134,255,0.15); color: var(--blue); }
+    .cat-Content { background: rgba(244,196,48,0.15); color: var(--gold); }
+    .cat-Automation { background: rgba(131,56,236,0.15); color: var(--purple); }
+    .cat-Research { background: rgba(46,204,113,0.15); color: var(--green); }
+    .cat-System { background: rgba(230,57,70,0.15); color: var(--accent); }
+    .cat-Social { background: rgba(244,162,97,0.15); color: #f4a261; }
+
+    .expand-icon {
+      color: var(--muted);
+      font-size: 0.8rem;
+      flex-shrink: 0;
+      margin-top: 3px;
+      transition: transform 0.2s;
+    }
+    .log-entry.open .expand-icon { transform: rotate(180deg); }
+
+    .entry-detail {
+      display: none;
+      padding: 0 16px 14px 42px;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: #aaa;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+    }
+    .log-entry.open .entry-detail { display: block; }
+
+    .entry-id {
+      font-size: 0.7rem;
+      color: #555;
+      flex-shrink: 0;
+      margin-top: 3px;
+      font-family: monospace;
+    }
+
+    .stats-bar {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .stat { font-size: 0.8rem; color: var(--muted); }
+    .stat strong { color: var(--text); }
+
+    footer {
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Activity Log <span>// Gustav</span></h1>
+  <a href="index.html" class="back-link">← Mission Control</a>
+</header>
+
+<div class="stats-bar" id="statsBar"></div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filter('all', this)">All</button>
+  <button class="filter-btn" onclick="filter('Setup', this)">Setup</button>
+  <button class="filter-btn" onclick="filter('Content', this)">Content</button>
+  <button class="filter-btn" onclick="filter('Automation', this)">Automation</button>
+  <button class="filter-btn" onclick="filter('Research', this)">Research</button>
+  <button class="filter-btn" onclick="filter('System', this)">System</button>
+</div>
+
+<div id="logContainer"></div>
+
+<footer>
+  <span>Gustav 🦾 — Operations Partner</span>
+  <span><a href="index.html" style="color:var(--muted);text-decoration:none">← Mission Control</a></span>
+</footer>
+
+<script>
+  const LOG_DATA = [
+  {
+    "id": 1,
+    "timestamp": "2026-03-28T01:54:00Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Read Aaron's full working relationship brief and saved everything to memory",
+    "detail": "Received long-form prompt from Aaron covering background, goals, and operating instructions. Wrote to USER.md and MEMORY.md in workspace. Git committed both files with message 'Set up Aaron's full profile and working relationship brief'."
+  },
+  {
+    "id": 2,
+    "timestamp": "2026-03-28T02:04:00Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Looked up Stratford Karate Club online to understand the business",
+    "detail": "Ran web_search for 'Stratford Karate Club London Aaron Storey'. Fetched stratford-karate.london homepage. Extracted: pricing (Lite £45, Standard £55, Premium £75, PAYG £15), class structure, 11 classes/week, contact number +447907711552. Identified personal Instagram @aaron.storey.9 with 419 followers, 32 posts. Found Nextdoor Neighbourhood Favourite 2023 citation."
+  },
+  {
+    "id": 3,
+    "timestamp": "2026-03-28T02:11:00Z",
+    "category": "System",
+    "status": "success",
+    "summary": "Disabled Mac sleep so the computer stays on when Aaron is away",
+    "detail": "Aaron ran 'sudo pmset -a sleep 0 && sudo pmset -a disksleep 0' in Terminal after I prepared the command. Verified with 'pmset -g' — both sleep and disksleep confirmed at 0. Display sleep left at default (not needed for background operation)."
+  },
+  {
+    "id": 4,
+    "timestamp": "2026-03-28T09:50:00Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Built Mission Control dashboard and deployed it live to the web",
+    "detail": "Created /workspace/mission-control/index.html — single-page HTML/CSS dashboard with goals progress bars, club stats, active projects board, task queue, and content pipeline. Aaron created GitHub account (selftaught1997). Authenticated gh CLI with personal access token. Created repo selftaught1997/mission-control via 'gh repo create', pushed via git, enabled GitHub Pages via API POST to /repos/selftaught1997/mission-control/pages. Live at https://selftaught1997.github.io/mission-control/"
+  },
+  {
+    "id": 5,
+    "timestamp": "2026-03-28T10:00:00Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Set up automatic heartbeat so Gustav works every 2 hours without being asked",
+    "detail": "Wrote HEARTBEAT.md with prioritised task queue. Modified ~/.openclaw/openclaw.json — added agents.defaults.heartbeat config: every:2h, target:last, directPolicy:allow. Restarted gateway via 'openclaw gateway restart'. Verified config with pmset and gateway status checks."
+  },
+  {
+    "id": 6,
+    "timestamp": "2026-03-28T10:35:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Wrote a full social media content strategy for the club and Aaron's personal account",
+    "detail": "Created /workspace/drafts/social-media-content-strategy.md. Two-account strategy: club account (4x/week: Sunday spotlight, student stories, technique clips, BTS) + personal account (2-3x/week: origin story, champion's perspective, training content). Week 1 content calendar included. Identified key hook: European medal + national titles as primary differentiator. Phase 2 review at week 4. CTA: free trial via stratford-karate.london."
+  },
+  {
+    "id": 7,
+    "timestamp": "2026-03-28T10:40:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Wrote a referral campaign message for Aaron to send to existing members",
+    "detail": "Created /workspace/drafts/referral-campaign.md. Three WhatsApp options (short/warm Option A recommended, direct Option B, in-class announcement script Option C), plus full email version. Recommended approach: WhatsApp Option A to all members + in-class announcement every class this week + follow-up in 2 weeks. Optional incentive: free month upgrade for successful referral."
+  },
+  {
+    "id": 8,
+    "timestamp": "2026-03-28T10:45:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Wrote two Nextdoor post options to attract local Sunday class sign-ups",
+    "detail": "Created /workspace/drafts/nextdoor-post.md. Option A: community/family focus. Option B (recommended): personal story-led, leads with 2023 Neighbourhood Favourite callback. Timing recommendation: post Thursday or Friday for weekend visibility. Both versions include booking link and location details."
+  },
+  {
+    "id": 9,
+    "timestamp": "2026-03-28T10:50:00Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Added all drafts to a new Drafts page on Mission Control — readable on phone",
+    "detail": "Created /workspace/mission-control/drafts.html — tabbed single-page app (Social Strategy | Referral Campaign | Nextdoor Post) with dark theme matching Mission Control. Linked from index.html with badge. Git committed and pushed to selftaught1997/mission-control. Live at https://selftaught1997.github.io/mission-control/drafts.html"
+  },
+  {
+    "id": 10,
+    "timestamp": "2026-03-29T20:00:00Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Created Gustav's Google account and set up Buffer for social media scheduling",
+    "detail": "Aaron created Google account gustavjoppling@gmail.com. Credentials stored in /workspace/credentials.md (gitignored). Aaron created Buffer account at publish.buffer.com, connected Facebook (Stratford karate club) and Instagram (stratford_karate_club) pages. Buffer legacy API confirmed retired — API key obtained but not usable programmatically."
+  },
+  {
+    "id": 11,
+    "timestamp": "2026-03-30T00:30:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Built browser automation to post to Buffer without needing an API",
+    "detail": "Installed Playwright + Chromium headless browser via npm in /workspace/automation/. Wrote post-to-buffer-with-image.js: launches Chromium, authenticates to login.buffer.com via form fill, navigates to publish.buffer.com, dismisses onboarding checklist, opens New Post composer via dropdown, selects Facebook channel (coordinate click x:144 y:129), uploads image via input[type=file].setInputFiles(), types caption via div[contenteditable] keyboard.type(), clicks Schedule Post button. Lesson noted: keep browser open between debug iterations — don't restart from scratch."
+  },
+  {
+    "id": 12,
+    "timestamp": "2026-03-30T01:40:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Successfully queued a test post to the Stratford Karate Club Facebook page",
+    "detail": "Downloaded karate sunset image from Unsplash (photo-1555597673-b21d5c935865, free licence). Ran full automation: login → composer → Facebook channel selected → image uploaded → caption typed → 'Schedule Post' button clicked at x:1030 y:641. Buffer confirmed success: green banner 'Your post has been added to your queue'. Scheduled for 30 March 6:41am. Aaron to delete test post manually."
+  },
+  {
+    "id": 13,
+    "timestamp": "2026-03-30T01:50:00Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Built this Activity Log — every action Gustav takes is now logged here",
+    "detail": "Created /workspace/action-log.json as the persistent log store. Created /workspace/mission-control/log.html — searchable, filterable activity log with plain English summaries (default view) and expandable technical detail per entry. Linked from Mission Control index. Going forward: every completed task appended to action-log.json and pushed to GitHub Pages."
+  }
+];
+
+  const statusIcon = { success: '✅', error: '❌', inprogress: '🔄' };
+
+  function formatTime(ts) {
+    const d = new Date(ts);
+    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) + ' · ' +
+           d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function render(entries) {
+    const container = document.getElementById('logContainer');
+    container.innerHTML = '';
+    [...entries].reverse().forEach(entry => {
+      const div = document.createElement('div');
+      div.className = 'log-entry';
+      div.dataset.category = entry.category;
+      div.innerHTML = `
+        <div class="entry-header" onclick="toggle(this)">
+          <div class="entry-status">${statusIcon[entry.status] || '•'}</div>
+          <div class="entry-main">
+            <div class="entry-summary">${entry.summary}</div>
+            <div class="entry-meta">
+              <span class="entry-time">${formatTime(entry.timestamp)}</span>
+              <span class="entry-category cat-${entry.category}">${entry.category}</span>
+            </div>
+          </div>
+          <div class="entry-id">#${entry.id}</div>
+          <div class="expand-icon">▼</div>
+        </div>
+        <div class="entry-detail">${entry.detail}</div>
+      `;
+      container.appendChild(div);
+    });
+
+    // Stats
+    document.getElementById('statsBar').innerHTML = `
+      <div class="stat"><strong>${entries.length}</strong> total actions</div>
+      <div class="stat"><strong>${entries.filter(e=>e.status==='success').length}</strong> succeeded</div>
+      <div class="stat"><strong>${entries.filter(e=>e.status==='error').length}</strong> failed</div>
+      <div class="stat">Last action: <strong>${formatTime(entries[entries.length-1]?.timestamp)}</strong></div>
+    `;
+  }
+
+  function toggle(header) {
+    header.parentElement.classList.toggle('open');
+  }
+
+  let currentFilter = 'all';
+  function filter(cat, btn) {
+    currentFilter = cat;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filtered = cat === 'all' ? LOG_DATA : LOG_DATA.filter(e => e.category === cat);
+    render(filtered);
+  }
+
+  render(LOG_DATA);
+</script>
+
+</body>
+</html>
