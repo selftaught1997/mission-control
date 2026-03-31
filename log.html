@@ -192,7 +192,15 @@
 </footer>
 
 <script>
-  const LOG_DATA = [
+  let LOG_DATA = [];
+
+  // Load dynamically from action-log.json so it stays current without page rebuild
+  fetch('action-log.json?v=' + Date.now())
+    .then(r => r.json())
+    .then(data => { LOG_DATA = data; render(data); })
+    .catch(() => { render([]); });
+
+  const STATIC_LOG = [
   {
     "id": 1,
     "timestamp": "2026-03-28T01:54:00Z",
@@ -354,7 +362,7 @@
     render(filtered);
   }
 
-  render(LOG_DATA);
+  // render(LOG_DATA); // now handled by fetch above
 </script>
 
 </body>
