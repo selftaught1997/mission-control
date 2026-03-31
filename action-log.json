@@ -158,5 +158,13 @@
     "status": "success",
     "summary": "Set up daily diagnostic cron — 6pm daily system health check",
     "detail": "Created daily-diagnostic.md checklist covering: system health (sleep, gateway, crons), automation health (Buffer, Drive, Playwright, FFmpeg), content pipeline (unprocessed media, unreviewed drafts), Mission Control currency, and process quality. Cron job ID: 31b36e7d, runs 6pm Europe/London daily, delivers to Aaron's Telegram. Only reports problems or improvement opportunities — if clean, sends 'All systems healthy' message. No changes made without Aaron's approval."
+  },
+  {
+    "id": 21,
+    "timestamp": "2026-03-31T09:29:58.224Z",
+    "category": "System",
+    "status": "success",
+    "summary": "Ran daily diagnostic — committed files, archived test media, cleaned video outputs",
+    "detail": "Item 2: committed action-log.json, log-action.js, daily-diagnostic.md to git. Item 3: moved test-karate.mp4, test-video.mp4, aaron-reference.mp4 to media-inbox/archive/. Item 4: removed 10 old output files (v1-v5 drafts, tmp files, test reels) — kept only hype_v6 as current best output."
   }
 ]
