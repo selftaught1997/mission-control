@@ -166,5 +166,13 @@
     "status": "success",
     "summary": "Ran daily diagnostic — committed files, archived test media, cleaned video outputs",
     "detail": "Item 2: committed action-log.json, log-action.js, daily-diagnostic.md to git. Item 3: moved test-karate.mp4, test-video.mp4, aaron-reference.mp4 to media-inbox/archive/. Item 4: removed 10 old output files (v1-v5 drafts, tmp files, test reels) — kept only hype_v6 as current best output."
+  },
+  {
+    "id": 22,
+    "timestamp": "2026-03-31T11:19:34.094Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Installed Ollama and downloaded Qwen 2.5 14B — ready for hybrid LLM switch",
+    "detail": "Installed Ollama via Homebrew. Downloaded qwen2.5:14b (9.0GB) to local disk. Model NOT activated — sitting dormant until Aaron decides to switch. Ollama server stopped after download. To activate: start ollama serve and update OpenClaw config with --auth-choice ollama --custom-model-id qwen2.5:14b."
   }
 ]
