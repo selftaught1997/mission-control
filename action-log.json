@@ -69,7 +69,7 @@
     "category": "Setup",
     "status": "success",
     "summary": "Added all drafts to a new Drafts page on Mission Control so Aaron can read them on his phone",
-    "detail": "Created /workspace/mission-control/drafts.html — tabbed single-page app (Social Strategy | Referral Campaign | Nextdoor Post) with dark theme matching Mission Control. Linked from index.html with badge. Git committed and pushed to selftaught1997/mission-control. Live at https://selftaught1997.github.io/mission-control/drafts.html"
+    "detail": "Created /workspace/mission-control/drafts.html — tabbed single-page app (Social Strategy | Referral Campaign | Nextdoor Post) with dark theme matching Mission Control. Linked from Mission Control footer. Git committed and pushed to selftaught1997/mission-control. Live at https://selftaught1997.github.io/mission-control/drafts.html"
   },
   {
     "id": 10,
@@ -153,15 +153,15 @@
   },
   {
     "id": 20,
-    "timestamp": "2026-03-31T09:24:33.124Z",
+    "timestamp": "2026-03-31T09:24:33Z",
     "category": "Setup",
     "status": "success",
     "summary": "Set up daily diagnostic cron — 6pm daily system health check",
-    "detail": "Created daily-diagnostic.md checklist covering: system health (sleep, gateway, crons), automation health (Buffer, Drive, Playwright, FFmpeg), content pipeline (unprocessed media, unreviewed drafts), Mission Control currency, and process quality. Cron job ID: 31b36e7d, runs 6pm Europe/London daily, delivers to Aaron's Telegram. Only reports problems or improvement opportunities — if clean, sends 'All systems healthy' message. No changes made without Aaron's approval."
+    "detail": "Created daily-diagnostic.md checklist covering: system health (sleep, gateway, crons), automation health (Buffer, Drive, Playwright, FFmpeg), content pipeline (unprocessed media, unreviewed drafts), Mission Control currency, and process quality. Cron job ID: 31b36e7d, runs 6pm Europe/London daily, delivers to Aaron's Telegram. Only reports problems or improvement opportunities — if clean, sends 'All systems healthy' message."
   },
   {
     "id": 21,
-    "timestamp": "2026-03-31T09:29:58.224Z",
+    "timestamp": "2026-03-31T09:29:58Z",
     "category": "System",
     "status": "success",
     "summary": "Ran daily diagnostic — committed files, archived test media, cleaned video outputs",
@@ -169,10 +169,122 @@
   },
   {
     "id": 22,
-    "timestamp": "2026-03-31T11:19:34.094Z",
+    "timestamp": "2026-03-31T11:19:34Z",
     "category": "Setup",
     "status": "success",
     "summary": "Installed Ollama and downloaded Qwen 2.5 14B — ready for hybrid LLM switch",
     "detail": "Installed Ollama via Homebrew. Downloaded qwen2.5:14b (9.0GB) to local disk. Model NOT activated — sitting dormant until Aaron decides to switch. Ollama server stopped after download. To activate: start ollama serve and update OpenClaw config with --auth-choice ollama --custom-model-id qwen2.5:14b."
+  },
+  {
+    "id": 23,
+    "timestamp": "2026-03-31T22:35:00Z",
+    "category": "Infrastructure",
+    "status": "success",
+    "summary": "Reconnected Discord after config was lost — bot token added, pairing approved, owner set",
+    "detail": "Discord config had been lost from openclaw.json (bak files predated Discord setup). Aaron provided bot token MTQ4ODUwMDI0MTUxNzc3NzAzNg... Added via 'openclaw channels add --channel discord'. Aaron DM'd bot and received pairing prompt (code A7GGL56L, user ID 325262557420060673). Approved via 'openclaw pairing approve discord A7GGL56L'. Added allowFrom config to recognise Aaron as owner. Gateway restarted to apply."
+  },
+  {
+    "id": 24,
+    "timestamp": "2026-03-31T22:50:00Z",
+    "category": "Infrastructure",
+    "status": "success",
+    "summary": "Enabled cross-channel messaging between Telegram and Discord sessions",
+    "detail": "Discord session was processing messages but sessions_send from Telegram to Discord was blocked by tools.sessions.visibility=tree policy. Fixed by setting tools.sessions.visibility to 'all'. Gateway restarted. Confirmed working: sent 'James Bunny' from Telegram to Discord DM session. Also confirmed reverse: read Aaron's Discord message ('Test rabbit') from Telegram session via sessions_history. Cross-channel loop fully closed."
+  },
+  {
+    "id": 25,
+    "timestamp": "2026-03-31T23:00:00Z",
+    "category": "Infrastructure",
+    "status": "success",
+    "summary": "Fixed cron delivery channel — both cron jobs updated to explicitly use Telegram",
+    "detail": "Morning Brief and Daily Diagnostic cron jobs were using delivery.channel='last' which broke when Discord was added as a second channel. Error: 'Channel is required when multiple channels are configured: telegram, discord'. Fixed both jobs via 'openclaw cron edit --channel telegram'. Daily Diagnostic had errored at 6pm due to this issue — the job ran and produced a full report but failed to deliver."
+  },
+  {
+    "id": 26,
+    "timestamp": "2026-03-31T23:35:00Z",
+    "category": "Infrastructure",
+    "status": "success",
+    "summary": "Configured Discord server channels — groupPolicy set to open, all 8 channels mapped",
+    "detail": "Changed channels.discord.groupPolicy from 'allowlist' to 'open' to allow bot access to all server channels. Aaron @mentioned bot in all 8 Gustav-HQ channels to create sessions. Channel IDs saved to TOOLS.md: #general (1488499785131364605), #morning-brief (1488508798678077601), #diagnostics (1488508802650210425), #approvals (1488508811538071553), #social-content (1488508820052246638), #activity-log (1488508823718068355), #club-growth (1488508831268077598), #trading-desk (1488508835369844801). All 8 sessions confirmed active."
+  },
+  {
+    "id": 27,
+    "timestamp": "2026-03-31T23:45:00Z",
+    "category": "Infrastructure",
+    "status": "success",
+    "summary": "Updated Morning Brief cron to mirror to Discord #morning-brief channel",
+    "detail": "Aaron requested Telegram remain primary but Discord #morning-brief get a copy for archive purposes. Updated cron message to instruct: deliver to Aaron on Telegram, then post copy to Discord channel 1488508798678077601. Morning Brief cron ID: 657e7a64."
+  },
+  {
+    "id": 28,
+    "timestamp": "2026-04-01T00:00:00Z",
+    "category": "Infrastructure",
+    "status": "success",
+    "summary": "Sent hype edit v6 to Discord #social-content channel",
+    "detail": "Existing hype_v6 output (23s, 16MB) compressed to 4.5MB for Discord's 8MB bot limit using ffmpeg CRF 28. Sent to channel 1488508820052246638 (#social-content) via 'openclaw message send'. Message ID: 1488689966929154219. Aaron confirmed receipt."
+  },
+  {
+    "id": 29,
+    "timestamp": "2026-04-01T00:30:00Z",
+    "category": "Infrastructure",
+    "status": "success",
+    "summary": "Built Agent Workspace live status page with real-time task display",
+    "detail": "Created /workspace/mission-control/agent-workspace.html — standalone page with animated avatar card, live status indicator (idle/working/running/error), task description, activity bar, elapsed timer, and recent activity log. Status driven by agent-status.json (polled every 3s). Created agent-history.json for activity trail. Created scripts/agent-status.sh helper for updating status from tool calls. Status integrates with all future long-running tasks."
+  },
+  {
+    "id": 30,
+    "timestamp": "2026-04-01T00:50:00Z",
+    "category": "Infrastructure",
+    "status": "success",
+    "summary": "Set up Tailscale for remote access to Agent Workspace from Aaron's phone",
+    "detail": "Installed Tailscale via Homebrew. Aaron installed Tailscale on iPhone and created account (aaronstorey@me.com). Mac authenticated to Tailscale network via browser login URL. Both devices joined: Mac at 100.124.225.103, iPhone at 100.91.135.110. Web server started on port 18792 serving /workspace/mission-control/. LaunchAgent plist created at ~/Library/LaunchAgents/ai.gustav.workspace-server.plist for auto-start on boot. Permanent URL: http://100.124.225.103:18792/agent-workspace.html"
+  },
+  {
+    "id": 31,
+    "timestamp": "2026-04-01T01:00:00Z",
+    "category": "Infrastructure",
+    "status": "success",
+    "summary": "Added Infrastructure To-Do list and ROI Tracker to Mission Control",
+    "detail": "Created todo.json with first task: set up elevated access for Gustav (passwordless sudo for specific commands). Added Infrastructure To-Do panel to Mission Control dashboard. Created roi.json tracking: hardware cost £1,200, monthly subscription £180, value returned £0, start date 2026-04-01. Added ROI Tracker card to Mission Control with live progress bar, dynamic total cost calculation, and value log. JavaScript loads roi.json and updates every 30s. Value entries logged with description, amount, date, category."
+  },
+  {
+    "id": 32,
+    "timestamp": "2026-04-01T01:10:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Created Daily Income Research cron job — Opus 4-6, high reasoning, 4am daily",
+    "detail": "Created cron job ID 7c5c35ff. Runs at 4:00am Europe/London daily. Model: anthropic/claude-opus-4-6 with thinking:high, 30-minute timeout. Process: reads previous ideas log → evaluates 5+ candidates → scores each (setup time, ongoing time, income potential, automation potential, risk) → picks best → researches thoroughly → appends to income-ideas-log.json → posts full report to Discord #trading-desk → posts 2-line summary to #morning-brief → updates todays-income-idea.json → logs token usage to usage-log.json. Research files created: income-ideas-log.json, usage-log.json, todays-income-idea.json."
+  },
+  {
+    "id": 33,
+    "timestamp": "2026-04-01T01:15:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Updated Morning Brief cron to include daily income idea summary",
+    "detail": "Updated morning brief message to read todays-income-idea.json — if updated today, includes 2-line income idea summary under '💡 Today's Income Idea' section. Keeps brief tight while surfacing the key idea each morning."
+  },
+  {
+    "id": 34,
+    "timestamp": "2026-04-01T01:20:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Created Daily Activity Log Tidy cron job — 8pm daily, auto-logs the day's work",
+    "detail": "Created cron job ID c27c27c1. Runs at 8:00pm Europe/London daily. Model: anthropic/claude-sonnet-4-6, 10-minute timeout. Process: reads action-log.json for last ID → reads today's and yesterday's memory files → checks cron run logs → checks git log for commits → reviews usage-log.json → appends new entries to action-log.json for all significant work not already logged → posts summary to Discord #activity-log with key highlights. Will run first tonight at 8pm."
+  },
+  {
+    "id": 35,
+    "timestamp": "2026-04-01T01:05:00Z",
+    "category": "Infrastructure",
+    "status": "partial",
+    "summary": "Created Cloudflare account and tunnel for public workspace URL — superseded by Tailscale",
+    "detail": "Aaron created Cloudflare account via Sign in with Apple. Installed cloudflared via Homebrew. Created API token (cfut_FOKm4mKrqtKUijfdgewOobO27fARlDqoAJEhd2Sb1ffe44b6). Account ID: 93b3b80e8ba8eefd290c90a4af2e1455. Created tunnel 'gustav-workspace' (ID: 9d62760c-bd36-4074-a98a-07d34768b635). Ultimately decided to use Tailscale instead — free, no domain required, already set up and working. Cloudflare account retained for future use (webhooks, static hosting, CDN). Status partial: tunnel created but not fully activated or used."
+  },
+  {
+    "id": 36,
+    "timestamp": "2026-04-01T01:08:00Z",
+    "category": "Infrastructure",
+    "status": "success",
+    "summary": "Updated Mission Control Task Board to dynamically load from action-log.json",
+    "detail": "Modified /workspace/mission-control/index.html — Task Board panel now fetches last 6 entries from action-log.json on page load and refreshes every 15 seconds. Previously the board was static HTML. Entries display with category badge, status indicator, and summary text. This means the dashboard automatically reflects new log entries without manual updates. Committed as part of the broader Mission Control update alongside ROI Tracker and Infrastructure To-Do panel."
   }
 ]
