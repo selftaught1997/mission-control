@@ -350,5 +350,13 @@
     "status": "success",
     "summary": "Income Research cron #2 ran — Fighter-Ready Digital S&C Programs identified as best opportunity",
     "detail": "Daily Income Research cron (ID: 7c5c35ff) ran at 04:00 BST. Model: claude-sonnet-4-6 (not Opus — cron model resolved to Sonnet). 5 candidates evaluated: Fighter-Ready S&C Programs (score 17/25 — WINNER), Lead Gen for Martial Arts Clubs (16), Print-on-Demand Merchandise (15), YouTube S&C Channel (14), Affiliate Marketing Content Site (13). Winner: sell downloadable karate-specific S&C programs on Payhip. Product suite: 3 one-off programs (£19–£67) + £9.99/month subscription. Market gap confirmed — only 1 real competitor found (Kumite Coach, £37, 0 reviews). Income projection: £350-700/month launch phase → £2,500-4,200/month by month 7-12. Aaron's time: 4-6 hours setup, ~1hr/quarter ongoing. Results appended to income-ideas-log.json, todays-income-idea.json updated, usage-log.json updated. Token usage: 275k input (88% cached), 12k output."
+  },
+  {
+    "id": 45,
+    "timestamp": "2026-04-04T03:00:00Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Income Research cron #3 ran — Scaling After-School Karate Clubs via Sub-Instructors identified as best opportunity",
+    "detail": "Daily Income Research cron (ID: 7c5c35ff) ran at 04:00 BST. Model: claude-sonnet-4-6. 92% cache hit (624k cached, 56k new input, 30k output), 17 tool calls. DuckDuckGo rate-limited after 5 queries (bot detection) — web search adapted. Idea: clone Aaron's existing school delivery model by hiring junior instructors (trusted brown/black belts at £15-20/hr) and deploying to 5-10 additional East London primary schools. 60+ primaries within 3 miles of E15 — Aaron already has the curriculum, the relationship model, and the instructor pool within his own club. Per-school economics: 18 kids × £6 = £108/session, £464/month revenue, £129 instructor cost, £335 profit (72% margin). Scaling: 3 schools → £1,005/month, 10 schools → £3,350/month. Academic-year annual at 10 schools: ~£33,500. Direct pipeline to club: 10 schools × 18 kids × 15-20% conversion = 27-36 new club members. Gustav automates: school outreach emails, pitch deck, contracts, parent sign-up forms, payment collection, scheduling, quality reporting. Results committed to income-ideas-log.json, todays-income-idea.json, usage-log.json (commit: 13c22e8). Mission Control updated."
   }
 ]
