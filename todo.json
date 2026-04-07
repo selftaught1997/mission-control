@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "title": "Set up elevated access for Gustav",
+      "detail": "Create dedicated admin account or configure passwordless sudo for specific trusted commands (tailscaled, gateway restarts etc.) so Gustav can run elevated commands without Aaron's personal password being sent over Telegram.",
+      "priority": "medium",
+      "status": "todo",
+      "category": "Infrastructure",
+      "createdAt": "2026-04-01T00:50:00Z"
+    }
+  ,{
+      "id": 2,
+      "title": "Weekly Sonnet diagnostic + monthly Opus strategic review",
+      "detail": "Weekly cron (Sonnet): routine system health check — crons, memory, scripts, configs. Monthly cron (Opus): strategic audit — is the architecture right, what's being wasted, what should change. Post results to #diagnostics.",
+      "priority": "low",
+      "status": "todo",
+      "category": "Automation",
+      "createdAt": "2026-04-02T01:48:00Z"
+    }
+  ]
+}

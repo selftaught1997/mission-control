@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agent Workspace — Gustav</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #13131a;
+      --surface2: #1a1a24;
+      --border: #252535;
+      --idle-color: #3a86ff;
+      --working-color: #f4a261;
+      --running-color: #2ecc71;
+      --error-color: #e63946;
+      --text: #f0f0f0;
+      --muted: #666;
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .header h1 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .header .subtitle {
+      font-size: 0.8rem;
+      color: #444;
+      margin-top: 4px;
+    }
+
+    /* ── Agent Card ── */
+    .agent-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+      position: relative;
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+    .agent-card.idle {
+      border-color: var(--idle-color);
+      box-shadow: 0 0 30px rgba(58, 134, 255, 0.08);
+    }
+    .agent-card.working {
+      border-color: var(--working-color);
+      box-shadow: 0 0 40px rgba(244, 162, 97, 0.15);
+      animation: pulse-working 2s ease-in-out infinite;
+    }
+    .agent-card.running {
+      border-color: var(--running-color);
+      box-shadow: 0 0 40px rgba(46, 204, 113, 0.18);
+      animation: pulse-running 1.5s ease-in-out infinite;
+    }
+    .agent-card.error {
+      border-color: var(--error-color);
+      box-shadow: 0 0 30px rgba(230, 57, 70, 0.1);
+    }
+
+    @keyframes pulse-working {
+      0%, 100% { box-shadow: 0 0 30px rgba(244, 162, 97, 0.12); }
+      50% { box-shadow: 0 0 60px rgba(244, 162, 97, 0.28); }
+    }
+    @keyframes pulse-running {
+      0%, 100% { box-shadow: 0 0 30px rgba(46, 204, 113, 0.12); }
+      50% { box-shadow: 0 0 60px rgba(46, 204, 113, 0.32); }
+    }
+
+    /* ── Avatar ── */
+    .avatar-wrap {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 24px;
+    }
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--surface2);
+      border: 3px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      transition: border-color 0.4s ease;
+    }
+    .agent-card.idle .avatar { border-color: var(--idle-color); }
+    .agent-card.working .avatar { border-color: var(--working-color); }
+    .agent-card.running .avatar { border-color: var(--running-color); }
+    .agent-card.error .avatar { border-color: var(--error-color); }
+
+    .status-dot {
+      position: absolute;
+      bottom: 6px;
+      right: 6px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 3px solid var(--surface);
+      transition: background-color 0.4s ease;
+    }
+    .agent-card.idle .status-dot { background: var(--idle-color); }
+    .agent-card.working .status-dot {
+      background: var(--working-color);
+      animation: blink 1s step-start infinite;
+    }
+    .agent-card.running .status-dot {
+      background: var(--running-color);
+      animation: blink 0.7s step-start infinite;
+    }
+    .agent-card.error .status-dot { background: var(--error-color); }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* ── Agent Name ── */
+    .agent-name {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    /* ── Status Badge ── */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      transition: background 0.4s, color 0.4s;
+    }
+    .agent-card.idle .status-badge {
+      background: rgba(58, 134, 255, 0.12);
+      color: var(--idle-color);
+    }
+    .agent-card.working .status-badge {
+      background: rgba(244, 162, 97, 0.12);
+      color: var(--working-color);
+    }
+    .agent-card.running .status-badge {
+      background: rgba(46, 204, 113, 0.12);
+      color: var(--running-color);
+    }
+    .agent-card.error .status-badge {
+      background: rgba(230, 57, 70, 0.12);
+      color: var(--error-color);
+    }
+
+    /* ── Task Area ── */
+    .task-area {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      min-height: 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .task-label {
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+    .task-text {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .task-detail {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .task-none {
+      font-size: 0.9rem;
+      color: #444;
+      font-style: italic;
+    }
+
+    /* ── Activity Bar ── */
+    .activity-bar {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 30px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .bar {
+      width: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      transition: height 0.3s ease, background 0.4s;
+      min-height: 4px;
+    }
+    .agent-card.working .bar, .agent-card.running .bar {
+      animation: wave 1.2s ease-in-out infinite;
+    }
+    .bar:nth-child(1) { animation-delay: 0s; }
+    .bar:nth-child(2) { animation-delay: 0.1s; }
+    .bar:nth-child(3) { animation-delay: 0.2s; }
+    .bar:nth-child(4) { animation-delay: 0.3s; }
+    .bar:nth-child(5) { animation-delay: 0.4s; }
+    .bar:nth-child(6) { animation-delay: 0.3s; }
+    .bar:nth-child(7) { animation-delay: 0.2s; }
+    .bar:nth-child(8) { animation-delay: 0.1s; }
+    .bar:nth-child(9) { animation-delay: 0s; }
+
+    @keyframes wave {
+      0%, 100% { height: 4px; }
+      50% { height: 24px; }
+    }
+    .agent-card.idle .bar { height: 4px !important; animation: none !important; }
+    .agent-card.working .bar { background: var(--working-color); }
+    .agent-card.running .bar { background: var(--running-color); }
+
+    /* ── Timer ── */
+    .timer {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .timer span { color: var(--text); font-variant-numeric: tabular-nums; }
+
+    /* ── Last Updated ── */
+    .last-updated {
+      font-size: 0.7rem;
+      color: #383838;
+      margin-top: 12px;
+    }
+
+    /* ── Desk graphic ── */
+    .desk {
+      width: 100%;
+      max-width: 480px;
+      height: 12px;
+      background: linear-gradient(to bottom, #1e1e2e, #13131a);
+      border-radius: 0 0 10px 10px;
+      border: 1px solid var(--border);
+      border-top: none;
+      margin-bottom: 40px;
+    }
+
+    /* ── Recent tasks ── */
+    .recent-wrap {
+      width: 100%;
+      max-width: 480px;
+    }
+    .recent-title {
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+    .recent-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .recent-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 0.8rem;
+    }
+    .recent-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .recent-dot.idle { background: var(--idle-color); }
+    .recent-dot.working { background: var(--working-color); }
+    .recent-dot.running { background: var(--running-color); }
+    .recent-dot.error { background: var(--error-color); }
+    .recent-task { flex: 1; color: var(--text); }
+    .recent-time { color: var(--muted); flex-shrink: 0; }
+
+    /* Refresh indicator */
+    .refresh-ring {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #222;
+      display: inline-block;
+      margin-left: 6px;
+      transition: background 0.2s;
+    }
+    .refresh-ring.active { background: #2ecc71; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Agent Workspace <span class="refresh-ring" id="ring"></span></h1>
+    <div class="subtitle">Gustav — Real-time status</div>
+  </div>
+
+  <div class="agent-card idle" id="card">
+    <div class="avatar-wrap">
+      <div class="avatar" id="avatar">🦾</div>
+      <div class="status-dot"></div>
+    </div>
+    <div class="agent-name" id="agentName">Gustav</div>
+    <div class="status-badge" id="statusBadge">⬤ Idle</div>
+
+    <div class="activity-bar">
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </div>
+
+    <div class="task-area">
+      <div class="task-label">Current Task</div>
+      <div class="task-text task-none" id="taskText">Waiting for instructions</div>
+      <div class="task-detail" id="taskDetail"></div>
+    </div>
+
+    <div class="timer" id="timer"></div>
+    <div class="last-updated" id="lastUpdated">Checking...</div>
+  </div>
+
+  <div class="desk"></div>
+
+  <div class="recent-wrap">
+    <div class="recent-title">Recent Activity</div>
+    <div class="recent-list" id="recentList">
+      <div class="recent-item"><div class="recent-dot idle"></div><div class="recent-task" style="color:#444">No recent activity yet</div></div>
+    </div>
+  </div>
+
+  <script>
+    const STATUS_URL = './agent-status.json';
+    const HISTORY_URL = './agent-history.json';
+    const POLL_MS = 3000;
+
+    let startTime = null;
+    let timerInterval = null;
+    let lastStatus = null;
+
+    const card = document.getElementById('card');
+    const statusBadge = document.getElementById('statusBadge');
+    const taskText = document.getElementById('taskText');
+    const taskDetail = document.getElementById('taskDetail');
+    const lastUpdated = document.getElementById('lastUpdated');
+    const timerEl = document.getElementById('timer');
+    const recentList = document.getElementById('recentList');
+    const ring = document.getElementById('ring');
+
+    const STATUS_META = {
+      idle:    { label: '⬤ Idle',    emoji: '💤', taskDefault: 'Waiting for instructions' },
+      working: { label: '⬤ Working', emoji: '⚙️', taskDefault: 'Processing...' },
+      running: { label: '⬤ Running', emoji: '🔄', taskDefault: 'Task in progress...' },
+      error:   { label: '⬤ Error',   emoji: '⚠️', taskDefault: 'Something went wrong' },
+    };
+
+    function formatAgo(ts) {
+      if (!ts) return '';
+      const secs = Math.floor((Date.now() - ts) / 1000);
+      if (secs < 60) return `${secs}s ago`;
+      const mins = Math.floor(secs / 60);
+      if (mins < 60) return `${mins}m ago`;
+      return `${Math.floor(mins / 60)}h ago`;
+    }
+
+    function formatDuration(ms) {
+      const secs = Math.floor(ms / 1000);
+      if (secs < 60) return `${secs}s`;
+      const mins = Math.floor(secs / 60);
+      return `${mins}m ${secs % 60}s`;
+    }
+
+    function startTimer(fromTs) {
+      clearInterval(timerInterval);
+      startTime = fromTs || Date.now();
+      timerInterval = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        timerEl.innerHTML = `Running for <span>${formatDuration(elapsed)}</span>`;
+      }, 1000);
+    }
+
+    function stopTimer() {
+      clearInterval(timerInterval);
+      timerEl.innerHTML = '';
+    }
+
+    function applyStatus(data) {
+      const s = data.status || 'idle';
+      const meta = STATUS_META[s] || STATUS_META.idle;
+
+      // Update card class
+      card.className = `agent-card ${s}`;
+
+      // Badge
+      statusBadge.textContent = meta.label;
+
+      // Task
+      if (data.task) {
+        taskText.textContent = data.task;
+        taskText.className = 'task-text';
+      } else {
+        taskText.textContent = meta.taskDefault;
+        taskText.className = 'task-text task-none';
+      }
+      taskDetail.textContent = data.detail || '';
+
+      // Timer
+      if (s === 'working' || s === 'running') {
+        if (lastStatus !== s) startTimer(data.startedAt);
+      } else {
+        stopTimer();
+      }
+
+      // Last updated
+      if (data.updatedAt) {
+        lastUpdated.textContent = `Last updated: ${formatAgo(data.updatedAt)}`;
+      }
+
+      lastStatus = s;
+    }
+
+    async function fetchStatus() {
+      try {
+        const res = await fetch(STATUS_URL + '?t=' + Date.now());
+        const data = await res.json();
+        applyStatus(data);
+
+        // Flash ring
+        ring.classList.add('active');
+        setTimeout(() => ring.classList.remove('active'), 300);
+      } catch (e) {
+        // silent fail
+      }
+    }
+
+    async function fetchHistory() {
+      try {
+        const res = await fetch(HISTORY_URL + '?t=' + Date.now());
+        const data = await res.json();
+        if (!data.entries || !data.entries.length) return;
+        recentList.innerHTML = data.entries.slice(0, 6).map(e => `
+          <div class="recent-item">
+            <div class="recent-dot ${e.status}"></div>
+            <div class="recent-task">${e.task || '—'}</div>
+            <div class="recent-time">${formatAgo(e.ts)}</div>
+          </div>
+        `).join('');
+      } catch (e) {
+        // no history file yet
+      }
+    }
+
+    // Init
+    fetchStatus();
+    fetchHistory();
+    setInterval(fetchStatus, POLL_MS);
+    setInterval(fetchHistory, 10000);
+  </script>
+
+</body>
+</html>

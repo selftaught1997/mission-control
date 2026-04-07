@@ -332,59 +332,11 @@
   <!-- TASK BOARD -->
   <div class="card">
     <div class="card-header">
-      <div class="card-title">✅ Task Board</div>
-      <span class="badge badge-red">Gustav's queue</span>
+      <div class="card-title">✅ Activity Log — Recent</div>
+      <a href="log.html" style="text-decoration:none"><span class="badge badge-red">View all →</span></a>
     </div>
-    <ul class="task-list">
-      <li class="task-item">
-        <div class="task-dot dot-green"></div>
-        <div>
-          <div>Mission Control dashboard built</div>
-          <div class="task-meta">✅ Complete — 28 Mar 2026</div>
-        </div>
-      </li>
-      <li class="task-item">
-        <div class="task-dot dot-green"></div>
-        <div>
-          <div>Social media content strategy</div>
-          <div class="task-meta">✅ Complete — 28 Mar 2026 — awaiting Aaron review</div>
-        </div>
-      </li>
-      <li class="task-item">
-        <div class="task-dot dot-green"></div>
-        <div>
-          <div>Referral campaign draft</div>
-          <div class="task-meta">✅ Complete — 28 Mar 2026 — awaiting Aaron review</div>
-        </div>
-      </li>
-      <li class="task-item">
-        <div class="task-dot dot-green"></div>
-        <div>
-          <div>Nextdoor post draft</div>
-          <div class="task-meta">✅ Complete — 28 Mar 2026 — awaiting Aaron review</div>
-        </div>
-      </li>
-      <li class="task-item">
-        <div class="task-dot dot-blue"></div>
-        <div>
-          <div>Meta ad brief (Sunday class)</div>
-          <div class="task-meta">⏳ Queued</div>
-        </div>
-      </li>
-      <li class="task-item">
-        <div class="task-dot dot-blue"></div>
-        <div>
-          <div>Trading consistency framework</div>
-          <div class="task-meta">⏳ Queued</div>
-        </div>
-      </li>
-      <li class="task-item">
-        <div class="task-dot dot-purple"></div>
-        <div>
-          <div>Set up cron job schedule</div>
-          <div class="task-meta">⏳ Awaiting Aaron input</div>
-        </div>
-      </li>
+    <ul class="task-list" id="recent-log">
+      <li class="task-item"><div class="task-dot dot-blue"></div><div style="color:#444;font-style:italic;">Loading...</div></li>
     </ul>
   </div>
 
@@ -424,6 +376,75 @@
     </div>
   </div>
 
+
+  <!-- ROI TRACKER -->
+  <div class="card span-full">
+    <div class="card-header">
+      <div class="card-title">💰 ROI Tracker — Is Gustav Worth It?</div>
+      <span class="badge badge-red">Recovering</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px; margin-bottom:20px;">
+      <div class="stat-box">
+        <div class="stat-value" style="color:var(--accent); font-size:1.4rem;">£1,200</div>
+        <div class="stat-label">Hardware (one-time)</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" style="color:var(--gold); font-size:1.4rem;">£180/mo</div>
+        <div class="stat-label">Claude subscription</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" style="color:var(--accent); font-size:1.4rem;" id="roi-total-cost">£1,380</div>
+        <div class="stat-label">Total invested so far</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" style="color:var(--green); font-size:1.4rem;" id="roi-value-returned">£0</div>
+        <div class="stat-label">Value returned</div>
+      </div>
+    </div>
+
+    <div class="goal" style="margin-bottom:12px;">
+      <div class="goal-label">
+        <span>Break-even progress</span>
+        <span id="roi-percent">0%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill fill-green" id="roi-bar" style="width: 0%"></div></div>
+    </div>
+
+    <div style="font-size:0.78rem; color:var(--muted); line-height:1.7; border-top:1px solid var(--border); padding-top:14px;">
+      <div style="margin-bottom:6px;"><strong style="color:var(--text);">What counts as value returned:</strong></div>
+      <div>• 💷 New club members directly attributed to Gustav's work (avg LTV ~£600/member)</div>
+      <div>• 💷 Time saved on tasks Aaron would've paid someone else to do (at market rate)</div>
+      <div>• 💷 Trading gains from frameworks/analysis Gustav produces</div>
+      <div>• 💷 Revenue from content → leads → conversions</div>
+      <div style="margin-top:10px; color:#444; font-size:0.72rem;">Started: 1 April 2026 · Monthly cost accrues on the 1st · Hardware amortised over 24 months (£50/mo)</div>
+    </div>
+
+    <div style="margin-top:16px; border-top:1px solid var(--border); padding-top:14px;">
+      <div style="font-size:0.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;">Value Log</div>
+      <ul class="task-list" id="roi-log">
+        <li class="task-item"><div class="task-dot dot-blue"></div><div style="color:#444; font-style:italic; font-size:0.85rem;">No value logged yet — first entry will appear here</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TODO LIST -->
+  <div class="card span-full">
+    <div class="card-header">
+      <div class="card-title">🔧 To-Do — Infrastructure & Setup</div>
+      <span class="badge badge-yellow">1 pending</span>
+    </div>
+    <ul class="task-list" id="todo-list">
+      <li class="task-item">
+        <div class="task-dot dot-gold"></div>
+        <div>
+          <div><strong>Set up elevated access for Gustav</strong></div>
+          <div class="task-meta">Create dedicated admin account or configure passwordless sudo for specific trusted commands (tailscaled, gateway restarts etc.) so Gustav can operate without Aaron's personal password being sent over Telegram.</div>
+          <div class="task-meta" style="margin-top:4px;">📅 Added 1 Apr 2026 · Priority: Medium · Category: Infrastructure</div>
+        </div>
+      </li>
+    </ul>
+  </div>
 
   <!-- AGENT WORKSPACE -->
   <div class="card span-full" style="margin-top:8px">
@@ -487,6 +508,66 @@
   </div>
 
 </div><!-- end grid -->
+
+<script>
+  // Recent Activity Log
+  async function loadRecentLog() {
+    try {
+      const res = await fetch('./action-log.json?t=' + Date.now());
+      const data = await res.json();
+      const recent = data.slice(-6).reverse();
+      const list = document.getElementById('recent-log');
+      const dotColor = s => s === 'success' ? 'dot-green' : s === 'partial' ? 'dot-gold' : 'dot-red';
+      list.innerHTML = recent.map(e => `
+        <li class="task-item">
+          <div class="task-dot ${dotColor(e.status)}"></div>
+          <div>
+            <div>${e.summary}</div>
+            <div class="task-meta">${e.category} · ${new Date(e.timestamp).toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'})}</div>
+          </div>
+        </li>
+      `).join('');
+    } catch(e) {}
+  }
+  loadRecentLog();
+  setInterval(loadRecentLog, 15000);
+
+  // ROI Tracker
+  async function loadROI() {
+    try {
+      const res = await fetch('./roi.json?t=' + Date.now());
+      const d = await res.json();
+
+      // Calculate total cost so far
+      const start = new Date(d.startDate);
+      const now = new Date();
+      const monthsElapsed = Math.max(1, Math.round((now - start) / (1000 * 60 * 60 * 24 * 30)));
+      const totalCost = d.hardware + (d.monthlySubscription * monthsElapsed);
+      const pct = Math.min(100, Math.round((d.valueReturned / totalCost) * 100));
+
+      document.getElementById('roi-total-cost').textContent = '£' + totalCost.toLocaleString();
+      document.getElementById('roi-value-returned').textContent = '£' + d.valueReturned.toLocaleString();
+      document.getElementById('roi-percent').textContent = pct + '%';
+      document.getElementById('roi-bar').style.width = pct + '%';
+
+      // Value log
+      if (d.entries && d.entries.length > 0) {
+        const log = document.getElementById('roi-log');
+        log.innerHTML = d.entries.slice().reverse().map(e => `
+          <li class="task-item">
+            <div class="task-dot dot-green"></div>
+            <div>
+              <div><strong>+£${e.value.toLocaleString()}</strong> — ${e.description}</div>
+              <div class="task-meta">${e.date} · ${e.category}</div>
+            </div>
+          </li>
+        `).join('');
+      }
+    } catch(e) {}
+  }
+  loadROI();
+  setInterval(loadROI, 30000);
+</script>
 
 <footer>
   <span>Gustav 🦾 — Operations Partner</span>
