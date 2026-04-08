@@ -358,5 +358,29 @@
     "status": "success",
     "summary": "Income Research cron #3 ran — Scaling After-School Karate Clubs via Sub-Instructors identified as best opportunity",
     "detail": "Daily Income Research cron (ID: 7c5c35ff) ran at 04:00 BST. Model: claude-sonnet-4-6. 92% cache hit (624k cached, 56k new input, 30k output), 17 tool calls. DuckDuckGo rate-limited after 5 queries (bot detection) — web search adapted. Idea: clone Aaron's existing school delivery model by hiring junior instructors (trusted brown/black belts at £15-20/hr) and deploying to 5-10 additional East London primary schools. 60+ primaries within 3 miles of E15 — Aaron already has the curriculum, the relationship model, and the instructor pool within his own club. Per-school economics: 18 kids × £6 = £108/session, £464/month revenue, £129 instructor cost, £335 profit (72% margin). Scaling: 3 schools → £1,005/month, 10 schools → £3,350/month. Academic-year annual at 10 schools: ~£33,500. Direct pipeline to club: 10 schools × 18 kids × 15-20% conversion = 27-36 new club members. Gustav automates: school outreach emails, pitch deck, contracts, parent sign-up forms, payment collection, scheduling, quality reporting. Results committed to income-ideas-log.json, todays-income-idea.json, usage-log.json (commit: 13c22e8). Mission Control updated."
+  },
+  {
+    "id": 46,
+    "timestamp": "2026-04-08T03:00:00Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Income Research cron #4 ran — Karate Instructor Lesson Plan & Curriculum Subscription identified as best opportunity",
+    "detail": "Daily Income Research cron (ID: 7c5c35ff) ran at 04:00 BST. Idea: B2B SaaS-style subscription for karate club owners and instructors — monthly lesson plan packs, curriculum frameworks, grading syllabi via Payhip. Price point: £19–29/month. 100 subscribers = ~£2,400/month recurring. Aaron outlines content quarterly (1-2hr/quarter), Gustav produces the PDFs and assets. Market gap: no dominant curriculum subscription product exists in the UK JKA space. Output committed to income-ideas-log.json, todays-income-idea.json, usage-log.json (commit: cf23c36)."
+  },
+  {
+    "id": 47,
+    "timestamp": "2026-04-08T17:00:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Fixed Activity Log cron timeout — dynamic file discovery, reduced timeout from 600s to 540s",
+    "detail": "Root cause: cron prompt had hardcoded memory file paths (e.g. memory/2026-04-01.md). As days passed, referenced files grew large and the job consistently hit the 10-minute hard cap before completing delivery. Fix: updated prompt to use 'ls memory/ | sort | tail -3' to dynamically find today's and yesterday's files at runtime. Removed open-ended session transcript search from the process. Reduced job timeout from 600s to 540s to leave headroom for Discord delivery. Cron job ID: c27c27c1."
+  },
+  {
+    "id": 48,
+    "timestamp": "2026-04-08T17:05:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Fixed income research cron to auto-commit output files to git after each run",
+    "detail": "Income research cron (ID: 7c5c35ff) was writing results to research/*.json but not committing them to the workspace git repo. Files were being lost between diagnostic checks and dashboard refreshes. Fix: added step 11 to the cron prompt — 'git add research/ && git commit -m \"chore: commit income research cron output [date]\"'. Also manually committed today's already-written files (income-ideas-log.json, todays-income-idea.json, usage-log.json) as commit cf23c36."
   }
 ]
