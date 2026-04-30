@@ -398,5 +398,13 @@
     "status": "success",
     "summary": "Caught Mission Control back up so the dashboard action log reflects the latest automation work.",
     "detail": "Reviewed HEARTBEAT.md, confirmed Mission Control was the highest-priority incomplete area, then updated mission-control/action-log.json in the workspace main repo. Added the missing 2026-04-30 maintenance entry so recent automation output is now represented in the dashboard data again. Workspace change committed after the update."
+  },
+  {
+    "id": 51,
+    "timestamp": "2026-04-30T17:31:42Z",
+    "category": "System",
+    "status": "success",
+    "summary": "Archived accumulated Outlook/browser debug screenshots out of the drafts folder to keep the workspace tidy.",
+    "detail": "Ran a cleanup pass on the draft assets generated during earlier Outlook signup and browser automation debugging. Moved 58 PNG debug screenshots from /workspace/drafts/ into /workspace/drafts/archive-debug-screenshots/ and committed the reorganisation as git commit 6441db5 ('chore: archive draft debug screenshots'). Outcome: the active drafts folder is cleaner while all forensic/debug captures remain preserved for reference."
   }
 ]
