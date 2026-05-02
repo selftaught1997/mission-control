@@ -598,5 +598,13 @@
     "status": "success",
     "summary": "Worked out a reusable native Numbers collaboration flow and generated a share link for Aaron.",
     "detail": "After Screen Recording was enabled, used UI automation plus screenshot OCR to map the native Numbers collaboration flow. Handled the required initial save-to-iCloud step, opened Collaborate \u2192 Invite with Link, filled aaronstorey@me.com into the To: field, and generated a native iCloud Numbers collaboration link for bulk-onboarding-template. Also documented the exact workflow in memory/2026-05-02.md for future autonomous reuse."
+  },
+  {
+    "id": 76,
+    "timestamp": "2026-05-02T23:31:00Z",
+    "category": "System",
+    "status": "success",
+    "summary": "Installed and documented a reusable native macOS UI automation toolkit to reduce future Numbers/dialog roadblocks.",
+    "detail": "Installed cliclick and Hammerspoon, confirmed Screen Recording and Accessibility are working, and built a reusable toolkit under /workspace/scripts/native-ui/ for screen capture, OCR, AX tree dumping, coordinate clicking, and permission checks. Smoke tests passed for the main path (screen capture, OCR, AX dumps). Remaining optional hardening gap is Full Disk Access if direct TCC permission auditing is needed later."
   }
 ]
