@@ -542,5 +542,13 @@
     "status": "success",
     "summary": "Verified current Sturgess-household sheet state before duplicate-parent cleanup.",
     "detail": "Checked the Fresh Onboarding Rebuild sheet and confirmed that the currently linked Sturgess-related parent row is PARENT-140.0 named Marcy constable, attached to Skyla Constable-sturgess. Jack Sturgess and Jordan Sturgess remain present as unlinked child rows, so there is not currently an Amy Sturgess parent row already attached to that family in the live sheet state."
+  },
+  {
+    "id": 69,
+    "timestamp": "2026-05-02T21:30:00Z",
+    "category": "System",
+    "status": "success",
+    "summary": "Finished linking the remaining confirmed payer/parent households in the fresh onboarding sheet.",
+    "detail": "Updated the Fresh Onboarding Rebuild sheet so Sunita Sharma is linked to Priyanka Sharma and Akshara Sharma, correcting Akshara's earlier bad parent link. Also linked Valeriu Gaina to Adelina Gaina and Emily Gaina and cleared family-level GoCardless IDs from those child rows. Recheck confirmed 0 unassigned parent rows remaining in the sheet."
   }
 ]
