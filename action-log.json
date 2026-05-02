@@ -582,5 +582,13 @@
     "status": "success",
     "summary": "Normalized legacy external IDs and scientific-notation phone fields across the fresh onboarding sheet.",
     "detail": "Forced the relevant Numbers cells to text format and normalized decimal-style external_member_id values (including linked_parent_external_id and login_owner_external_id references) plus phone/emergency_contact_phone values that were displaying in scientific notation. Verification after the pass confirmed 0 decimal-style IDs remaining, 0 .0-style ID references remaining, and 0 scientific-notation phone issues remaining."
+  },
+  {
+    "id": 74,
+    "timestamp": "2026-05-02T22:48:00Z",
+    "category": "System",
+    "status": "success",
+    "summary": "Ran a full post-normalization audit and confirmed the onboarding sheet is structurally clean; only completeness cleanup remains.",
+    "detail": "Audited the live Fresh Onboarding Rebuild sheet after the ID/phone normalization pass. Verified 0 structural issues across family linkage, payer assignment, duplicate IDs/names, child billing placement, invite logic, junk rows, decimal-style IDs, and phone formatting. Remaining issue set is now concentrated in 68 rows marked profile_completion_required=yes, driven almost entirely by missing date_of_birth and sex on parent rows, with only a handful of postcode/address/phone gaps left."
   }
 ]
