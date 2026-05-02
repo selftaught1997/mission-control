@@ -558,5 +558,13 @@
     "status": "success",
     "summary": "Completed a major repair pass on the fresh onboarding sheet and reduced the audit issues to a short final punch list.",
     "detail": "Repaired the field-mapping corruption in Fresh Onboarding Rebuild, removed junk artifact rows, repaired contaminated parent rows, created and linked missing parent/payer rows household-by-household, and reran the audit. Post-repair state: 0 child rows missing parent links, 0 child rows missing family groups, 0 child-family groups missing parent/manager/payer structure, 0 family-group mismatches, 0 bad create_login_profile/profile_completion_required values, 0 blank junk rows, and 0 duplicate external IDs. Remaining issues after the pass: 4 child rows still holding GoCardless IDs directly (Jack Sturgess, Jordan Sturgess, Joel Cakoni, Xhensila Cakoni) and 1 likely duplicate parent pair (Yama / Yama)."
+  },
+  {
+    "id": 71,
+    "timestamp": "2026-05-02T22:17:00Z",
+    "category": "System",
+    "status": "success",
+    "summary": "Finished the last onboarding-sheet cleanup items by clearing child-held GoCardless records and merging the Yama duplicate household.",
+    "detail": "Moved the remaining child-held GoCardless billing details off Jack/Jordan Sturgess and Joel/Xhensila Cakoni, preserving the legacy subscription references on the payer-side rows (Amy Sturgess and Fabjola Cakoni) and updating family_monthly_amount_pence for those families. Also merged the duplicate Yama parent rows into a single payer household under PARENT-36.0, relinked Arina Golam Sarvar to that surviving payer row, preserved the deleted duplicate row's GC details in notes, and rechecked that 0 child rows now carry GoCardless IDs."
   }
 ]
