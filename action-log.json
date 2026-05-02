@@ -430,5 +430,13 @@
     "status": "success",
     "summary": "Reconciled bulk onboarding data against register, membership forms, and GoCardless, then created a manual reconciliation sheet in Numbers.",
     "detail": "Completed a large reconciliation pass for the SKC bulk onboarding template. Work included: populating the onboarding template from the 114 active register members; checking and correcting mapping issues; matching GoCardless customer / mandate / subscription IDs using exports and later the live read-only GoCardless API; creating Apple Notes review lists for ambiguous cases; applying Aaron-confirmed payer overrides (including Sturgess, Gaina, and Oliinyk family links); and creating a new 'Membership Form Reconciliation' sheet inside the Numbers onboarding document to compare active register rows against the original membership-form responses. Outcome: the onboarding file is materially more complete, the unresolved DD list is much smaller, and manual reconciliation now has a dedicated side-by-side workspace."
+  },
+  {
+    "id": 55,
+    "timestamp": "2026-05-02T01:31:00Z",
+    "category": "System",
+    "status": "partial",
+    "summary": "Audited SKC platform onboarding/import flow and drafted target schema mapping for a resilient parent/child bulk importer.",
+    "detail": "Reviewed the SKC platform codebase read-only to trace family, primary payer, and GoCardless setup/callback flows. Confirmed that the data model and downstream family billing logic exist, but a finished bulk importer path is not clearly implemented in code. Wrote drafts/import-schema-mapping.md to map the current onboarding sheet to a stronger import contract, including explicit parent/child/payer semantics, login ownership, deferred profile-completion flags, and missing-field tracking. Status marked partial because the sheet transformation to the final target schema is still in progress."
   }
 ]
