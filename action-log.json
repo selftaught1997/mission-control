@@ -454,5 +454,13 @@
     "status": "partial",
     "summary": "Highlighted broken identity rows on the Fresh Onboarding Rebuild sheet for manual correction.",
     "detail": "Created and repopulated the Fresh Onboarding Rebuild sheet from the 114 active register members only, then marked the structurally broken identity rows in red so Aaron can correct them directly. The highlighted rows correspond to the broken bottom-end cluster previously identified from mismatches between the active register-style data and the original membership form responses."
+  },
+  {
+    "id": 58,
+    "timestamp": "2026-05-02T02:26:00Z",
+    "category": "System",
+    "status": "success",
+    "summary": "Changed Fresh Onboarding Rebuild highlighting from full-row red to cell-level identity highlighting.",
+    "detail": "Adjusted the red review highlighting on the Fresh Onboarding Rebuild Numbers sheet so only the specific identity cells that need manual correction are highlighted, rather than the entire row. The highlighted cells are now the identity fields (first_name, last_name, email) for the broken-row cluster, making the review work more precise and less visually noisy."
   }
 ]
