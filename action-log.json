@@ -518,5 +518,13 @@
     "status": "partial",
     "summary": "Removed clearly duplicated parent rows from Fresh Onboarding Rebuild and rechecked remaining unassigned parents.",
     "detail": "Deleted the obvious duplicate parent artifacts from the fresh onboarding sheet and reran the unassigned-parent check. After cleanup, only two parent rows remained unassigned to child rows: Sunita Sharma (PARENT-FORMCAND-335-1 / sunitajay85@gmail.com) and Valeriu Gaina (PAYER-VALERIU-GAINA / valeriutorel@gmail.com)."
+  },
+  {
+    "id": 66,
+    "timestamp": "2026-05-02T20:59:00Z",
+    "category": "System",
+    "status": "partial",
+    "summary": "Verified Nwaozo household rows in the fresh onboarding sheet and confirmed the intended child\u2192parent relationship.",
+    "detail": "Checked the Fresh Onboarding Rebuild sheet for Zoey Nwaozo, Andrew Nwaozo, and Joy Nwaozo. Verified that Zoey and Andrew exist as child rows and Joy exists as the adult/parent candidate, and that the children should logically be linked to Joy Nwaozo based on the current parent_email/emergency-contact evidence."
   }
 ]
