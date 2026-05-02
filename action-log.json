@@ -606,5 +606,13 @@
     "status": "success",
     "summary": "Installed and documented a reusable native macOS UI automation toolkit to reduce future Numbers/dialog roadblocks.",
     "detail": "Installed cliclick and Hammerspoon, confirmed Screen Recording and Accessibility are working, and built a reusable toolkit under /workspace/scripts/native-ui/ for screen capture, OCR, AX tree dumping, coordinate clicking, and permission checks. Smoke tests passed for the main path (screen capture, OCR, AX dumps). Remaining optional hardening gap is Full Disk Access if direct TCC permission auditing is needed later."
+  },
+  {
+    "id": 77,
+    "timestamp": "2026-05-02T23:55:00Z",
+    "category": "System",
+    "status": "success",
+    "summary": "Applied the missing-data cleanup rule change for parent/payer rows and reduced completion flags to a single unresolved participant field.",
+    "detail": "Relaxed the completeness rule for non-participating parent/payer rows so DOB and sex are no longer required, then applied a small set of high-confidence backfills from form/household evidence: Stefan Herold DOB, Radmirdjon Khamdamov DOB+postcode, Leila Jama address+postcode, Mohammad Kha address+postcode, and Icaro phone+DOB. Recheck showed profile_completion_required now remains on only 1 row: Icaro Zambiank Eleuterio Dos Santos, missing sex."
   }
 ]
