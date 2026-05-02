@@ -502,5 +502,13 @@
     "status": "partial",
     "summary": "Income Research cron #10 ran \u2014 White-Label Parents' Progress Report Service for Kids Activity Clubs was selected as the best opportunity.",
     "detail": "Daily Income Research cron (ID: 7c5c35ff-a5b5-419b-acb9-af634b51c9b8) produced a new idea for 2026-05-02 and auto-committed the updated research files as git commit 1713e7b. Winner: a done-for-you white-label parent progress report service for karate clubs, dance schools, gymnastics gyms, swim schools, and football academies, where Gustav automates branded templates, coach-input workflows, drafting, batching, delivery packs, follow-up, and billing while Aaron's time stays under 30 minutes per week. Economics recorded in the research files: roughly \u00a3199-\u00a3999/month per client, with 3 clients at ~\u00a3249 averaging about \u00a3747/month, 6 clients at ~\u00a3349 averaging about \u00a32,094/month, and 10 clients at ~\u00a3499 averaging about \u00a34,990/month. Outcome files updated: research/income-ideas-log.json, research/todays-income-idea.json, and research/usage-log.json. Status marked partial because the run notes say the intended Discord follow-up posts were not sent from that session and were only recorded as external targets."
+  },
+  {
+    "id": 64,
+    "timestamp": "2026-05-02T20:27:00Z",
+    "category": "System",
+    "status": "success",
+    "summary": "Built child-to-parent linkage across the fresh onboarding sheet and moved family DD off linked child rows.",
+    "detail": "Systematically linked 64 child rows in Fresh Onboarding Rebuild to adult/parent payer rows using parent_email matches. Filled family_group, linked_parent_external_id, login_owner_external_id, and relationship_to_payer for those children, and then cleared family-level GoCardless IDs from the linked child rows so billing remains on the payer side."
   }
 ]
