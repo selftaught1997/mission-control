@@ -462,5 +462,13 @@
     "status": "success",
     "summary": "Changed Fresh Onboarding Rebuild highlighting from full-row red to cell-level identity highlighting.",
     "detail": "Adjusted the red review highlighting on the Fresh Onboarding Rebuild Numbers sheet so only the specific identity cells that need manual correction are highlighted, rather than the entire row. The highlighted cells are now the identity fields (first_name, last_name, email) for the broken-row cluster, making the review work more precise and less visually noisy."
+  },
+  {
+    "id": 59,
+    "timestamp": "2026-05-02T02:32:00Z",
+    "category": "System",
+    "status": "partial",
+    "summary": "Appended candidate profiles from the membership form sheet for the broken-row cluster into Fresh Onboarding Rebuild.",
+    "detail": "Pulled the membership-form candidate profiles corresponding to the highlighted broken identity rows and appended them into the Fresh Onboarding Rebuild Numbers sheet so Aaron can manually delete the unnecessary candidates afterward. This produced 48 candidate profile rows sourced directly from the original form sheet, giving a cleaner manual reconciliation path than working from the corrupted register-style rows alone."
   }
 ]
