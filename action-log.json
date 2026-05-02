@@ -534,5 +534,13 @@
     "status": "success",
     "summary": "Linked Andrew and Zoey Nwaozo to Joy Nwaozo and removed the erroneous Sona Nwaozo parent row.",
     "detail": "Updated the Fresh Onboarding Rebuild sheet so Andrew Nwaozo and Zoey Nwaozo are linked to Joy Nwaozo as their parent/manager row, and deleted the unassigned Sona Nwaozo parent row as an error/duplicate. This tightened the family linkage for the Nwaozo household and reduced stray parent-row clutter."
+  },
+  {
+    "id": 68,
+    "timestamp": "2026-05-02T21:21:00Z",
+    "category": "System",
+    "status": "success",
+    "summary": "Verified current Sturgess-household sheet state before duplicate-parent cleanup.",
+    "detail": "Checked the Fresh Onboarding Rebuild sheet and confirmed that the currently linked Sturgess-related parent row is PARENT-140.0 named Marcy constable, attached to Skyla Constable-sturgess. Jack Sturgess and Jordan Sturgess remain present as unlinked child rows, so there is not currently an Amy Sturgess parent row already attached to that family in the live sheet state."
   }
 ]
