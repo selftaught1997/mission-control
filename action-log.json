@@ -438,5 +438,13 @@
     "status": "partial",
     "summary": "Audited SKC platform onboarding/import flow and drafted target schema mapping for a resilient parent/child bulk importer.",
     "detail": "Reviewed the SKC platform codebase read-only to trace family, primary payer, and GoCardless setup/callback flows. Confirmed that the data model and downstream family billing logic exist, but a finished bulk importer path is not clearly implemented in code. Wrote drafts/import-schema-mapping.md to map the current onboarding sheet to a stronger import contract, including explicit parent/child/payer semantics, login ownership, deferred profile-completion flags, and missing-field tracking. Status marked partial because the sheet transformation to the final target schema is still in progress."
+  },
+  {
+    "id": 56,
+    "timestamp": "2026-05-02T01:53:00Z",
+    "category": "System",
+    "status": "partial",
+    "summary": "Created a fresh onboarding rebuild sheet and repopulated it from the 114 active register members only.",
+    "detail": "Created a new Numbers sheet called Fresh Onboarding Rebuild, cleared it back to headers only, and repopulated it from the Stratford Karate active member register only (114 active rows, no inactive rows). The rebuild preserves the expanded schema/header set so the fresh sheet can be used as a cleaner foundation for importer-aligned onboarding work."
   }
 ]
