@@ -478,5 +478,13 @@
     "status": "partial",
     "summary": "Highlighted likely duplicate profile rows on the Fresh Onboarding Rebuild sheet for manual review.",
     "detail": "Identified likely duplicate rows in Fresh Onboarding Rebuild by repeated normalized full names and highlighted those rows in the sheet so Aaron can review them directly. The duplicate set includes both original imported rows and candidate rows appended from membership-form reconciliation work."
+  },
+  {
+    "id": 61,
+    "timestamp": "2026-05-02T03:30:00Z",
+    "category": "System",
+    "status": "partial",
+    "summary": "Added explicit payer rows to the fresh rebuild and reran live GoCardless matching, improving match coverage substantially.",
+    "detail": "Built explicit parent/payer rows into the Fresh Onboarding Rebuild for family-managed households and reran live GoCardless subscription matching against the improved structure. Coverage improved from 17 clear matches / 36 ambiguous / 14 unmatched to 45 clear matches / 9 ambiguous / 13 unmatched. Remaining unmatched live subscriptions were reported back with payer name, email, subscription ID, and plan description for manual review."
   }
 ]
