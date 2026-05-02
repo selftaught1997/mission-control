@@ -470,5 +470,13 @@
     "status": "partial",
     "summary": "Appended candidate profiles from the membership form sheet for the broken-row cluster into Fresh Onboarding Rebuild.",
     "detail": "Pulled the membership-form candidate profiles corresponding to the highlighted broken identity rows and appended them into the Fresh Onboarding Rebuild Numbers sheet so Aaron can manually delete the unnecessary candidates afterward. This produced 48 candidate profile rows sourced directly from the original form sheet, giving a cleaner manual reconciliation path than working from the corrupted register-style rows alone."
+  },
+  {
+    "id": 60,
+    "timestamp": "2026-05-02T02:53:00Z",
+    "category": "System",
+    "status": "partial",
+    "summary": "Highlighted likely duplicate profile rows on the Fresh Onboarding Rebuild sheet for manual review.",
+    "detail": "Identified likely duplicate rows in Fresh Onboarding Rebuild by repeated normalized full names and highlighted those rows in the sheet so Aaron can review them directly. The duplicate set includes both original imported rows and candidate rows appended from membership-form reconciliation work."
   }
 ]
