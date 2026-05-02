@@ -526,5 +526,13 @@
     "status": "partial",
     "summary": "Verified Nwaozo household rows in the fresh onboarding sheet and confirmed the intended child\u2192parent relationship.",
     "detail": "Checked the Fresh Onboarding Rebuild sheet for Zoey Nwaozo, Andrew Nwaozo, and Joy Nwaozo. Verified that Zoey and Andrew exist as child rows and Joy exists as the adult/parent candidate, and that the children should logically be linked to Joy Nwaozo based on the current parent_email/emergency-contact evidence."
+  },
+  {
+    "id": 67,
+    "timestamp": "2026-05-02T21:01:00Z",
+    "category": "System",
+    "status": "success",
+    "summary": "Linked Andrew and Zoey Nwaozo to Joy Nwaozo and removed the erroneous Sona Nwaozo parent row.",
+    "detail": "Updated the Fresh Onboarding Rebuild sheet so Andrew Nwaozo and Zoey Nwaozo are linked to Joy Nwaozo as their parent/manager row, and deleted the unassigned Sona Nwaozo parent row as an error/duplicate. This tightened the family linkage for the Nwaozo household and reduced stray parent-row clutter."
   }
 ]
