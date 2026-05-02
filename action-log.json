@@ -550,5 +550,13 @@
     "status": "success",
     "summary": "Finished linking the remaining confirmed payer/parent households in the fresh onboarding sheet.",
     "detail": "Updated the Fresh Onboarding Rebuild sheet so Sunita Sharma is linked to Priyanka Sharma and Akshara Sharma, correcting Akshara's earlier bad parent link. Also linked Valeriu Gaina to Adelina Gaina and Emily Gaina and cleared family-level GoCardless IDs from those child rows. Recheck confirmed 0 unassigned parent rows remaining in the sheet."
+  },
+  {
+    "id": 70,
+    "timestamp": "2026-05-02T22:09:00Z",
+    "category": "System",
+    "status": "success",
+    "summary": "Completed a major repair pass on the fresh onboarding sheet and reduced the audit issues to a short final punch list.",
+    "detail": "Repaired the field-mapping corruption in Fresh Onboarding Rebuild, removed junk artifact rows, repaired contaminated parent rows, created and linked missing parent/payer rows household-by-household, and reran the audit. Post-repair state: 0 child rows missing parent links, 0 child rows missing family groups, 0 child-family groups missing parent/manager/payer structure, 0 family-group mismatches, 0 bad create_login_profile/profile_completion_required values, 0 blank junk rows, and 0 duplicate external IDs. Remaining issues after the pass: 4 child rows still holding GoCardless IDs directly (Jack Sturgess, Jordan Sturgess, Joel Cakoni, Xhensila Cakoni) and 1 likely duplicate parent pair (Yama / Yama)."
   }
 ]
