@@ -486,5 +486,13 @@
     "status": "partial",
     "summary": "Added explicit payer rows to the fresh rebuild and reran live GoCardless matching, improving match coverage substantially.",
     "detail": "Built explicit parent/payer rows into the Fresh Onboarding Rebuild for family-managed households and reran live GoCardless subscription matching against the improved structure. Coverage improved from 17 clear matches / 36 ambiguous / 14 unmatched to 45 clear matches / 9 ambiguous / 13 unmatched. Remaining unmatched live subscriptions were reported back with payer name, email, subscription ID, and plan description for manual review."
+  },
+  {
+    "id": 62,
+    "timestamp": "2026-05-02T04:06:57.379153Z",
+    "category": "System",
+    "status": "success",
+    "summary": "Resynced the workspace action log and refreshed Mission Control so dashboard status matches current SKC work.",
+    "detail": "Found /workspace/action-log.json stalled at 22 entries while /workspace/mission-control/action-log.json had 61. Synced the root log back to the fuller Mission Control history, refreshed mission-control/index.html to reflect the current SKC platform, onboarding rebuild, draft pipeline, and pending infrastructure tasks, and updated log-action.js so future logging uses the more complete log if the two files ever drift again."
   }
 ]
