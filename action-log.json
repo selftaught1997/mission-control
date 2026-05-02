@@ -446,5 +446,13 @@
     "status": "partial",
     "summary": "Created a fresh onboarding rebuild sheet and repopulated it from the 114 active register members only.",
     "detail": "Created a new Numbers sheet called Fresh Onboarding Rebuild, cleared it back to headers only, and repopulated it from the Stratford Karate active member register only (114 active rows, no inactive rows). The rebuild preserves the expanded schema/header set so the fresh sheet can be used as a cleaner foundation for importer-aligned onboarding work."
+  },
+  {
+    "id": 57,
+    "timestamp": "2026-05-02T02:23:00Z",
+    "category": "System",
+    "status": "partial",
+    "summary": "Highlighted broken identity rows on the Fresh Onboarding Rebuild sheet for manual correction.",
+    "detail": "Created and repopulated the Fresh Onboarding Rebuild sheet from the 114 active register members only, then marked the structurally broken identity rows in red so Aaron can correct them directly. The highlighted rows correspond to the broken bottom-end cluster previously identified from mismatches between the active register-style data and the original membership form responses."
   }
 ]
