@@ -510,5 +510,13 @@
     "status": "success",
     "summary": "Built child-to-parent linkage across the fresh onboarding sheet and moved family DD off linked child rows.",
     "detail": "Systematically linked 64 child rows in Fresh Onboarding Rebuild to adult/parent payer rows using parent_email matches. Filled family_group, linked_parent_external_id, login_owner_external_id, and relationship_to_payer for those children, and then cleared family-level GoCardless IDs from the linked child rows so billing remains on the payer side."
+  },
+  {
+    "id": 65,
+    "timestamp": "2026-05-02T20:55:00Z",
+    "category": "System",
+    "status": "partial",
+    "summary": "Removed clearly duplicated parent rows from Fresh Onboarding Rebuild and rechecked remaining unassigned parents.",
+    "detail": "Deleted the obvious duplicate parent artifacts from the fresh onboarding sheet and reran the unassigned-parent check. After cleanup, only two parent rows remained unassigned to child rows: Sunita Sharma (PARENT-FORMCAND-335-1 / sunitajay85@gmail.com) and Valeriu Gaina (PAYER-VALERIU-GAINA / valeriutorel@gmail.com)."
   }
 ]
