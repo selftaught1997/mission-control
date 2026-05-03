@@ -630,5 +630,13 @@
     "status": "success",
     "summary": "Closed the last remaining onboarding-sheet completeness issue by fixing Icaro\u2019s phone formatting and sex field.",
     "detail": "Updated the Fresh Onboarding Rebuild sheet so Icaro Zambiank Eleuterio Dos Santos now has phone=07361567919 and sex=male, then cleared his completion flag. Final recheck showed 0 profile_completion_required rows and 0 phone-format issues remaining."
+  },
+  {
+    "id": 80,
+    "timestamp": "2026-05-03T01:55:22.514742Z",
+    "category": "Infrastructure",
+    "status": "success",
+    "summary": "Refreshed Mission Control after the onboarding cleanup so dashboard status now reflects the clean rebuild state.",
+    "detail": "Updated mission-control/index.html to roll the dashboard date forward to 3 May 2026, changed Bulk Onboarding Rebuild from in-progress to structurally clean, and shifted Gustav's current focus text toward importer mapping / next migration work. Synced the new entry into both /workspace/action-log.json and /workspace/mission-control/action-log.json so the recent activity feed stays aligned."
   }
 ]
