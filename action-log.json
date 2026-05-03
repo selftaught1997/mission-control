@@ -622,5 +622,13 @@
     "status": "success",
     "summary": "Ran a near-final onboarding-sheet audit after the parent-row completeness cleanup.",
     "detail": "Re-audited the Fresh Onboarding Rebuild sheet and confirmed the structure remains clean: 0 missing family links, 0 payer/family conflicts, 0 duplicate IDs/names, 0 child GoCardless IDs, and 0 junk rows. Only 2 residual issues remain and both are on the same adult row: Icaro Zambiank Eleuterio Dos Santos still needs sex, and his phone field needs one more normalization pass after the later backfill edit."
+  },
+  {
+    "id": 79,
+    "timestamp": "2026-05-03T00:06:00Z",
+    "category": "System",
+    "status": "success",
+    "summary": "Closed the last remaining onboarding-sheet completeness issue by fixing Icaro\u2019s phone formatting and sex field.",
+    "detail": "Updated the Fresh Onboarding Rebuild sheet so Icaro Zambiank Eleuterio Dos Santos now has phone=07361567919 and sex=male, then cleared his completion flag. Final recheck showed 0 profile_completion_required rows and 0 phone-format issues remaining."
   }
 ]
