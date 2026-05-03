@@ -614,5 +614,13 @@
     "status": "success",
     "summary": "Applied the missing-data cleanup rule change for parent/payer rows and reduced completion flags to a single unresolved participant field.",
     "detail": "Relaxed the completeness rule for non-participating parent/payer rows so DOB and sex are no longer required, then applied a small set of high-confidence backfills from form/household evidence: Stefan Herold DOB, Radmirdjon Khamdamov DOB+postcode, Leila Jama address+postcode, Mohammad Kha address+postcode, and Icaro phone+DOB. Recheck showed profile_completion_required now remains on only 1 row: Icaro Zambiank Eleuterio Dos Santos, missing sex."
+  },
+  {
+    "id": 78,
+    "timestamp": "2026-05-03T00:00:00Z",
+    "category": "System",
+    "status": "success",
+    "summary": "Ran a near-final onboarding-sheet audit after the parent-row completeness cleanup.",
+    "detail": "Re-audited the Fresh Onboarding Rebuild sheet and confirmed the structure remains clean: 0 missing family links, 0 payer/family conflicts, 0 duplicate IDs/names, 0 child GoCardless IDs, and 0 junk rows. Only 2 residual issues remain and both are on the same adult row: Icaro Zambiank Eleuterio Dos Santos still needs sex, and his phone field needs one more normalization pass after the later backfill edit."
   }
 ]
