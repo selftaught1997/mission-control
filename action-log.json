@@ -646,5 +646,13 @@
     "status": "partial",
     "summary": "Income Research cron #11 ran — Club Cashback & Perks Hub for Stratford Karate Club Families was selected as the best opportunity.",
     "detail": "Daily Income Research cron (ID: 7c5c35ff) produced a new idea for 2026-05-03 and auto-committed the updated research files as git commit fe5ff59. Winner: a members-first 'SKC Perks' cashback and offers hub that helps club families save money on everyday spending while quietly generating cashback or donations for the club through tools like easyfundraising plus selected affiliate links. Gustav can build the landing page, onboarding flow, reminder emails, and seasonal campaigns, keeping Aaron's role to approval plus occasional mentions. Outcome files updated: research/income-ideas-log.json, research/todays-income-idea.json, and research/usage-log.json. Status marked partial because the run metadata says the intended Discord follow-up posts to #trading-desk and #morning-brief were not sent from that session and were only recorded as target channels."
+  },
+  {
+    "id": 82,
+    "timestamp": "2026-05-04T03:47:35Z",
+    "category": "Research",
+    "status": "partial",
+    "summary": "Income Research cron #12 ran — Automated Lapsed-Trial Reactivation by Direct Mail for Stratford Karate Club was selected as the best opportunity.",
+    "detail": "Daily Income Research cron produced a new idea for 2026-05-04 and auto-committed the updated research files as git commit fa9cce9. Winner: an automated direct-mail reactivation system targeting old trial leads, dormant enquiries, and former members for Stratford Karate Club, with Gustav handling list cleanup, segmentation, postcard/letter copy, print-mail workflow, QR tracking, landing pages, and follow-up. Planning-level economics from the run: postcard cost roughly £0.60-£1.20 each all-in, a 250-contact batch at ~£200-£300, with 3-6 rejoins at ~£55/month adding about £165-£330/month recurring and ~£1,980-£3,960 annualised from one decent batch. Status marked partial because the intended Discord follow-up posts to #trading-desk and #morning-brief were not sent from that isolated run."
   }
 ]
