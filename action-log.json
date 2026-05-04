@@ -654,5 +654,13 @@
     "status": "partial",
     "summary": "Income Research cron #12 ran — Automated Lapsed-Trial Reactivation by Direct Mail for Stratford Karate Club was selected as the best opportunity.",
     "detail": "Daily Income Research cron produced a new idea for 2026-05-04 and auto-committed the updated research files as git commit fa9cce9. Winner: an automated direct-mail reactivation system targeting old trial leads, dormant enquiries, and former members for Stratford Karate Club, with Gustav handling list cleanup, segmentation, postcard/letter copy, print-mail workflow, QR tracking, landing pages, and follow-up. Planning-level economics from the run: postcard cost roughly £0.60-£1.20 each all-in, a 250-contact batch at ~£200-£300, with 3-6 rejoins at ~£55/month adding about £165-£330/month recurring and ~£1,980-£3,960 annualised from one decent batch. Status marked partial because the intended Discord follow-up posts to #trading-desk and #morning-brief were not sent from that isolated run."
+  },
+  {
+    "id": 83,
+    "timestamp": "2026-05-04T17:25:00Z",
+    "category": "System",
+    "status": "success",
+    "summary": "Refreshed Mission Control status files and added a draft review tracker so pending review work is explicit again.",
+    "detail": "Ran a heartbeat cleanup pass after the daily diagnostic. Refreshed mission-control/agent-status.json and agent-history.json so the dashboard status files are no longer stuck on 2 April activity, created drafts/review-tracker.md to separate Aaron-review items from internal/background docs and support assets, and updated Mission Control copy to reflect that tracking. This tightens the “always on” review loop without pushing anything external yet."
   }
 ]

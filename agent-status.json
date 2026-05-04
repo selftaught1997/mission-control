@@ -1,9 +1,9 @@
 {
   "status": "idle",
   "task": null,
-  "detail": null,
+  "detail": "Heartbeat cleanup complete",
   "startedAt": null,
-  "updatedAt": 1775094235000,
+  "updatedAt": 1777915678000,
   "agent": "Gustav",
   "emoji": "\ud83e\uddbe"
 }
