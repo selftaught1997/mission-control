@@ -1,9 +1,9 @@
 {
   "status": "idle",
   "task": null,
-  "detail": "Evening heartbeat review complete — Mission Control and review queue are in sync",
+  "detail": "Overnight heartbeat review complete \u2014 Mission Control and review queue are still in sync",
   "startedAt": null,
-  "updatedAt": 1778693760000,
+  "updatedAt": 1778716260000,
   "agent": "Gustav",
-  "emoji": "🦾"
+  "emoji": "\ud83e\uddbe"
 }
