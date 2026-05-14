@@ -2,6 +2,11 @@
   "entries": [
     {
       "status": "working",
+      "task": "Late-night heartbeat Mission Control review",
+      "ts": 1778792820000
+    },
+    {
+      "status": "working",
       "task": "Night heartbeat Mission Control sync",
       "ts": 1778788920000
     },
@@ -64,11 +69,6 @@
       "status": "running",
       "task": "Relocating visitor sections",
       "ts": 1775086451000
-    },
-    {
-      "status": "running",
-      "task": "Cleaning monthly attendance tabs",
-      "ts": 1775084946000
     }
   ]
 }
