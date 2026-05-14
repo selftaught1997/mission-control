@@ -2,6 +2,11 @@
   "entries": [
     {
       "status": "working",
+      "task": "Early-evening heartbeat Mission Control review",
+      "ts": 1778781120000
+    },
+    {
+      "status": "working",
       "task": "Late-afternoon heartbeat Mission Control review",
       "ts": 1778772060000
     },
@@ -64,11 +69,6 @@
       "status": "running",
       "task": "Rebuilding Dashboard & Expenses",
       "ts": 1775082319000
-    },
-    {
-      "status": "running",
-      "task": "Rebuilding attendance tabs",
-      "ts": 1775061301000
     }
   ]
 }
