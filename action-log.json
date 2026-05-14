@@ -782,5 +782,13 @@
     "status": "success",
     "summary": "Ran a late-night heartbeat review and confirmed Mission Control is still aligned with the active review queue.",
     "detail": "Reviewed HEARTBEAT.md, checked Mission Control status, the draft review queue, and git state, found no new urgent items, refreshed the dashboard heartbeat metadata for a clean late-night sync, and kept the pass quiet."
+  },
+  {
+    "id": 99,
+    "timestamp": "2026-05-14T23:27:00Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Ran an after-midnight heartbeat review and confirmed Mission Control still matches the active draft review queue.",
+    "detail": "Reviewed HEARTBEAT.md, checked that both the workspace and nested Mission Control repos were clean, confirmed the draft review queue was unchanged, rolled the dashboard metadata forward to 15 May 2026, and logged the new-day heartbeat so the overnight status stays current."
   }
 ]

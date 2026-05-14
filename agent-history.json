@@ -2,6 +2,11 @@
   "entries": [
     {
       "status": "working",
+      "task": "After-midnight heartbeat Mission Control review",
+      "ts": 1778801220000
+    },
+    {
+      "status": "working",
       "task": "Late-night heartbeat Mission Control review",
       "ts": 1778792820000
     },
@@ -64,11 +69,6 @@
       "status": "running",
       "task": "Adding club classes to calendar",
       "ts": 1775092819000
-    },
-    {
-      "status": "running",
-      "task": "Relocating visitor sections",
-      "ts": 1775086451000
     }
   ]
 }
