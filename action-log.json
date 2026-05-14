@@ -726,5 +726,13 @@
     "status": "success",
     "summary": "Ran a dawn heartbeat review and kept Mission Control status metadata aligned with the current draft review queue.",
     "detail": "Reviewed HEARTBEAT.md, checked that the workspace was clean and the draft review queue was unchanged, refreshed Mission Control status/history metadata for the new heartbeat window, and kept the pass quiet because there were no new urgent outward-facing items for Aaron."
+  },
+  {
+    "id": 92,
+    "timestamp": "2026-05-14T07:41:00Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Ran a morning heartbeat review and confirmed Mission Control remains aligned with the active draft review queue.",
+    "detail": "Reviewed HEARTBEAT.md, checked the workspace git state, draft review tracker, and Mission Control status files, found no new urgent items, refreshed the dashboard heartbeat metadata, and kept the workspace tidy with a fresh commit-ready morning review state."
   }
 ]
