@@ -758,5 +758,21 @@
     "status": "success",
     "summary": "Ran an early-evening heartbeat review and confirmed Mission Control still matches the active draft review queue.",
     "detail": "Reviewed HEARTBEAT.md, checked the draft review queue, confirmed the workspace was clean and Mission Control was still in sync, then refreshed the dashboard heartbeat metadata for the current evening state without needing any outward alert."
+  },
+  {
+    "id": 96,
+    "timestamp": "2026-05-14T03:00:00Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Ran the daily income research job and selected a white-label online raffle and silent-auction setup service for PTAs and small clubs as the strongest current opportunity.",
+    "detail": "Daily Income Research completed successfully for 2026-05-14 and updated research/income-ideas-log.json plus research/usage-log.json before auto-committing the output as git commit b20e17f ('chore: income research output 2026-05-14'). The winning idea was 'White-Label Online Raffle & Silent-Auction Setup Service for PTAs and Small Clubs' \u2014 a fixed-fee done-for-you offer where Gustav handles platform research and setup, campaign structure, prize-page copy, launch/reminder messaging, QR assets, and reporting while keeping Aaron's ongoing time under roughly 1 hour per week. The research scored the idea 21/25, validated demand using PTA+ / GalaBid / Jumblebee / UK raffle-legality sources, and estimated roughly ~\u00a3790/month conservative, ~\u00a32,217/month base case, and ~\u00a33,500-\u00a35,500+/month strong-case income potential. Usage log recorded 11 tool calls, ~240s duration, and successful completion; intended Discord follow-up destinations were recorded in the research output but not sent from that isolated run."
+  },
+  {
+    "id": 97,
+    "timestamp": "2026-05-14T20:02:00Z",
+    "category": "Infrastructure",
+    "status": "success",
+    "summary": "Resolved Mission Control log drift so the workspace and dashboard both reflect the latest 14 May income research.",
+    "detail": "Reviewed HEARTBEAT.md, checked Mission Control, and found the nested dashboard repo had a newer action-log entry for the 14 May income-research run that the top-level workspace log was still missing. Synced the logs back up, refreshed the heartbeat metadata, and prepared both repos for a clean commit so dashboard state and workspace history match again."
   }
 ]
