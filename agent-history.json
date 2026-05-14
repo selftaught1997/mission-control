@@ -2,6 +2,11 @@
   "entries": [
     {
       "status": "working",
+      "task": "Afternoon heartbeat Mission Control review",
+      "ts": 1778763660000
+    },
+    {
+      "status": "working",
       "task": "Morning heartbeat Mission Control review",
       "ts": 1778744460000
     },
@@ -64,11 +69,6 @@
       "status": "running",
       "task": "Building member register",
       "ts": 1775057746000
-    },
-    {
-      "status": "working",
-      "task": "Building member register",
-      "ts": 1775054902000
     }
   ]
 }
