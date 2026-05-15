@@ -798,5 +798,13 @@
     "status": "partial",
     "summary": "Started the remote VS Code on Mac rollout: audit complete, code-server installed and running locally, Tailscale userspace daemon staged pending tailnet login.",
     "detail": "Audited the Mac for remote code-server deployment and identified a safe isolated setup: no existing code-server, no reverse proxy stack, key existing services on ports 3000/3005/18789/18792, and Tailscale installed but off. Installed code-server via the official standalone installer, configured it on 127.0.0.1:18480 with hashed-password auth under a launchd service (ai.gustav.code-server), and verified local access. Also documented the plan in drafts/remote-vscode-mac-plan.md and started a user-space tailscaled LaunchAgent to avoid privileged networking changes. Remaining blocker: complete Tailscale login/approval so Serve/private access can be finished."
+  },
+  {
+    "id": 101,
+    "timestamp": "2026-05-15T02:30:00Z",
+    "category": "System",
+    "status": "partial",
+    "summary": "Advanced the remote VS Code rollout to the tailnet stage: Mac joined to Tailscale and local code-server is running, with only tailnet Serve approval left.",
+    "detail": "Used a Tailscale auth key to attach the Mac to Aaron's tailnet as gustav-mac-code (100.126.127.86). code-server remains running locally on 127.0.0.1:18480 under launchd. Attempting to publish the private access path hit the expected tailnet policy blocker: Tailscale Serve is disabled until approved for this node. Opened the Serve approval URL so the final private HTTPS endpoint can be enabled once Aaron confirms it."
   }
 ]
