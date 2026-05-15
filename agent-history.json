@@ -2,6 +2,11 @@
   "entries": [
     {
       "status": "working",
+      "task": "Morning heartbeat Mission Control review",
+      "ts": 1778832300000
+    },
+    {
+      "status": "working",
       "task": "Pre-dawn heartbeat Mission Control sync",
       "ts": 1778814540000
     },
@@ -64,11 +69,6 @@
       "status": "working",
       "task": "Mission Control cleanup",
       "ts": 1777915643000
-    },
-    {
-      "status": "working",
-      "task": "Memory update & activity log commit",
-      "ts": 1775094145000
     }
   ]
 }
