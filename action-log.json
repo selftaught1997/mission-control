@@ -846,5 +846,13 @@
     "status": "partial",
     "summary": "Started the Mac screen-sharing rollout and identified the current blocker in Apple Remote Desktop activation.",
     "detail": "Audited the Mac for full remote desktop access from iPad and confirmed Screen Sharing/Remote Login were not active. Opened Sharing settings, mapped the relevant UI, and attempted to enable remote access both through UI toggles and the ARDAgent kickstart path. The direct kickstart method failed with an Apple Remote Desktop script-side error (\"Can't call method print on an undefined value\"), so the current blocker is completing/validating Apple's native screen-sharing enablement cleanly before remote control can be verified over Tailscale."
+  },
+  {
+    "id": 107,
+    "timestamp": "2026-05-15T09:55:00Z",
+    "category": "System",
+    "status": "success",
+    "summary": "Completed the private remote-desktop path on the Mac by enabling Screen Sharing/SSH and exposing both over the tailnet.",
+    "detail": "Used an admin-authorized launchctl path to enable com.apple.screensharing and com.openssh.sshd after the earlier ARDAgent kickstart path failed. Verified local TCP reachability on ports 22 and 5900, then published both privately with Tailscale Serve TCP forwarding: gustav-mac-code.tail453feb.ts.net:5900 -> 127.0.0.1:5900 and gustav-mac-code.tail453feb.ts.net:22 -> 127.0.0.1:22, alongside the existing code-server HTTPS route on gustav-mac-code.tail453feb.ts.net."
   }
 ]
