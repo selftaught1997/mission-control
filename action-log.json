@@ -806,5 +806,13 @@
     "status": "partial",
     "summary": "Advanced the remote VS Code rollout to the tailnet stage: Mac joined to Tailscale and local code-server is running, with only tailnet Serve approval left.",
     "detail": "Used a Tailscale auth key to attach the Mac to Aaron's tailnet as gustav-mac-code (100.126.127.86). code-server remains running locally on 127.0.0.1:18480 under launchd. Attempting to publish the private access path hit the expected tailnet policy blocker: Tailscale Serve is disabled until approved for this node. Opened the Serve approval URL so the final private HTTPS endpoint can be enabled once Aaron confirms it."
+  },
+  {
+    "id": 102,
+    "timestamp": "2026-05-15T02:33:00Z",
+    "category": "System",
+    "status": "success",
+    "summary": "Tailscale Serve is now active for the Mac code-server endpoint, completing the private remote VS Code access path.",
+    "detail": "Verified that Tailscale Serve is configured on the user-space daemon and proxying gustav-mac-code.tail453feb.ts.net:443 to local code-server on 127.0.0.1:18480. The serve status shows HTTPS enabled on tailnet port 443 with / proxied to code-server, indicating the private iPad-accessible route is now live within the tailnet."
   }
 ]
