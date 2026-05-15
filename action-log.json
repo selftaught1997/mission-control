@@ -862,5 +862,13 @@
     "status": "success",
     "summary": "Resolved the Jump Desktop credential loop by configuring an explicit VNC password after isolating the ARDAgent activation bug.",
     "detail": "Confirmed the earlier Apple kickstart failure was specific to its activation path (line 695) rather than VNC password configuration itself. Since screen sharing was already enabled, reran kickstart in configure-only mode to set legacy VNC auth and a dedicated VNC password successfully. Verified /Library/Preferences/com.apple.VNCSettings.txt now exists and that localhost:5900 is reachable, then provided the dedicated VNC credential for Jump Desktop."
+  },
+  {
+    "id": 109,
+    "timestamp": "2026-05-15T10:30:00Z",
+    "category": "System",
+    "status": "success",
+    "summary": "Hardened the Mac power settings for reliable remote access by disabling display sleep and enabling automatic restart on power loss.",
+    "detail": "Checked current pmset configuration, confirmed system sleep was already disabled, then updated AC power settings to make the setup more reliable for remote work: displaysleep=0, powernap=0, autorestart=1. Recheck confirmed the Mac now stays awake on power with the display kept on, Wake-on-Network already enabled, and auto-restart enabled after power loss."
   }
 ]
