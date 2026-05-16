@@ -1,9 +1,9 @@
 {
   "status": "idle",
   "task": null,
-  "detail": "Evening diagnostic follow-up complete — checklist corrected and Mission Control follow-ups logged",
+  "detail": "Evening heartbeat review complete — draft queue unchanged and Mission Control still aligned",
   "startedAt": null,
-  "updatedAt": 1778952420000,
+  "updatedAt": 1778956620000,
   "agent": "Gustav",
   "emoji": "🦾"
 }
