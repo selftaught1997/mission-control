@@ -950,5 +950,21 @@
     "status": "success",
     "summary": "Ran an evening heartbeat review and confirmed Mission Control still matches the active draft review queue.",
     "detail": "Reviewed HEARTBEAT.md, checked that both the workspace and nested Mission Control repos were clean, confirmed the draft review queue was unchanged, refreshed mission-control/agent-status.json and agent-history.json for the current evening window, and rolled drafts/review-tracker.md forward so the quiet review metadata stays current. No outward alert was needed."
+  },
+  {
+    "id": 120,
+    "timestamp": "2026-05-16T03:01:48Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Ran the daily income research job and selected a martial-arts software referral hub for club owners as the strongest current opportunity.",
+    "detail": "Daily Income Research completed successfully for 2026-05-16 and committed the updated research files as git commit 66590f4 ('chore: income research output 2026-05-16'). The winning idea was 'Martial Arts Software Referral Hub for Club Owners' — a niche buyer-guide and referral business around martial-arts-specific club software, where Gustav handles comparison pages, partner links, outreach, tracking, and nurture while Aaron mainly lends operator credibility once. The run appended Idea #17 to research/income-ideas-log.json, updated research/todays-income-idea.json and research/usage-log.json, scored the winner 21/25 against four other candidates, and recorded the intended Discord delivery targets without sending them from the isolated run."
+  },
+  {
+    "id": 121,
+    "timestamp": "2026-05-16T17:28:55Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Tightened the daily diagnostic workflow and logged new follow-up tasks after reviewing today's health-check findings.",
+    "detail": "Followed up the 2026-05-16 daily diagnostic by updating daily-diagnostic.md so it now checks for actual heartbeat activity instead of a nonexistent heartbeat cron and requires current evidence for Buffer health/queue status rather than vague legacy checks. Also updated the Mission Control repo (commit 2443f7c) by refreshing agent status metadata and adding three concrete follow-up TODOs: push the stale local Mission Control repo to GitHub Pages when approved, add Buffer smoke-test/queue-health logging, and investigate repeated gateway reconnect/code-1005 noise."
   }
 ]
