@@ -1,9 +1,9 @@
 {
   "status": "idle",
   "task": null,
-  "detail": "Night heartbeat tidy complete — action-log drift cleared and Mission Control is back in sync",
+  "detail": "After-midnight heartbeat review complete — Mission Control rolled into 17 May and draft queue still aligned",
   "startedAt": null,
-  "updatedAt": 1778962320000,
+  "updatedAt": 1778974020000,
   "agent": "Gustav",
   "emoji": "🦾"
 }
