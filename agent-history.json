@@ -2,6 +2,11 @@
   "entries": [
     {
       "status": "working",
+      "task": "Early-evening heartbeat Mission Control review",
+      "ts": 1778946720000
+    },
+    {
+      "status": "working",
       "task": "Afternoon heartbeat Mission Control review",
       "ts": 1778942460000
     },
@@ -64,11 +69,6 @@
       "status": "working",
       "task": "After-midnight heartbeat Mission Control review",
       "ts": 1778801220000
-    },
-    {
-      "status": "working",
-      "task": "Late-night heartbeat Mission Control review",
-      "ts": 1778792820000
     }
   ]
 }
