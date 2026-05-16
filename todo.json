@@ -8,8 +8,8 @@
       "status": "todo",
       "category": "Infrastructure",
       "createdAt": "2026-04-01T00:50:00Z"
-    }
-  ,{
+    },
+    {
       "id": 2,
       "title": "Weekly Sonnet diagnostic + monthly Opus strategic review",
       "detail": "Weekly cron (Sonnet): routine system health check — crons, memory, scripts, configs. Monthly cron (Opus): strategic audit — is the architecture right, what's being wasted, what should change. Post results to #diagnostics.",
@@ -17,6 +17,33 @@
       "status": "todo",
       "category": "Automation",
       "createdAt": "2026-04-02T01:48:00Z"
+    },
+    {
+      "id": 3,
+      "title": "Push Mission Control repo to GitHub Pages origin",
+      "detail": "Local mission-control repo is far ahead of origin/main, so GitHub Pages is stale. Needs an explicit push to publish the current dashboard state. Ask Aaron before pushing because this leaves the machine/publicly updates the site.",
+      "priority": "high",
+      "status": "blocked",
+      "category": "Infrastructure",
+      "createdAt": "2026-05-16T17:27:00Z"
+    },
+    {
+      "id": 4,
+      "title": "Add Buffer smoke-test / queue-health logging",
+      "detail": "Daily diagnostic can no longer confidently verify Buffer health from old automation artifacts alone. Add a lightweight smoke test or structured queue log so credentials and queue status have current evidence.",
+      "priority": "medium",
+      "status": "todo",
+      "category": "Automation",
+      "createdAt": "2026-05-16T17:27:00Z"
+    },
+    {
+      "id": 5,
+      "title": "Investigate gateway reconnect 1005 noise",
+      "detail": "Gateway is currently healthy but today's logs show repeated max-reconnect/code-1005 exceptions. Review logs/config and confirm whether this is harmless noise or an underlying channel stability issue.",
+      "priority": "medium",
+      "status": "todo",
+      "category": "Infrastructure",
+      "createdAt": "2026-05-16T17:27:00Z"
     }
   ]
 }
