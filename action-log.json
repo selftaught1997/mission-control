@@ -918,5 +918,13 @@
     "status": "success",
     "summary": "Synced Mission Control with the new 16 May income idea and refreshed the overnight heartbeat metadata.",
     "detail": "Reviewed HEARTBEAT.md after the daily income research run, found today's winning idea recorded as 'Martial Arts Software Referral Hub for Club Owners', and logged it into the workspace action history so Mission Control reflects the latest overnight work. Refreshed mission-control/agent-status.json, mission-control/agent-history.json, and drafts/review-tracker.md for the current pre-dawn window, then prepared a quiet workspace commit. The cron correctly recorded intended Discord destinations (#trading-desk for the full report and #morning-brief for the 2-line summary) without sending them from the isolated run."
+  },
+  {
+    "id": 116,
+    "timestamp": "2026-05-16T06:56:00Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Ran a morning heartbeat review and confirmed Mission Control still matches the active draft review queue.",
+    "detail": "Reviewed HEARTBEAT.md, checked that both the workspace and nested Mission Control repos were clean, confirmed the draft review queue was unchanged, refreshed mission-control/agent-status.json and mission-control/agent-history.json for the current morning window, and updated drafts/review-tracker.md so the review metadata stays current. No outward alert was needed."
   }
 ]
