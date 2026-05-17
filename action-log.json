@@ -990,5 +990,13 @@
     "status": "success",
     "summary": "Synced Mission Control with the new 17 May income idea and refreshed the dawn heartbeat metadata.",
     "detail": "Reviewed HEARTBEAT.md after the daily income research run, found today's winning idea recorded as 'Creator-Tool Referral Funnel for Coaches Who Want to Launch a Paid Course or Membership', logged it into the workspace action history so Mission Control reflects the latest overnight work, refreshed mission-control/agent-status.json and agent-history.json for the current dawn window, updated drafts/review-tracker.md, and logged the quiet sync in today's memory. No outward alert was needed."
+  },
+  {
+    "id": 125,
+    "timestamp": "2026-05-17T05:19:00Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Ran a morning heartbeat review and confirmed Mission Control still matches the active draft review queue.",
+    "detail": "Reviewed HEARTBEAT.md, checked that both the workspace and nested Mission Control repos were clean, confirmed the draft review queue, today's income idea, and Mission Control TODO statuses were unchanged, refreshed mission-control/agent-status.json and agent-history.json for the current morning window, updated drafts/review-tracker.md, and logged the quiet sync in today's memory. No outward alert was needed."
   }
 ]
