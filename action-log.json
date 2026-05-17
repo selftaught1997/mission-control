@@ -1158,5 +1158,21 @@
     "status": "success",
     "summary": "Ran a night heartbeat review and confirmed Mission Control still matches the active draft review queue.",
     "detail": "Reviewed HEARTBEAT.md, checked that both the workspace and nested Mission Control repos were clean, confirmed the draft review queue, today's income idea, and current TODO statuses were unchanged, refreshed mission-control/agent-status.json and agent-history.json for the current night window, updated drafts/review-tracker.md, and logged the quiet sync in today's memory. No outward alert was needed."
+  },
+  {
+    "id": 146,
+    "timestamp": "2026-05-17T03:45:16Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Ran the daily income research job and selected a creator-tool referral funnel for coaches launching paid courses or memberships as the strongest current opportunity.",
+    "detail": "Daily Income Research completed successfully for 2026-05-17 and auto-committed the updated research files as git commit 4b2c657 ('chore: income research output 2026-05-17'). The winning idea was 'Creator-Tool Referral Funnel for Coaches Who Want to Launch a Paid Course or Membership' - a niche buyer-guide and referral business around platforms like Teachable and TrainerCentral for martial arts instructors, PTs, and coaches who want to package expertise into digital products. The run appended Idea #18 to research/income-ideas-log.json, updated research/todays-income-idea.json and research/usage-log.json, scored the winner 21/25 against four other candidates, and recorded the intended Discord destinations (#trading-desk for the full report and #morning-brief for the two-line summary) without sending them from the isolated run."
+  },
+  {
+    "id": 147,
+    "timestamp": "2026-05-17T19:20:00Z",
+    "category": "Infrastructure",
+    "status": "success",
+    "summary": "Ran a night heartbeat review and resynced Mission Control after the daily log update.",
+    "detail": "Reviewed HEARTBEAT.md, found the nested Mission Control repo had the new 17 May income-research activity-log entry while the top-level workspace log was one entry behind, synced both histories, refreshed mission-control/agent-status.json and agent-history.json for the current night window, updated drafts/review-tracker.md, logged the sync in today's memory, and prepared clean git commits. No outward alert was needed."
   }
 ]
