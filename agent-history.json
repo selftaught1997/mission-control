@@ -3,6 +3,11 @@
     {
       "status": "working",
       "task": "Late-night heartbeat Mission Control review",
+      "ts": 1779056100000
+    },
+    {
+      "status": "working",
+      "task": "Late-night heartbeat Mission Control review",
       "ts": 1779054000000
     },
     {
@@ -64,11 +69,6 @@
       "status": "working",
       "task": "Afternoon heartbeat Mission Control review",
       "ts": 1779024540000
-    },
-    {
-      "status": "working",
-      "task": "Mid-afternoon heartbeat Mission Control review",
-      "ts": 1779022440000
     }
   ]
 }
