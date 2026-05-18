@@ -1,9 +1,9 @@
 {
   "status": "idle",
   "task": null,
-  "detail": "Evening heartbeat update complete \u2014 Mission Control now reflects the diagnostic findings and current infra queue",
+  "detail": "Late-evening heartbeat sync complete — action history committed and Mission Control still aligned",
   "startedAt": null,
-  "updatedAt": 1779125460000,
+  "updatedAt": 1779132600000,
   "agent": "Gustav",
-  "emoji": "\ud83e\uddbe"
+  "emoji": "🦾"
 }
