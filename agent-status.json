@@ -1,9 +1,9 @@
 {
   "status": "idle",
   "task": null,
-  "detail": "Late-evening heartbeat sync complete — action history committed and Mission Control still aligned",
+  "detail": "After-midnight heartbeat review complete — Mission Control, review queue, latest income idea, and TODOs still aligned",
   "startedAt": null,
-  "updatedAt": 1779132600000,
+  "updatedAt": 1779146460000,
   "agent": "Gustav",
   "emoji": "🦾"
 }
