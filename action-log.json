@@ -1334,5 +1334,13 @@
     "status": "success",
     "summary": "Resolved the remaining Avanti verification gap by checking service-detail pages directly with browser automation.",
     "detail": "Used Playwright against Recent Train Times service pages to inspect the Manchester Piccadilly origin row and London Euston destination row for the previously identified >2h delayed Avanti services. The direct row extraction confirmed the arrival-delay figures and showed that at least the checked services were not departing Manchester >15 minutes late (e.g. 13:54 booked / 13:54 actual RT for service 143870180), indicating the severe delays were accruing en route rather than through major departure slippage at origin."
+  },
+  {
+    "id": 168,
+    "timestamp": "2026-05-18T13:35:00Z",
+    "category": "Infrastructure",
+    "status": "success",
+    "summary": "Ran an afternoon heartbeat review, resynced workspace action history, and moved Avanti scratch files out of the repo root.",
+    "detail": "Reviewed HEARTBEAT.md, found the top-level workspace action log trailing the nested Mission Control history, synced both logs back together, refreshed mission-control/agent-status.json and agent-history.json for the current afternoon heartbeat window, updated drafts/review-tracker.md, and moved the one-off Avanti/browser debug outputs into scratch/investigations/2026-05-18-avanti-delay-check/ so the repo root stays tidy without deleting anything. No outward alert was needed."
   }
 ]
