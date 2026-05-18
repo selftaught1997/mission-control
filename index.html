@@ -214,7 +214,7 @@
 
 <header>
   <h1>Mission Control <span>// Aaron Storey</span></h1>
-  <div class="timestamp">Last updated: <span id="lastUpdated">16 May 2026</span></div>
+  <div class="timestamp">Last updated: <span id="lastUpdated">18 May 2026</span></div>
 </header>
 
 <div class="grid">
@@ -446,9 +446,33 @@
   <div class="card span-full">
     <div class="card-header">
       <div class="card-title">🔧 To-Do — Infrastructure & Setup</div>
-      <span class="badge badge-yellow">2 pending</span>
+      <span class="badge badge-yellow">5 tracked</span>
     </div>
     <ul class="task-list" id="todo-list">
+      <li class="task-item">
+        <div class="task-dot dot-red"></div>
+        <div>
+          <div><strong>Push Mission Control repo to GitHub Pages origin</strong></div>
+          <div class="task-meta">Local mission-control repo is far ahead of origin/main, so the public dashboard is stale. Needs an explicit push to publish the current dashboard state.</div>
+          <div class="task-meta" style="margin-top:4px;">⛔ Blocked pending Aaron approval · Priority: High · Category: Infrastructure</div>
+        </div>
+      </li>
+      <li class="task-item">
+        <div class="task-dot dot-gold"></div>
+        <div>
+          <div><strong>Investigate gateway reconnect 1005 noise</strong></div>
+          <div class="task-meta">Gateway is healthy right now, but recurring Discord reconnect/code-1005 exceptions are still showing up in the logs and need a proper review.</div>
+          <div class="task-meta" style="margin-top:4px;">📅 Added 16 May 2026 · Priority: Medium · Category: Infrastructure</div>
+        </div>
+      </li>
+      <li class="task-item">
+        <div class="task-dot dot-blue"></div>
+        <div>
+          <div><strong>Add Buffer smoke-test / queue-health logging</strong></div>
+          <div class="task-meta">Current automation evidence is too old to prove Buffer queue health, so diagnostics need a lightweight fresh smoke test or structured queue log.</div>
+          <div class="task-meta" style="margin-top:4px;">📅 Added 16 May 2026 · Priority: Medium · Category: Automation</div>
+        </div>
+      </li>
       <li class="task-item">
         <div class="task-dot dot-gold"></div>
         <div>
@@ -497,7 +521,7 @@
         </div>
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid #2a2a2a;">
           <div style="font-size:0.72rem;color:var(--muted);">Currently working on</div>
-          <div style="font-size:0.8rem;margin-top:4px;">Overnight Mission Control review + income research tracking</div>
+          <div style="font-size:0.8rem;margin-top:4px;">Evening Mission Control maintenance + diagnostic follow-up</div>
         </div>
       </div>
 
