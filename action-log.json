@@ -1446,5 +1446,13 @@
     "status": "success",
     "summary": "Ran a late-afternoon heartbeat review and confirmed Mission Control still matches the active draft review queue.",
     "detail": "Reviewed HEARTBEAT.md, checked that both the workspace and nested Mission Control repos were clean, confirmed the draft review queue, latest income idea, and current TODO statuses were still aligned, refreshed mission-control/agent-status.json and agent-history.json for the current late-afternoon window, updated drafts/review-tracker.md, and logged the quiet sync in today's memory. No outward alert was needed."
+  },
+  {
+    "id": 182,
+    "timestamp": "2026-05-19T17:41:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Added live Buffer health logging so diagnostics can verify queue and credential status from fresh evidence.",
+    "detail": "Built `automation/buffer-health-check.js`, ran it successfully against Buffer, and wrote fresh evidence to `automation/logs/buffer-health-latest.json` plus a screenshot. The live run confirmed login success, the schedule page reachable, queue=0, drafts=0, sent=112, and both club channels showing 0 scheduled posts. Updated `daily-diagnostic.md` to point at this evidence and marked the Buffer observability todo as done in Mission Control. The public Mission Control push remains blocked pending Aaron approval because publishing would leave the machine."
   }
 ]

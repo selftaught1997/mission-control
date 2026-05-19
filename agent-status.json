@@ -1,9 +1,9 @@
 {
   "status": "idle",
   "task": null,
-  "detail": "Evening heartbeat progress complete — Buffer health evidence added; public dashboard push still awaiting approval",
+  "detail": "Heartbeat progress complete — Buffer health evidence added; public dashboard push still awaiting approval",
   "startedAt": null,
-  "updatedAt": 1779210600000,
+  "updatedAt": 1779212460000,
   "agent": "Gustav",
   "emoji": "🦾"
 }
