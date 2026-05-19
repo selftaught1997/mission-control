@@ -1,9 +1,9 @@
 {
   "status": "idle",
   "task": null,
-  "detail": "Heartbeat review complete — Mission Control todo list repaired; public dashboard push still awaiting approval",
+  "detail": "Heartbeat review complete \u2014 Mission Control, draft queue, and todo list still aligned; public dashboard push still awaiting approval",
   "startedAt": null,
-  "updatedAt": 1779220860000,
+  "updatedAt": 1779224220000,
   "agent": "Gustav",
-  "emoji": "🦾"
+  "emoji": "\ud83e\uddbe"
 }
