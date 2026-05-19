@@ -30,12 +30,12 @@
     {
       "id": 4,
       "title": "Add Buffer smoke-test / queue-health logging",
-      "detail": "Daily diagnostic can no longer confidently verify Buffer health from old automation artifacts alone. Add a lightweight smoke test or structured queue log so credentials and queue status have current evidence.",
+      "detail": "Structured Buffer health evidence now exists via `automation/buffer-health-check.js`, which writes `automation/logs/buffer-health-latest.json` plus a fresh screenshot for diagnostics. Next improvement would be wiring it into a scheduled or pre-diagnostic run.",
       "priority": "medium",
-      "status": "todo",
+      "status": "done",
       "category": "Automation",
       "createdAt": "2026-05-16T17:27:00Z"
-    },
+    }
     {
       "id": 5,
       "title": "Investigate gateway reconnect 1005 noise",
