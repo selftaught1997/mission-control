@@ -12,7 +12,7 @@
     {
       "id": 2,
       "title": "Weekly Sonnet diagnostic + monthly Opus strategic review",
-      "detail": "Weekly cron (Sonnet): routine system health check — crons, memory, scripts, configs. Monthly cron (Opus): strategic audit — is the architecture right, what's being wasted, what should change. Post results to #diagnostics.",
+      "detail": "Weekly cron (Sonnet): routine system health check \u2014 crons, memory, scripts, configs. Monthly cron (Opus): strategic audit \u2014 is the architecture right, what's being wasted, what should change. Post results to #diagnostics.",
       "priority": "low",
       "status": "todo",
       "category": "Automation",
@@ -39,9 +39,9 @@
     {
       "id": 5,
       "title": "Investigate gateway reconnect 1005 noise",
-      "detail": "Gateway is currently healthy but today's logs show repeated max-reconnect/code-1005 exceptions. Review logs/config and confirm whether this is harmless noise or an underlying channel stability issue.",
+      "detail": "Investigation complete: the repeated `Max reconnect attempts (0) reached after code 1005` errors are being triggered by the Discord channel health monitor, which marks `discord:default` as `stale-socket` after ~30 minutes without events and restarts it roughly every 35 minutes. The gateway and provider recover cleanly within seconds after each restart, so this currently looks like restart-path noise on an idle Discord connection rather than a sustained outage. If we want to suppress the noise, the next clean fix is either disabling `channels.discord.healthMonitor.enabled` for this low-traffic deployment or increasing the stale-event threshold.",
       "priority": "medium",
-      "status": "todo",
+      "status": "done",
       "category": "Infrastructure",
       "createdAt": "2026-05-16T17:27:00Z"
     }

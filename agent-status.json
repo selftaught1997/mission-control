@@ -1,9 +1,9 @@
 {
   "status": "idle",
   "task": null,
-  "detail": "Heartbeat review complete — Mission Control, draft queue, latest income idea, and todo list still aligned; public dashboard push still awaiting approval",
+  "detail": "Heartbeat review complete \u2014 traced Discord code-1005 reconnect noise to health-monitor stale-socket restarts during idle periods; Mission Control and draft queue still aligned",
   "startedAt": null,
-  "updatedAt": 1779230520000,
+  "updatedAt": 1779234720000,
   "agent": "Gustav",
-  "emoji": "🦾"
+  "emoji": "\ud83e\uddbe"
 }
