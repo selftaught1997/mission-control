@@ -35,7 +35,7 @@
       "status": "done",
       "category": "Automation",
       "createdAt": "2026-05-16T17:27:00Z"
-    }
+    },
     {
       "id": 5,
       "title": "Investigate gateway reconnect 1005 noise",
