@@ -1494,5 +1494,13 @@
     "status": "success",
     "summary": "Investigated the Discord gateway reconnect noise and traced the repeated code-1005 errors to health-monitor stale-socket restarts during quiet periods.",
     "detail": "Reviewed OpenClaw status, health output, gateway logs, and the installed OpenClaw runtime code. The repeated `Max reconnect attempts (0) reached after code 1005` exceptions line up with the channel health monitor restarting `discord:default` for `stale-socket` roughly every 35 minutes after >30 minutes without events. After each restart the gateway and Discord provider come back cleanly within seconds, so this currently looks like noisy restart-path behaviour on an idle Discord connection rather than a sustained outage. Updated Mission Control's infrastructure TODO with the diagnosis and a concrete follow-up option: disable `channels.discord.healthMonitor.enabled` for this low-traffic deployment or raise the stale-event threshold if the log noise becomes annoying."
+  },
+  {
+    "id": 188,
+    "timestamp": "2026-05-20T03:22:23Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Synced Mission Control with the new 20 May income idea and refreshed the pre-dawn heartbeat metadata.",
+    "detail": "Reviewed HEARTBEAT.md after the daily income research run, found today's winning idea recorded as 'Micro-Accountant Lead Funnel for UK Sole Traders', logged it into both workspace action histories so Mission Control reflects the latest overnight work, refreshed mission-control/agent-status.json and agent-history.json for the current pre-dawn window, updated drafts/review-tracker.md, and logged the quiet sync in today's memory. The cron correctly recorded the intended Discord destinations (#trading-desk for the full report and #morning-brief for the 2-line summary) without sending them from the isolated run."
   }
 ]
