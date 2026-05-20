@@ -3,6 +3,11 @@
     {
       "status": "working",
       "task": "Late-morning heartbeat Mission Control review",
+      "ts": 1779270120000
+    },
+    {
+      "status": "working",
+      "task": "Late-morning heartbeat Mission Control review",
       "ts": 1779268320000
     },
     {
@@ -64,11 +69,6 @@
       "status": "working",
       "task": "Buffer health observability pass",
       "ts": 1779210600000
-    },
-    {
-      "status": "working",
-      "task": "Late-afternoon heartbeat Mission Control review",
-      "ts": 1779206220000
     }
   ]
 }
