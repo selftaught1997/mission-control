@@ -1574,5 +1574,13 @@
     "status": "success",
     "summary": "Ran the daily income research job and selected a micro-accountant lead funnel for UK sole traders as the strongest current opportunity.",
     "detail": "Daily Income Research completed successfully for 2026-05-20 and auto-committed the updated research files as git commit 3bd2de3 ('chore: income research output 2026-05-20'). The winning idea was 'Micro-Accountant Lead Funnel for UK Sole Traders' — a narrow decision-simplification funnel matching overwhelmed one-person businesses with a simple bookkeeping/accountant stack, monetised through partner software like Countingup and GoSimpleTax plus warm introductions to small accountants or bookkeepers. The run appended Idea #21 to research/income-ideas-log.json, updated research/todays-income-idea.json and research/usage-log.json, recorded 17 tool calls with successful completion, and captured the intended Discord destinations (#trading-desk for the full report and #morning-brief for the 2-line summary) without sending them from the isolated run."
+  },
+  {
+    "timestamp": "2026-05-20T20:07:00Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Ran a late-evening heartbeat review and confirmed Mission Control still matches the active draft review queue.",
+    "detail": "Reviewed HEARTBEAT.md, checked that both the workspace and nested Mission Control repos were clean, confirmed the draft review queue, latest income idea, and current TODO statuses were still aligned, refreshed mission-control/agent-status.json and agent-history.json for the current late-evening window, updated drafts/review-tracker.md, and logged the quiet sync in today's memory. No outward alert was needed.",
+    "id": 198
   }
 ]

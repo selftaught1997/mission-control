@@ -1,9 +1,9 @@
 {
   "status": "idle",
   "task": null,
-  "detail": "Heartbeat diagnostic hardening complete \u2014 Buffer evidence now refreshes before future daily diagnostics; Mission Control and current todo list updated",
+  "detail": "Late-evening heartbeat review complete — Mission Control, review queue, and todo list still aligned",
   "startedAt": null,
-  "updatedAt": 1779297326000,
+  "updatedAt": 1779307620000,
   "agent": "Gustav",
-  "emoji": "\ud83e\uddbe"
+  "emoji": "🦾"
 }
