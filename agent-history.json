@@ -2,6 +2,11 @@
   "entries": [
     {
       "status": "working",
+      "task": "Pre-dawn heartbeat Mission Control review",
+      "ts": 1779241020000
+    },
+    {
+      "status": "working",
       "task": "After-midnight heartbeat gateway-noise diagnosis",
       "ts": 1779234720000
     },
@@ -64,11 +69,6 @@
       "status": "working",
       "task": "Pre-dawn heartbeat Mission Control review",
       "ts": 1779153660000
-    },
-    {
-      "status": "working",
-      "task": "After-midnight heartbeat Mission Control review",
-      "ts": 1779146460000
     }
   ]
 }
