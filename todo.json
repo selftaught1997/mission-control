@@ -30,7 +30,7 @@
     {
       "id": 4,
       "title": "Add Buffer smoke-test / queue-health logging",
-      "detail": "Structured Buffer health evidence now exists via `automation/buffer-health-check.js`, which writes `automation/logs/buffer-health-latest.json` plus a fresh screenshot for diagnostics. Next improvement would be wiring it into a scheduled or pre-diagnostic run.",
+      "detail": "Structured Buffer health evidence exists via `automation/buffer-health-check.js`, and the daily diagnostic now explicitly refreshes that evidence first so checks use same-day queue/login data plus a fresh screenshot. Next improvement, if wanted, would be splitting this into a dedicated scheduled preflight instead of relying on the diagnostic job itself.",
       "priority": "medium",
       "status": "done",
       "category": "Automation",

@@ -1558,5 +1558,13 @@
     "status": "success",
     "summary": "Ran an early-evening heartbeat review and confirmed Mission Control still matches the active draft review queue.",
     "detail": "Reviewed HEARTBEAT.md, confirmed Mission Control, the draft review queue, the latest income idea, and current TODO statuses were still aligned, refreshed mission-control/agent-status.json and agent-history.json for the current early-evening window, updated drafts/review-tracker.md, and logged the quiet sync in today's memory. No outward alert was needed."
+  },
+  {
+    "id": 196,
+    "timestamp": "2026-05-20T17:15:26Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Hardened the daily diagnostic by refreshing Buffer evidence automatically and generated a fresh same-day health snapshot.",
+    "detail": "After the daily diagnostic flagged stale Buffer evidence, ran `node automation/buffer-health-check.js` to generate a fresh same-day queue/login snapshot and screenshot (login OK, schedule page OK, queue=0, drafts=0, sent=112, both club channels at 0 scheduled posts). Then updated `daily-diagnostic.md` and the live Daily Diagnostic cron job prompt so future runs explicitly refresh Buffer evidence first before assessing automation health. Mission Control TODO item 4 was updated to reflect that this hardening step is now in place."
   }
 ]
