@@ -12,7 +12,7 @@
     {
       "id": 2,
       "title": "Weekly Sonnet diagnostic + monthly Opus strategic review",
-      "detail": "Weekly cron (Sonnet): routine system health check \u2014 crons, memory, scripts, configs. Monthly cron (Opus): strategic audit \u2014 is the architecture right, what's being wasted, what should change. Post results to #diagnostics.",
+      "detail": "Weekly cron (Sonnet): routine system health check — crons, memory, scripts, configs. Monthly cron (Opus): strategic audit — is the architecture right, what's being wasted, what should change. Post results to #diagnostics.",
       "priority": "low",
       "status": "todo",
       "category": "Automation",
@@ -44,6 +44,15 @@
       "status": "done",
       "category": "Infrastructure",
       "createdAt": "2026-05-16T17:27:00Z"
+    },
+    {
+      "id": 6,
+      "title": "Resolve Altair Codex runtime failure on real runs",
+      "detail": "The first real Lyra foundation task produced `altair/reports/lyra-foundation-v1-result.json` with Codex exit status 2 before a result packet was returned. Runner syntax and dry-run validation both pass, so the next step is to capture the real exec failure path/output and harden the runner or invocation until real task packets complete successfully.",
+      "priority": "high",
+      "status": "todo",
+      "category": "Automation",
+      "createdAt": "2026-05-21T15:08:00Z"
     }
   ]
 }
