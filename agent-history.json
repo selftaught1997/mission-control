@@ -2,6 +2,11 @@
   "entries": [
     {
       "status": "working",
+      "task": "Early-evening heartbeat Mission Control review",
+      "ts": 1779385980000
+    },
+    {
+      "status": "working",
       "task": "Late-afternoon heartbeat Altair runtime sync",
       "ts": 1779376080000
     },
@@ -74,11 +79,6 @@
       "status": "working",
       "task": "Evening heartbeat diagnostic hardening pass",
       "ts": 1779297326000
-    },
-    {
-      "status": "working",
-      "task": "Early-evening heartbeat Mission Control review",
-      "ts": 1779295320000
     }
   ]
 }

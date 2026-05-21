@@ -1,9 +1,9 @@
 {
   "status": "idle",
   "task": null,
-  "detail": "Late-afternoon heartbeat sync complete — logged the Altair Codex real-run failure, added the follow-up TODO, and committed the workspace state",
+  "detail": "Early-evening heartbeat sync complete — Mission Control and the draft review queue still match the current workspace state",
   "startedAt": null,
-  "updatedAt": 1779376080000,
+  "updatedAt": 1779385980000,
   "agent": "Gustav",
   "emoji": "🦾"
 }
