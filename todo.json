@@ -48,11 +48,20 @@
     {
       "id": 6,
       "title": "Resolve Altair Codex runtime failure on real runs",
-      "detail": "The first real Lyra foundation task produced `altair/reports/lyra-foundation-v1-result.json` with Codex exit status 2 before a result packet was returned. Runner syntax and dry-run validation both pass, so the next step is to capture the real exec failure path/output and harden the runner or invocation until real task packets complete successfully.",
+      "detail": "Resolved on 21 May: reran the real Lyra foundation task through the current Altair Codex runner, confirmed the old exit-status-2 failure report was stale, and captured a successful result packet at `altair/reports/lyra-foundation-v1-result.json`. The run produced a new `lyra/` foundation with a structured brief schema, SKC brand/config skeleton, template placeholders for poster/leaflet/social/document assets, QA scaffold, and top-level documentation. Next logical step, if wanted, is a narrow brief-to-template assembly path for one asset type such as `poster-a4`.",
       "priority": "high",
-      "status": "todo",
+      "status": "done",
       "category": "Automation",
       "createdAt": "2026-05-21T15:08:00Z"
+    },
+    {
+      "id": 7,
+      "title": "Build first Lyra brief-to-template assembly path",
+      "detail": "Use the new Lyra foundation to implement one narrow end-to-end path, ideally `poster-a4`: validate a brief, select the template, map facts/copy into named slots, and produce a local reviewable output package without overbuilding the full pipeline.",
+      "priority": "medium",
+      "status": "todo",
+      "category": "Automation",
+      "createdAt": "2026-05-21T18:03:00Z"
     }
   ]
 }

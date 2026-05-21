@@ -1,9 +1,9 @@
 {
   "status": "idle",
   "task": null,
-  "detail": "Early-evening heartbeat sync complete — Mission Control and the draft review queue still match the current workspace state",
+  "detail": "Early-evening heartbeat complete — Altair real runs now succeed and the first Lyra foundation scaffold is in place",
   "startedAt": null,
-  "updatedAt": 1779385980000,
+  "updatedAt": 1779386580000,
   "agent": "Gustav",
   "emoji": "🦾"
 }
