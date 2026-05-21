@@ -1,9 +1,9 @@
 {
   "status": "idle",
   "task": null,
-  "detail": "Pre-dawn heartbeat review complete — committed today's income-research sync files and confirmed Mission Control still matches the active draft review queue",
+  "detail": "Early-morning heartbeat review complete — confirmed Mission Control still matches the active draft review queue and current TODO state",
   "startedAt": null,
-  "updatedAt": 1779334980000,
+  "updatedAt": 1779343380000,
   "agent": "Gustav",
   "emoji": "🦾"
 }
