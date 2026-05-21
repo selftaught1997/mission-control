@@ -2,6 +2,11 @@
   "entries": [
     {
       "status": "working",
+      "task": "Evening heartbeat Mission Control sync",
+      "ts": 1779391800000
+    },
+    {
+      "status": "working",
       "task": "Early-evening heartbeat Altair + Lyra foundation sync",
       "ts": 1779386580000
     },
@@ -74,11 +79,6 @@
       "status": "working",
       "task": "Night heartbeat Mission Control review",
       "ts": 1779309780000
-    },
-    {
-      "status": "working",
-      "task": "Late-evening heartbeat Mission Control review",
-      "ts": 1779307620000
     }
   ]
 }

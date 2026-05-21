@@ -1710,5 +1710,53 @@
     "status": "success",
     "summary": "Resolved the Altair real-run failure and scaffolded the first Lyra foundation.",
     "detail": "Reviewed HEARTBEAT.md, reran the real `lyra-foundation-v1` task through the current Altair Codex runner, confirmed the old exit-status-2 failure report was stale, and captured a successful result packet at `altair/reports/lyra-foundation-v1-result.json`. The run created a new `lyra/` foundation with a structured brief schema, Stratford Karate Club brand/config skeleton, poster/leaflet/social/document template placeholders, QA scaffold, and top-level docs. Mission Control TODO item 6 was marked done, a next-step Lyra assembly-path task was added, and the heartbeat state was rolled forward."
+  },
+  {
+    "timestamp": "2026-05-21T01:34:16Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Documented the workspace operating policy and machine access map for future autonomous work.",
+    "detail": "Formalised Aaron's task-routing preferences in `AGENTS.md` and added a durable machine/access map to `TOOLS.md`. The update records the default routing rules (substantial coding → Codex on the Mac, native macOS/UI work → native UI toolkit, JS-heavy web work → browser automation, infrastructure → audit-first, research → verified sources first, sensitive admin/data work → structured exports first) plus the current private access paths for the Mac mini: Tailscale hostname `gustav-mac-code.tail453feb.ts.net`, code-server over HTTPS, SSH on `:22`, and VNC/Jump on `:5900`. Committed as `453ea79` and `52c35b4`.",
+    "id": 215
+  },
+  {
+    "timestamp": "2026-05-21T02:32:19Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Defined the new Lyra and Altair specialist-agent system and wrote the first build briefs.",
+    "detail": "Locked the specialist-agent direction: Lyra will own posters, leaflets, branded static creative, and document/PDF production; Altair will own coding and application-building with a pluggable execution backend rather than a permanently Codex-only identity. Wrote and refined first-pass specs plus implementation-ready build briefs in `drafts/lyra-v1-spec.md`, `drafts/altair-v1-spec.md`, `drafts/lyra-build-brief.md`, `drafts/altair-build-brief.md`, and `drafts/lyra-altair-roadmap.md`, including architecture, acceptance criteria, sequencing, QA expectations, and non-goals for both agents. Core planning committed as `8ee92ef`.",
+    "id": 216
+  },
+  {
+    "timestamp": "2026-05-21T02:46:07Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Scaffolded Altair's first working foundation in the workspace.",
+    "detail": "Built the initial `altair/` agent framework through the app-bundled Codex binary. The scaffold includes top-level docs, a backend contract, a Codex backend skeleton (`altair/backends/codex/run.sh` + README), a future Claude Code placeholder, JSON schemas for task/result packets, checklists for build/fix/refactor/tooling work, example task packets, and placeholders for runs/pipelines/reports. This establishes Altair as an engine-agnostic coding/application-building workflow layer rather than an ad hoc one-off folder. Committed as `6f97d61` (`feat: scaffold Altair foundation`).",
+    "id": 217
+  },
+  {
+    "timestamp": "2026-05-21T03:00:00Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Ran the daily income research and selected a document-workflow funnel for UK service businesses as today's opportunity.",
+    "detail": "Today's income-research output updated `research/todays-income-idea.json` for 2026-05-21 with the winner `Small-Business Document Workflow Funnel for UK Service Operators`. The concept is a narrow buyer-guide and template funnel around e-signature/document workflow tools for operators like karate clubs, PTs, coaches, and trades, with Gustav handling comparison content, reusable contract/waiver/onboarding templates, outreach, and follow-up while monetising through affiliate or adjacent workflow tools. The intended Discord destinations were recorded in the research output for `#trading-desk` and `#morning-brief`.",
+    "id": 218
+  },
+  {
+    "timestamp": "2026-05-21T14:31:45Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Hardened Altair's Codex runner and defined the first real Lyra support task packet.",
+    "detail": "Used Altair's first real tooling test to upgrade `altair/backends/codex/run.sh` from a thin placeholder into a working non-interactive runner. It now accepts task packets directly, resolves the repo/workdir from the packet, finds Codex via `ALTAIR_CODEX_BIN` / PATH / the app bundle fallback, runs `codex exec`, validates against `altair/schemas/result-packet.schema.json`, creates timestamped run directories, writes report artifacts, and scaffolds a failure packet if Codex exits without one. The parser bug for compact single-line JSON packets was fixed, docs were updated to match actual behaviour, and the first Lyra-support build task packet (`altair/tasks/real-lyra-foundation-v1.yaml`) was added to scaffold Lyra's foundation next. Validation included `sh -n` plus dry-run packet execution. Key commits: `c2ae6e9` and `4126e4c`.",
+    "id": 219
+  },
+  {
+    "id": 220,
+    "timestamp": "2026-05-21T19:30:00Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Ran an evening heartbeat sync and kept Mission Control aligned after the automated activity-log update.",
+    "detail": "Reviewed HEARTBEAT.md, checked Mission Control after the automated activity-log refresh, confirmed task statuses were still aligned, refreshed agent status/history metadata for the current evening window, and prepared the repo sync so both the nested Mission Control repo and the workspace stay clean. No outward alert was needed because this was routine housekeeping rather than a new blocker for Aaron."
   }
 ]
