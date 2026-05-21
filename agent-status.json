@@ -1,9 +1,9 @@
 {
   "status": "idle",
   "task": null,
-  "detail": "Evening heartbeat sync complete — Mission Control activity log is current and task status remains aligned",
+  "detail": "After-midnight heartbeat sync complete — Mission Control and the draft review queue still match the current workspace state",
   "startedAt": null,
-  "updatedAt": 1779391800000,
+  "updatedAt": 1779407040000,
   "agent": "Gustav",
   "emoji": "🦾"
 }
