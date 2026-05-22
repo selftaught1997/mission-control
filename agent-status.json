@@ -1,9 +1,9 @@
 {
   "status": "idle",
   "task": null,
-  "detail": "After-midnight heartbeat sync complete — Mission Control and the draft review queue still match the current workspace state",
+  "detail": "Pre-dawn heartbeat complete — the first working Lyra poster assembly path is now validated and committed-ready",
   "startedAt": null,
-  "updatedAt": 1779407040000,
+  "updatedAt": 1779413340000,
   "agent": "Gustav",
   "emoji": "🦾"
 }

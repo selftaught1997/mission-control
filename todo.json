@@ -57,9 +57,9 @@
     {
       "id": 7,
       "title": "Build first Lyra brief-to-template assembly path",
-      "detail": "Use the new Lyra foundation to implement one narrow end-to-end path, ideally `poster-a4`: validate a brief, select the template, map facts/copy into named slots, and produce a local reviewable output package without overbuilding the full pipeline.",
+      "detail": "Completed on 22 May: Lyra now has a first working `poster-a4` brief-to-template assembly path. `lyra/pipeline/assemble_poster_a4.py` validates a poster brief plus the SKC brand profile, reads named slots from the poster template, maps factual/copy/visual content into a deterministic intermediate package, and writes both JSON + Markdown review artifacts under `lyra/outputs/<brief_id>/`. Example input exists at `lyra/briefs/examples/poster-a4-sunday-beginners.json`, and validation was rerun successfully via the assembler plus `python3 -m py_compile`. Remaining blockers are intentional: no final renderer yet, and brand logo/colour/font values are still TBD in the brand skeleton.",
       "priority": "medium",
-      "status": "todo",
+      "status": "done",
       "category": "Automation",
       "createdAt": "2026-05-21T18:03:00Z"
     }
