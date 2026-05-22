@@ -1878,5 +1878,13 @@
     "status": "success",
     "summary": "Staged Lyra's Aaron-photo Sunday beginners poster variant for Aaron review and resynced the workspace log.",
     "detail": "Reviewed HEARTBEAT.md, found fresh uncommitted Lyra image-insertion artifacts in the workspace, and treated them as a real reviewable draft rather than leaving them as loose generated output. Staged the Aaron-photo Sunday beginners poster variant into drafts as PNG + print PDF, updated the review tracker, refreshed Mission Control status/history metadata for the night heartbeat window, and repaired the top-level workspace action-log drift by resyncing it to the cleaner Mission Control history before logging this step."
+  },
+  {
+    "id": 236,
+    "timestamp": "2026-05-22T21:23:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Captured Lyra lead-gen mode as the next real pipeline task and synced Mission Control.",
+    "detail": "Reviewed HEARTBEAT.md, found a fresh untracked Altair task packet (`altair/tasks/real-lyra-lead-gen-mode-v1.yaml`), verified it was a legitimate next-step build artifact rather than scratch output, and recorded it into Mission Control as the next Lyra pipeline task. Updated Mission Control status/history metadata for the night heartbeat window and committed the task packet so the workspace stays clean and the next automation step is explicit."
   }
 ]

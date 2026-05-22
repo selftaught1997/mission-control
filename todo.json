@@ -12,7 +12,7 @@
     {
       "id": 2,
       "title": "Weekly Sonnet diagnostic + monthly Opus strategic review",
-      "detail": "Weekly cron (Sonnet): routine system health check \u2014 crons, memory, scripts, configs. Monthly cron (Opus): strategic audit \u2014 is the architecture right, what's being wasted, what should change. Post results to #diagnostics.",
+      "detail": "Weekly cron (Sonnet): routine system health check — crons, memory, scripts, configs. Monthly cron (Opus): strategic audit — is the architecture right, what's being wasted, what should change. Post results to #diagnostics.",
       "priority": "low",
       "status": "todo",
       "category": "Automation",
@@ -89,6 +89,15 @@
       "status": "done",
       "category": "Automation",
       "createdAt": "2026-05-22T19:59:11Z"
+    },
+    {
+      "id": 11,
+      "title": "Build Lyra lead-gen poster mode",
+      "detail": "Next Lyra pipeline step is now defined in `altair/tasks/real-lyra-lead-gen-mode-v1.yaml`: turn the documented lead-gen template family into a real reusable poster-a4 render mode for acquisition / beginner / free-trial posters. Keep it narrow and layered onto the current poster pipeline rather than creating a parallel renderer.",
+      "priority": "medium",
+      "status": "todo",
+      "category": "Automation",
+      "createdAt": "2026-05-22T21:23:00Z"
     }
   ]
 }
