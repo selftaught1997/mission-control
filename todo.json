@@ -107,6 +107,15 @@
       "status": "done",
       "category": "Automation",
       "createdAt": "2026-05-22T22:35:43Z"
+    },
+    {
+      "id": 13,
+      "title": "Build Lyra v2 true-agent foundation",
+      "detail": "Completed on 23 May: Lyra now has a true-agent foundation with identity/factual rules, queue/inbox structure, lifecycle scripts, status output, result/report packaging, memory/playbooks, and current poster-a4 lead-gen integration including supplied-image support.",
+      "priority": "medium",
+      "status": "done",
+      "category": "Automation",
+      "createdAt": "2026-05-22T23:31:51Z"
     }
   ]
 }
