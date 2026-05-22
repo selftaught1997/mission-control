@@ -80,6 +80,15 @@
       "status": "done",
       "category": "Automation",
       "createdAt": "2026-05-22T17:53:26Z"
+    },
+    {
+      "id": 10,
+      "title": "Add supplied-image insertion to Lyra poster pipeline",
+      "detail": "Completed on 22 May: Lyra can now accept a supplied portrait/hero image for poster-a4 briefs via source_materials, route it into the hero slot, and render clean poster outputs. Normal photos use cover-crop; transparent PNGs preserve alpha and use contained placement. Example brief and outputs were added for the supplied-image path.",
+      "priority": "medium",
+      "status": "done",
+      "category": "Automation",
+      "createdAt": "2026-05-22T19:59:11Z"
     }
   ]
 }
