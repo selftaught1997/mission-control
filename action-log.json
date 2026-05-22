@@ -1894,5 +1894,21 @@
     "status": "success",
     "summary": "Built Lyra's first explicit lead-gen poster mode",
     "detail": "Used Altair/Codex to turn Lyra's documented lead-gen family into a real reusable poster-a4 mode. Briefs now select `template_mode: \"lead-gen\"`, the poster assembler validates that only lead-gen is renderable in v1, assembled/rendered artifacts record the mode intentionally, and the Sunday beginners example rerenders successfully through the explicit lead-gen path. Event and info-promo remain documented future modes only."
+  },
+  {
+    "id": 238,
+    "timestamp": "2026-05-22T22:35:43Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Completed Lyra lead-gen poster mode and made it a real reusable render path",
+    "detail": "Used Altair/Codex to turn Lyra's documented lead-gen template family into a real poster-a4 mode. Briefs can now explicitly choose `template_mode: \"lead-gen\"`, and the Sunday beginners plus supplied-image examples render intentionally through that acquisition/free-trial path."
+  },
+  {
+    "id": 239,
+    "timestamp": "2026-05-22T22:35:43Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Built Altair v2 as the first true-agent local foundation",
+    "detail": "Implemented the full six-step Altair v2 build order: identity/autonomy rules, inbox/queue states, lifecycle scripts, status output, backend integration cleanup, and lightweight memory/playbooks. Result packet at `altair/reports/altair-v2-foundation-result.json` and validation passed for syntax, JSON structure, dry-run backend behavior, and a representative lifecycle run."
   }
 ]

@@ -12,7 +12,7 @@
     {
       "id": 2,
       "title": "Weekly Sonnet diagnostic + monthly Opus strategic review",
-      "detail": "Weekly cron (Sonnet): routine system health check — crons, memory, scripts, configs. Monthly cron (Opus): strategic audit — is the architecture right, what's being wasted, what should change. Post results to #diagnostics.",
+      "detail": "Weekly cron (Sonnet): routine system health check \u2014 crons, memory, scripts, configs. Monthly cron (Opus): strategic audit \u2014 is the architecture right, what's being wasted, what should change. Post results to #diagnostics.",
       "priority": "low",
       "status": "todo",
       "category": "Automation",
@@ -93,11 +93,20 @@
     {
       "id": 11,
       "title": "Build Lyra lead-gen poster mode",
-      "detail": "Next Lyra pipeline step is now defined in `altair/tasks/real-lyra-lead-gen-mode-v1.yaml`: turn the documented lead-gen template family into a real reusable poster-a4 render mode for acquisition / beginner / free-trial posters. Keep it narrow and layered onto the current poster pipeline rather than creating a parallel renderer.",
+      "detail": "Completed on 22 May: Lyra now has a real reusable `lead-gen` poster-a4 mode. Briefs can explicitly set `template_mode: \"lead-gen\"`, the schema/pipeline validate it, and the Sunday beginners plus supplied-image examples render intentionally through that path for acquisition/free-trial style posters.",
       "priority": "medium",
-      "status": "todo",
+      "status": "done",
       "category": "Automation",
       "createdAt": "2026-05-22T21:23:00Z"
+    },
+    {
+      "id": 12,
+      "title": "Build Altair v2 true-agent foundation",
+      "detail": "Completed on 22 May: Altair now has its first true-agent local foundation. Added identity/autonomy/escalation docs, a real inbox with lifecycle states, task-state schema, enqueue/start/finalize/status scripts, status.json, Codex backend lifecycle integration, and lightweight memory/playbooks. Validation passed for Python syntax, JSON parseability, restricted-PATH Codex dry-run, and a representative enqueue -> start -> finalize -> status lifecycle.",
+      "priority": "high",
+      "status": "done",
+      "category": "Automation",
+      "createdAt": "2026-05-22T22:35:43Z"
     }
   ]
 }

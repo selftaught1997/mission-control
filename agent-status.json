@@ -1,9 +1,9 @@
 {
   "status": "idle",
   "task": null,
-  "detail": "Heartbeat complete \u2014 Lyra lead-gen mode recorded and committed",
+  "detail": "Heartbeat complete \u2014 Mission Control updated for Lyra lead-gen and Altair v2 milestones",
   "startedAt": null,
-  "updatedAt": 1779486176718,
+  "updatedAt": 1779489343997,
   "agent": "Gustav",
   "emoji": "\ud83e\uddbe"
 }
