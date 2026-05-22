@@ -71,6 +71,15 @@
       "status": "done",
       "category": "Automation",
       "createdAt": "2026-05-22T17:33:00Z"
+    },
+    {
+      "id": 9,
+      "title": "Refine Lyra poster style to v2",
+      "detail": "Completed on 22 May: Lyra's first poster render was refined after Aaron's review. The v2 pass keeps the premium modern yellow/black direction but improves typography consistency, adds stronger graphic treatment, clearer sectioning, and a more promotional composition for the Sunday beginners example output.",
+      "priority": "medium",
+      "status": "done",
+      "category": "Automation",
+      "createdAt": "2026-05-22T17:53:26Z"
     }
   ]
 }
