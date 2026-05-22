@@ -1,9 +1,9 @@
 {
   "status": "idle",
   "task": null,
-  "detail": "Heartbeat complete — Lyra lead-gen mode task packet recorded as the next pipeline step",
+  "detail": "Heartbeat complete \u2014 Lyra lead-gen mode recorded and committed",
   "startedAt": null,
-  "updatedAt": 1779484980000,
+  "updatedAt": 1779486176718,
   "agent": "Gustav",
-  "emoji": "🦾"
+  "emoji": "\ud83e\uddbe"
 }
