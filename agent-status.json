@@ -3,13 +3,13 @@
   "agent": "Gustav",
   "status": "idle",
   "state": "idle",
-  "detail": "Heartbeat complete — Mission Control reviewed, no new user-facing issues",
-  "current_step": "heartbeat-mission-control-review",
+  "detail": "Mission Control v2.2 layout refinement is deployed and ready for review.",
+  "current_step": "mission-control-v2-2-layout-ready",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1779564300000,
-  "last_updated": "2026-05-23T19:25:00Z",
-  "last_activity_at": "2026-05-23T19:25:00Z",
-  "activity_counter": 5,
-  "emoji": "🦾"
+  "updatedAt": 1779567236177,
+  "last_updated": "2026-05-23T20:13:56Z",
+  "last_activity_at": "2026-05-23T20:13:56Z",
+  "activity_counter": 7,
+  "emoji": "\ud83e\uddbe"
 }

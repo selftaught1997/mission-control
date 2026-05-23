@@ -2078,5 +2078,13 @@
     "status": "success",
     "summary": "Strengthened the workspace operating policy with explicit completion-discipline and FINISH_SHIP rules.",
     "detail": "Updated AGENTS.md and MEMORY.md to make completion expectations durable after the Mission Control overnight miss. Added a standing rule that substantial tasks are not complete at progress or diagnosis, should be resumed after subprocess, sub-agent, timeout, restart, or compaction interruptions until the deliverable is genuinely working, and that FINISH_SHIP / FINISH_TO_SHIP mean no-idling completion mode with the only voluntary pause being meaningful irreversible-risk boundaries. Changes were committed across docs commits 57fe305, eff7d27, and f476e17."
+  },
+  {
+    "id": 261,
+    "timestamp": "2026-05-23T20:14:10Z",
+    "category": "Mission Control",
+    "status": "success",
+    "summary": "Mission Control v2.2 layout refinement shipped",
+    "detail": "Added per-panel collapse/expand controls, size controls for tall panels, localStorage-backed layout persistence, drag/reorder support, sticky summary controls, timeline filters, reset-layout behavior, and cleaner default panel states without weakening the live runtime console or executive mode. Validated on the live host with browser checks for collapse, size cycling, drag/reorder persistence, mode persistence, reset recovery, and corrupted-layout recovery."
   }
 ]

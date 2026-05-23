@@ -42,6 +42,20 @@ Current executive sources live under `mission-control/executive/` plus selected 
 
 If one of these executive sources fails, the executive layer should degrade honestly without breaking the live runtime console.
 
+## Layout controls
+
+Mission Control v2.2 adds a client-side layout layer on top of the live runtime console:
+
+- `Live` / `Executive` / `Both` modes
+- per-panel collapse / expand controls
+- size controls for taller panels
+- drag / reorder support for live and executive panels
+- timeline filter chips
+- sticky runtime summary controls
+- `Reset layout` recovery action
+
+Layout preferences are intentionally browser-local and are stored in `localStorage` under a versioned key. Layout state is presentation-only: collapsing or hiding a panel must not stop its live data updates.
+
 ## Local runtime logs
 
 Runtime-backed continuity is stored in append-only NDJSON logs:
