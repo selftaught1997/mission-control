@@ -2062,5 +2062,21 @@
     "status": "success",
     "summary": "Mission Control v2.1 executive carryover shipped",
     "detail": "Added a structured Executive Overview layer to Mission Control v2 without weakening the live runtime console. The live host now serves Live / Executive / Both modes plus /api/executive, using structured executive sources (goals, club snapshot, projects, agent directory) together with ROI, todo, action-log, and normalized review-tracker data. Validated runtime anti-regression, Executive and Both modes, and failure isolation on the real host."
+  },
+  {
+    "id": 259,
+    "timestamp": "2026-05-23T03:04:12Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Ran the daily income research job and selected a coach tech-stack referral funnel for martial arts instructors and PTs as the strongest current opportunity.",
+    "detail": "Daily Income Research completed for 2026-05-23 and auto-committed the updated research files as git commit 6a13c29 ('chore: income research output 2026-05-23'). The winning idea was 'Coach Tech-Stack Referral Funnel for Martial Arts Instructors & PTs' — a niche buyer-guide and referral funnel around course, membership, and coaching tools such as systeme.io, Teachable, and CoachAccountable, with Gustav handling content, pages, outreach, tracking, and follow-up while Aaron mainly approves positioning. Updated research/todays-income-idea.json, research/income-ideas-log.json, and research/usage-log.json. Intended Discord destinations were recorded in the research output for #trading-desk and #morning-brief."
+  },
+  {
+    "id": 260,
+    "timestamp": "2026-05-23T11:37:54Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Strengthened the workspace operating policy with explicit completion-discipline and FINISH_SHIP rules.",
+    "detail": "Updated AGENTS.md and MEMORY.md to make completion expectations durable after the Mission Control overnight miss. Added a standing rule that substantial tasks are not complete at progress or diagnosis, should be resumed after subprocess, sub-agent, timeout, restart, or compaction interruptions until the deliverable is genuinely working, and that FINISH_SHIP / FINISH_TO_SHIP mean no-idling completion mode with the only voluntary pause being meaningful irreversible-risk boundaries. Changes were committed across docs commits 57fe305, eff7d27, and f476e17."
   }
 ]
