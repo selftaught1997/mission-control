@@ -1934,5 +1934,13 @@
     "status": "success",
     "summary": "Reviewed, committed, and deployed Mission Control v2 on the Mac host",
     "detail": "Reviewed Altair's Mission Control v2 build, committed the dashboard/server app inside the mission-control repo, switched the workspace LaunchAgent from static `http.server` to the new Node server with a plist backup, and validated the live `/api/snapshot` and `/api/events` endpoints locally. The dashboard is now live on port 18792 for browser access over the Mac and tailnet."
+  },
+  {
+    "id": 243,
+    "timestamp": "2026-05-23T00:41:27Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Fixed Mission Control v2 agent board to show Gustav",
+    "detail": "Patched Mission Control v2 so Gustav is treated as a first-class agent alongside Altair, Lyra, and Vega. The dashboard server now reads `mission-control/agent-status.json`, includes Gustav in `/api/snapshot`, and the Mac-hosted dashboard was restarted and locally revalidated after the change."
   }
 ]

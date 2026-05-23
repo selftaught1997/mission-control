@@ -1,9 +1,9 @@
 {
   "status": "idle",
   "task": null,
-  "detail": "Mission Control v2 live on host \u2014 Altair idle, dashboard available for review",
+  "detail": "Heartbeat complete \u2014 Gustav is now visible on Mission Control v2",
   "startedAt": null,
-  "updatedAt": 1779496435000,
+  "updatedAt": 1779496887619,
   "agent": "Gustav",
   "emoji": "\ud83e\uddbe"
 }
