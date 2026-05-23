@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "style_direction": "Vector Ops structure + Soft Studio warmth",
+  "state_model": {
+    "source": "Mission Control snapshot agent status/state/runtime fields",
+    "classes": ["idle", "planning", "active", "waiting", "blocked", "complete"],
+    "notes": "Assets are state-neutral SVG bases. v2.html applies lightweight CSS state classes and overlays from the real existing agent state model."
+  },
+  "agents": {
+    "gustav": {
+      "name": "Gustav",
+      "role": "Orchestrator",
+      "accent": "#5DA8FF",
+      "secondary": "#9BC8FF",
+      "portrait": "/assets/agents/portraits/gustav.svg",
+      "workstation": "/assets/agents/workstations/gustav.svg",
+      "office_label": "coordination desk",
+      "z_index": 4
+    },
+    "altair": {
+      "name": "Altair",
+      "role": "Engineering",
+      "accent": "#59D185",
+      "secondary": "#9BE8B5",
+      "portrait": "/assets/agents/portraits/altair.svg",
+      "workstation": "/assets/agents/workstations/altair.svg",
+      "office_label": "build desk",
+      "z_index": 3
+    },
+    "lyra": {
+      "name": "Lyra",
+      "role": "Creative",
+      "accent": "#9B7DFF",
+      "secondary": "#C6B7FF",
+      "portrait": "/assets/agents/portraits/lyra.svg",
+      "workstation": "/assets/agents/workstations/lyra.svg",
+      "office_label": "studio desk",
+      "z_index": 2
+    },
+    "vega": {
+      "name": "Vega",
+      "role": "Motion",
+      "accent": "#F0B35A",
+      "secondary": "#FFD899",
+      "portrait": "/assets/agents/portraits/vega.svg",
+      "workstation": "/assets/agents/workstations/vega.svg",
+      "office_label": "media desk",
+      "z_index": 1
+    }
+  }
+}

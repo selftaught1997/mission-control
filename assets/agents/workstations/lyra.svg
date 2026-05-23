@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 190" role="img" aria-labelledby="title desc">
+  <title id="title">Lyra workstation</title><desc id="desc">Creative studio desk avatar with violet design displays.</desc>
+  <rect x="24" y="124" width="212" height="22" rx="7" fill="#252b34" stroke="rgba(255,255,255,.16)"/>
+  <rect x="47" y="145" width="16" height="35" rx="4" fill="#1b2028"/><rect x="197" y="145" width="16" height="35" rx="4" fill="#1b2028"/>
+  <rect x="68" y="34" width="124" height="70" rx="11" fill="#211d35" stroke="#9B7DFF" stroke-opacity=".35" stroke-width="3"/>
+  <circle cx="103" cy="69" r="16" fill="#C6B7FF" opacity=".85"/><rect x="127" y="55" width="42" height="9" rx="4" fill="#9B7DFF"/><rect x="127" y="73" width="30" height="9" rx="4" fill="#C6B7FF"/>
+  <rect x="119" y="104" width="22" height="20" rx="4" fill="#202631"/>
+  <path d="M88 139c6-29 78-29 84 0v12H88z" fill="#303042" stroke="#9B7DFF" stroke-opacity=".42" stroke-width="3"/>
+  <circle cx="130" cy="101" r="24" fill="#ded9ea"/>
+  <path d="M104 97c5-18 18-26 36-23 11 2 18 10 20 23-20-8-38-8-56 0Z" fill="#251f35"/>
+  <path d="M116 126h28l-6 24h-16l-6-24Z" fill="#9B7DFF"/>
+  <circle cx="215" cy="48" r="9" fill="#C6B7FF"/><circle cx="225" cy="62" r="5" fill="#9B7DFF"/>
+</svg>

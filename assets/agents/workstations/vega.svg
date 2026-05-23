@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 190" role="img" aria-labelledby="title desc">
+  <title id="title">Vega workstation</title><desc id="desc">Motion media desk avatar with amber editing displays.</desc>
+  <rect x="24" y="124" width="212" height="22" rx="7" fill="#252b34" stroke="rgba(255,255,255,.16)"/>
+  <rect x="47" y="145" width="16" height="35" rx="4" fill="#1b2028"/><rect x="197" y="145" width="16" height="35" rx="4" fill="#1b2028"/>
+  <rect x="68" y="34" width="124" height="70" rx="11" fill="#302315" stroke="#F0B35A" stroke-opacity=".35" stroke-width="3"/>
+  <path d="M96 61h64M96 79h64" stroke="#FFD899" stroke-width="7" stroke-linecap="round" opacity=".78"/><path d="m116 51 26 19-26 19V51Z" fill="#F0B35A"/>
+  <rect x="119" y="104" width="22" height="20" rx="4" fill="#202631"/>
+  <path d="M88 139c6-29 78-29 84 0v12H88z" fill="#372f28" stroke="#F0B35A" stroke-opacity=".42" stroke-width="3"/>
+  <circle cx="130" cy="101" r="24" fill="#e2d8c8"/>
+  <path d="M104 97c6-18 20-26 38-21 10 3 16 10 18 21-19-8-38-8-56 0Z" fill="#241f1b"/>
+  <path d="M116 126h28l-6 24h-16l-6-24Z" fill="#F0B35A"/>
+  <rect x="204" y="42" width="24" height="14" rx="4" fill="#FFD899"/><path d="M209 63h16M209 74h10" stroke="#F0B35A" stroke-width="5" stroke-linecap="round"/>
+</svg>

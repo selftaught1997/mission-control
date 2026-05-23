@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Vega portrait</title><desc id="desc">Vector Ops motion portrait with an amber media accent.</desc>
+  <defs><linearGradient id="g" x1="18" y1="12" x2="142" y2="148" gradientUnits="userSpaceOnUse"><stop stop-color="#44331e"/><stop offset="1" stop-color="#101820"/></linearGradient></defs>
+  <path d="M80 9 135 32v55c0 34-22 54-55 64-33-10-55-30-55-64V32L80 9Z" fill="url(#g)" stroke="#F0B35A" stroke-opacity=".5" stroke-width="3"/>
+  <path d="M39 104c8-22 23-35 41-35s33 13 41 35v27H39v-27Z" fill="#302b25" stroke="#F0B35A" stroke-opacity=".32" stroke-width="3"/>
+  <circle cx="80" cy="59" r="27" fill="#e2d8c8"/>
+  <path d="M51 55c7-22 23-31 43-26 11 3 18 12 19 26-21-9-42-9-62 0Z" fill="#241f1b"/>
+  <path d="M58 103h44l-7 34H65l-7-34Z" fill="#F0B35A"/>
+  <path d="M80 93 96 78l8 23-24 18-24-18 8-23 16 15Z" fill="#fff" fill-opacity=".88"/>
+  <path d="m67 62 23 13-23 13V62Z" fill="#4a3926"/>
+  <rect x="105" y="39" width="20" height="13" rx="4" fill="#FFD899"/><path d="M109 52h12" stroke="#F0B35A" stroke-width="3" stroke-linecap="round"/>
+  <path d="M36 42h20M104 42h20M37 125h18M105 125h18" stroke="#F0B35A" stroke-opacity=".7" stroke-width="4" stroke-linecap="round"/>
+</svg>

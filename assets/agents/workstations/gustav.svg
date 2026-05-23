@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 190" role="img" aria-labelledby="title desc">
+  <title id="title">Gustav workstation</title><desc id="desc">Orchestrator command desk avatar with blue operational displays.</desc>
+  <rect x="26" y="124" width="208" height="22" rx="7" fill="#252b34" stroke="rgba(255,255,255,.16)"/>
+  <rect x="47" y="145" width="16" height="35" rx="4" fill="#1b2028"/><rect x="197" y="145" width="16" height="35" rx="4" fill="#1b2028"/>
+  <rect x="71" y="34" width="118" height="70" rx="11" fill="#142033" stroke="#5DA8FF" stroke-opacity=".35" stroke-width="3"/>
+  <path d="M93 61h74M93 76h50M93 91h62" stroke="#9BC8FF" stroke-width="5" stroke-linecap="round" opacity=".75"/>
+  <rect x="119" y="104" width="22" height="20" rx="4" fill="#202631"/>
+  <path d="M88 138c6-28 78-28 84 0v13H88z" fill="#2d3643" stroke="#5DA8FF" stroke-opacity=".4" stroke-width="3"/>
+  <circle cx="130" cy="101" r="24" fill="#d7dde7"/>
+  <path d="M104 97c5-19 17-27 33-25 13 2 21 11 22 25-17-8-36-8-55 0Z" fill="#1b2531"/>
+  <path d="M118 126h24l-6 24h-12l-6-24Z" fill="#5DA8FF"/>
+  <circle cx="216" cy="48" r="8" fill="#5DA8FF"/><circle cx="216" cy="48" r="16" fill="none" stroke="#5DA8FF" stroke-opacity=".35" stroke-width="4"/>
+</svg>

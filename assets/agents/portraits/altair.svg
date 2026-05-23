@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Altair portrait</title><desc id="desc">Vector Ops engineering portrait with a green build accent.</desc>
+  <defs><linearGradient id="g" x1="18" y1="16" x2="142" y2="148" gradientUnits="userSpaceOnUse"><stop stop-color="#203729"/><stop offset="1" stop-color="#101820"/></linearGradient></defs>
+  <path d="M80 9 134 31v56c0 33-22 54-54 64-32-10-54-31-54-64V31L80 9Z" fill="url(#g)" stroke="#59D185" stroke-opacity=".48" stroke-width="3"/>
+  <path d="M39 103c7-22 24-34 41-34s34 12 41 34v28H39v-28Z" fill="#222d33" stroke="#59D185" stroke-opacity=".3" stroke-width="3"/>
+  <circle cx="80" cy="58" r="27" fill="#d6dee5"/>
+  <path d="M51 52c6-20 22-29 43-24 10 3 17 11 19 24-21-8-41-8-62 0Z" fill="#1a2525"/>
+  <path d="M57 100h46l-6 36H63l-6-36Z" fill="#59D185"/>
+  <path d="m63 78 17 17 17-17 10 24-27 16-27-16 10-24Z" fill="#f3f7fb" fill-opacity=".9"/>
+  <path d="m58 60-11 10 11 10M102 60l11 10-11 10M89 57 71 84" fill="none" stroke="#2f3a45" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="55" y="123" width="50" height="10" rx="5" fill="#9BE8B5"/>
+  <path d="M35 43h18M107 43h18M34 124h18M108 124h18" stroke="#59D185" stroke-opacity=".7" stroke-width="4" stroke-linecap="round"/>
+</svg>

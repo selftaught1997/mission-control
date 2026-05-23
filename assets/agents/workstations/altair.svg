@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 190" role="img" aria-labelledby="title desc">
+  <title id="title">Altair workstation</title><desc id="desc">Engineering build desk avatar with green code displays.</desc>
+  <rect x="24" y="124" width="212" height="22" rx="7" fill="#252b34" stroke="rgba(255,255,255,.16)"/>
+  <rect x="47" y="145" width="16" height="35" rx="4" fill="#1b2028"/><rect x="197" y="145" width="16" height="35" rx="4" fill="#1b2028"/>
+  <rect x="68" y="34" width="124" height="70" rx="11" fill="#14271e" stroke="#59D185" stroke-opacity=".35" stroke-width="3"/>
+  <path d="m91 63-13 10 13 10M169 63l13 10-13 10M143 58l-26 31" fill="none" stroke="#9BE8B5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/>
+  <rect x="119" y="104" width="22" height="20" rx="4" fill="#202631"/>
+  <path d="M88 139c6-29 78-29 84 0v12H88z" fill="#27353a" stroke="#59D185" stroke-opacity=".4" stroke-width="3"/>
+  <circle cx="130" cy="101" r="24" fill="#d6dee5"/>
+  <path d="M104 96c5-17 20-25 38-20 10 3 16 10 18 20-19-7-38-7-56 0Z" fill="#1a2525"/>
+  <path d="M116 126h28l-5 24h-18l-5-24Z" fill="#59D185"/>
+  <rect x="203" y="43" width="25" height="12" rx="4" fill="#59D185"/><rect x="203" y="62" width="18" height="12" rx="4" fill="#9BE8B5"/>
+</svg>

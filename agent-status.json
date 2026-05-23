@@ -3,13 +3,13 @@
   "agent": "Gustav",
   "status": "idle",
   "state": "idle",
-  "detail": "Mission Control v2.2 layout refinement is validated on the host and ready for Aaron to review.",
-  "current_step": "mission-control-v2-2-review-ready",
+  "detail": "Mission Control v2.4 avatar integration is implemented and validated with the available local checks.",
+  "current_step": "mission-control-v2-4-avatar-integration-ready",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1779575100000,
-  "last_updated": "2026-05-23T22:25:00Z",
-  "last_activity_at": "2026-05-23T22:25:00Z",
-  "activity_counter": 12,
-  "emoji": "🦾"
+  "updatedAt": 1779576880000,
+  "last_updated": "2026-05-23T22:54:40Z",
+  "last_activity_at": "2026-05-23T22:54:40Z",
+  "activity_counter": 14,
+  "emoji": "\ud83e\uddbe"
 }
