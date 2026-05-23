@@ -1739,6 +1739,60 @@
     startSse();
     setInterval(() => refreshRelativeTimes(), 1000);
     setInterval(() => loadExecutive().catch(() => {}), 90000);
-  </script>
+  
+    function normalizeMissionControlAssetUrl(raw) {
+      if (!raw) return raw;
+      if (/^(data:|blob:|https?:)/i.test(raw)) return raw;
+      const value = String(raw);
+      if (value.startsWith('/files/')) return value;
+      if (value.startsWith('/Users/gustava-i/.openclaw/workspace/')) {
+        return '/files/' + value.replace('/Users/gustava-i/.openclaw/workspace/', '');
+      }
+      if (value.startsWith('mission-control/')) {
+        return '/files/' + value;
+      }
+      if (value.startsWith('/mission-control/')) {
+        return '/files' + value;
+      }
+      if (value.startsWith('assets/')) {
+        return '/files/mission-control/' + value;
+      }
+      if (value.startsWith('/assets/')) {
+        return '/files/mission-control' + value;
+      }
+      return value;
+    }
+
+    function normalizeMissionControlAssetNodes(root = document) {
+      root.querySelectorAll('.agent-avatar img, .office-station img').forEach((node) => {
+        const current = node.getAttribute('src');
+        const desired = normalizeMissionControlAssetUrl(current);
+        if (desired && desired !== current) node.setAttribute('src', desired);
+      });
+
+      root.querySelectorAll('.agent-avatar image, .office-station image').forEach((node) => {
+        const current = node.getAttribute('href') || node.getAttribute('xlink:href');
+        const desired = normalizeMissionControlAssetUrl(current);
+        if (!desired || desired === current) return;
+        node.setAttribute('href', desired);
+        node.setAttribute('xlink:href', desired);
+      });
+    }
+
+    if (typeof render === 'function' && !render.__missionControlAssetPatch) {
+      const originalRender = render;
+      render = function (...args) {
+        const result = originalRender.apply(this, args);
+        normalizeMissionControlAssetNodes();
+        return result;
+      };
+      render.__missionControlAssetPatch = true;
+    }
+
+    window.addEventListener('load', () => normalizeMissionControlAssetNodes());
+    setInterval(() => normalizeMissionControlAssetNodes(), 1000);
+    setTimeout(() => normalizeMissionControlAssetNodes(), 0);
+
+</script>
 </body>
 </html>
