@@ -1,15 +1,9 @@
 {
-  "schema_version": "1.1",
-  "agent": "Gustav",
   "status": "idle",
-  "state": "idle",
-  "detail": "Ready in chat.",
-  "current_step": "idle",
   "task": null,
+  "detail": "Heartbeat complete \u2014 Mission Control reviewed, no new user-facing issues",
   "startedAt": null,
-  "updatedAt": 1779501247524,
-  "last_updated": "2026-05-23T01:54:07Z",
-  "last_activity_at": "2026-05-23T01:54:07Z",
-  "activity_counter": 6,
+  "updatedAt": 1779502518000,
+  "agent": "Gustav",
   "emoji": "\ud83e\uddbe"
 }
