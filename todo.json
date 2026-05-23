@@ -116,6 +116,15 @@
       "status": "done",
       "category": "Automation",
       "createdAt": "2026-05-22T23:31:51Z"
+    },
+    {
+      "id": 14,
+      "title": "Improve Altair lifecycle closure and run hygiene",
+      "detail": "Completed on 23 May: Altair improved its own lifecycle closure behavior. Valid result reports now map to final lifecycle states more reliably, runner completion attempts automatic finalization, status refresh avoids false idle states while real active work remains, and task-lifecycle docs were updated to reflect the safer behavior.",
+      "priority": "medium",
+      "status": "done",
+      "category": "Automation",
+      "createdAt": "2026-05-23T00:02:43Z"
     }
   ]
 }

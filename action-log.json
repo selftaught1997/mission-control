@@ -1918,5 +1918,13 @@
     "status": "success",
     "summary": "Built Lyra v2 true-agent foundation through Altair",
     "detail": "Used Altair/Codex to build Lyra v2 as a real local creative-agent foundation. Lyra now has identity/factual rules, a file-based inbox lifecycle, task-state and result-package schemas, lifecycle scripts, status output, lightweight memory/playbooks, and the current poster-a4 lead-gen path wired into the lifecycle with supplied-image support preserved."
+  },
+  {
+    "id": 241,
+    "timestamp": "2026-05-23T00:02:43Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Altair improved its own lifecycle closure and run hygiene",
+    "detail": "Altair completed a narrow self-improvement pass on itself. It now maps valid result reports to final lifecycle states more reliably, attempts automatic finalization after runner completion, prevents false idle status while active work remains, and documents the improved task-closure behavior."
   }
 ]
