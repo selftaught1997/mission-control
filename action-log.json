@@ -1966,5 +1966,21 @@
     "status": "success",
     "summary": "Implemented Mission Control minor live-activity status upgrade",
     "detail": "Upgraded Mission Control v2 and local agent instrumentation so Altair and Lyra cards show minor activity changes live without manual refresh. Added richer status fields, 1-second heartbeat/broadcast behavior, Altair backend-running heartbeats, Lyra creative phase updates, and a Gustav local status helper. Remaining limitation: fully automatic Gustav conversational micro-states still require deeper runtime hooks beyond the workspace layer."
+  },
+  {
+    "id": 247,
+    "timestamp": "2026-05-23T02:37:52Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Repaired Altair packet handoff for queued task starts",
+    "detail": "Fixed an Altair start-path bug exposed by the small dashboard test task. After moving a task from pending to active, Altair was still trying to invoke the backend with the old pending packet path. The start script now captures the recorded packet path before moving the task and uses that stable path for backend execution. Local start-path validation passed afterward."
+  },
+  {
+    "timestamp": "2026-05-23T02:52:17Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Recovered Altair lifecycle and completed Mission Control dashboard test task",
+    "detail": "Completed the small Altair dashboard test task `mission-control-readme-note-v1`, repaired the broken queued-task launch/finalization path, cleared the false-active state, and restored honest Mission Control status with Altair back to idle and last outcome complete.",
+    "id": 248
   }
 ]
