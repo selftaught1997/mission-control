@@ -2110,5 +2110,13 @@
     "status": "success",
     "summary": "Mission Control v2.4 avatar integration shipped",
     "detail": "Integrated the chosen Vector Ops + Soft Studio avatar direction into Mission Control with final portraits on agent cards, matching workstation avatars in the Agent Office panel, and a shared assets manifest. Validated on the live host that the office panel, card portraits, transcript, timeline, Executive mode, and layout controls all remain functional."
+  },
+  {
+    "id": 265,
+    "timestamp": "2026-05-23T23:35:00Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Cleaned late-night Mission Control scratch files and restored a clean workspace.",
+    "detail": "Reviewed HEARTBEAT.md, found only leftover temporary diagnostic/link-check files in the workspace root, trashed those scratch artifacts, refreshed Mission Control heartbeat metadata for the current late-night window, logged the cleanup in the action history, and prepared clean git commits so the workspace and dashboard state stay tidy."
   }
 ]
