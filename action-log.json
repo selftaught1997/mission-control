@@ -2102,5 +2102,13 @@
     "status": "success",
     "summary": "Validated and shipped Mission Control v2.2 layout refinement on the real host.",
     "detail": "Completed the host-side ship pass for Mission Control v2.2 after Altair landed the client changes. Validated the live page on port 18792 with runtime API checks plus browser automation covering panel collapse/expand, transcript size cycling, timeline filters, mode persistence, reset-layout recovery, and the HTML5 drag/reorder path. Updated the Altair task/report from stale blocked to done, refreshed Mission Control status/history, and prepared clean repo commits so Aaron can review the neater live dashboard without the runtime-first console regressing."
+  },
+  {
+    "id": 264,
+    "timestamp": "2026-05-23T22:57:19Z",
+    "category": "Mission Control",
+    "status": "success",
+    "summary": "Mission Control v2.4 avatar integration shipped",
+    "detail": "Integrated the chosen Vector Ops + Soft Studio avatar direction into Mission Control with final portraits on agent cards, matching workstation avatars in the Agent Office panel, and a shared assets manifest. Validated on the live host that the office panel, card portraits, transcript, timeline, Executive mode, and layout controls all remain functional."
   }
 ]
