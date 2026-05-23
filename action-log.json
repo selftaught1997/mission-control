@@ -1942,5 +1942,13 @@
     "status": "success",
     "summary": "Fixed Mission Control v2 agent board to show Gustav",
     "detail": "Patched Mission Control v2 so Gustav is treated as a first-class agent alongside Altair, Lyra, and Vega. The dashboard server now reads `mission-control/agent-status.json`, includes Gustav in `/api/snapshot`, and the Mac-hosted dashboard was restarted and locally revalidated after the change."
+  },
+  {
+    "id": 244,
+    "timestamp": "2026-05-23T01:40:42Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Upgraded Mission Control for live minor agent activity states",
+    "detail": "Added richer local status instrumentation for Altair and Lyra, second-by-second backend heartbeats for Altair command execution, richer card fields and freshness indicators in Mission Control v2, and a local Gustav status helper. The dashboard now updates live for minor agent activity without manual refresh, with the remaining limitation that Gustav's conversational micro-states still need deeper runtime hooks for full automation."
   }
 ]

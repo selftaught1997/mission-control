@@ -1,9 +1,15 @@
 {
-  "status": "idle",
-  "task": null,
-  "detail": "Heartbeat complete \u2014 Gustav is now visible on Mission Control v2",
-  "startedAt": null,
-  "updatedAt": 1779496887619,
+  "schema_version": "1.1",
   "agent": "Gustav",
+  "status": "idle",
+  "state": "idle",
+  "detail": "Ready in chat.",
+  "current_step": "idle",
+  "task": null,
+  "startedAt": null,
+  "updatedAt": 1779500353634,
+  "last_updated": "2026-05-23T01:39:13Z",
+  "last_activity_at": "2026-05-23T01:39:13Z",
+  "activity_counter": 2,
   "emoji": "\ud83e\uddbe"
 }
