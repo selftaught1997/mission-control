@@ -3,13 +3,13 @@
   "agent": "Gustav",
   "status": "idle",
   "state": "idle",
-  "detail": "Ready in chat.",
+  "detail": "Heartbeat complete \u2014 Mission Control live activity upgrade synced and committed",
   "current_step": "idle",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1779500353634,
-  "last_updated": "2026-05-23T01:39:13Z",
-  "last_activity_at": "2026-05-23T01:39:13Z",
-  "activity_counter": 2,
+  "updatedAt": 1779500657019,
+  "last_updated": "2026-05-23T01:44:17Z",
+  "last_activity_at": "2026-05-23T01:44:17Z",
+  "activity_counter": 5,
   "emoji": "\ud83e\uddbe"
 }

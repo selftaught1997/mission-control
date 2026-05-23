@@ -125,6 +125,15 @@
       "status": "done",
       "category": "Automation",
       "createdAt": "2026-05-23T00:02:43Z"
+    },
+    {
+      "id": 15,
+      "title": "Upgrade Mission Control for live minor agent activity states",
+      "detail": "Completed on 23 May: Mission Control now reflects richer live status states for Altair/Lyra without page refresh, including current step/detail, freshness, and 1-second updates. Gustav support is present via local status helper, with full automatic conversational microstate instrumentation still limited by deeper runtime hooks.",
+      "priority": "medium",
+      "status": "done",
+      "category": "Automation",
+      "createdAt": "2026-05-23T01:44:16Z"
     }
   ]
 }
