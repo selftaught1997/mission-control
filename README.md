@@ -56,6 +56,19 @@ Mission Control v2.2 adds a client-side layout layer on top of the live runtime 
 
 Layout preferences are intentionally browser-local and are stored in `localStorage` under a versioned key. Layout state is presentation-only: collapsing or hiding a panel must not stop its live data updates.
 
+## Agent Office panel
+
+Mission Control v2.3 adds a lightweight visual Agent Office panel to the live dashboard. It is presentation-only and derives its workstation states from the same `snapshot.agents` records that power the Agent Status Board:
+
+- `idle` agents rest with dimmer screens
+- planning/thinking states show a subtle thought indicator
+- active/runtime/backend states show working indicators
+- waiting/queued states show an amber standby accent
+- blocked/degraded/missing states show warning treatment
+- complete/done states show a ready/check treatment
+
+The office panel participates in the existing collapse, drag/reorder, and local layout persistence system. Reduced-motion users keep the same status visibility with looping animation toned down.
+
 ## Local runtime logs
 
 Runtime-backed continuity is stored in append-only NDJSON logs:

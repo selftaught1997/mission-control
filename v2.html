@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mission Control v2</title>
+  <title>Mission Control v2.3</title>
   <style>
     :root {
       color-scheme: dark;
@@ -11,7 +11,9 @@
       --surface: #121418;
       --surface-2: #191c22;
       --surface-3: #20252d;
+      --surface-glass: rgba(18, 20, 24, 0.86);
       --line: #2d333d;
+      --line-soft: rgba(255, 255, 255, 0.06);
       --text: #f3f5f7;
       --muted: #9aa3af;
       --quiet: #687180;
@@ -20,6 +22,7 @@
       --green: #54d887;
       --blue: #63a4ff;
       --violet: #a88cff;
+      --cyan: #55d7e8;
       --radius: 8px;
     }
 
@@ -27,7 +30,9 @@
     body {
       margin: 0;
       min-height: 100vh;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at 20% -10%, rgba(99, 164, 255, 0.12), transparent 36rem),
+        linear-gradient(180deg, #0c0e12 0%, var(--bg) 34rem);
       color: var(--text);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       letter-spacing: 0;
@@ -47,7 +52,7 @@
       justify-content: space-between;
       gap: 16px;
       padding: 0 0 18px;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid var(--line-soft);
     }
 
     .eyebrow {
@@ -74,7 +79,7 @@
       border: 1px solid var(--line);
       border-radius: 999px;
       color: var(--muted);
-      background: var(--surface);
+      background: rgba(18, 20, 24, 0.82);
       white-space: nowrap;
       font-size: 0.76rem;
       font-weight: 700;
@@ -104,11 +109,13 @@
     .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); flex: 0 0 auto; }
     .connected .pulse { background: var(--green); box-shadow: 0 0 0 5px rgba(84, 216, 135, 0.08); }
     .stale .pulse, .failed .pulse { background: var(--red); }
-    .badge.running { color: var(--green); border-color: rgba(84, 216, 135, 0.45); }
+    .badge.running { color: var(--green); border-color: rgba(84, 216, 135, 0.45); background: rgba(84, 216, 135, 0.07); }
     .badge.idle { color: var(--blue); border-color: rgba(99, 164, 255, 0.38); }
     .badge.blocked, .badge.failed, .badge.missing, .badge.disconnected { color: var(--red); border-color: rgba(255, 92, 102, 0.42); }
     .badge.done, .badge.complete, .badge.subscribed { color: var(--green); border-color: rgba(84, 216, 135, 0.42); }
     .badge.pending, .badge.active, .badge.backfilling, .badge.connecting { color: var(--amber); border-color: rgba(245, 184, 75, 0.42); }
+    .badge.planning { color: var(--violet); border-color: rgba(168, 140, 255, 0.42); background: rgba(168, 140, 255, 0.08); }
+    .badge.waiting { color: var(--amber); border-color: rgba(245, 184, 75, 0.42); background: rgba(245, 184, 75, 0.07); }
 
     .runtime-strip {
       display: grid;
@@ -118,7 +125,7 @@
     }
 
     .runtime-cell, .metric, .panel, .agent-card, .item, .session-row, .message-row {
-      background: var(--surface);
+      background: linear-gradient(180deg, rgba(25, 28, 34, 0.96), rgba(18, 20, 24, 0.96));
       border: 1px solid var(--line);
       border-radius: var(--radius);
     }
@@ -168,7 +175,12 @@
       gap: 14px;
       align-items: start;
     }
-    .panel { padding: 14px; min-width: 0; transition: border-color 0.15s ease, background 0.15s ease; }
+    .panel {
+      padding: 14px;
+      min-width: 0;
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.18);
+      transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    }
     .panel[data-span="12"] { grid-column: span 12; }
     .panel[data-span="8"] { grid-column: span 8; }
     .panel[data-span="6"] { grid-column: span 6; }
@@ -178,7 +190,7 @@
     .panel.collapsed { padding-bottom: 12px; }
     .panel.collapsed .panel-body, .panel.collapsed .source-note { display: none; }
     .panel-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
-    .panel-title { margin: 0; font-size: 0.8rem; color: var(--muted); font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
+    .panel-title { margin: 0; font-size: 0.76rem; color: var(--muted); font-weight: 850; text-transform: uppercase; letter-spacing: 0.1em; }
     .panel-meta { display: flex; align-items: center; gap: 8px; min-width: 0; }
     .panel-controls { display: flex; align-items: center; gap: 6px; flex-wrap: nowrap; }
     .panel-button, .drag-handle {
@@ -243,6 +255,80 @@
     }
     .filter-chip.active { color: var(--text); border-color: rgba(99, 164, 255, 0.55); background: #151a22; }
 
+    .office-panel {
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(22, 26, 33, 0.98), rgba(13, 15, 19, 0.98)),
+        var(--surface);
+    }
+    .office-stage {
+      position: relative;
+      min-height: 250px;
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(99, 164, 255, 0.07), transparent 48%),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        #101319;
+      background-size: auto, 54px 54px, 54px 54px, auto;
+    }
+    .office-svg { display: block; width: 100%; height: auto; min-height: 250px; }
+    .office-station { color: var(--quiet); }
+    .office-station .station-accent { fill: var(--blue); opacity: 0.86; }
+    .office-station .monitor-screen { fill: #18202a; stroke: rgba(255,255,255,0.12); }
+    .office-station .desk { fill: #252b34; stroke: rgba(255,255,255,0.12); }
+    .office-station .chair { fill: #1b2028; }
+    .office-station .avatar { fill: #303844; stroke: rgba(255,255,255,0.16); }
+    .office-station .head { fill: #c7ced8; }
+    .office-station .status-light { fill: currentColor; }
+    .office-station .status-ring { stroke: currentColor; opacity: 0.5; }
+    .office-station .thought, .office-station .typing-dot, .office-station .success-mark, .office-station .warning-mark { opacity: 0; }
+    .office-station.state-idle { color: var(--blue); }
+    .office-station.state-idle .monitor-screen { fill: #151922; }
+    .office-station.state-planning { color: var(--violet); }
+    .office-station.state-planning .thought { opacity: 1; animation: officeFloat 2.6s ease-in-out infinite; }
+    .office-station.state-active { color: var(--green); }
+    .office-station.state-active .monitor-screen { fill: #143024; filter: drop-shadow(0 0 9px rgba(84, 216, 135, 0.28)); }
+    .office-station.state-active .typing-dot { opacity: 1; animation: officeBlink 1s ease-in-out infinite; }
+    .office-station.state-waiting { color: var(--amber); }
+    .office-station.state-waiting .status-ring { animation: officePulse 1.8s ease-in-out infinite; }
+    .office-station.state-blocked { color: var(--red); }
+    .office-station.state-blocked .monitor-screen { fill: #33181c; }
+    .office-station.state-blocked .warning-mark { opacity: 1; }
+    .office-station.state-complete { color: var(--green); }
+    .office-station.state-complete .success-mark { opacity: 1; }
+    .office-station.state-complete .monitor-screen { fill: #172a20; }
+    .office-label {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .office-label-card {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(12, 14, 18, 0.72);
+      padding: 9px;
+    }
+    .office-label-card strong { display: block; font-size: 0.84rem; }
+    .office-label-card span { display: block; color: var(--muted); font-size: 0.72rem; margin-top: 3px; overflow-wrap: anywhere; }
+
+    @keyframes officeBlink {
+      0%, 100% { opacity: 0.25; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(-1px); }
+    }
+    @keyframes officePulse {
+      0%, 100% { opacity: 0.35; transform: scale(1); }
+      50% { opacity: 0.9; transform: scale(1.18); }
+    }
+    @keyframes officeFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
     .agents-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
     .agent-card, .session-row {
       padding: 14px;
@@ -250,7 +336,7 @@
       min-width: 0;
       text-align: left;
     }
-    .agent-card.selected, .session-row.selected { border-color: var(--blue); background: #151a22; }
+    .agent-card.selected, .session-row.selected { border-color: var(--blue); background: #151a22; box-shadow: inset 0 0 0 1px rgba(99, 164, 255, 0.2); }
     .agent-card.fresh { box-shadow: inset 0 0 0 1px rgba(84, 216, 135, 0.18); }
     .agent-top, .item-head, .session-top { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
     .agent-name, .session-title { font-size: 1rem; font-weight: 800; overflow-wrap: anywhere; }
@@ -290,6 +376,16 @@
     .message-meta { display: flex; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 0.74rem; margin-bottom: 7px; }
     .message-content { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.42; font-size: 0.86rem; color: var(--text); max-height: 220px; overflow: auto; }
 
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
+      .office-station .thought, .office-station .typing-dot { opacity: 0.82; }
+    }
+
     @media (max-width: 1280px) {
       .layout { grid-template-columns: minmax(0, 1fr) minmax(390px, 0.9fr); }
       .timeline-column { grid-column: 1 / -1; }
@@ -314,6 +410,7 @@
       .agents-grid { grid-template-columns: 1fr; }
       .feed, .list, .sessions-list, .transcript { max-height: none; }
       .panel.has-size .panel-body { max-height: 360px; }
+      .office-label { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .kv div { grid-template-columns: 1fr; gap: 3px; }
       .item-head, .session-top { display: grid; }
       .time { white-space: normal; }
@@ -328,7 +425,7 @@
     <header class="topbar">
       <div>
         <div class="eyebrow">Private live operations</div>
-        <h1>Mission Control v2</h1>
+        <h1>Mission Control v2.3</h1>
       </div>
       <div class="top-actions" aria-label="Dashboard mode">
         <div class="mode-switch" aria-label="Dashboard mode">
@@ -377,6 +474,14 @@
       </section>
 
       <section class="panel-grid" id="livePanelGrid" aria-label="Live panels">
+        <section class="panel office-panel" data-panel-id="agent-office" data-span="12">
+          <div class="panel-head">
+            <div class="panel-meta"><h2 class="panel-title">Agent Office</h2><span class="badge" id="officeStateBadge">Runtime state</span></div>
+            <div class="panel-controls" data-panel-controls></div>
+          </div>
+          <div class="panel-body"><div id="agentOffice"></div></div>
+        </section>
+
         <section class="panel" data-panel-id="agent-status-board" data-span="8">
           <div class="panel-head">
             <div class="panel-meta"><h2 class="panel-title">Agent Status Board</h2><span class="badge" id="snapshotTime">No snapshot</span></div>
@@ -453,6 +558,7 @@
     const SIZE_LABELS = { compact: 'S', medium: 'M', expanded: 'L' };
     const PANEL_REGISTRY = {
       live: [
+        { id: 'agent-office', label: 'Agent Office', span: 12, defaultCollapsed: false },
         { id: 'agent-status-board', label: 'Agent Status Board', span: 8 },
         { id: 'tracked-sessions', label: 'Tracked Sessions', span: 4 },
         { id: 'session-transcript', label: 'Session Transcript', span: 4, sizes: ['compact', 'medium', 'expanded'], defaultSize: 'medium' },
@@ -586,6 +692,8 @@
       runtimeBackfill: document.getElementById('runtimeBackfill'),
       runtimeLast: document.getElementById('runtimeLast'),
       snapshotTime: document.getElementById('snapshotTime'),
+      agentOffice: document.getElementById('agentOffice'),
+      officeStateBadge: document.getElementById('officeStateBadge'),
       agents: document.getElementById('agents'),
       details: document.getElementById('details'),
       feed: document.getElementById('feed'),
@@ -628,12 +736,38 @@
 
     function badgeClass(status) {
       const s = String(status || '').toLowerCase();
-      if (['backend_running', 'running', 'working', 'rendering', 'assembling', 'validating', 'packaging', 'planning', 'reading_repo', 'running_tools', 'thinking', 'replying', 'connected'].includes(s)) return 'running';
+      if (['backend_running', 'running', 'working', 'rendering', 'assembling', 'validating', 'packaging', 'reading_repo', 'running_tools', 'replying', 'connected'].includes(s)) return 'running';
+      if (['planning', 'thinking', 'reviewing', 'drafting'].includes(s)) return 'planning';
       if (['idle'].includes(s)) return 'idle';
       if (['blocked', 'failed', 'missing', 'error', 'backend_failed', 'disconnected', 'connect_error', 'degraded'].includes(s)) return 'failed';
       if (['done', 'complete', 'success', 'subscribed'].includes(s)) return 'done';
-      if (['active', 'pending', 'claiming_task', 'classifying', 'backfilling', 'subscribing', 'connecting'].includes(s)) return 'active';
+      if (['pending', 'queued', 'waiting', 'claiming_task', 'backfilling', 'subscribing', 'connecting'].includes(s)) return 'waiting';
+      if (['active', 'classifying'].includes(s)) return 'active';
       return '';
+    }
+
+    function officeState(agent) {
+      const status = String(agent?.status || agent?.state || '').toLowerCase();
+      const stateName = String(agent?.state || '').toLowerCase();
+      const result = String(agent?.last_result_status || agent?.last_outcome || '').toLowerCase();
+      if (agent?.runtime?.active || ['backend_running', 'running', 'working', 'rendering', 'assembling', 'validating', 'packaging', 'reading_repo', 'running_tools', 'replying', 'active'].includes(status)) return 'active';
+      if (['blocked', 'failed', 'missing', 'error', 'backend_failed', 'disconnected', 'connect_error', 'degraded'].includes(status) || ['blocked', 'failed'].includes(stateName)) return 'blocked';
+      if (['planning', 'thinking', 'reviewing', 'drafting', 'classifying'].includes(status) || ['planning', 'thinking'].includes(stateName)) return 'planning';
+      if (['pending', 'queued', 'waiting', 'claiming_task', 'backfilling', 'subscribing', 'connecting'].includes(status)) return 'waiting';
+      if (status === 'idle' || stateName === 'idle') return 'idle';
+      if (['done', 'complete', 'success'].includes(status) || ['done', 'complete', 'success'].includes(result)) return 'complete';
+      return 'idle';
+    }
+
+    function officeStateLabel(stateName) {
+      return {
+        idle: 'resting',
+        planning: 'thinking',
+        active: 'working',
+        waiting: 'waiting',
+        blocked: 'blocked',
+        complete: 'ready'
+      }[stateName] || stateName;
     }
 
     function label(value) {
@@ -868,6 +1002,7 @@
       els.metricOutputs.textContent = snapshot.outputs?.length ?? 0;
 
       renderRuntimeHealth();
+      renderOffice(snapshot.agents || []);
       renderAgents(snapshot.agents || []);
       renderDetails(snapshot);
       renderArtifacts(snapshot);
@@ -921,6 +1056,67 @@
         els.runtimeLast.textContent = 'unknown';
       }
       updateStickySummary();
+    }
+
+    function officeStationMarkup(agent, index) {
+      const stateName = officeState(agent);
+      const x = 68 + index * 210;
+      const y = 48;
+      const name = agent?.name || ['Gustav', 'Altair', 'Lyra', 'Vega'][index] || 'Agent';
+      return `
+        <g class="office-station state-${escapeHtml(stateName)}" data-office-agent="${escapeHtml(agent?.id || name.toLowerCase())}" transform="translate(${x} ${y})" role="img" aria-label="${escapeHtml(name)} ${escapeHtml(officeStateLabel(stateName))}">
+          <rect class="station-accent" x="8" y="0" width="104" height="4" rx="2"></rect>
+          <rect class="monitor-screen" x="22" y="28" width="76" height="50" rx="7"></rect>
+          <rect x="45" y="78" width="30" height="10" rx="3" fill="#202631"></rect>
+          <rect class="desk" x="0" y="92" width="120" height="18" rx="5"></rect>
+          <rect class="desk" x="12" y="108" width="10" height="52" rx="3"></rect>
+          <rect class="desk" x="98" y="108" width="10" height="52" rx="3"></rect>
+          <rect class="chair" x="38" y="116" width="44" height="28" rx="10"></rect>
+          <circle class="head" cx="60" cy="104" r="14"></circle>
+          <path class="avatar" d="M36 138c4-18 44-18 48 0v11H36z"></path>
+          <circle class="status-light" cx="103" cy="34" r="5"></circle>
+          <circle class="status-ring" cx="103" cy="34" r="11" fill="none" stroke-width="2"></circle>
+          <circle class="typing-dot" cx="42" cy="54" r="3" fill="currentColor"></circle>
+          <circle class="typing-dot" cx="54" cy="54" r="3" fill="currentColor" style="animation-delay:.12s"></circle>
+          <circle class="typing-dot" cx="66" cy="54" r="3" fill="currentColor" style="animation-delay:.24s"></circle>
+          <circle class="thought" cx="82" cy="18" r="4" fill="currentColor"></circle>
+          <circle class="thought" cx="94" cy="10" r="6" fill="currentColor" style="animation-delay:.2s"></circle>
+          <path class="success-mark" d="M42 52l10 10 25-26" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path class="warning-mark" d="M60 36l27 48H33z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"></path>
+          <line class="warning-mark" x1="60" y1="52" x2="60" y2="66" stroke="currentColor" stroke-width="5" stroke-linecap="round"></line>
+          <circle class="warning-mark" cx="60" cy="75" r="3" fill="currentColor"></circle>
+          <text x="60" y="188" text-anchor="middle" fill="currentColor" font-size="14" font-weight="800">${escapeHtml(name)}</text>
+          <text x="60" y="207" text-anchor="middle" fill="#9aa3af" font-size="11">${escapeHtml(officeStateLabel(stateName))}</text>
+        </g>
+      `;
+    }
+
+    function renderOffice(agents) {
+      const expected = ['gustav', 'altair', 'lyra', 'vega'];
+      const ordered = expected.map((id) => agents.find(agent => agent.id === id) || { id, name: id.charAt(0).toUpperCase() + id.slice(1), status: 'missing', state: 'missing' });
+      const counts = ordered.reduce((acc, agent) => {
+        const stateName = officeState(agent);
+        acc[stateName] = (acc[stateName] || 0) + 1;
+        return acc;
+      }, {});
+      els.officeStateBadge.textContent = `${counts.active || 0} working / ${counts.blocked || 0} blocked`;
+      els.officeStateBadge.className = `badge ${counts.blocked ? 'failed' : counts.active ? 'running' : counts.planning ? 'planning' : 'idle'}`;
+      els.agentOffice.innerHTML = `
+        <div class="office-stage">
+          <svg class="office-svg" viewBox="0 0 900 280" aria-labelledby="officeTitle" role="img">
+            <title id="officeTitle">Runtime-driven agent office</title>
+            <rect x="24" y="24" width="852" height="202" rx="14" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)"></rect>
+            <path d="M24 226h852v28H24z" fill="rgba(0,0,0,0.18)"></path>
+            ${ordered.map(officeStationMarkup).join('')}
+          </svg>
+        </div>
+        <div class="office-label">
+          ${ordered.map(agent => {
+            const stateName = officeState(agent);
+            return `<div class="office-label-card"><strong>${escapeHtml(agent.name)}</strong><span>${escapeHtml(officeStateLabel(stateName))} / ${escapeHtml(agent.status || agent.state || 'unknown')}</span></div>`;
+          }).join('')}
+        </div>
+      `;
     }
 
     function renderAgents(agents) {

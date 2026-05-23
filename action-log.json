@@ -2086,5 +2086,13 @@
     "status": "success",
     "summary": "Mission Control v2.2 layout refinement shipped",
     "detail": "Added per-panel collapse/expand controls, size controls for tall panels, localStorage-backed layout persistence, drag/reorder support, sticky summary controls, timeline filters, reset-layout behavior, and cleaner default panel states without weakening the live runtime console or executive mode. Validated on the live host with browser checks for collapse, size cycling, drag/reorder persistence, mode persistence, reset recovery, and corrupted-layout recovery."
+  },
+  {
+    "id": 262,
+    "timestamp": "2026-05-23T21:10:41Z",
+    "category": "Mission Control",
+    "status": "success",
+    "summary": "Mission Control v2.3 visual and Agent Office shipped",
+    "detail": "Added a visual polish pass plus a lightweight runtime-driven Agent Office panel for Gustav, Altair, Lyra, and Vega. The office scene is SVG/CSS-based, tied to real agent state, compatible with collapse/drag/persistence, and validated on the live host without interrupting the runtime feed. Host checks confirmed runtime health, tracked sessions, transcript, timeline, Executive mode, office panel presence, and office-panel layout controls all remained functional."
   }
 ]
