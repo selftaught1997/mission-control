@@ -1,9 +1,15 @@
 {
-  "status": "idle",
-  "task": null,
-  "detail": "Heartbeat complete — Mission Control reviewed, no new user-facing issues",
-  "startedAt": null,
-  "updatedAt": 1779530640000,
+  "schema_version": "1.1",
   "agent": "Gustav",
+  "status": "idle",
+  "state": "idle",
+  "detail": "Heartbeat complete — Mission Control runtime-console upgrade synced and committed-ready.",
+  "current_step": "heartbeat-runtime-console-sync",
+  "task": null,
+  "startedAt": null,
+  "updatedAt": 1779539040000,
+  "last_updated": "2026-05-23T12:24:00Z",
+  "last_activity_at": "2026-05-23T12:24:00Z",
+  "activity_counter": 2,
   "emoji": "🦾"
 }

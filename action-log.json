@@ -2014,5 +2014,21 @@
     "status": "success",
     "summary": "Ran a mid-morning heartbeat review and confirmed Mission Control still matches the live draft queue and current status state.",
     "detail": "Reviewed HEARTBEAT.md, confirmed the workspace and nested Mission Control repos were clean, checked that the live draft review queue and current status state were still aligned with Mission Control, refreshed mission-control/agent-status.json and agent-history.json for the current mid-morning window, updated drafts/review-tracker.md, and logged the quiet sync in today's memory. No outward alert was needed."
+  },
+  {
+    "id": 253,
+    "timestamp": "2026-05-23T11:51:51Z",
+    "category": "Mission Control",
+    "status": "success",
+    "summary": "Mission Control v2 upgraded to subscriber-first runtime console",
+    "detail": "Added a Gateway runtime bridge, tracked session registry, transcript backfill, durable runtime/transcript NDJSON logs, runtime health/session/timeline APIs, typed SSE updates, and richer Mission Control UI panels for sessions, transcript, and timeline. Validated live Aaron↔Gustav transcript visibility, real Altair task lifecycle visibility, runtime log replay after restart, and host deployment on port 18792."
+  },
+  {
+    "id": 254,
+    "timestamp": "2026-05-23T12:24:00Z",
+    "category": "Mission Control",
+    "status": "success",
+    "summary": "Ran an early-afternoon heartbeat review and synced the new Mission Control runtime-console work.",
+    "detail": "Reviewed HEARTBEAT.md, confirmed the fresh Mission Control subscriber-first runtime-console work was real completed output rather than scratch churn, classified the tiny `drafts/altair-mission-control-validation-note.md` artifact as internal validation support rather than an Aaron-review item, refreshed Mission Control status/history metadata for the current early-afternoon window, updated the draft review tracker, and prepared the workspace plus nested Mission Control repo commits so the live dashboard state and repo history stay aligned."
   }
 ]

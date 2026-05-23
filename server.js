@@ -4,6 +4,7 @@ const fs = require('fs');
 const fsp = require('fs/promises');
 const path = require('path');
 const url = require('url');
+const crypto = require('crypto');
 
 const PORT = Number(process.env.MISSION_CONTROL_PORT || process.env.PORT || 18792);
 const HOST = process.env.MISSION_CONTROL_HOST || '0.0.0.0';
@@ -11,6 +12,15 @@ const POLL_INTERVAL_MS = Math.max(250, Number(process.env.MISSION_CONTROL_POLL_M
 const ROOT = __dirname;
 const WORKSPACE = path.resolve(ROOT, '..');
 const EVENT_LOG = path.join(ROOT, 'events.ndjson');
+const RUNTIME_LOG = path.join(ROOT, 'runtime-events.ndjson');
+const TRANSCRIPT_LOG = path.join(ROOT, 'transcript-events.ndjson');
+const GATEWAY_URL = process.env.MISSION_CONTROL_GATEWAY_URL || 'ws://127.0.0.1:18789';
+const RUNTIME_STALE_MS = Math.max(5000, Number(process.env.MISSION_CONTROL_RUNTIME_STALE_MS || 45000));
+const SESSION_STALE_MS = Math.max(10000, Number(process.env.MISSION_CONTROL_SESSION_STALE_MS || 10 * 60 * 1000));
+const HISTORY_LIMIT = Math.max(10, Number(process.env.MISSION_CONTROL_HISTORY_LIMIT || 80));
+const SESSION_LIMIT = Math.max(10, Number(process.env.MISSION_CONTROL_SESSION_LIMIT || 80));
+const TIMELINE_LIMIT = Math.max(20, Number(process.env.MISSION_CONTROL_TIMELINE_LIMIT || 220));
+
 const AGENTS = [
   { id: 'gustav', name: 'Gustav', root: ROOT, statusPath: path.join(ROOT, 'agent-status.json') },
   { id: 'altair', name: 'Altair', root: path.join(WORKSPACE, 'altair'), statusPath: path.join(WORKSPACE, 'altair/status.json') },
@@ -21,6 +31,38 @@ const AGENTS = [
 const clients = new Set();
 let lastSnapshotSignature = '';
 let lastEventLogSize = 0;
+
+const runtimeState = {
+  connected: false,
+  connecting: false,
+  degraded: true,
+  gatewayUrl: GATEWAY_URL,
+  status: 'starting',
+  lastRuntimeEventAt: null,
+  lastConnectAt: null,
+  lastDisconnectAt: null,
+  lastSessionRefreshAt: null,
+  reconnectAttempts: 0,
+  lastError: null,
+  trackedSessionCount: 0,
+  subscribedSessionCount: 0,
+  backfill: { pending: 0, complete: 0, failed: 0 },
+  logReplayAt: null,
+  lastHealth: null
+};
+
+const runtimeModel = {
+  client: null,
+  modules: null,
+  sessions: new Map(),
+  transcripts: new Map(),
+  runtimeEvents: new Map(),
+  transcriptKeys: new Set(),
+  runtimeKeys: new Set(),
+  subscriptions: new Map(),
+  liveDeltas: new Map(),
+  started: false
+};
 
 function sendJson(res, status, body) {
   const text = JSON.stringify(body, null, 2);
@@ -83,6 +125,541 @@ function normalizeWorkspacePath(filePath) {
   return resolved.startsWith(WORKSPACE) ? rel(resolved) : filePath;
 }
 
+function stableHash(value) {
+  return crypto.createHash('sha1').update(JSON.stringify(value)).digest('hex').slice(0, 16);
+}
+
+function toIso(value) {
+  if (!value) return new Date().toISOString();
+  if (typeof value === 'number') return new Date(value).toISOString();
+  if (value instanceof Date) return value.toISOString();
+  const parsed = Date.parse(String(value));
+  return Number.isFinite(parsed) ? new Date(parsed).toISOString() : new Date().toISOString();
+}
+
+function firstString(...values) {
+  for (const value of values) {
+    if (typeof value === 'string' && value.trim()) return value.trim();
+  }
+  return null;
+}
+
+function extractText(content) {
+  if (content == null) return '';
+  if (typeof content === 'string') return content;
+  if (Array.isArray(content)) {
+    return content.map((part) => {
+      if (typeof part === 'string') return part;
+      if (!part || typeof part !== 'object') return '';
+      if (typeof part.text === 'string') return part.text;
+      if (typeof part.thinking === 'string') return part.thinking ? '[thinking]' : '';
+      if (part.type === 'toolCall') return `[tool call] ${part.name || part.toolName || 'tool'}`;
+      if (part.type === 'toolResult') return `[tool result] ${part.name || part.toolName || 'tool'}`;
+      return firstString(part.content, part.value, part.summary) || '';
+    }).filter(Boolean).join('\n');
+  }
+  if (typeof content === 'object') return firstString(content.text, content.content, content.summary) || JSON.stringify(content).slice(0, 800);
+  return String(content);
+}
+
+function inferAgentFromSessionKey(sessionKey) {
+  const lower = String(sessionKey || '').toLowerCase();
+  if (lower.includes('altair')) return 'altair';
+  if (lower.includes('lyra')) return 'lyra';
+  if (lower.includes('vega')) return 'vega';
+  if (lower.startsWith('agent:main:') || lower.includes('gustav') || lower.includes('telegram:direct:1430710013')) return 'gustav';
+  return 'gustav';
+}
+
+function inferSessionKey(raw) {
+  return firstString(
+    raw?.sessionKey,
+    raw?.key,
+    raw?.session?.key,
+    raw?.session?.sessionKey,
+    raw?.message?.sessionKey,
+    raw?.payload?.sessionKey,
+    raw?.payload?.key
+  );
+}
+
+function normalizeSession(raw) {
+  const sessionKey = inferSessionKey(raw);
+  if (!sessionKey) return null;
+  const updatedAt = toIso(raw.updatedAt || raw.updated_at || raw.lastUpdated || raw.last_activity_at || raw.timestamp || Date.now());
+  const displayLabel = firstString(
+    raw.origin?.label,
+    raw.label,
+    raw.derivedTitle,
+    raw.displayName,
+    sessionKey
+  ) || sessionKey;
+  const ownerAgent = inferAgentFromSessionKey(sessionKey);
+  const existing = runtimeModel.sessions.get(sessionKey) || {};
+  const status = firstString(raw.status, existing.status) || 'known';
+  return {
+    ...existing,
+    sessionKey,
+    label: displayLabel,
+    ownerAgent,
+    channel: firstString(raw.origin?.surface, raw.origin?.provider, raw.lastChannel, raw.channel, existing.channel) || 'runtime',
+    chatType: firstString(raw.chatType, raw.origin?.chatType, raw.kind, existing.chatType) || 'direct',
+    status,
+    runtimeStatus: status,
+    lastUpdated: updatedAt,
+    lastActivity: toIso(raw.updatedAt || raw.lastActivity || raw.timestamp || existing.lastActivity || updatedAt),
+    subscriptionStatus: existing.subscriptionStatus || 'pending',
+    subscribed: existing.subscribed === true,
+    backfillStatus: existing.backfillStatus || 'pending',
+    backfilledAt: existing.backfilledAt || null,
+    stale: Date.now() - Date.parse(updatedAt) > SESSION_STALE_MS,
+    raw: { ...existing.raw, ...raw }
+  };
+}
+
+function summarizeRuntimeEvent(type, raw, sessionKey) {
+  if (type === 'session.message') {
+    const role = raw?.message?.role || raw?.role || 'message';
+    return `${role} message`;
+  }
+  if (type === 'chat') {
+    const text = extractText(raw?.content || raw?.delta || raw?.message?.content || raw?.text);
+    return text ? `chat ${text.slice(0, 120)}` : 'chat activity';
+  }
+  if (type === 'session.tool') {
+    const phase = firstString(raw?.phase, raw?.data?.phase);
+    const name = firstString(raw?.toolName, raw?.name, raw?.tool?.name, raw?.data?.name) || 'tool';
+    return phase ? `${name} ${phase}` : `tool ${name}`;
+  }
+  if (type === 'sessions.changed') return `session changed ${sessionKey || ''}`.trim();
+  if (type === 'agent') return `agent ${raw?.agentId || raw?.agent || raw?.status || 'activity'}`;
+  if (type === 'health') return raw?.ok === false ? 'runtime health degraded' : 'runtime health ok';
+  return type;
+}
+
+function normalizeRuntimeEvent(type, raw, source = 'live') {
+  const sessionKey = inferSessionKey(raw);
+  const timestamp = toIso(raw?.timestamp || raw?.ts || raw?.message?.timestamp || raw?.updatedAt || Date.now());
+  const agent = firstString(raw?.agent, raw?.agentId, raw?.session?.agentId) || (sessionKey ? inferAgentFromSessionKey(sessionKey) : null);
+  const runId = firstString(raw?.runId, raw?.sessionId, raw?.session?.sessionId);
+  const toolName = firstString(raw?.toolName, raw?.name, raw?.tool?.name, raw?.message?.toolName, raw?.data?.name);
+  const dedupeKey = firstString(raw?.dedupeKey, raw?.id, raw?.eventId, raw?.__openclaw?.id) ||
+    `runtime:${type}:${sessionKey || 'global'}:${runId || ''}:${toolName || ''}:${timestamp}:${stableHash(raw || {})}`;
+  return {
+    dedupeKey,
+    timestamp,
+    eventType: type,
+    sessionKey,
+    agent,
+    runId,
+    toolName,
+    summary: summarizeRuntimeEvent(type, raw, sessionKey),
+    source,
+    raw
+  };
+}
+
+function normalizeTranscriptMessage(sessionKey, raw, source = 'live') {
+  const message = raw?.message && typeof raw.message === 'object' ? raw.message : raw;
+  const role = firstString(message?.role, raw?.role) || 'message';
+  const timestamp = toIso(message?.timestamp || raw?.timestamp || raw?.ts || raw?.updatedAt || Date.now());
+  const content = extractText(message?.content ?? raw?.content ?? raw?.delta ?? raw?.text);
+  const messageId = firstString(message?.id, message?.messageId, message?.responseId, message?.toolCallId, message?.__openclaw?.id, raw?.id, raw?.__openclaw?.id);
+  const seq = message?.seq ?? message?.__openclaw?.seq ?? raw?.seq ?? raw?.__openclaw?.seq ?? null;
+  const toolName = firstString(message?.toolName, message?.name, raw?.toolName, raw?.name);
+  const dedupeKey = firstString(raw?.dedupeKey, message?.dedupeKey) ||
+    `transcript:${sessionKey}:${messageId || seq || `${role}:${timestamp}:${stableHash({ content, toolName })}`}`;
+  return {
+    id: dedupeKey,
+    dedupeKey,
+    timestamp,
+    sessionKey,
+    role,
+    content,
+    messageId: messageId || null,
+    seq,
+    ownerAgent: inferAgentFromSessionKey(sessionKey),
+    toolName,
+    source,
+    raw: message
+  };
+}
+
+async function appendNdjson(filePath, row) {
+  await fsp.appendFile(filePath, JSON.stringify(row) + '\n');
+}
+
+async function readNdjson(filePath, limit = 500) {
+  try {
+    const text = await fsp.readFile(filePath, 'utf8');
+    const lines = text.trim().split('\n').filter(Boolean).slice(-limit);
+    return lines.map((line) => {
+      try {
+        return JSON.parse(line);
+      } catch {
+        return null;
+      }
+    }).filter(Boolean);
+  } catch {
+    return [];
+  }
+}
+
+function getSessionTranscript(sessionKey, limit = 120) {
+  return (runtimeModel.transcripts.get(sessionKey) || [])
+    .slice()
+    .sort((a, b) => Date.parse(a.timestamp) - Date.parse(b.timestamp))
+    .slice(-limit);
+}
+
+function upsertTranscript(row, opts = {}) {
+  if (!row?.sessionKey || !row.dedupeKey || runtimeModel.transcriptKeys.has(row.dedupeKey)) return false;
+  const normalizedRow = { id: row.id || row.dedupeKey, ...row };
+  runtimeModel.transcriptKeys.add(normalizedRow.dedupeKey);
+  const rows = runtimeModel.transcripts.get(normalizedRow.sessionKey) || [];
+  rows.push(normalizedRow);
+  rows.sort((a, b) => Date.parse(a.timestamp) - Date.parse(b.timestamp));
+  runtimeModel.transcripts.set(normalizedRow.sessionKey, rows.slice(-300));
+  const session = runtimeModel.sessions.get(normalizedRow.sessionKey) || normalizeSession({ key: normalizedRow.sessionKey });
+  if (session) {
+    session.lastActivity = normalizedRow.timestamp;
+    session.lastUpdated = normalizedRow.timestamp;
+    session.ownerAgent = session.ownerAgent || normalizedRow.ownerAgent;
+    session.stale = Date.now() - Date.parse(normalizedRow.timestamp) > SESSION_STALE_MS;
+    runtimeModel.sessions.set(normalizedRow.sessionKey, session);
+  }
+  if (!opts.replay) appendNdjson(TRANSCRIPT_LOG, normalizedRow).catch((error) => console.error('transcript append failed:', error));
+  return true;
+}
+
+function upsertRuntimeEvent(row, opts = {}) {
+  if (!row?.dedupeKey || runtimeModel.runtimeKeys.has(row.dedupeKey)) return false;
+  const normalizedRow = { id: row.id || row.dedupeKey, ...row };
+  runtimeModel.runtimeKeys.add(normalizedRow.dedupeKey);
+  runtimeModel.runtimeEvents.set(normalizedRow.dedupeKey, normalizedRow);
+  if (runtimeModel.runtimeEvents.size > 1000) {
+    const oldest = [...runtimeModel.runtimeEvents.values()].sort((a, b) => Date.parse(a.timestamp) - Date.parse(b.timestamp)).slice(0, 200);
+    for (const item of oldest) runtimeModel.runtimeEvents.delete(item.dedupeKey);
+  }
+  runtimeState.lastRuntimeEventAt = normalizedRow.timestamp;
+  if (!opts.replay) appendNdjson(RUNTIME_LOG, normalizedRow).catch((error) => console.error('runtime append failed:', error));
+  return true;
+}
+
+function dedupeTimelineRows(rows, limit = TIMELINE_LIMIT) {
+  const seen = new Set();
+  const result = [];
+  for (const row of rows.filter((item) => item && item.timestamp).sort((a, b) => Date.parse(b.timestamp) - Date.parse(a.timestamp))) {
+    const key = row.id || `${row.event_type || 'event'}:${row.sessionKey || row.task_id || row.agent || 'global'}:${row.timestamp}:${row.summary || ''}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    result.push(row);
+    if (result.length >= limit) break;
+  }
+  return result;
+}
+
+function summarizeHealth(raw) {
+  const channels = Object.entries(raw?.channels || {}).reduce((acc, [name, value]) => {
+    acc[name] = {
+      configured: Boolean(value?.configured),
+      running: Boolean(value?.running),
+      lastError: value?.lastError || null,
+      accountCount: Object.keys(value?.accounts || {}).length
+    };
+    return acc;
+  }, {});
+  return {
+    ok: raw?.ok !== false,
+    ts: raw?.ts || Date.now(),
+    durationMs: raw?.durationMs ?? null,
+    channelOrder: raw?.channelOrder || Object.keys(channels),
+    channels
+  };
+}
+
+function getRuntimeSummary() {
+  runtimeState.trackedSessionCount = runtimeModel.sessions.size;
+  runtimeState.subscribedSessionCount = [...runtimeModel.sessions.values()].filter((session) => session.subscribed).length;
+  runtimeState.backfill = [...runtimeModel.sessions.values()].reduce((acc, session) => {
+    const key = session.backfillStatus === 'complete' ? 'complete' : session.backfillStatus === 'failed' ? 'failed' : 'pending';
+    acc[key] += 1;
+    return acc;
+  }, { pending: 0, complete: 0, failed: 0 });
+  runtimeState.degraded = !runtimeState.connected || (runtimeState.lastRuntimeEventAt && Date.now() - Date.parse(runtimeState.lastRuntimeEventAt) > RUNTIME_STALE_MS);
+  return {
+    ...runtimeState,
+    stale: runtimeState.degraded,
+    trackedSessionCount: runtimeState.trackedSessionCount,
+    subscribedSessionCount: runtimeState.subscribedSessionCount,
+    sessionsWithTranscript: [...runtimeModel.transcripts.values()].filter((rows) => rows.length).length,
+    lastHealth: runtimeState.lastHealth ? summarizeHealth(runtimeState.lastHealth) : null
+  };
+}
+
+function listSessions() {
+  return [...runtimeModel.sessions.values()]
+    .map((session) => ({
+      ...session,
+      stale: Date.now() - Date.parse(session.lastActivity || session.lastUpdated || 0) > SESSION_STALE_MS,
+      transcriptCount: (runtimeModel.transcripts.get(session.sessionKey) || []).length
+    }))
+    .sort((a, b) => Date.parse(b.lastActivity || b.lastUpdated || 0) - Date.parse(a.lastActivity || a.lastUpdated || 0));
+}
+
+function runtimeTimeline(limit = TIMELINE_LIMIT) {
+  const transcript = [...runtimeModel.transcripts.values()].flat().map((row) => ({
+    id: row.dedupeKey,
+    timestamp: row.timestamp,
+    agent: row.ownerAgent,
+    event_type: `transcript.${row.role}`,
+    sessionKey: row.sessionKey,
+    summary: row.content ? row.content.slice(0, 220) : `${row.role} transcript event`,
+    details: { role: row.role, source: row.source, toolName: row.toolName }
+  }));
+  const runtime = [...runtimeModel.runtimeEvents.values()]
+    .filter((row) => !['session.message', 'health'].includes(row.eventType))
+    .map((row) => ({
+      id: row.dedupeKey,
+      timestamp: row.timestamp,
+      agent: row.agent || 'runtime',
+      event_type: row.eventType,
+      sessionKey: row.sessionKey,
+      summary: row.summary,
+      details: { source: row.source, toolName: row.toolName, runId: row.runId }
+    }));
+  return dedupeTimelineRows([...transcript, ...runtime], limit);
+}
+
+async function replayRuntimeLogs() {
+  await Promise.all([
+    fsp.appendFile(RUNTIME_LOG, '', { flag: 'a' }),
+    fsp.appendFile(TRANSCRIPT_LOG, '', { flag: 'a' })
+  ]);
+  for (const row of await readNdjson(TRANSCRIPT_LOG, 2000)) upsertTranscript(row, { replay: true });
+  for (const row of await readNdjson(RUNTIME_LOG, 2000)) {
+    upsertRuntimeEvent(row, { replay: true });
+    if (row.sessionKey && !runtimeModel.sessions.has(row.sessionKey)) {
+      const session = normalizeSession({ key: row.sessionKey, updatedAt: row.timestamp, status: 'replayed' });
+      if (session) runtimeModel.sessions.set(session.sessionKey, session);
+    }
+  }
+  runtimeState.logReplayAt = new Date().toISOString();
+}
+
+async function trackSession(raw, reason = 'discovery') {
+  const session = normalizeSession(raw);
+  if (!session) return null;
+  const existing = runtimeModel.sessions.get(session.sessionKey);
+  runtimeModel.sessions.set(session.sessionKey, {
+    ...existing,
+    ...session,
+    subscriptionStatus: existing?.subscriptionStatus || session.subscriptionStatus,
+    subscribed: existing?.subscribed === true || session.subscribed,
+    backfillStatus: existing?.backfillStatus || session.backfillStatus,
+    backfilledAt: existing?.backfilledAt || session.backfilledAt
+  });
+  const event = normalizeRuntimeEvent('sessions.changed', { session, reason, timestamp: session.lastUpdated }, reason);
+  if (upsertRuntimeEvent(event)) await broadcastTyped('runtime:event', event);
+  subscribeSession(session.sessionKey).catch((error) => markSessionSubscription(session.sessionKey, 'failed', error.message));
+  backfillSession(session.sessionKey).catch((error) => markSessionBackfill(session.sessionKey, 'failed', error.message));
+  return runtimeModel.sessions.get(session.sessionKey);
+}
+
+function markSessionSubscription(sessionKey, status, error = null) {
+  const session = runtimeModel.sessions.get(sessionKey);
+  if (!session) return;
+  session.subscriptionStatus = status;
+  session.subscribed = status === 'subscribed';
+  session.subscriptionError = error;
+  runtimeModel.sessions.set(sessionKey, session);
+}
+
+function markSessionBackfill(sessionKey, status, error = null) {
+  const session = runtimeModel.sessions.get(sessionKey);
+  if (!session) return;
+  session.backfillStatus = status;
+  session.backfillError = error;
+  if (status === 'complete') session.backfilledAt = new Date().toISOString();
+  runtimeModel.sessions.set(sessionKey, session);
+}
+
+async function refreshSessions() {
+  if (!runtimeModel.client || !runtimeState.connected) return;
+  const result = await runtimeModel.client.request('sessions.list', { limit: SESSION_LIMIT, includeDerivedTitles: true });
+  const sessions = Array.isArray(result?.sessions) ? result.sessions : [];
+  runtimeState.lastSessionRefreshAt = new Date().toISOString();
+  for (const session of sessions) await trackSession(session, 'sessions.list');
+  await broadcastTyped('runtime:sessions', { sessions: listSessions(), runtime: getRuntimeSummary() });
+}
+
+async function subscribeSession(sessionKey) {
+  if (!runtimeModel.client || !runtimeState.connected || !sessionKey) return;
+  const state = runtimeModel.subscriptions.get(sessionKey);
+  if (state === 'pending' || state === 'subscribed') return;
+  runtimeModel.subscriptions.set(sessionKey, 'pending');
+  markSessionSubscription(sessionKey, 'subscribing');
+  await runtimeModel.client.request('sessions.messages.subscribe', { key: sessionKey });
+  runtimeModel.subscriptions.set(sessionKey, 'subscribed');
+  markSessionSubscription(sessionKey, 'subscribed');
+}
+
+async function backfillSession(sessionKey) {
+  const session = runtimeModel.sessions.get(sessionKey);
+  if (!runtimeModel.client || !runtimeState.connected || !session || session.backfillStatus === 'complete' || session.backfillStatus === 'backfilling') return;
+  markSessionBackfill(sessionKey, 'backfilling');
+  const result = await runtimeModel.client.request('chat.history', { sessionKey, limit: HISTORY_LIMIT });
+  const messages = Array.isArray(result?.messages) ? result.messages : [];
+  let added = 0;
+  for (const message of messages) {
+    const row = normalizeTranscriptMessage(sessionKey, message, 'backfill');
+    if (upsertTranscript(row)) added += 1;
+  }
+  markSessionBackfill(sessionKey, 'complete');
+  if (added) await broadcastTyped('session:transcript', { sessionKey, transcript: getSessionTranscript(sessionKey), added, source: 'backfill' });
+}
+
+function updateHealth(raw) {
+  runtimeState.lastHealth = summarizeHealth(raw);
+  if (raw?.ok === false) {
+    runtimeState.degraded = true;
+    runtimeState.status = 'degraded';
+  }
+}
+
+async function handleRuntimeEvent(evt) {
+  const type = evt?.event || 'runtime.event';
+  const payload = evt?.payload ?? {};
+  runtimeState.lastRuntimeEventAt = new Date().toISOString();
+
+  if (type === 'tick' || type === 'connect.challenge') return;
+  if (type === 'health') updateHealth(payload);
+
+  if (type === 'sessions.changed') {
+    const sessions = Array.isArray(payload?.sessions) ? payload.sessions : [payload?.session || payload].filter(Boolean);
+    for (const session of sessions) await trackSession(session, 'sessions.changed');
+  }
+
+  const sessionKey = inferSessionKey(payload);
+  if (sessionKey && !runtimeModel.sessions.has(sessionKey)) await trackSession({ key: sessionKey, updatedAt: payload?.timestamp || Date.now() }, type);
+
+  if (type === 'session.message') {
+    const key = sessionKey || inferSessionKey(payload?.message);
+    if (key) {
+      const row = normalizeTranscriptMessage(key, payload, 'live');
+      if (upsertTranscript(row)) await broadcastTyped('session:message', { sessionKey: key, message: row });
+    }
+  } else if (type === 'chat') {
+    const key = sessionKey || firstString(payload?.sessionKey);
+    if (key) {
+      const text = extractText(payload?.delta ?? payload?.content ?? payload?.message?.content ?? payload?.text);
+      if (text && (payload?.final || payload?.done || payload?.message || payload?.role)) {
+        const row = normalizeTranscriptMessage(key, { ...payload, role: payload.role || 'assistant', content: text }, 'live');
+        if (upsertTranscript(row)) await broadcastTyped('session:message', { sessionKey: key, message: row });
+      } else if (text) {
+        const prev = runtimeModel.liveDeltas.get(key) || '';
+        runtimeModel.liveDeltas.set(key, (prev + text).slice(-4000));
+      }
+    }
+  }
+
+  const runtimeEvent = normalizeRuntimeEvent(type, payload, 'live');
+  if (upsertRuntimeEvent(runtimeEvent)) await broadcastTyped('runtime:event', runtimeEvent);
+}
+
+async function loadRuntimeModules() {
+  if (runtimeModel.modules) return runtimeModel.modules;
+  const scopes = await import('/opt/homebrew/lib/node_modules/openclaw/dist/method-scopes-DhuXuLfv.js');
+  const channel = await import('/opt/homebrew/lib/node_modules/openclaw/dist/message-channel-ZzTqBBLH.js');
+  runtimeModel.modules = { scopes, channel };
+  return runtimeModel.modules;
+}
+
+async function startRuntimeBridge() {
+  if (runtimeModel.started) return;
+  runtimeModel.started = true;
+  process.env.OPENCLAW_ALLOW_INSECURE_PRIVATE_WS ||= '1';
+  await replayRuntimeLogs();
+  try {
+    const { scopes, channel } = await loadRuntimeModules();
+    const client = new scopes.u({
+      url: GATEWAY_URL,
+      clientName: channel.h.GATEWAY_CLIENT,
+      clientDisplayName: 'Mission Control v2',
+      mode: channel.m.BACKEND,
+      caps: [channel.f.TOOL_EVENTS],
+      scopes: [scopes.a, scopes.t],
+      onHelloOk: async (hello) => {
+        runtimeState.connected = true;
+        runtimeState.connecting = false;
+        runtimeState.degraded = false;
+        runtimeState.status = 'connected';
+        runtimeState.lastConnectAt = new Date().toISOString();
+        runtimeState.lastError = null;
+        runtimeState.reconnectAttempts = 0;
+        runtimeModel.subscriptions.clear();
+        await broadcastTyped('runtime:status', getRuntimeSummary());
+        try {
+          await client.request('sessions.subscribe', {});
+        } catch (error) {
+          runtimeState.lastError = `sessions.subscribe failed: ${error.message}`;
+        }
+        try {
+          await refreshSessions();
+        } catch (error) {
+          runtimeState.lastError = `sessions.list failed: ${error.message}`;
+        }
+        for (const session of listSessions()) {
+          subscribeSession(session.sessionKey).catch((error) => markSessionSubscription(session.sessionKey, 'failed', error.message));
+          backfillSession(session.sessionKey).catch((error) => markSessionBackfill(session.sessionKey, 'failed', error.message));
+        }
+        const event = normalizeRuntimeEvent('health', { ok: true, hello, timestamp: Date.now() }, 'bridge');
+        if (upsertRuntimeEvent(event)) await broadcastTyped('runtime:event', event);
+      },
+      onEvent: (evt) => {
+        handleRuntimeEvent(evt).catch((error) => {
+          runtimeState.lastError = `event ${evt?.event || 'unknown'} failed: ${error.message}`;
+          console.error('runtime event failed:', error);
+        });
+      },
+      onConnectError: (error) => {
+        runtimeState.connected = false;
+        runtimeState.connecting = true;
+        runtimeState.degraded = true;
+        runtimeState.status = 'connect_error';
+        runtimeState.lastError = error.message;
+        runtimeState.reconnectAttempts += 1;
+        broadcastTyped('runtime:status', getRuntimeSummary()).catch(() => {});
+      },
+      onClose: (code, reason) => {
+        runtimeState.connected = false;
+        runtimeState.connecting = true;
+        runtimeState.degraded = true;
+        runtimeState.status = 'disconnected';
+        runtimeState.lastDisconnectAt = new Date().toISOString();
+        runtimeState.lastError = `gateway closed (${code}): ${reason || 'no reason'}`;
+        for (const session of runtimeModel.sessions.values()) {
+          session.subscribed = false;
+          session.subscriptionStatus = 'disconnected';
+        }
+        runtimeModel.subscriptions.clear();
+        broadcastTyped('runtime:status', getRuntimeSummary()).catch(() => {});
+      }
+    });
+    runtimeModel.client = client;
+    runtimeState.connecting = true;
+    runtimeState.status = 'connecting';
+    client.start();
+  } catch (error) {
+    runtimeState.connected = false;
+    runtimeState.connecting = false;
+    runtimeState.degraded = true;
+    runtimeState.status = 'disabled';
+    runtimeState.lastError = error.message;
+    console.error('runtime bridge failed:', error);
+  }
+}
+
 function summarizeStatus(agent, raw) {
   if (!raw) {
     return {
@@ -95,6 +672,7 @@ function summarizeStatus(agent, raw) {
       repo_path: null,
       last_updated: null,
       last_result_status: null,
+      last_outcome: null,
       last_report_path: null,
       queue_counts: {},
       notes: agent.optional ? ['No local status source found yet.'] : ['Status file could not be read.']
@@ -118,6 +696,7 @@ function summarizeStatus(agent, raw) {
     activity_counter: Number(raw.activity_counter || 0),
     last_task_id: raw.last_task_id || raw.last_brief_id || null,
     last_result_status: raw.last_result_status || null,
+    last_outcome: raw.last_outcome || raw.last_result_status || null,
     last_report_path: normalizeWorkspacePath(raw.last_report_path),
     last_report_url: raw.last_report_path ? `/files/${normalizeWorkspacePath(raw.last_report_path)}` : null,
     queue_counts: raw.queue_counts || {},
@@ -127,9 +706,21 @@ function summarizeStatus(agent, raw) {
 }
 
 async function collectAgents() {
+  const sessions = listSessions();
   const agents = [];
   for (const agent of AGENTS) {
-    agents.push(summarizeStatus(agent, await readJson(agent.statusPath, null)));
+    const summary = summarizeStatus(agent, await readJson(agent.statusPath, null));
+    const linkedSessions = sessions.filter((session) => session.ownerAgent === agent.id).slice(0, 8);
+    const runtimeRecent = runtimeTimeline(80).filter((event) => event.agent === agent.id).slice(0, 8);
+    const runtimeActive = linkedSessions.some((session) => session.subscribed && !session.stale && ['running', 'active', 'working'].includes(String(session.runtimeStatus || '').toLowerCase()));
+    agents.push({
+      ...summary,
+      runtime: {
+        active: runtimeState.connected && runtimeActive,
+        sessions: linkedSessions,
+        recent_activity: runtimeRecent
+      }
+    });
   }
   return agents;
 }
@@ -205,18 +796,7 @@ async function collectOutputs() {
 }
 
 async function readEventLog(limit = 80) {
-  try {
-    const text = await fsp.readFile(EVENT_LOG, 'utf8');
-    return text.trim().split('\n').filter(Boolean).map((line) => {
-      try {
-        return JSON.parse(line);
-      } catch {
-        return null;
-      }
-    }).filter(Boolean).slice(-limit);
-  } catch {
-    return [];
-  }
+  return readNdjson(EVENT_LOG, limit);
 }
 
 async function collectActionEvents(limit = 25) {
@@ -260,10 +840,7 @@ async function buildSnapshot() {
     summary: report.summary,
     details: { path: report.path, status: report.status }
   }));
-  const events = [...loggedEvents, ...stateEvents, ...reportEvents, ...actionEvents]
-    .filter((event) => event.timestamp)
-    .sort((a, b) => Date.parse(b.timestamp) - Date.parse(a.timestamp))
-    .slice(0, 100);
+  const events = dedupeTimelineRows([...runtimeTimeline(100), ...loggedEvents, ...stateEvents, ...reportEvents, ...actionEvents], 140);
 
   const totals = agents.reduce((acc, agent) => {
     acc.active += Number(agent.queue_counts.active || 0);
@@ -276,7 +853,7 @@ async function buildSnapshot() {
   }, { active: 0, blocked: 0, pending: 0, done: 0, failed: 0, running: 0 });
 
   return {
-    schema_version: '1.0',
+    schema_version: '2.0',
     generated_at: new Date().toISOString(),
     source: 'mission-control-v2',
     private_local_first: true,
@@ -285,7 +862,10 @@ async function buildSnapshot() {
     tasks: states,
     reports,
     outputs,
-    events
+    events,
+    runtime: getRuntimeSummary(),
+    sessions: listSessions().slice(0, 80),
+    timeline: events
   };
 }
 
@@ -310,16 +890,20 @@ function writeSse(res, eventName, data) {
 }
 
 async function broadcast(eventName, data) {
-  for (const res of clients) {
-    writeSse(res, eventName, data);
-  }
+  for (const res of clients) writeSse(res, eventName, data);
+}
+
+async function broadcastTyped(eventName, data) {
+  await broadcast(eventName, data);
+  if (eventName !== 'runtime:status') await broadcast('runtime:status', getRuntimeSummary());
 }
 
 async function poll() {
   const snapshot = await buildSnapshot();
   const signature = JSON.stringify({
-    agents: snapshot.agents.map((agent) => [agent.id, agent.status, agent.current_task_id, agent.last_updated, agent.last_result_status]),
+    agents: snapshot.agents.map((agent) => [agent.id, agent.status, agent.current_task_id, agent.last_updated, agent.last_result_status, agent.runtime?.active]),
     totals: snapshot.totals,
+    runtime: [snapshot.runtime.connected, snapshot.runtime.status, snapshot.runtime.trackedSessionCount, snapshot.runtime.lastRuntimeEventAt],
     firstEvent: snapshot.events[0]?.id || snapshot.events[0]?.timestamp,
     firstOutput: snapshot.outputs[0]?.path
   });
@@ -332,16 +916,36 @@ async function poll() {
   const size = stat?.size || 0;
   if (size > lastEventLogSize) {
     const events = await readEventLog(20);
-    for (const event of events.slice(-5)) {
-      await broadcast('event', event);
-    }
+    for (const event of events.slice(-5)) await broadcast('event', event);
   }
   lastEventLogSize = size;
 }
 
+function decodeSessionKey(encoded) {
+  try {
+    return decodeURIComponent(encoded);
+  } catch {
+    return encoded;
+  }
+}
+
 async function handleApi(req, res, pathname) {
-  if (pathname === '/api/snapshot') {
-    return sendJson(res, 200, await buildSnapshot());
+  if (pathname === '/api/snapshot') return sendJson(res, 200, await buildSnapshot());
+  if (pathname === '/api/runtime') return sendJson(res, 200, getRuntimeSummary());
+  if (pathname === '/api/sessions') return sendJson(res, 200, { sessions: listSessions(), runtime: getRuntimeSummary() });
+  if (pathname === '/api/timeline') {
+    const snapshot = await buildSnapshot();
+    return sendJson(res, 200, { timeline: snapshot.timeline || snapshot.events || [], runtime: getRuntimeSummary() });
+  }
+  const transcriptMatch = pathname.match(/^\/api\/sessions\/(.+)\/transcript$/);
+  if (transcriptMatch) {
+    const sessionKey = decodeSessionKey(transcriptMatch[1]);
+    return sendJson(res, 200, {
+      sessionKey,
+      session: runtimeModel.sessions.get(sessionKey) || null,
+      transcript: getSessionTranscript(sessionKey, 180),
+      runtime: getRuntimeSummary()
+    });
   }
 
   if (pathname === '/api/events' && req.method === 'GET') {
@@ -353,6 +957,9 @@ async function handleApi(req, res, pathname) {
     });
     clients.add(res);
     writeSse(res, 'hello', { connected_at: new Date().toISOString() });
+    writeSse(res, 'runtime:status', getRuntimeSummary());
+    writeSse(res, 'runtime:sessions', { sessions: listSessions(), runtime: getRuntimeSummary() });
+    writeSse(res, 'timeline', { timeline: runtimeTimeline(TIMELINE_LIMIT) });
     writeSse(res, 'snapshot', await buildSnapshot());
     req.on('close', () => clients.delete(res));
     return;
@@ -430,12 +1037,18 @@ async function startServer() {
   await fsp.appendFile(EVENT_LOG, '', { flag: 'a' });
   const stat = await statSafe(EVENT_LOG);
   lastEventLogSize = stat?.size || 0;
+  await startRuntimeBridge();
   server.listen(PORT, HOST, () => {
     console.log(`Mission Control v2 listening on http://${HOST}:${PORT}`);
   });
   setInterval(() => {
     poll().catch((error) => console.error('poll failed:', error));
   }, POLL_INTERVAL_MS);
+  setInterval(() => {
+    refreshSessions().catch((error) => {
+      runtimeState.lastError = `session refresh failed: ${error.message}`;
+    });
+  }, 30000).unref?.();
 }
 
 if (require.main === module) {
@@ -451,5 +1064,10 @@ module.exports = {
   handleApi,
   readEventLog,
   server,
-  writeSse
+  writeSse,
+  runtimeState,
+  runtimeModel,
+  startRuntimeBridge,
+  normalizeTranscriptMessage,
+  normalizeRuntimeEvent
 };
