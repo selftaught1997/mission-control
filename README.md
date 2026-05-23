@@ -23,6 +23,25 @@ The dashboard keeps those planes separate where it matters:
 - `GET /api/timeline` — merged live timeline across transcript/runtime/file-backed events
 - `GET /api/sessions/<encoded-session-key>/transcript` — transcript slice for a tracked session
 
+### Executive-backed
+- `GET /api/executive` — structured executive overview for Goals, Club Snapshot, Strategic Projects, Review Queue, ROI, Ops Backlog, Recent Wins, and Agent Directory
+
+## Executive source files
+
+Mission Control v2.1 adds a structured executive layer that is intentionally kept separate from the live runtime plane.
+Current executive sources live under `mission-control/executive/` plus selected existing workspace sources:
+
+- `executive/goals.json`
+- `executive/club-snapshot.json`
+- `executive/projects.json`
+- `executive/agents.json`
+- `../drafts/review-tracker.md` → normalized into the Review Queue
+- `roi.json`
+- `todo.json`
+- `action-log.json`
+
+If one of these executive sources fails, the executive layer should degrade honestly without breaking the live runtime console.
+
 ## Local runtime logs
 
 Runtime-backed continuity is stored in append-only NDJSON logs:

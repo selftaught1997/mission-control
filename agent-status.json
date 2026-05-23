@@ -1,15 +1,15 @@
 {
   "schema_version": "1.1",
   "agent": "Gustav",
-  "status": "blocked",
-  "state": "blocked",
-  "detail": "Mission Control v2.1 executive layer is implemented and committed; host listener/browser validation is blocked by local sandbox permissions.",
-  "current_step": "host-validation-blocked",
+  "status": "idle",
+  "state": "idle",
+  "detail": "Mission Control v2.1 executive carryover is deployed and ready for review.",
+  "current_step": "mission-control-v2-1-executive-ready",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1779564780000,
-  "last_updated": "2026-05-23T19:33:00Z",
-  "last_activity_at": "2026-05-23T19:33:00Z",
-  "activity_counter": 4,
+  "updatedAt": 1779561780844,
+  "last_updated": "2026-05-23T18:43:00Z",
+  "last_activity_at": "2026-05-23T18:43:00Z",
+  "activity_counter": 5,
   "emoji": "\ud83e\uddbe"
 }

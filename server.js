@@ -1011,6 +1011,10 @@ async function buildExecutiveOverview() {
     safe('mission-control/todo.json', buildBacklog),
     safe('mission-control/action-log.json', buildRecentWins)
   ]);
+  const blocks = { goals, clubSnapshot, projects, reviewQueue, roi, backlog, recentWins, agentDirectory };
+  for (const [name, block] of Object.entries(blocks)) {
+    if (block?.error) errors.push({ source: name, error: block.error });
+  }
   return {
     schema_version: '1.0',
     updatedAt: new Date().toISOString(),
