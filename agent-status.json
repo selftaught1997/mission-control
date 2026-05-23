@@ -1,15 +1,15 @@
 {
   "schema_version": "1.1",
   "agent": "Gustav",
-  "status": "idle",
-  "state": "idle",
-  "detail": "Heartbeat complete — Mission Control reviewed, no new user-facing issues",
-  "current_step": "heartbeat-mission-control-review",
+  "status": "blocked",
+  "state": "blocked",
+  "detail": "Mission Control v2.1 executive layer is implemented and committed; host listener/browser validation is blocked by local sandbox permissions.",
+  "current_step": "host-validation-blocked",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1779558000000,
-  "last_updated": "2026-05-23T17:40:00Z",
-  "last_activity_at": "2026-05-23T17:40:00Z",
-  "activity_counter": 2,
-  "emoji": "🦾"
+  "updatedAt": 1779564780000,
+  "last_updated": "2026-05-23T19:33:00Z",
+  "last_activity_at": "2026-05-23T19:33:00Z",
+  "activity_counter": 4,
+  "emoji": "\ud83e\uddbe"
 }
