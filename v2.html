@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mission Control v2</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #090a0c;
+      --surface: #121418;
+      --surface-2: #191c22;
+      --surface-3: #20252d;
+      --line: #2d333d;
+      --text: #f3f5f7;
+      --muted: #9aa3af;
+      --quiet: #687180;
+      --red: #ff5c66;
+      --amber: #f5b84b;
+      --green: #54d887;
+      --blue: #63a4ff;
+      --violet: #a88cff;
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+
+    a { color: inherit; }
+    .shell {
+      width: min(1480px, 100%);
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 0 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.45rem, 4vw, 2.4rem);
+      line-height: 1.05;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+      padding: 6px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: var(--surface);
+      white-space: nowrap;
+      font-size: 0.82rem;
+    }
+
+    .pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--amber);
+    }
+
+    .connected .pulse { background: var(--green); box-shadow: 0 0 0 5px rgba(84, 216, 135, 0.08); }
+    .stale .pulse { background: var(--red); }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .metric,
+    .panel,
+    .agent-card,
+    .item {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .metric {
+      padding: 14px;
+      min-height: 88px;
+    }
+
+    .metric-value {
+      display: block;
+      font-size: 1.7rem;
+      line-height: 1;
+      font-weight: 800;
+      margin-bottom: 9px;
+    }
+
+    .metric-label { color: var(--muted); font-size: 0.76rem; }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(360px, 0.8fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .stack { display: grid; gap: 16px; }
+    .panel { padding: 16px; min-width: 0; }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .panel-title {
+      margin: 0;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .agents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
+    .agent-card {
+      padding: 14px;
+      cursor: pointer;
+      min-width: 0;
+    }
+
+    .agent-card.selected { border-color: var(--blue); background: #151a22; }
+    .agent-top { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
+    .agent-name { font-size: 1.08rem; font-weight: 800; }
+    .agent-role { color: var(--muted); font-size: 0.76rem; margin-top: 2px; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      max-width: 100%;
+      min-height: 24px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      background: var(--surface-2);
+    }
+
+    .badge.running { color: var(--green); border-color: rgba(84, 216, 135, 0.45); }
+    .badge.idle { color: var(--blue); border-color: rgba(99, 164, 255, 0.38); }
+    .badge.blocked, .badge.failed, .badge.missing { color: var(--red); border-color: rgba(255, 92, 102, 0.42); }
+    .badge.done, .badge.complete { color: var(--green); border-color: rgba(84, 216, 135, 0.42); }
+    .badge.pending, .badge.active { color: var(--amber); border-color: rgba(245, 184, 75, 0.42); }
+
+    .kv {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .kv div {
+      display: grid;
+      grid-template-columns: 92px minmax(0, 1fr);
+      gap: 10px;
+    }
+
+    .kv strong { color: var(--quiet); font-weight: 700; }
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      overflow-wrap: anywhere;
+    }
+
+    .feed,
+    .list {
+      display: grid;
+      gap: 9px;
+      max-height: 680px;
+      overflow: auto;
+      padding-right: 2px;
+    }
+
+    .item {
+      padding: 11px 12px;
+      min-width: 0;
+    }
+
+    .item-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 7px;
+    }
+
+    .item-title {
+      font-size: 0.9rem;
+      line-height: 1.35;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .item-meta {
+      color: var(--muted);
+      font-size: 0.76rem;
+      line-height: 1.45;
+      overflow-wrap: anywhere;
+    }
+
+    .time {
+      color: var(--quiet);
+      white-space: nowrap;
+      font-size: 0.72rem;
+      padding-top: 2px;
+    }
+
+    .detail-box {
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 12px;
+      min-height: 150px;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .link {
+      display: inline-flex;
+      min-height: 30px;
+      align-items: center;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: var(--surface-3);
+      border: 1px solid var(--line);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.76rem;
+      overflow-wrap: anywhere;
+    }
+
+    .empty {
+      color: var(--quiet);
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      font-size: 0.86rem;
+    }
+
+    @media (max-width: 980px) {
+      .summary-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .layout { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .shell { padding: 14px; }
+      .topbar { display: grid; }
+      .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+      .metric { min-height: 76px; padding: 12px; }
+      .metric-value { font-size: 1.35rem; }
+      .panel { padding: 12px; }
+      .agents-grid { grid-template-columns: 1fr; }
+      .feed, .list { max-height: none; }
+      .kv div { grid-template-columns: 1fr; gap: 3px; }
+      .item-head { display: grid; }
+      .time { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">Private live operations</div>
+        <h1>Mission Control v2</h1>
+      </div>
+      <div class="status-pill stale" id="connection">
+        <span class="pulse"></span>
+        <span id="connectionText">Connecting</span>
+      </div>
+    </header>
+
+    <section class="summary-grid" aria-label="System summary">
+      <div class="metric"><span class="metric-value" id="metricRunning">0</span><span class="metric-label">Running agents</span></div>
+      <div class="metric"><span class="metric-value" id="metricActive">0</span><span class="metric-label">Active tasks</span></div>
+      <div class="metric"><span class="metric-value" id="metricBlocked">0</span><span class="metric-label">Blocked</span></div>
+      <div class="metric"><span class="metric-value" id="metricReports">0</span><span class="metric-label">Recent reports</span></div>
+      <div class="metric"><span class="metric-value" id="metricOutputs">0</span><span class="metric-label">Recent outputs</span></div>
+    </section>
+
+    <section class="layout">
+      <div class="stack">
+        <section class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">Agent Status Board</h2>
+            <span class="badge" id="snapshotTime">No snapshot</span>
+          </div>
+          <div class="agents-grid" id="agents"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">Selected Agent</h2>
+            <span class="badge" id="selectedBadge">None</span>
+          </div>
+          <div class="detail-box" id="details"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">Recent Outputs And Reports</h2>
+            <span class="badge" id="artifactCount">0 files</span>
+          </div>
+          <div class="list" id="artifacts"></div>
+        </section>
+      </div>
+
+      <aside class="panel">
+        <div class="panel-head">
+          <h2 class="panel-title">Live Event Feed</h2>
+          <span class="badge" id="eventCount">0 events</span>
+        </div>
+        <div class="feed" id="feed"></div>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    const state = {
+      snapshot: null,
+      selectedAgent: 'altair',
+      events: []
+    };
+
+    const els = {
+      connection: document.getElementById('connection'),
+      connectionText: document.getElementById('connectionText'),
+      snapshotTime: document.getElementById('snapshotTime'),
+      agents: document.getElementById('agents'),
+      details: document.getElementById('details'),
+      feed: document.getElementById('feed'),
+      artifacts: document.getElementById('artifacts'),
+      eventCount: document.getElementById('eventCount'),
+      artifactCount: document.getElementById('artifactCount'),
+      selectedBadge: document.getElementById('selectedBadge'),
+      metricRunning: document.getElementById('metricRunning'),
+      metricActive: document.getElementById('metricActive'),
+      metricBlocked: document.getElementById('metricBlocked'),
+      metricReports: document.getElementById('metricReports'),
+      metricOutputs: document.getElementById('metricOutputs')
+    };
+
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>"']/g, char => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[char]));
+    }
+
+    function ago(input) {
+      if (!input) return 'unknown';
+      const ms = Date.now() - Date.parse(input);
+      if (!Number.isFinite(ms)) return input;
+      const sec = Math.max(0, Math.floor(ms / 1000));
+      if (sec < 60) return `${sec}s ago`;
+      const min = Math.floor(sec / 60);
+      if (min < 60) return `${min}m ago`;
+      const hr = Math.floor(min / 60);
+      if (hr < 48) return `${hr}h ago`;
+      return new Date(input).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+    }
+
+    function badgeClass(status) {
+      const s = String(status || '').toLowerCase();
+      if (['backend_running', 'running', 'working'].includes(s)) return 'running';
+      if (['idle'].includes(s)) return 'idle';
+      if (['blocked', 'failed', 'missing', 'error'].includes(s)) return s;
+      if (['done', 'complete', 'success'].includes(s)) return 'done';
+      if (['active', 'pending'].includes(s)) return s;
+      return '';
+    }
+
+    function label(value) {
+      return escapeHtml(value || 'none');
+    }
+
+    function applySnapshot(snapshot) {
+      state.snapshot = snapshot;
+      state.events = snapshot.events || [];
+      render();
+    }
+
+    function render() {
+      const snapshot = state.snapshot;
+      if (!snapshot) return;
+
+      els.snapshotTime.textContent = `Snapshot ${ago(snapshot.generated_at)}`;
+      els.metricRunning.textContent = snapshot.totals?.running ?? 0;
+      els.metricActive.textContent = snapshot.totals?.active ?? 0;
+      els.metricBlocked.textContent = snapshot.totals?.blocked ?? 0;
+      els.metricReports.textContent = snapshot.reports?.length ?? 0;
+      els.metricOutputs.textContent = snapshot.outputs?.length ?? 0;
+
+      renderAgents(snapshot.agents || []);
+      renderDetails(snapshot);
+      renderArtifacts(snapshot);
+      renderFeed(state.events);
+    }
+
+    function renderAgents(agents) {
+      els.agents.innerHTML = agents.map(agent => `
+        <button class="agent-card ${agent.id === state.selectedAgent ? 'selected' : ''}" data-agent="${escapeHtml(agent.id)}">
+          <div class="agent-top">
+            <div>
+              <div class="agent-name">${escapeHtml(agent.name)}</div>
+              <div class="agent-role">${escapeHtml(agent.id)}${agent.backend ? ' / ' + escapeHtml(agent.backend) : ''}</div>
+            </div>
+            <span class="badge ${badgeClass(agent.status)}">${escapeHtml(agent.status)}</span>
+          </div>
+          <div class="kv">
+            <div><strong>Task</strong><span class="mono">${label(agent.current_task_id || agent.last_task_id)}</span></div>
+            <div><strong>Updated</strong><span>${escapeHtml(ago(agent.last_updated))}</span></div>
+            <div><strong>Result</strong><span>${label(agent.last_result_status)}</span></div>
+          </div>
+        </button>
+      `).join('');
+
+      els.agents.querySelectorAll('[data-agent]').forEach(button => {
+        button.addEventListener('click', () => {
+          state.selectedAgent = button.dataset.agent;
+          render();
+        });
+      });
+    }
+
+    function renderDetails(snapshot) {
+      const agent = (snapshot.agents || []).find(item => item.id === state.selectedAgent) || snapshot.agents?.[0];
+      if (!agent) {
+        els.details.innerHTML = '<div class="empty">No agents found.</div>';
+        return;
+      }
+      state.selectedAgent = agent.id;
+      els.selectedBadge.textContent = agent.name;
+      els.selectedBadge.className = `badge ${badgeClass(agent.status)}`;
+      const tasks = (snapshot.tasks || []).filter(task => task.agent === agent.id).slice(0, 6);
+      const reports = (snapshot.reports || []).filter(report => report.agent === agent.id).slice(0, 4);
+      els.details.innerHTML = `
+        <div class="kv">
+          <div><strong>Status</strong><span><span class="badge ${badgeClass(agent.status)}">${escapeHtml(agent.status)}</span></span></div>
+          <div><strong>Current</strong><span class="mono">${label(agent.current_task_id)}</span></div>
+          <div><strong>Last task</strong><span class="mono">${label(agent.last_task_id)}</span></div>
+          <div><strong>Repo</strong><span class="mono">${label(agent.repo_path)}</span></div>
+          <div><strong>Updated</strong><span>${escapeHtml(agent.last_updated || 'unknown')}</span></div>
+        </div>
+        <div class="links">
+          ${agent.last_report_url ? `<a class="link" href="${escapeHtml(agent.last_report_url)}">Latest report</a>` : ''}
+        </div>
+        <div style="margin-top:14px" class="item-meta">Recent task states</div>
+        <div class="list" style="margin-top:8px;max-height:none">
+          ${tasks.length ? tasks.map(task => `
+            <div class="item">
+              <div class="item-head">
+                <div class="item-title mono">${escapeHtml(task.task_id)}</div>
+                <span class="badge ${badgeClass(task.bucket)}">${escapeHtml(task.bucket)}</span>
+              </div>
+              <div class="item-meta">${escapeHtml(task.summary || task.status || '')}</div>
+            </div>
+          `).join('') : '<div class="empty">No task state files found for this agent.</div>'}
+        </div>
+        <div style="margin-top:14px" class="item-meta">Recent reports</div>
+        <div class="links">${reports.map(report => `<a class="link" href="${escapeHtml(report.url)}">${escapeHtml(report.task_id)}</a>`).join('') || '<span class="item-meta">No reports yet.</span>'}</div>
+      `;
+    }
+
+    function renderArtifacts(snapshot) {
+      const artifacts = [...(snapshot.reports || []), ...(snapshot.outputs || [])]
+        .sort((a, b) => Date.parse(b.created_at || 0) - Date.parse(a.created_at || 0))
+        .slice(0, 20);
+      els.artifactCount.textContent = `${artifacts.length} files`;
+      els.artifacts.innerHTML = artifacts.length ? artifacts.map(item => `
+        <div class="item">
+          <div class="item-head">
+            <div class="item-title">${escapeHtml(item.summary || item.path)}</div>
+            <span class="time">${escapeHtml(ago(item.created_at))}</span>
+          </div>
+          <div class="item-meta">${escapeHtml(item.agent)} / <span class="mono">${escapeHtml(item.task_id || '')}</span></div>
+          <div class="links"><a class="link" href="${escapeHtml(item.url)}">${escapeHtml(item.path)}</a></div>
+        </div>
+      `).join('') : '<div class="empty">No recent report or output files found.</div>';
+    }
+
+    function renderFeed(events) {
+      els.eventCount.textContent = `${events.length} events`;
+      els.feed.innerHTML = events.length ? events.slice(0, 80).map(event => `
+        <div class="item">
+          <div class="item-head">
+            <div class="item-title">${escapeHtml(event.summary)}</div>
+            <span class="time">${escapeHtml(ago(event.timestamp))}</span>
+          </div>
+          <div class="item-meta">
+            ${escapeHtml(event.agent || 'system')} / ${escapeHtml(event.event_type || 'event')}
+            ${event.task_id ? ` / <span class="mono">${escapeHtml(event.task_id)}</span>` : ''}
+          </div>
+          ${event.details?.path ? `<div class="links"><a class="link" href="/files/${escapeHtml(event.details.path)}">${escapeHtml(event.details.path)}</a></div>` : ''}
+        </div>
+      `).join('') : '<div class="empty">Waiting for live events.</div>';
+    }
+
+    async function loadSnapshot() {
+      const res = await fetch('/api/snapshot', { cache: 'no-store' });
+      if (!res.ok) throw new Error(`snapshot ${res.status}`);
+      applySnapshot(await res.json());
+    }
+
+    function setConnection(ok, text) {
+      els.connection.className = `status-pill ${ok ? 'connected' : 'stale'}`;
+      els.connectionText.textContent = text;
+    }
+
+    function startSse() {
+      if (!window.EventSource) {
+        setConnection(false, 'SSE unavailable');
+        setInterval(loadSnapshot, 5000);
+        return;
+      }
+
+      const source = new EventSource('/api/events');
+      source.addEventListener('open', () => setConnection(true, 'Live'));
+      source.addEventListener('error', () => setConnection(false, 'Reconnecting'));
+      source.addEventListener('snapshot', event => applySnapshot(JSON.parse(event.data)));
+      source.addEventListener('event', event => {
+        const live = JSON.parse(event.data);
+        state.events = [live, ...state.events.filter(item => item.id !== live.id)].slice(0, 100);
+        renderFeed(state.events);
+      });
+    }
+
+    loadSnapshot().catch(() => setConnection(false, 'Snapshot failed'));
+    startSse();
+  </script>
+</body>
+</html>
