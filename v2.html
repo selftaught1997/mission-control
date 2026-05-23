@@ -425,6 +425,49 @@
       return escapeHtml(value || 'none');
     }
 
+    function timeMarkup(input, prefix = '', className = 'time') {
+      if (!input) return escapeHtml(prefix ? `${prefix}unknown` : 'unknown');
+      return `<time class="${className}" data-timestamp="${escapeHtml(input)}" data-prefix="${escapeHtml(prefix)}">${escapeHtml(prefix + ago(input))}</time>`;
+    }
+
+    function agentActivityTimestamp(agent) {
+      return agent.last_activity_at || agent.last_updated || null;
+    }
+
+    function agentLiveText(agent, seconds = 4) {
+      const ts = agentActivityTimestamp(agent);
+      if (!ts) return 'No recent activity';
+      return `${isFresh(ts, seconds) ? 'Live' : 'Last activity'} ${ago(ts)}`;
+    }
+
+    function agentDetail(agent) {
+      const parts = [];
+      if (agent.current_step && agent.current_step !== agent.status) parts.push(agent.current_step);
+      if (agent.detail) parts.push(agent.detail);
+      if (!parts.length && agent.status === 'idle') return 'Waiting for work';
+      return parts.join(' — ') || 'No current detail';
+    }
+
+    function refreshRelativeTimes(root = document) {
+      root.querySelectorAll('[data-timestamp]').forEach(node => {
+        const ts = node.dataset.timestamp;
+        const prefix = node.dataset.prefix || '';
+        node.textContent = `${prefix}${ago(ts)}`;
+      });
+
+      root.querySelectorAll('[data-activity-timestamp]').forEach(node => {
+        const ts = node.dataset.activityTimestamp;
+        const seconds = Number(node.dataset.freshSeconds || 4);
+        const fresh = isFresh(ts, seconds);
+        node.classList.toggle('fresh', fresh);
+        node.classList.toggle('stale', !fresh);
+        const labelNode = node.querySelector('[data-activity-label]');
+        if (labelNode) {
+          labelNode.textContent = ts ? `${fresh ? 'Live' : 'Last activity'} ${ago(ts)}` : 'No recent activity';
+        }
+      });
+    }
+
     function applySnapshot(snapshot) {
       state.snapshot = snapshot;
       state.events = snapshot.events || [];
@@ -437,17 +480,18 @@
       return Number.isFinite(ms) && ms <= seconds * 1000;
     }
 
-    function activityLabel(agent) {
-      if (agent.last_activity_at) return ago(agent.last_activity_at);
-      if (agent.last_updated) return ago(agent.last_updated);
-      return 'unknown';
-    }
-
     function render() {
       const snapshot = state.snapshot;
       if (!snapshot) return;
 
-      els.snapshotTime.textContent = `Snapshot ${ago(snapshot.generated_at)}`;
+      if (snapshot.generated_at) {
+        els.snapshotTime.dataset.timestamp = snapshot.generated_at;
+        els.snapshotTime.dataset.prefix = 'Snapshot ';
+      } else {
+        delete els.snapshotTime.dataset.timestamp;
+        delete els.snapshotTime.dataset.prefix;
+        els.snapshotTime.textContent = 'No snapshot';
+      }
       els.metricRunning.textContent = snapshot.totals?.running ?? 0;
       els.metricActive.textContent = snapshot.totals?.active ?? 0;
       els.metricBlocked.textContent = snapshot.totals?.blocked ?? 0;
@@ -458,11 +502,15 @@
       renderDetails(snapshot);
       renderArtifacts(snapshot);
       renderFeed(state.events);
+      refreshRelativeTimes();
     }
 
     function renderAgents(agents) {
-      els.agents.innerHTML = agents.map(agent => `
-        <button class="agent-card ${agent.id === state.selectedAgent ? 'selected' : ''}" data-agent="${escapeHtml(agent.id)}">
+      els.agents.innerHTML = agents.map(agent => {
+        const activityTs = agentActivityTimestamp(agent);
+        const fresh = isFresh(activityTs, 4);
+        return `
+        <button class="agent-card ${agent.id === state.selectedAgent ? 'selected' : ''} ${fresh ? 'fresh' : ''}" data-agent="${escapeHtml(agent.id)}">
           <div class="agent-top">
             <div>
               <div class="agent-name">${escapeHtml(agent.name)}</div>
@@ -470,13 +518,18 @@
             </div>
             <span class="badge ${badgeClass(agent.status)}">${escapeHtml(agent.status)}</span>
           </div>
+          <div class="agent-live ${fresh ? 'fresh' : 'stale'}" ${activityTs ? `data-activity-timestamp="${escapeHtml(activityTs)}" data-fresh-seconds="4"` : ''}>
+            <span class="pulse"></span>
+            <span data-activity-label>${escapeHtml(agentLiveText(agent))}</span>
+          </div>
+          <div class="agent-detail">${escapeHtml(agentDetail(agent))}</div>
           <div class="kv">
             <div><strong>Task</strong><span class="mono">${label(agent.current_task_id || agent.last_task_id)}</span></div>
-            <div><strong>Updated</strong><span>${escapeHtml(ago(agent.last_updated))}</span></div>
+            <div><strong>Updated</strong><span>${timeMarkup(agent.last_updated)}</span></div>
             <div><strong>Result</strong><span>${label(agent.last_result_status)}</span></div>
           </div>
         </button>
-      `).join('');
+      `;}).join('');
 
       els.agents.querySelectorAll('[data-agent]').forEach(button => {
         button.addEventListener('click', () => {
@@ -503,7 +556,9 @@
           <div><strong>Current</strong><span class="mono">${label(agent.current_task_id)}</span></div>
           <div><strong>Last task</strong><span class="mono">${label(agent.last_task_id)}</span></div>
           <div><strong>Repo</strong><span class="mono">${label(agent.repo_path)}</span></div>
-          <div><strong>Updated</strong><span>${escapeHtml(agent.last_updated || 'unknown')}</span></div>
+          <div><strong>Activity</strong><span>${timeMarkup(agentActivityTimestamp(agent))}</span></div>
+          <div><strong>Updated</strong><span>${timeMarkup(agent.last_updated)}</span></div>
+          <div><strong>Detail</strong><span>${escapeHtml(agentDetail(agent))}</span></div>
         </div>
         <div class="links">
           ${agent.last_report_url ? `<a class="link" href="${escapeHtml(agent.last_report_url)}">Latest report</a>` : ''}
@@ -534,7 +589,7 @@
         <div class="item">
           <div class="item-head">
             <div class="item-title">${escapeHtml(item.summary || item.path)}</div>
-            <span class="time">${escapeHtml(ago(item.created_at))}</span>
+            ${timeMarkup(item.created_at)}
           </div>
           <div class="item-meta">${escapeHtml(item.agent)} / <span class="mono">${escapeHtml(item.task_id || '')}</span></div>
           <div class="links"><a class="link" href="${escapeHtml(item.url)}">${escapeHtml(item.path)}</a></div>
@@ -548,7 +603,7 @@
         <div class="item">
           <div class="item-head">
             <div class="item-title">${escapeHtml(event.summary)}</div>
-            <span class="time">${escapeHtml(ago(event.timestamp))}</span>
+            ${timeMarkup(event.timestamp)}
           </div>
           <div class="item-meta">
             ${escapeHtml(event.agent || 'system')} / ${escapeHtml(event.event_type || 'event')}
@@ -573,7 +628,7 @@
     function startSse() {
       if (!window.EventSource) {
         setConnection(false, 'SSE unavailable');
-        setInterval(loadSnapshot, 5000);
+        setInterval(loadSnapshot, 1000);
         return;
       }
 
@@ -590,6 +645,7 @@
 
     loadSnapshot().catch(() => setConnection(false, 'Snapshot failed'));
     startSse();
+    setInterval(() => refreshRelativeTimes(), 1000);
   </script>
 </body>
 </html>

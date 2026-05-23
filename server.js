@@ -7,6 +7,7 @@ const url = require('url');
 
 const PORT = Number(process.env.MISSION_CONTROL_PORT || process.env.PORT || 18792);
 const HOST = process.env.MISSION_CONTROL_HOST || '0.0.0.0';
+const POLL_INTERVAL_MS = Math.max(250, Number(process.env.MISSION_CONTROL_POLL_MS || 1000));
 const ROOT = __dirname;
 const WORKSPACE = path.resolve(ROOT, '..');
 const EVENT_LOG = path.join(ROOT, 'events.ndjson');
@@ -434,7 +435,7 @@ async function startServer() {
   });
   setInterval(() => {
     poll().catch((error) => console.error('poll failed:', error));
-  }, 2000);
+  }, POLL_INTERVAL_MS);
 }
 
 if (require.main === module) {
