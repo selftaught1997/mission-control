@@ -1926,5 +1926,13 @@
     "status": "success",
     "summary": "Altair improved its own lifecycle closure and run hygiene",
     "detail": "Altair completed a narrow self-improvement pass on itself. It now maps valid result reports to final lifecycle states more reliably, attempts automatic finalization after runner completion, prevents false idle status while active work remains, and documents the improved task-closure behavior."
+  },
+  {
+    "id": 242,
+    "timestamp": "2026-05-23T00:32:30Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Reviewed, committed, and deployed Mission Control v2 on the Mac host",
+    "detail": "Reviewed Altair's Mission Control v2 build, committed the dashboard/server app inside the mission-control repo, switched the workspace LaunchAgent from static `http.server` to the new Node server with a plist backup, and validated the live `/api/snapshot` and `/api/events` endpoints locally. The dashboard is now live on port 18792 for browser access over the Mac and tailnet."
   }
 ]
