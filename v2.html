@@ -85,6 +85,22 @@
     .mode-switch { display: inline-flex; gap: 4px; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
     .mode-button { border: 0; background: transparent; border-radius: 999px; min-height: 28px; padding: 4px 10px; color: var(--muted); cursor: pointer; font-size: 0.76rem; font-weight: 800; }
     .mode-button.active { color: var(--text); background: var(--surface-3); }
+    .ghost-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 30px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--muted);
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 0.76rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .ghost-button:hover, .panel-button:hover, .drag-handle:hover { color: var(--text); background: var(--surface-3); }
     .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); flex: 0 0 auto; }
     .connected .pulse { background: var(--green); box-shadow: 0 0 0 5px rgba(84, 216, 135, 0.08); }
     .stale .pulse, .failed .pulse { background: var(--red); }
@@ -121,6 +137,23 @@
     .metric { padding: 14px; min-height: 84px; }
     .metric-value { display: block; font-size: 1.65rem; line-height: 1; font-weight: 800; margin-bottom: 9px; }
 
+    .sticky-controlbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 -20px 14px;
+      padding: 10px 20px;
+      background: rgba(9, 10, 12, 0.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .sticky-summary { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-width: 0; }
+    .sticky-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+
     .layout {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(420px, 0.9fr) minmax(360px, 0.72fr);
@@ -129,13 +162,64 @@
     }
 
     .stack { display: grid; gap: 16px; }
-    .panel { padding: 16px; min-width: 0; }
-    .panel-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .panel-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 14px;
+      align-items: start;
+    }
+    .panel { padding: 14px; min-width: 0; transition: border-color 0.15s ease, background 0.15s ease; }
+    .panel[data-span="12"] { grid-column: span 12; }
+    .panel[data-span="8"] { grid-column: span 8; }
+    .panel[data-span="6"] { grid-column: span 6; }
+    .panel[data-span="4"] { grid-column: span 4; }
+    .panel.dragging { opacity: 0.55; border-color: var(--blue); }
+    .panel.drop-target { border-color: var(--amber); background: #171511; }
+    .panel.collapsed { padding-bottom: 12px; }
+    .panel.collapsed .panel-body, .panel.collapsed .source-note { display: none; }
+    .panel-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
     .panel-title { margin: 0; font-size: 0.8rem; color: var(--muted); font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
+    .panel-meta { display: flex; align-items: center; gap: 8px; min-width: 0; }
+    .panel-controls { display: flex; align-items: center; gap: 6px; flex-wrap: nowrap; }
+    .panel-button, .drag-handle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 30px;
+      height: 30px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface-2);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 0.74rem;
+      font-weight: 900;
+      line-height: 1;
+      user-select: none;
+    }
+    .panel-button.size-button { width: auto; padding: 0 8px; }
+    .drag-handle { cursor: grab; }
+    .drag-handle:active { cursor: grabbing; }
+    .panel-body { min-height: 0; }
+    .panel.has-size .panel-body {
+      overflow: auto;
+      padding-right: 2px;
+    }
+    .panel.has-size .feed,
+    .panel.has-size .list,
+    .panel.has-size .compact-list,
+    .panel.has-size .transcript {
+      max-height: none;
+      overflow: visible;
+    }
+    .panel.has-size.size-compact .panel-body { max-height: 260px; }
+    .panel.has-size.size-medium .panel-body { max-height: 420px; }
+    .panel.has-size.size-expanded .panel-body { max-height: 680px; }
+    .panel.has-size.size-expanded[data-panel-id="session-transcript"] .panel-body { max-height: 760px; }
     .layer[hidden] { display: none; }
     .executive-layer { margin-top: 18px; }
-    .executive-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: start; }
-    .executive-grid .wide { grid-column: span 2; }
+    .executive-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 14px; align-items: start; }
+    .executive-grid .wide { min-width: 0; }
     .source-note { color: var(--quiet); font-size: 0.72rem; line-height: 1.35; overflow-wrap: anywhere; }
     .value-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(45, 51, 61, 0.65); }
     .value-row:last-child { border-bottom: 0; }
@@ -145,6 +229,19 @@
     .section-list { display: grid; gap: 8px; }
     .compact-list { display: grid; gap: 8px; max-height: 360px; overflow: auto; padding-right: 2px; }
     .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .filter-row { display: flex; flex-wrap: wrap; gap: 7px; margin: -2px 0 10px; }
+    .filter-chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface-2);
+      color: var(--muted);
+      min-height: 28px;
+      padding: 4px 9px;
+      cursor: pointer;
+      font-size: 0.72rem;
+      font-weight: 800;
+    }
+    .filter-chip.active { color: var(--text); border-color: rgba(99, 164, 255, 0.55); background: #151a22; }
 
     .agents-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
     .agent-card, .session-row {
@@ -196,27 +293,33 @@
     @media (max-width: 1280px) {
       .layout { grid-template-columns: minmax(0, 1fr) minmax(390px, 0.9fr); }
       .timeline-column { grid-column: 1 / -1; }
-      .executive-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .panel[data-span="4"] { grid-column: span 6; }
     }
     @media (max-width: 980px) {
       .summary-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .runtime-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .layout { grid-template-columns: 1fr; }
-      .executive-grid, .executive-grid .wide { grid-template-columns: 1fr; grid-column: auto; }
+      .panel-grid, .executive-grid { grid-template-columns: 1fr; }
+      .panel[data-span] { grid-column: auto; }
     }
     @media (max-width: 640px) {
       .shell { padding: 14px; }
       .topbar { display: grid; }
+      .sticky-controlbar { margin: 0 -14px 12px; padding: 9px 14px; align-items: flex-start; display: grid; }
+      .sticky-actions { justify-content: flex-start; }
       .summary-grid, .runtime-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
       .metric { min-height: 76px; padding: 12px; }
       .metric-value { font-size: 1.35rem; }
       .panel { padding: 12px; }
       .agents-grid { grid-template-columns: 1fr; }
       .feed, .list, .sessions-list, .transcript { max-height: none; }
+      .panel.has-size .panel-body { max-height: 360px; }
       .kv div { grid-template-columns: 1fr; gap: 3px; }
       .item-head, .session-top { display: grid; }
       .time { white-space: normal; }
       .top-actions { justify-content: flex-start; }
+      .panel-head { align-items: flex-start; }
+      .panel-controls { flex-wrap: wrap; justify-content: flex-end; }
     }
   </style>
 </head>
@@ -227,18 +330,34 @@
         <div class="eyebrow">Private live operations</div>
         <h1>Mission Control v2</h1>
       </div>
-      <div class="top-actions">
+      <div class="top-actions" aria-label="Dashboard mode">
         <div class="mode-switch" aria-label="Dashboard mode">
           <button class="mode-button active" data-mode="live">Live</button>
           <button class="mode-button" data-mode="executive">Executive</button>
           <button class="mode-button" data-mode="both">Both</button>
         </div>
+      </div>
+    </header>
+
+    <section class="sticky-controlbar" aria-label="Mission Control summary and layout controls">
+      <div class="sticky-summary">
         <div class="status-pill stale" id="connection">
           <span class="pulse"></span>
           <span id="connectionText">Connecting</span>
         </div>
+        <span class="badge" id="stickyRuntime">Runtime starting</span>
+        <span class="badge" id="stickySessions">0 sessions</span>
+        <span class="badge" id="stickySelected">No session</span>
       </div>
-    </header>
+      <div class="sticky-actions">
+        <div class="mode-switch" aria-label="Sticky dashboard mode">
+          <button class="mode-button active" data-mode="live">Live</button>
+          <button class="mode-button" data-mode="executive">Executive</button>
+          <button class="mode-button" data-mode="both">Both</button>
+        </div>
+        <button class="ghost-button" id="resetLayout" type="button">Reset layout</button>
+      </div>
+    </section>
 
     <div class="layer live-layer" id="liveLayer">
       <section class="runtime-strip" aria-label="Runtime health">
@@ -257,68 +376,65 @@
         <div class="metric"><span class="metric-value" id="metricOutputs">0</span><span class="metric-label">Recent outputs</span></div>
       </section>
 
-      <section class="layout">
-      <div class="stack">
-        <section class="panel">
+      <section class="panel-grid" id="livePanelGrid" aria-label="Live panels">
+        <section class="panel" data-panel-id="agent-status-board" data-span="8">
           <div class="panel-head">
-            <h2 class="panel-title">Agent Status Board</h2>
-            <span class="badge" id="snapshotTime">No snapshot</span>
+            <div class="panel-meta"><h2 class="panel-title">Agent Status Board</h2><span class="badge" id="snapshotTime">No snapshot</span></div>
+            <div class="panel-controls" data-panel-controls></div>
           </div>
-          <div class="agents-grid" id="agents"></div>
+          <div class="panel-body"><div class="agents-grid" id="agents"></div></div>
         </section>
 
-        <section class="panel">
+        <section class="panel" data-panel-id="selected-agent" data-span="4">
           <div class="panel-head">
-            <h2 class="panel-title">Selected Agent</h2>
-            <span class="badge" id="selectedBadge">None</span>
+            <div class="panel-meta"><h2 class="panel-title">Selected Agent</h2><span class="badge" id="selectedBadge">None</span></div>
+            <div class="panel-controls" data-panel-controls></div>
           </div>
-          <div class="detail-box" id="details"></div>
+          <div class="panel-body"><div class="detail-box" id="details"></div></div>
         </section>
 
-        <section class="panel">
+        <section class="panel" data-panel-id="recent-outputs-reports" data-span="4">
           <div class="panel-head">
-            <h2 class="panel-title">Recent Outputs And Reports</h2>
-            <span class="badge" id="artifactCount">0 files</span>
+            <div class="panel-meta"><h2 class="panel-title">Recent Outputs And Reports</h2><span class="badge" id="artifactCount">0 files</span></div>
+            <div class="panel-controls" data-panel-controls></div>
           </div>
-          <div class="list" id="artifacts"></div>
-        </section>
-      </div>
-
-      <div class="stack">
-        <section class="panel">
-          <div class="panel-head">
-            <h2 class="panel-title">Tracked Sessions</h2>
-            <span class="badge" id="sessionCount">0 sessions</span>
-          </div>
-          <div class="sessions-list" id="sessions"></div>
+          <div class="panel-body"><div class="list" id="artifacts"></div></div>
         </section>
 
-        <section class="panel">
+        <section class="panel" data-panel-id="tracked-sessions" data-span="4">
           <div class="panel-head">
-            <h2 class="panel-title">Session Transcript</h2>
-            <span class="badge" id="transcriptCount">0 rows</span>
+            <div class="panel-meta"><h2 class="panel-title">Tracked Sessions</h2><span class="badge" id="sessionCount">0 sessions</span></div>
+            <div class="panel-controls" data-panel-controls></div>
           </div>
-          <div class="transcript" id="transcript"></div>
-        </section>
-      </div>
-
-      <aside class="stack timeline-column">
-        <section class="panel">
-          <div class="panel-head">
-            <h2 class="panel-title">Global Live Timeline</h2>
-            <span class="badge" id="timelineCount">0 events</span>
-          </div>
-          <div class="feed" id="timeline"></div>
+          <div class="panel-body"><div class="sessions-list" id="sessions"></div></div>
         </section>
 
-        <section class="panel">
+        <section class="panel" data-panel-id="session-transcript" data-span="4">
           <div class="panel-head">
-            <h2 class="panel-title">Live Event Feed</h2>
-            <span class="badge" id="eventCount">0 events</span>
+            <div class="panel-meta"><h2 class="panel-title">Session Transcript</h2><span class="badge" id="transcriptCount">0 rows</span></div>
+            <div class="panel-controls" data-panel-controls></div>
           </div>
-          <div class="feed" id="feed"></div>
+          <div class="panel-body"><div class="transcript" id="transcript"></div></div>
         </section>
-      </aside>
+
+        <section class="panel" data-panel-id="live-timeline" data-span="6">
+          <div class="panel-head">
+            <div class="panel-meta"><h2 class="panel-title">Live Timeline</h2><span class="badge" id="timelineCount">0 events</span></div>
+            <div class="panel-controls" data-panel-controls></div>
+          </div>
+          <div class="panel-body">
+            <div class="filter-row" id="timelineFilters" aria-label="Timeline filters"></div>
+            <div class="feed" id="timeline"></div>
+          </div>
+        </section>
+
+        <section class="panel" data-panel-id="live-event-feed" data-span="6">
+          <div class="panel-head">
+            <div class="panel-meta"><h2 class="panel-title">Live Event Feed</h2><span class="badge" id="eventCount">0 events</span></div>
+            <div class="panel-controls" data-panel-controls></div>
+          </div>
+          <div class="panel-body"><div class="feed" id="feed"></div></div>
+        </section>
       </section>
     </div>
 
@@ -332,6 +448,109 @@
   </main>
 
   <script>
+    const LAYOUT_STORAGE_KEY = 'mission-control-v2.2-layout';
+    const LAYOUT_SCHEMA_VERSION = 1;
+    const SIZE_LABELS = { compact: 'S', medium: 'M', expanded: 'L' };
+    const PANEL_REGISTRY = {
+      live: [
+        { id: 'agent-status-board', label: 'Agent Status Board', span: 8 },
+        { id: 'tracked-sessions', label: 'Tracked Sessions', span: 4 },
+        { id: 'session-transcript', label: 'Session Transcript', span: 4, sizes: ['compact', 'medium', 'expanded'], defaultSize: 'medium' },
+        { id: 'live-timeline', label: 'Live Timeline', span: 6, sizes: ['compact', 'medium', 'expanded'], defaultSize: 'medium' },
+        { id: 'selected-agent', label: 'Selected Agent', span: 4, defaultCollapsed: true },
+        { id: 'recent-outputs-reports', label: 'Recent Outputs And Reports', span: 4, sizes: ['compact', 'medium', 'expanded'], defaultSize: 'compact', defaultCollapsed: true },
+        { id: 'live-event-feed', label: 'Live Event Feed', span: 6, sizes: ['compact', 'medium', 'expanded'], defaultSize: 'compact', defaultCollapsed: true }
+      ],
+      executive: [
+        { id: 'roi-summary', label: 'ROI Summary', span: 4 },
+        { id: 'review-queue', label: 'Review Queue', span: 8, sizes: ['compact', 'medium', 'expanded'], defaultSize: 'compact' },
+        { id: 'strategic-projects', label: 'Strategic Projects', span: 8, sizes: ['compact', 'medium', 'expanded'], defaultSize: 'compact' },
+        { id: 'big-goals', label: 'Big Goals', span: 4 },
+        { id: 'club-snapshot', label: 'Club Snapshot', span: 4 },
+        { id: 'recent-wins', label: 'Recent Wins', span: 8, sizes: ['compact', 'medium', 'expanded'], defaultSize: 'compact' },
+        { id: 'ops-backlog', label: 'Ops Backlog', span: 4, sizes: ['compact', 'medium', 'expanded'], defaultSize: 'compact' },
+        { id: 'agent-directory', label: 'Agent Directory', span: 8 }
+      ]
+    };
+    const PANEL_BY_ID = Object.fromEntries(Object.values(PANEL_REGISTRY).flat().map(panel => [panel.id, panel]));
+    const TIMELINE_FILTERS = [
+      { id: 'all', label: 'All' },
+      { id: 'gustav', label: 'Gustav' },
+      { id: 'altair', label: 'Altair' },
+      { id: 'lyra', label: 'Lyra' },
+      { id: 'vega', label: 'Vega' },
+      { id: 'messages', label: 'Messages' },
+      { id: 'tools', label: 'Tools' },
+      { id: 'reports', label: 'Reports / outputs' },
+      { id: 'system', label: 'System' }
+    ];
+
+    function defaultLayoutState() {
+      return {
+        version: LAYOUT_SCHEMA_VERSION,
+        mode: 'live',
+        timelineFilter: 'all',
+        panels: Object.fromEntries(Object.values(PANEL_REGISTRY).flat().map(panel => [
+          panel.id,
+          {
+            collapsed: Boolean(panel.defaultCollapsed),
+            size: panel.defaultSize || 'medium'
+          }
+        ])),
+        order: {
+          live: PANEL_REGISTRY.live.map(panel => panel.id),
+          executive: PANEL_REGISTRY.executive.map(panel => panel.id)
+        }
+      };
+    }
+
+    function sanitizeOrder(layer, order) {
+      const known = PANEL_REGISTRY[layer].map(panel => panel.id);
+      const valid = Array.isArray(order) ? order.filter(id => known.includes(id)) : [];
+      return [...valid, ...known.filter(id => !valid.includes(id))];
+    }
+
+    function sanitizeLayoutState(raw) {
+      const defaults = defaultLayoutState();
+      const input = raw && typeof raw === 'object' && raw.version === LAYOUT_SCHEMA_VERSION ? raw : {};
+      const next = {
+        ...defaults,
+        mode: ['live', 'executive', 'both'].includes(input.mode) ? input.mode : defaults.mode,
+        timelineFilter: TIMELINE_FILTERS.some(filter => filter.id === input.timelineFilter) ? input.timelineFilter : defaults.timelineFilter,
+        panels: { ...defaults.panels },
+        order: {
+          live: sanitizeOrder('live', input.order?.live),
+          executive: sanitizeOrder('executive', input.order?.executive)
+        }
+      };
+      for (const [id, defaultsForPanel] of Object.entries(defaults.panels)) {
+        const panel = PANEL_BY_ID[id];
+        const stored = input.panels?.[id] || {};
+        const sizeAllowed = panel.sizes?.includes(stored.size);
+        next.panels[id] = {
+          collapsed: typeof stored.collapsed === 'boolean' ? stored.collapsed : defaultsForPanel.collapsed,
+          size: sizeAllowed ? stored.size : defaultsForPanel.size
+        };
+      }
+      return next;
+    }
+
+    function loadLayoutState() {
+      try {
+        return sanitizeLayoutState(JSON.parse(localStorage.getItem(LAYOUT_STORAGE_KEY) || 'null'));
+      } catch {
+        return defaultLayoutState();
+      }
+    }
+
+    function saveLayoutState() {
+      try {
+        localStorage.setItem(LAYOUT_STORAGE_KEY, JSON.stringify(state.layout));
+      } catch {
+        // A full or unavailable localStorage must not break the live console.
+      }
+    }
+
     const state = {
       snapshot: null,
       runtime: null,
@@ -343,16 +562,24 @@
       events: [],
       mode: 'live',
       executive: null,
-      executiveError: null
+      executiveError: null,
+      draggingPanel: null,
+      layout: loadLayoutState()
     };
+    state.mode = state.layout.mode;
 
     const els = {
       liveLayer: document.getElementById('liveLayer'),
+      livePanelGrid: document.getElementById('livePanelGrid'),
       executiveLayer: document.getElementById('executiveLayer'),
       executiveGrid: document.getElementById('executiveGrid'),
       executiveUpdated: document.getElementById('executiveUpdated'),
       connection: document.getElementById('connection'),
       connectionText: document.getElementById('connectionText'),
+      stickyRuntime: document.getElementById('stickyRuntime'),
+      stickySessions: document.getElementById('stickySessions'),
+      stickySelected: document.getElementById('stickySelected'),
+      resetLayout: document.getElementById('resetLayout'),
       runtimeStatus: document.getElementById('runtimeStatus'),
       runtimeSessions: document.getElementById('runtimeSessions'),
       runtimeSubscribed: document.getElementById('runtimeSubscribed'),
@@ -368,6 +595,7 @@
       transcript: document.getElementById('transcript'),
       transcriptCount: document.getElementById('transcriptCount'),
       timeline: document.getElementById('timeline'),
+      timelineFilters: document.getElementById('timelineFilters'),
       timelineCount: document.getElementById('timelineCount'),
       eventCount: document.getElementById('eventCount'),
       artifactCount: document.getElementById('artifactCount'),
@@ -410,6 +638,138 @@
 
     function label(value) {
       return escapeHtml(value || 'none');
+    }
+
+    function panelState(id) {
+      if (!state.layout.panels[id]) state.layout.panels[id] = sanitizeLayoutState(state.layout).panels[id];
+      return state.layout.panels[id] || { collapsed: false, size: 'medium' };
+    }
+
+    function cyclePanelSize(id) {
+      const panel = PANEL_BY_ID[id];
+      if (!panel?.sizes?.length) return;
+      const current = panelState(id).size;
+      const index = panel.sizes.indexOf(current);
+      panelState(id).size = panel.sizes[(index + 1) % panel.sizes.length] || panel.defaultSize || 'medium';
+      saveLayoutState();
+      applyPanelLayout();
+    }
+
+    function togglePanelCollapsed(id) {
+      panelState(id).collapsed = !panelState(id).collapsed;
+      saveLayoutState();
+      applyPanelLayout();
+    }
+
+    function resetLayout() {
+      state.layout = defaultLayoutState();
+      state.mode = state.layout.mode;
+      saveLayoutState();
+      render();
+    }
+
+    function panelControlsMarkup(id) {
+      const panel = PANEL_BY_ID[id];
+      const current = panelState(id);
+      const size = panel?.sizes?.length
+        ? `<button class="panel-button size-button" type="button" data-panel-size="${escapeHtml(id)}" title="Cycle panel height">${escapeHtml(SIZE_LABELS[current.size] || current.size)}</button>`
+        : '';
+      return `
+        <span class="drag-handle" draggable="true" data-drag-panel="${escapeHtml(id)}" title="Drag to reorder" aria-label="Drag ${escapeHtml(panel?.label || id)}">::</span>
+        ${size}
+        <button class="panel-button" type="button" data-panel-collapse="${escapeHtml(id)}" title="${current.collapsed ? 'Expand panel' : 'Collapse panel'}" aria-label="${current.collapsed ? 'Expand' : 'Collapse'} ${escapeHtml(panel?.label || id)}">${current.collapsed ? '+' : '-'}</button>
+      `;
+    }
+
+    function bindPanelControls(root = document) {
+      root.querySelectorAll('[data-panel-controls]').forEach(node => {
+        const panel = node.closest('[data-panel-id]');
+        if (panel) node.innerHTML = panelControlsMarkup(panel.dataset.panelId);
+      });
+      root.querySelectorAll('[data-panel-collapse]').forEach(button => {
+        button.addEventListener('click', event => {
+          event.stopPropagation();
+          togglePanelCollapsed(button.dataset.panelCollapse);
+        });
+      });
+      root.querySelectorAll('[data-panel-size]').forEach(button => {
+        button.addEventListener('click', event => {
+          event.stopPropagation();
+          cyclePanelSize(button.dataset.panelSize);
+        });
+      });
+      root.querySelectorAll('[data-drag-panel]').forEach(handle => {
+        if (handle.dataset.dragBound === 'true') return;
+        handle.dataset.dragBound = 'true';
+        handle.addEventListener('dragstart', event => {
+          const id = handle.dataset.dragPanel;
+          state.draggingPanel = id;
+          event.dataTransfer.setData('text/plain', id);
+          event.dataTransfer.effectAllowed = 'move';
+          document.querySelector(`[data-panel-id="${CSS.escape(id)}"]`)?.classList.add('dragging');
+        });
+        handle.addEventListener('dragend', () => {
+          state.draggingPanel = null;
+          document.querySelectorAll('.panel.dragging, .panel.drop-target').forEach(node => node.classList.remove('dragging', 'drop-target'));
+        });
+      });
+    }
+
+    function bindPanelDropTargets(root = document) {
+      root.querySelectorAll('[data-panel-id]').forEach(panel => {
+        if (panel.dataset.dropBound === 'true') return;
+        panel.dataset.dropBound = 'true';
+        panel.addEventListener('dragover', event => {
+          const sourceId = state.draggingPanel;
+          if (!sourceId || sourceId === panel.dataset.panelId) return;
+          event.preventDefault();
+          panel.classList.add('drop-target');
+        });
+        panel.addEventListener('dragleave', () => panel.classList.remove('drop-target'));
+        panel.addEventListener('drop', event => {
+          event.preventDefault();
+          panel.classList.remove('drop-target');
+          const sourceId = event.dataTransfer.getData('text/plain') || state.draggingPanel;
+          reorderPanel(sourceId, panel.dataset.panelId);
+        });
+      });
+    }
+
+    function panelLayer(id) {
+      return PANEL_REGISTRY.live.some(panel => panel.id === id) ? 'live' : 'executive';
+    }
+
+    function reorderPanel(sourceId, targetId) {
+      if (!sourceId || !targetId || sourceId === targetId || !PANEL_BY_ID[sourceId] || !PANEL_BY_ID[targetId]) return;
+      const layer = panelLayer(sourceId);
+      if (panelLayer(targetId) !== layer) return;
+      const order = sanitizeOrder(layer, state.layout.order[layer]).filter(id => id !== sourceId);
+      const index = order.indexOf(targetId);
+      order.splice(index < 0 ? order.length : index, 0, sourceId);
+      state.layout.order[layer] = order;
+      saveLayoutState();
+      applyPanelLayout();
+    }
+
+    function applyPanelLayout() {
+      for (const [layer, panels] of Object.entries(PANEL_REGISTRY)) {
+        const order = sanitizeOrder(layer, state.layout.order[layer]);
+        state.layout.order[layer] = order;
+        for (const panelConfig of panels) {
+          const node = document.querySelector(`[data-panel-id="${CSS.escape(panelConfig.id)}"]`);
+          if (!node) continue;
+          const current = panelState(panelConfig.id);
+          node.style.order = order.indexOf(panelConfig.id);
+          node.dataset.span = panelConfig.span || 4;
+          node.classList.toggle('collapsed', Boolean(current.collapsed));
+          node.classList.toggle('has-size', Boolean(panelConfig.sizes?.length));
+          for (const size of ['compact', 'medium', 'expanded']) node.classList.toggle(`size-${size}`, current.size === size);
+          const controls = node.querySelector('[data-panel-controls]');
+          if (controls) controls.innerHTML = panelControlsMarkup(panelConfig.id);
+        }
+      }
+      bindPanelControls();
+      bindPanelDropTargets();
     }
 
     function formatValue(value, unit = '') {
@@ -492,6 +852,7 @@
       const snapshot = state.snapshot;
       if (!snapshot) return;
       renderMode();
+      applyPanelLayout();
       if (snapshot.generated_at) {
         els.snapshotTime.dataset.timestamp = snapshot.generated_at;
         els.snapshotTime.dataset.prefix = 'Snapshot ';
@@ -515,18 +876,30 @@
       renderTimeline();
       renderFeed(state.events);
       renderExecutive();
+      updateStickySummary();
       refreshRelativeTimes();
     }
 
     function renderMode() {
       els.liveLayer.hidden = state.mode === 'executive';
       els.executiveLayer.hidden = state.mode === 'live';
+      state.layout.mode = state.mode;
+      saveLayoutState();
       document.querySelectorAll('[data-mode]').forEach(button => {
         button.classList.toggle('active', button.dataset.mode === state.mode);
       });
       if (state.mode !== 'live' && !state.executive && !state.executiveError) {
         loadExecutive().catch(() => {});
       }
+    }
+
+    function updateStickySummary() {
+      const runtime = state.runtime || {};
+      els.stickyRuntime.textContent = runtime.status || 'runtime unknown';
+      els.stickyRuntime.className = `badge ${badgeClass(runtime.connected && !runtime.degraded ? 'connected' : runtime.status || 'degraded')}`;
+      els.stickySessions.textContent = `${runtime.trackedSessionCount ?? state.sessions.length ?? 0} sessions`;
+      const selected = state.sessions.find(session => session.sessionKey === state.selectedSession);
+      els.stickySelected.textContent = selected ? selected.label || selected.sessionKey : 'No session';
     }
 
     function renderRuntimeHealth() {
@@ -547,6 +920,7 @@
         delete els.runtimeLast.dataset.timestamp;
         els.runtimeLast.textContent = 'unknown';
       }
+      updateStickySummary();
     }
 
     function renderAgents(agents) {
@@ -703,13 +1077,44 @@
 
     function renderTimeline() {
       const timeline = state.timeline || [];
-      els.timelineCount.textContent = `${timeline.length} events`;
-      els.timeline.innerHTML = timeline.length ? timeline.slice(0, 160).map(event => `
+      const filtered = filterTimeline(timeline);
+      els.timelineCount.textContent = state.layout.timelineFilter === 'all' ? `${timeline.length} events` : `${filtered.length}/${timeline.length} events`;
+      renderTimelineFilters();
+      els.timeline.innerHTML = filtered.length ? filtered.slice(0, 160).map(event => `
         <div class="item">
           <div class="item-head"><div class="item-title">${escapeHtml(event.summary)}</div>${timeMarkup(event.timestamp)}</div>
           <div class="item-meta">${escapeHtml(event.agent || 'system')} / ${escapeHtml(event.event_type || 'event')}${event.sessionKey ? ` / <span class="mono">${escapeHtml(event.sessionKey)}</span>` : ''}</div>
         </div>
       `).join('') : '<div class="empty">Waiting for runtime timeline events.</div>';
+    }
+
+    function filterTimeline(timeline) {
+      const filter = state.layout.timelineFilter || 'all';
+      if (filter === 'all') return timeline;
+      return timeline.filter(event => {
+        const agent = String(event.agent || '').toLowerCase();
+        const type = String(event.event_type || '').toLowerCase();
+        const summary = String(event.summary || '').toLowerCase();
+        if (['gustav', 'altair', 'lyra', 'vega'].includes(filter)) return agent === filter;
+        if (filter === 'messages') return type.includes('transcript') || type.includes('message') || summary.includes('message');
+        if (filter === 'tools') return type.includes('tool') || summary.includes('tool');
+        if (filter === 'reports') return type.includes('report') || type.includes('output') || summary.includes('report') || summary.includes('output');
+        if (filter === 'system') return !['gustav', 'altair', 'lyra', 'vega'].includes(agent) || type.includes('health') || type.includes('session');
+        return true;
+      });
+    }
+
+    function renderTimelineFilters() {
+      els.timelineFilters.innerHTML = TIMELINE_FILTERS.map(filter => `
+        <button class="filter-chip ${state.layout.timelineFilter === filter.id ? 'active' : ''}" type="button" data-timeline-filter="${escapeHtml(filter.id)}">${escapeHtml(filter.label)}</button>
+      `).join('');
+      els.timelineFilters.querySelectorAll('[data-timeline-filter]').forEach(button => {
+        button.addEventListener('click', () => {
+          state.layout.timelineFilter = button.dataset.timelineFilter;
+          saveLayoutState();
+          renderTimeline();
+        });
+      });
     }
 
     function renderFeed(events) {
@@ -730,14 +1135,16 @@
       return `<span class="badge ${cls}">${text}</span>`;
     }
 
-    function panel(title, block, body, extraClass = '') {
+    function panel(id, title, block, body, extraClass = '') {
+      const config = PANEL_BY_ID[id] || {};
+      const current = panelState(id);
       return `
-        <section class="panel ${extraClass}">
+        <section class="panel ${extraClass}" data-panel-id="${escapeHtml(id)}" data-span="${escapeHtml(config.span || 4)}">
           <div class="panel-head">
-            <h3 class="panel-title">${escapeHtml(title)}</h3>
-            ${sourceBadge(block)}
+            <div class="panel-meta"><h3 class="panel-title">${escapeHtml(title)}</h3>${sourceBadge(block)}</div>
+            <div class="panel-controls" data-panel-controls>${panelControlsMarkup(id)}</div>
           </div>
-          ${body}
+          <div class="panel-body">${body}</div>
           <div class="source-note" style="margin-top:12px">${escapeHtml(block?.source || 'unknown source')}${block?.asOf ? ' / ' + escapeHtml(block.asOf) : ''}</div>
         </section>
       `;
@@ -778,6 +1185,7 @@
         renderBacklogPanel(data.backlog, backlog),
         renderAgentDirectoryPanel(data.agentDirectory, agents)
       ].join('');
+      applyPanelLayout();
       refreshRelativeTimes(els.executiveLayer);
     }
 
@@ -789,7 +1197,7 @@
         <div class="item-meta" style="margin-top:8px">${escapeHtml(roi.breakEvenPercent ?? 0)}% of break-even / ${escapeHtml(roi.entries?.length || 0)} value entries</div>
         <div class="compact-list" style="margin-top:12px">${roi.entries?.length ? roi.entries.slice().reverse().map(entry => `<div class="item"><div class="item-title">+£${formatValue(entry.value)} - ${escapeHtml(entry.description || '')}</div><div class="item-meta">${escapeHtml(entry.date || '')} / ${escapeHtml(entry.category || '')}</div></div>`).join('') : '<div class="empty">No value-return entries logged yet.</div>'}</div>
       `;
-      return panel('ROI Summary', roi, body);
+      return panel('roi-summary', 'ROI Summary', roi, body);
     }
 
     function renderReviewQueuePanel(queue) {
@@ -798,12 +1206,12 @@
         const items = sections[key] || [];
         return `<div class="item"><div class="item-head"><div class="item-title">${escapeHtml(title)}</div><span class="badge">${items.length}</span></div><div class="compact-list" style="margin-top:8px">${items.slice(0, 8).map(item => `<div class="item-meta"><span class="mono">${escapeHtml(item.draft)}</span> / ${escapeHtml(item.status)}</div>`).join('') || '<div class="item-meta">None</div>'}</div></div>`;
       };
-      return panel('Review Queue', queue, `<div class="section-list">${group('Awaiting Aaron Review', 'awaitingAaronReview')}${group('Background/Internal Working Docs', 'backgroundInternalDocs')}${group('Support Assets', 'supportAssets')}</div>`, 'wide');
+      return panel('review-queue', 'Review Queue', queue, `<div class="section-list">${group('Awaiting Aaron Review', 'awaitingAaronReview')}${group('Background/Internal Working Docs', 'backgroundInternalDocs')}${group('Support Assets', 'supportAssets')}</div>`, 'wide');
     }
 
     function renderProjectsPanel(block, projects) {
       const body = `<div class="compact-list">${projects.map(project => `<div class="item"><div class="item-head"><div class="item-title">${escapeHtml(project.title)}</div><span class="badge ${badgeClass(project.status)}">${escapeHtml(project.status)}</span></div><div class="item-meta">${escapeHtml(project.priority || 'priority unknown')} / ${escapeHtml(project.summary || '')}</div><div class="links">${(project.links || []).map(link => `<a class="link" href="/files/${escapeHtml(link)}">${escapeHtml(link)}</a>`).join('')}</div></div>`).join('') || '<div class="empty">No strategic projects loaded.</div>'}</div>`;
-      return panel('Strategic Projects', block, body, 'wide');
+      return panel('strategic-projects', 'Strategic Projects', block, body, 'wide');
     }
 
     function renderGoalsPanel(block, goals) {
@@ -811,23 +1219,23 @@
         const pct = goal.current != null && goal.target ? Math.max(0, Math.min(100, Math.round((Number(goal.current) / Number(goal.target)) * 100))) : null;
         return `<div class="item"><div class="item-head"><div class="item-title">${escapeHtml(goal.title)}</div><span class="badge ${badgeClass(goal.status)}">${escapeHtml(goal.status || 'unknown')}</span></div><div class="item-meta">${escapeHtml(formatValue(goal.current, goal.unit))} / ${escapeHtml(formatValue(goal.target, goal.unit))}</div>${pct === null ? '<div class="item-meta">No trustworthy progress metric yet.</div>' : `<div class="bar"><span style="width:${pct}%"></span></div>`}<div class="source-note">${escapeHtml(goal.source || '')}</div></div>`;
       }).join('') || '<div class="empty">No goals loaded.</div>'}</div>`;
-      return panel('Big Goals', block, body);
+      return panel('big-goals', 'Big Goals', block, body);
     }
 
     function renderClubSnapshotPanel(block, rows) {
       const body = `<div class="section-list">${rows.map(row => `<div class="value-row"><span><strong>${escapeHtml(row.label)}</strong><div class="source-note">${escapeHtml(row.source || '')}</div></span><span class="value-main">${escapeHtml(formatValue(row.value))}</span></div>`).join('') || '<div class="empty">No club snapshot loaded.</div>'}<div class="chip-row">${(block?.locations || []).map(location => `<span class="badge">${escapeHtml(location.label)}</span>`).join('')}</div></div>`;
-      return panel('Club Snapshot', block, body);
+      return panel('club-snapshot', 'Club Snapshot', block, body);
     }
 
     function renderRecentWinsPanel(block, wins) {
       const body = `<div class="compact-list">${wins.map(win => `<div class="item"><div class="item-head"><div class="item-title">${escapeHtml(win.summary)}</div>${timeMarkup(win.timestamp)}</div><div class="item-meta">${escapeHtml(win.category || '')} / ${escapeHtml(win.status || '')}</div></div>`).join('') || '<div class="empty">No curated wins logged yet.</div>'}</div>`;
-      return panel('Recent Wins', block, body, 'wide');
+      return panel('recent-wins', 'Recent Wins', block, body, 'wide');
     }
 
     function renderBacklogPanel(block, items) {
       const openItems = items.filter(item => String(item.status).toLowerCase() !== 'done');
       const body = `<div class="compact-list">${openItems.map(item => `<div class="item"><div class="item-head"><div class="item-title">${escapeHtml(item.title)}</div><span class="badge ${badgeClass(item.status)}">${escapeHtml(item.status)}</span></div><div class="item-meta">${escapeHtml(item.priority || 'priority unknown')} / ${escapeHtml(item.category || 'uncategorised')}</div><div class="source-note">${escapeHtml(item.detail || '')}</div></div>`).join('') || '<div class="empty">No open ops backlog items.</div>'}</div>`;
-      return panel('Ops Backlog', block, body);
+      return panel('ops-backlog', 'Ops Backlog', block, body);
     }
 
     function renderAgentDirectoryPanel(block, agents) {
@@ -836,7 +1244,7 @@
         const live = liveAgents.find(item => item.id === agent.id);
         return `<div class="item"><div class="item-head"><div class="item-title">${escapeHtml(agent.name)}</div><span class="badge ${badgeClass(live?.status)}">${escapeHtml(live?.status || 'profile')}</span></div><div class="item-meta">${escapeHtml(agent.role || '')}</div><div class="chip-row">${(agent.owns || []).map(item => `<span class="badge">${escapeHtml(item)}</span>`).join('')}</div></div>`;
       }).join('') || '<div class="empty">No agent profiles loaded.</div>'}</div>`;
-      return panel('Agent Directory', block, body, 'wide');
+      return panel('agent-directory', 'Agent Directory', block, body, 'wide');
     }
 
     async function loadSnapshot() {
@@ -1002,7 +1410,9 @@
         renderExecutive();
       });
     });
+    els.resetLayout.addEventListener('click', resetLayout);
 
+    applyPanelLayout();
     boot().catch(() => setConnection(false, 'Initial load failed'));
     startSse();
     setInterval(() => refreshRelativeTimes(), 1000);
