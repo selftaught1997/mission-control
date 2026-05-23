@@ -1958,5 +1958,13 @@
     "status": "success",
     "summary": "Finished Mission Control live activity upgrade and heartbeat sync",
     "detail": "Completed the Mission Control v2 live minor-activity upgrade so Altair/Lyra card states now update from richer local instrumentation without page refresh, refreshed Gustav/Altair/Lyra status files, and synced the result into Mission Control/action logs during the 02:42 BST heartbeat pass."
+  },
+  {
+    "id": 246,
+    "timestamp": "2026-05-23T01:54:37Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Implemented Mission Control minor live-activity status upgrade",
+    "detail": "Upgraded Mission Control v2 and local agent instrumentation so Altair and Lyra cards show minor activity changes live without manual refresh. Added richer status fields, 1-second heartbeat/broadcast behavior, Altair backend-running heartbeats, Lyra creative phase updates, and a Gustav local status helper. Remaining limitation: fully automatic Gustav conversational micro-states still require deeper runtime hooks beyond the workspace layer."
   }
 ]
