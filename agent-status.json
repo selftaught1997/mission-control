@@ -3,13 +3,13 @@
   "agent": "Gustav",
   "status": "idle",
   "state": "idle",
-  "detail": "Heartbeat complete — Mission Control runtime-console upgrade synced and committed-ready.",
-  "current_step": "heartbeat-runtime-console-sync",
+  "detail": "Heartbeat complete — Mission Control reviewed, no new user-facing issues",
+  "current_step": "heartbeat-mission-control-review",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1779539040000,
-  "last_updated": "2026-05-23T12:24:00Z",
-  "last_activity_at": "2026-05-23T12:24:00Z",
+  "updatedAt": 1779549540000,
+  "last_updated": "2026-05-23T15:19:00Z",
+  "last_activity_at": "2026-05-23T15:19:00Z",
   "activity_counter": 2,
   "emoji": "🦾"
 }
