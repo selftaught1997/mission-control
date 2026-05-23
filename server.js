@@ -813,6 +813,222 @@ async function collectActionEvents(limit = 25) {
   }));
 }
 
+function staleFrom(updatedAt, maxAgeDays = 14) {
+  if (!updatedAt) return true;
+  const ms = Date.now() - Date.parse(updatedAt);
+  return !Number.isFinite(ms) || ms > maxAgeDays * 24 * 60 * 60 * 1000;
+}
+
+function sourceEnvelope(source, data, maxAgeDays = 14) {
+  const updatedAt = data?.updatedAt || data?.updated_at || null;
+  return {
+    updatedAt,
+    source: data?.source || source,
+    asOf: data?.asOf || null,
+    stale: staleFrom(updatedAt, maxAgeDays),
+    notes: data?.notes || null
+  };
+}
+
+async function readExecutiveJson(name, fallbackItems = []) {
+  const filePath = path.join(ROOT, 'executive', name);
+  const data = await readJson(filePath, null);
+  if (!data || typeof data !== 'object') {
+    return {
+      ...sourceEnvelope(`mission-control/executive/${name}`, { updatedAt: null, notes: 'Source unavailable or malformed.' }),
+      items: fallbackItems,
+      error: 'unavailable'
+    };
+  }
+  return {
+    ...sourceEnvelope(`mission-control/executive/${name}`, data),
+    items: Array.isArray(data.items) ? data.items : fallbackItems,
+    locations: Array.isArray(data.locations) ? data.locations : undefined
+  };
+}
+
+function parseMarkdownTable(lines, startIndex) {
+  const rows = [];
+  let started = false;
+  for (let i = startIndex; i < lines.length; i += 1) {
+    const line = lines[i].trim();
+    if (!line && !started) continue;
+    if (!line) break;
+    started = true;
+    if (!line.startsWith('|')) continue;
+    if (/^\|\s*-+/.test(line)) continue;
+    const cells = line.split('|').slice(1, -1).map((cell) => cell.trim());
+    if (cells.length >= 3 && cells[0] !== 'Draft') rows.push(cells);
+  }
+  return rows;
+}
+
+function parseSupportAssets(lines, startIndex) {
+  const assets = [];
+  for (let i = startIndex; i < lines.length; i += 1) {
+    const line = lines[i].trim();
+    if (line.startsWith('## ')) break;
+    if (!line.startsWith('- ')) continue;
+    const match = line.match(/`([^`]+)`(?:\s*[–-]\s*(.*))?/);
+    if (match) assets.push([match[1], 'Support asset', match[2] || 'Supports a review item.']);
+  }
+  return assets;
+}
+
+async function buildReviewQueue() {
+  const filePath = path.join(WORKSPACE, 'drafts', 'review-tracker.md');
+  try {
+    const stat = await statSafe(filePath);
+    const text = await fsp.readFile(filePath, 'utf8');
+    const lines = text.split(/\r?\n/);
+    const updatedMatch = text.match(/_Last updated:\s*([^_]+)_/);
+    const updatedAt = stat?.mtime ? stat.mtime.toISOString() : null;
+    const sections = {
+      awaitingAaronReview: [],
+      backgroundInternalDocs: [],
+      supportAssets: []
+    };
+    const sectionMap = [
+      ['## Awaiting Aaron Review', 'awaitingAaronReview', parseMarkdownTable],
+      ['## Background / Internal Working Docs', 'backgroundInternalDocs', parseMarkdownTable],
+      ['## Support Artwork / Assets', 'supportAssets', parseSupportAssets]
+    ];
+    for (const [heading, key, parser] of sectionMap) {
+      const index = lines.findIndex((line) => line.trim() === heading);
+      if (index === -1) continue;
+      sections[key] = parser(lines, index + 1).map(([draft, status, notes], idx) => ({
+        id: `${key}-${idx + 1}`,
+        draft: draft.replace(/`/g, ''),
+        status,
+        notes,
+        source: rel(filePath)
+      }));
+    }
+    return {
+      updatedAt,
+      source: rel(filePath),
+      asOf: updatedMatch ? updatedMatch[1].trim() : null,
+      stale: staleFrom(updatedAt, 3),
+      counts: {
+        awaitingAaronReview: sections.awaitingAaronReview.length,
+        backgroundInternalDocs: sections.backgroundInternalDocs.length,
+        supportAssets: sections.supportAssets.length
+      },
+      sections
+    };
+  } catch (error) {
+    return {
+      updatedAt: null,
+      source: rel(filePath),
+      stale: true,
+      counts: { awaitingAaronReview: 0, backgroundInternalDocs: 0, supportAssets: 0 },
+      sections: { awaitingAaronReview: [], backgroundInternalDocs: [], supportAssets: [] },
+      error: error.message
+    };
+  }
+}
+
+async function buildRoiSummary() {
+  const filePath = path.join(ROOT, 'roi.json');
+  const data = await readJson(filePath, {});
+  const stat = await statSafe(filePath);
+  const start = new Date(data.startDate || Date.now());
+  const monthsElapsed = Math.max(1, Math.round((Date.now() - start.getTime()) / (1000 * 60 * 60 * 24 * 30)));
+  const hardware = Number(data.hardware || 0);
+  const monthlySubscription = Number(data.monthlySubscription || 0);
+  const totalCost = hardware + (monthlySubscription * monthsElapsed);
+  const valueReturned = Number(data.valueReturned || 0);
+  const breakEvenPercent = totalCost > 0 ? Math.min(100, Math.round((valueReturned / totalCost) * 100)) : 0;
+  return {
+    updatedAt: stat?.mtime ? stat.mtime.toISOString() : null,
+    source: rel(filePath),
+    stale: staleFrom(stat?.mtime ? stat.mtime.toISOString() : null, 30),
+    startDate: data.startDate || null,
+    hardware,
+    monthlySubscription,
+    monthsElapsed,
+    totalCost,
+    valueReturned,
+    breakEvenPercent,
+    entries: Array.isArray(data.entries) ? data.entries : [],
+    notes: data.notes || null
+  };
+}
+
+async function buildBacklog() {
+  const filePath = path.join(ROOT, 'todo.json');
+  const data = await readJson(filePath, {});
+  const stat = await statSafe(filePath);
+  return {
+    updatedAt: stat?.mtime ? stat.mtime.toISOString() : null,
+    source: rel(filePath),
+    stale: staleFrom(stat?.mtime ? stat.mtime.toISOString() : null, 14),
+    items: Array.isArray(data.items) ? data.items : []
+  };
+}
+
+async function buildRecentWins(limit = 10) {
+  const filePath = path.join(ROOT, 'action-log.json');
+  const data = await readJson(filePath, []);
+  const stat = await statSafe(filePath);
+  const items = Array.isArray(data) ? data
+    .filter((entry) => ['success', 'done', 'complete'].includes(String(entry.status || '').toLowerCase()))
+    .slice(-limit)
+    .reverse()
+    .map((entry) => ({
+      id: entry.id,
+      timestamp: entry.timestamp,
+      category: entry.category,
+      status: entry.status,
+      summary: entry.summary,
+      detail: entry.detail || null
+    })) : [];
+  return {
+    updatedAt: stat?.mtime ? stat.mtime.toISOString() : null,
+    source: rel(filePath),
+    stale: staleFrom(stat?.mtime ? stat.mtime.toISOString() : null, 14),
+    items
+  };
+}
+
+async function buildExecutiveOverview() {
+  const errors = [];
+  async function safe(label, loader) {
+    try {
+      return await loader();
+    } catch (error) {
+      errors.push({ source: label, error: error.message });
+      return { updatedAt: null, source: label, stale: true, items: [], error: error.message };
+    }
+  }
+  const [goals, clubSnapshot, projects, agentDirectory, reviewQueue, roi, backlog, recentWins] = await Promise.all([
+    safe('mission-control/executive/goals.json', () => readExecutiveJson('goals.json')),
+    safe('mission-control/executive/club-snapshot.json', () => readExecutiveJson('club-snapshot.json')),
+    safe('mission-control/executive/projects.json', () => readExecutiveJson('projects.json')),
+    safe('mission-control/executive/agents.json', () => readExecutiveJson('agents.json')),
+    safe('drafts/review-tracker.md', buildReviewQueue),
+    safe('mission-control/roi.json', buildRoiSummary),
+    safe('mission-control/todo.json', buildBacklog),
+    safe('mission-control/action-log.json', buildRecentWins)
+  ]);
+  return {
+    schema_version: '1.0',
+    updatedAt: new Date().toISOString(),
+    source: 'mission-control executive loaders',
+    private_local_first: true,
+    degraded: errors.length > 0,
+    errors,
+    goals,
+    clubSnapshot,
+    projects,
+    reviewQueue,
+    roi,
+    backlog,
+    recentWins,
+    agentDirectory
+  };
+}
+
 async function buildSnapshot() {
   const agents = await collectAgents();
   const statesNested = await Promise.all(AGENTS.map(collectStates));
@@ -931,6 +1147,7 @@ function decodeSessionKey(encoded) {
 
 async function handleApi(req, res, pathname) {
   if (pathname === '/api/snapshot') return sendJson(res, 200, await buildSnapshot());
+  if (pathname === '/api/executive') return sendJson(res, 200, await buildExecutiveOverview());
   if (pathname === '/api/runtime') return sendJson(res, 200, getRuntimeSummary());
   if (pathname === '/api/sessions') return sendJson(res, 200, { sessions: listSessions(), runtime: getRuntimeSummary() });
   if (pathname === '/api/timeline') {
@@ -1060,6 +1277,7 @@ if (require.main === module) {
 
 module.exports = {
   buildSnapshot,
+  buildExecutiveOverview,
   appendEvent,
   handleApi,
   readEventLog,

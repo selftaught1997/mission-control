@@ -81,6 +81,10 @@
     }
 
     .status-pill { min-height: 34px; padding: 6px 11px; font-size: 0.82rem; }
+    .top-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .mode-switch { display: inline-flex; gap: 4px; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+    .mode-button { border: 0; background: transparent; border-radius: 999px; min-height: 28px; padding: 4px 10px; color: var(--muted); cursor: pointer; font-size: 0.76rem; font-weight: 800; }
+    .mode-button.active { color: var(--text); background: var(--surface-3); }
     .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); flex: 0 0 auto; }
     .connected .pulse { background: var(--green); box-shadow: 0 0 0 5px rgba(84, 216, 135, 0.08); }
     .stale .pulse, .failed .pulse { background: var(--red); }
@@ -128,6 +132,19 @@
     .panel { padding: 16px; min-width: 0; }
     .panel-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; }
     .panel-title { margin: 0; font-size: 0.8rem; color: var(--muted); font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
+    .layer[hidden] { display: none; }
+    .executive-layer { margin-top: 18px; }
+    .executive-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: start; }
+    .executive-grid .wide { grid-column: span 2; }
+    .source-note { color: var(--quiet); font-size: 0.72rem; line-height: 1.35; overflow-wrap: anywhere; }
+    .value-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(45, 51, 61, 0.65); }
+    .value-row:last-child { border-bottom: 0; }
+    .value-main { font-size: 1.35rem; font-weight: 850; }
+    .bar { height: 8px; border-radius: 999px; overflow: hidden; background: var(--surface-3); border: 1px solid var(--line); margin-top: 8px; }
+    .bar span { display: block; height: 100%; background: var(--green); width: 0; }
+    .section-list { display: grid; gap: 8px; }
+    .compact-list { display: grid; gap: 8px; max-height: 360px; overflow: auto; padding-right: 2px; }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 
     .agents-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
     .agent-card, .session-row {
@@ -179,11 +196,13 @@
     @media (max-width: 1280px) {
       .layout { grid-template-columns: minmax(0, 1fr) minmax(390px, 0.9fr); }
       .timeline-column { grid-column: 1 / -1; }
+      .executive-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 980px) {
       .summary-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .runtime-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .layout { grid-template-columns: 1fr; }
+      .executive-grid, .executive-grid .wide { grid-template-columns: 1fr; grid-column: auto; }
     }
     @media (max-width: 640px) {
       .shell { padding: 14px; }
@@ -197,6 +216,7 @@
       .kv div { grid-template-columns: 1fr; gap: 3px; }
       .item-head, .session-top { display: grid; }
       .time { white-space: normal; }
+      .top-actions { justify-content: flex-start; }
     }
   </style>
 </head>
@@ -207,29 +227,37 @@
         <div class="eyebrow">Private live operations</div>
         <h1>Mission Control v2</h1>
       </div>
-      <div class="status-pill stale" id="connection">
-        <span class="pulse"></span>
-        <span id="connectionText">Connecting</span>
+      <div class="top-actions">
+        <div class="mode-switch" aria-label="Dashboard mode">
+          <button class="mode-button active" data-mode="live">Live</button>
+          <button class="mode-button" data-mode="executive">Executive</button>
+          <button class="mode-button" data-mode="both">Both</button>
+        </div>
+        <div class="status-pill stale" id="connection">
+          <span class="pulse"></span>
+          <span id="connectionText">Connecting</span>
+        </div>
       </div>
     </header>
 
-    <section class="runtime-strip" aria-label="Runtime health">
-      <div class="runtime-cell"><span class="runtime-value" id="runtimeStatus">Runtime starting</span><div class="runtime-label">Gateway bridge</div></div>
-      <div class="runtime-cell"><span class="runtime-value" id="runtimeSessions">0</span><div class="runtime-label">Tracked sessions</div></div>
-      <div class="runtime-cell"><span class="runtime-value" id="runtimeSubscribed">0</span><div class="runtime-label">Subscribed</div></div>
-      <div class="runtime-cell"><span class="runtime-value" id="runtimeBackfill">0/0</span><div class="runtime-label">Backfilled</div></div>
-      <div class="runtime-cell"><span class="runtime-value" id="runtimeLast">unknown</span><div class="runtime-label">Last runtime event</div></div>
-    </section>
+    <div class="layer live-layer" id="liveLayer">
+      <section class="runtime-strip" aria-label="Runtime health">
+        <div class="runtime-cell"><span class="runtime-value" id="runtimeStatus">Runtime starting</span><div class="runtime-label">Gateway bridge</div></div>
+        <div class="runtime-cell"><span class="runtime-value" id="runtimeSessions">0</span><div class="runtime-label">Tracked sessions</div></div>
+        <div class="runtime-cell"><span class="runtime-value" id="runtimeSubscribed">0</span><div class="runtime-label">Subscribed</div></div>
+        <div class="runtime-cell"><span class="runtime-value" id="runtimeBackfill">0/0</span><div class="runtime-label">Backfilled</div></div>
+        <div class="runtime-cell"><span class="runtime-value" id="runtimeLast">unknown</span><div class="runtime-label">Last runtime event</div></div>
+      </section>
 
-    <section class="summary-grid" aria-label="System summary">
-      <div class="metric"><span class="metric-value" id="metricRunning">0</span><span class="metric-label">Running agents</span></div>
-      <div class="metric"><span class="metric-value" id="metricActive">0</span><span class="metric-label">Active tasks</span></div>
-      <div class="metric"><span class="metric-value" id="metricBlocked">0</span><span class="metric-label">Blocked</span></div>
-      <div class="metric"><span class="metric-value" id="metricReports">0</span><span class="metric-label">Recent reports</span></div>
-      <div class="metric"><span class="metric-value" id="metricOutputs">0</span><span class="metric-label">Recent outputs</span></div>
-    </section>
+      <section class="summary-grid" aria-label="System summary">
+        <div class="metric"><span class="metric-value" id="metricRunning">0</span><span class="metric-label">Running agents</span></div>
+        <div class="metric"><span class="metric-value" id="metricActive">0</span><span class="metric-label">Active tasks</span></div>
+        <div class="metric"><span class="metric-value" id="metricBlocked">0</span><span class="metric-label">Blocked</span></div>
+        <div class="metric"><span class="metric-value" id="metricReports">0</span><span class="metric-label">Recent reports</span></div>
+        <div class="metric"><span class="metric-value" id="metricOutputs">0</span><span class="metric-label">Recent outputs</span></div>
+      </section>
 
-    <section class="layout">
+      <section class="layout">
       <div class="stack">
         <section class="panel">
           <div class="panel-head">
@@ -291,6 +319,15 @@
           <div class="feed" id="feed"></div>
         </section>
       </aside>
+      </section>
+    </div>
+
+    <section class="layer executive-layer" id="executiveLayer" hidden>
+      <div class="panel-head">
+        <h2 class="panel-title">Executive Overview</h2>
+        <span class="badge" id="executiveUpdated">Not loaded</span>
+      </div>
+      <div class="executive-grid" id="executiveGrid"></div>
     </section>
   </main>
 
@@ -303,10 +340,17 @@
       selectedAgent: 'altair',
       transcript: [],
       timeline: [],
-      events: []
+      events: [],
+      mode: 'live',
+      executive: null,
+      executiveError: null
     };
 
     const els = {
+      liveLayer: document.getElementById('liveLayer'),
+      executiveLayer: document.getElementById('executiveLayer'),
+      executiveGrid: document.getElementById('executiveGrid'),
+      executiveUpdated: document.getElementById('executiveUpdated'),
       connection: document.getElementById('connection'),
       connectionText: document.getElementById('connectionText'),
       runtimeStatus: document.getElementById('runtimeStatus'),
@@ -366,6 +410,12 @@
 
     function label(value) {
       return escapeHtml(value || 'none');
+    }
+
+    function formatValue(value, unit = '') {
+      if (value === null || value === undefined || value === '') return 'unknown';
+      if (typeof value === 'number') return `${value.toLocaleString('en-GB')}${unit ? ' ' + unit : ''}`;
+      return `${value}${unit && !String(value).includes(unit) ? ' ' + unit : ''}`;
     }
 
     function timeMarkup(input, prefix = '', className = 'time') {
@@ -441,6 +491,7 @@
     function render() {
       const snapshot = state.snapshot;
       if (!snapshot) return;
+      renderMode();
       if (snapshot.generated_at) {
         els.snapshotTime.dataset.timestamp = snapshot.generated_at;
         els.snapshotTime.dataset.prefix = 'Snapshot ';
@@ -463,7 +514,19 @@
       renderTranscript();
       renderTimeline();
       renderFeed(state.events);
+      renderExecutive();
       refreshRelativeTimes();
+    }
+
+    function renderMode() {
+      els.liveLayer.hidden = state.mode === 'executive';
+      els.executiveLayer.hidden = state.mode === 'live';
+      document.querySelectorAll('[data-mode]').forEach(button => {
+        button.classList.toggle('active', button.dataset.mode === state.mode);
+      });
+      if (state.mode !== 'live' && !state.executive && !state.executiveError) {
+        loadExecutive().catch(() => {});
+      }
     }
 
     function renderRuntimeHealth() {
@@ -660,10 +723,138 @@
       `).join('') : '<div class="empty">Waiting for live events.</div>';
     }
 
+    function sourceBadge(block) {
+      if (!block) return '<span class="badge missing">unknown source</span>';
+      const cls = block.error ? 'failed' : block.stale ? 'pending' : 'done';
+      const text = block.error ? 'unavailable' : block.stale ? 'stale' : 'current';
+      return `<span class="badge ${cls}">${text}</span>`;
+    }
+
+    function panel(title, block, body, extraClass = '') {
+      return `
+        <section class="panel ${extraClass}">
+          <div class="panel-head">
+            <h3 class="panel-title">${escapeHtml(title)}</h3>
+            ${sourceBadge(block)}
+          </div>
+          ${body}
+          <div class="source-note" style="margin-top:12px">${escapeHtml(block?.source || 'unknown source')}${block?.asOf ? ' / ' + escapeHtml(block.asOf) : ''}</div>
+        </section>
+      `;
+    }
+
+    function renderExecutive() {
+      if (els.executiveLayer.hidden) return;
+      if (state.executiveError) {
+        els.executiveUpdated.textContent = 'Executive unavailable';
+        els.executiveUpdated.className = 'badge failed';
+        els.executiveGrid.innerHTML = `<section class="panel"><div class="empty">Executive data unavailable: ${escapeHtml(state.executiveError)}. Live mode remains separate.</div></section>`;
+        return;
+      }
+      const data = state.executive;
+      if (!data) {
+        els.executiveUpdated.textContent = 'Loading executive';
+        els.executiveGrid.innerHTML = '<section class="panel"><div class="empty">Loading executive overview.</div></section>';
+        return;
+      }
+      els.executiveUpdated.dataset.timestamp = data.updatedAt;
+      els.executiveUpdated.dataset.prefix = 'Updated ';
+      els.executiveUpdated.className = `badge ${data.degraded ? 'pending' : 'done'}`;
+      const goals = data.goals?.items || [];
+      const snapshot = data.clubSnapshot?.items || [];
+      const projects = data.projects?.items || [];
+      const rq = data.reviewQueue || {};
+      const roi = data.roi || {};
+      const backlog = data.backlog?.items || [];
+      const wins = data.recentWins?.items || [];
+      const agents = data.agentDirectory?.items || [];
+      els.executiveGrid.innerHTML = [
+        renderRoiPanel(roi),
+        renderReviewQueuePanel(rq),
+        renderProjectsPanel(data.projects, projects),
+        renderGoalsPanel(data.goals, goals),
+        renderClubSnapshotPanel(data.clubSnapshot, snapshot),
+        renderRecentWinsPanel(data.recentWins, wins),
+        renderBacklogPanel(data.backlog, backlog),
+        renderAgentDirectoryPanel(data.agentDirectory, agents)
+      ].join('');
+      refreshRelativeTimes(els.executiveLayer);
+    }
+
+    function renderRoiPanel(roi) {
+      const body = `
+        <div class="value-row"><span class="item-meta">Invested</span><span class="value-main">£${formatValue(roi.totalCost || 0)}</span></div>
+        <div class="value-row"><span class="item-meta">Value returned</span><span class="value-main">£${formatValue(roi.valueReturned || 0)}</span></div>
+        <div class="bar" aria-label="Break-even progress"><span style="width:${Math.max(0, Math.min(100, Number(roi.breakEvenPercent || 0)))}%"></span></div>
+        <div class="item-meta" style="margin-top:8px">${escapeHtml(roi.breakEvenPercent ?? 0)}% of break-even / ${escapeHtml(roi.entries?.length || 0)} value entries</div>
+        <div class="compact-list" style="margin-top:12px">${roi.entries?.length ? roi.entries.slice().reverse().map(entry => `<div class="item"><div class="item-title">+£${formatValue(entry.value)} - ${escapeHtml(entry.description || '')}</div><div class="item-meta">${escapeHtml(entry.date || '')} / ${escapeHtml(entry.category || '')}</div></div>`).join('') : '<div class="empty">No value-return entries logged yet.</div>'}</div>
+      `;
+      return panel('ROI Summary', roi, body);
+    }
+
+    function renderReviewQueuePanel(queue) {
+      const sections = queue.sections || {};
+      const group = (title, key) => {
+        const items = sections[key] || [];
+        return `<div class="item"><div class="item-head"><div class="item-title">${escapeHtml(title)}</div><span class="badge">${items.length}</span></div><div class="compact-list" style="margin-top:8px">${items.slice(0, 8).map(item => `<div class="item-meta"><span class="mono">${escapeHtml(item.draft)}</span> / ${escapeHtml(item.status)}</div>`).join('') || '<div class="item-meta">None</div>'}</div></div>`;
+      };
+      return panel('Review Queue', queue, `<div class="section-list">${group('Awaiting Aaron Review', 'awaitingAaronReview')}${group('Background/Internal Working Docs', 'backgroundInternalDocs')}${group('Support Assets', 'supportAssets')}</div>`, 'wide');
+    }
+
+    function renderProjectsPanel(block, projects) {
+      const body = `<div class="compact-list">${projects.map(project => `<div class="item"><div class="item-head"><div class="item-title">${escapeHtml(project.title)}</div><span class="badge ${badgeClass(project.status)}">${escapeHtml(project.status)}</span></div><div class="item-meta">${escapeHtml(project.priority || 'priority unknown')} / ${escapeHtml(project.summary || '')}</div><div class="links">${(project.links || []).map(link => `<a class="link" href="/files/${escapeHtml(link)}">${escapeHtml(link)}</a>`).join('')}</div></div>`).join('') || '<div class="empty">No strategic projects loaded.</div>'}</div>`;
+      return panel('Strategic Projects', block, body, 'wide');
+    }
+
+    function renderGoalsPanel(block, goals) {
+      const body = `<div class="section-list">${goals.map(goal => {
+        const pct = goal.current != null && goal.target ? Math.max(0, Math.min(100, Math.round((Number(goal.current) / Number(goal.target)) * 100))) : null;
+        return `<div class="item"><div class="item-head"><div class="item-title">${escapeHtml(goal.title)}</div><span class="badge ${badgeClass(goal.status)}">${escapeHtml(goal.status || 'unknown')}</span></div><div class="item-meta">${escapeHtml(formatValue(goal.current, goal.unit))} / ${escapeHtml(formatValue(goal.target, goal.unit))}</div>${pct === null ? '<div class="item-meta">No trustworthy progress metric yet.</div>' : `<div class="bar"><span style="width:${pct}%"></span></div>`}<div class="source-note">${escapeHtml(goal.source || '')}</div></div>`;
+      }).join('') || '<div class="empty">No goals loaded.</div>'}</div>`;
+      return panel('Big Goals', block, body);
+    }
+
+    function renderClubSnapshotPanel(block, rows) {
+      const body = `<div class="section-list">${rows.map(row => `<div class="value-row"><span><strong>${escapeHtml(row.label)}</strong><div class="source-note">${escapeHtml(row.source || '')}</div></span><span class="value-main">${escapeHtml(formatValue(row.value))}</span></div>`).join('') || '<div class="empty">No club snapshot loaded.</div>'}<div class="chip-row">${(block?.locations || []).map(location => `<span class="badge">${escapeHtml(location.label)}</span>`).join('')}</div></div>`;
+      return panel('Club Snapshot', block, body);
+    }
+
+    function renderRecentWinsPanel(block, wins) {
+      const body = `<div class="compact-list">${wins.map(win => `<div class="item"><div class="item-head"><div class="item-title">${escapeHtml(win.summary)}</div>${timeMarkup(win.timestamp)}</div><div class="item-meta">${escapeHtml(win.category || '')} / ${escapeHtml(win.status || '')}</div></div>`).join('') || '<div class="empty">No curated wins logged yet.</div>'}</div>`;
+      return panel('Recent Wins', block, body, 'wide');
+    }
+
+    function renderBacklogPanel(block, items) {
+      const openItems = items.filter(item => String(item.status).toLowerCase() !== 'done');
+      const body = `<div class="compact-list">${openItems.map(item => `<div class="item"><div class="item-head"><div class="item-title">${escapeHtml(item.title)}</div><span class="badge ${badgeClass(item.status)}">${escapeHtml(item.status)}</span></div><div class="item-meta">${escapeHtml(item.priority || 'priority unknown')} / ${escapeHtml(item.category || 'uncategorised')}</div><div class="source-note">${escapeHtml(item.detail || '')}</div></div>`).join('') || '<div class="empty">No open ops backlog items.</div>'}</div>`;
+      return panel('Ops Backlog', block, body);
+    }
+
+    function renderAgentDirectoryPanel(block, agents) {
+      const liveAgents = state.snapshot?.agents || [];
+      const body = `<div class="compact-list">${agents.map(agent => {
+        const live = liveAgents.find(item => item.id === agent.id);
+        return `<div class="item"><div class="item-head"><div class="item-title">${escapeHtml(agent.name)}</div><span class="badge ${badgeClass(live?.status)}">${escapeHtml(live?.status || 'profile')}</span></div><div class="item-meta">${escapeHtml(agent.role || '')}</div><div class="chip-row">${(agent.owns || []).map(item => `<span class="badge">${escapeHtml(item)}</span>`).join('')}</div></div>`;
+      }).join('') || '<div class="empty">No agent profiles loaded.</div>'}</div>`;
+      return panel('Agent Directory', block, body, 'wide');
+    }
+
     async function loadSnapshot() {
       const res = await fetch('/api/snapshot', { cache: 'no-store' });
       if (!res.ok) throw new Error(`snapshot ${res.status}`);
       applySnapshot(await res.json());
+    }
+
+    async function loadExecutive() {
+      try {
+        const res = await fetch('/api/executive', { cache: 'no-store' });
+        if (!res.ok) throw new Error(`executive ${res.status}`);
+        state.executive = await res.json();
+        state.executiveError = null;
+      } catch (error) {
+        state.executiveError = error.message;
+      }
+      renderExecutive();
     }
 
     async function loadRuntime() {
@@ -801,11 +992,21 @@
       await Promise.all([loadSnapshot(), loadRuntime(), loadSessions(), loadTimeline()]);
       if (state.selectedSession) await loadTranscript(state.selectedSession);
       render();
+      loadExecutive().catch(() => {});
     }
+
+    document.querySelectorAll('[data-mode]').forEach(button => {
+      button.addEventListener('click', () => {
+        state.mode = button.dataset.mode;
+        renderMode();
+        renderExecutive();
+      });
+    });
 
     boot().catch(() => setConnection(false, 'Initial load failed'));
     startSse();
     setInterval(() => refreshRelativeTimes(), 1000);
+    setInterval(() => loadExecutive().catch(() => {}), 90000);
   </script>
 </body>
 </html>

@@ -1,0 +1,36 @@
+{
+  "updatedAt": "2026-05-23T18:40:00Z",
+  "source": "local agent identity files and Mission Control v2 architecture",
+  "asOf": "2026-05-23",
+  "notes": "Role descriptions only. Current activity is supplied by runtime/file-backed live status elsewhere.",
+  "items": [
+    {
+      "id": "gustav",
+      "name": "Gustav",
+      "role": "Life assistant and operations partner",
+      "owns": ["memory", "heartbeats", "Mission Control", "business operations"],
+      "bestFor": ["daily coordination", "owner context", "local automation", "review preparation"]
+    },
+    {
+      "id": "altair",
+      "name": "Altair",
+      "role": "Codex execution backend and engineering agent",
+      "owns": ["code changes", "repo audits", "validation", "result packets"],
+      "bestFor": ["multi-file implementation", "debugging", "refactors", "local product builds"]
+    },
+    {
+      "id": "lyra",
+      "name": "Lyra",
+      "role": "Creative production agent",
+      "owns": ["design briefs", "poster rendering", "brand-safe assets", "creative review artifacts"],
+      "bestFor": ["lead-gen posters", "supplied-image layouts", "campaign assets"]
+    },
+    {
+      "id": "vega",
+      "name": "Vega",
+      "role": "Video editing lane",
+      "owns": ["video editing workflows", "reel processing", "media outputs"],
+      "bestFor": ["fight clips", "short-form edits", "rendered video assets"]
+    }
+  ]
+}

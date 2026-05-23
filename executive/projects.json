@@ -1,0 +1,44 @@
+{
+  "updatedAt": "2026-05-23T18:40:00Z",
+  "source": "workspace memory, current Mission Control TODOs, and active agent outputs",
+  "asOf": "2026-05-23",
+  "notes": "Prioritized owner-facing project map. Runtime/current activity still comes from the live console.",
+  "items": [
+    {
+      "id": "mission-control-v2",
+      "title": "Mission Control v2",
+      "status": "active",
+      "priority": "high",
+      "summary": "Live local agent operations console with runtime sessions, transcripts, timeline, reports, and executive overview.",
+      "links": ["mission-control/v2.html", "drafts/mission-control-v2-1-executive-carryover-implementation-brief.md"],
+      "updatedAt": "2026-05-23T18:40:00Z"
+    },
+    {
+      "id": "altair-true-agent",
+      "title": "Altair true-agent foundation",
+      "status": "operational",
+      "priority": "high",
+      "summary": "Local engineering agent with queue, lifecycle, backend execution, reports, and status visibility.",
+      "links": ["altair/README.md", "altair/reports/altair-v2-foundation-result.json"],
+      "updatedAt": "2026-05-23T00:02:43Z"
+    },
+    {
+      "id": "lyra-creative-agent",
+      "title": "Lyra creative pipeline",
+      "status": "operational",
+      "priority": "medium",
+      "summary": "Creative agent foundation with lead-gen poster mode, supplied-image support, and review artifacts.",
+      "links": ["lyra/README.md", "altair/reports/lyra-v2-foundation-result.json"],
+      "updatedAt": "2026-05-23T00:31:51Z"
+    },
+    {
+      "id": "club-growth-drafts",
+      "title": "Club growth review queue",
+      "status": "awaiting_review",
+      "priority": "high",
+      "summary": "Sunday beginners, referrals, school outreach, paid ad, and community growth drafts are ready for Aaron review.",
+      "links": ["drafts/review-tracker.md"],
+      "updatedAt": "2026-05-23T18:40:00Z"
+    }
+  ]
+}

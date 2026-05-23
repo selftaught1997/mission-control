@@ -1,0 +1,48 @@
+{
+  "updatedAt": "2026-05-23T18:40:00Z",
+  "source": "USER.md club operations detail",
+  "asOf": "2026-05-23",
+  "notes": "Static operating facts until a live member register integration is added.",
+  "items": [
+    {
+      "id": "active-members",
+      "label": "Active members",
+      "value": "100-120",
+      "status": "estimate",
+      "source": "USER.md"
+    },
+    {
+      "id": "sunday-average",
+      "label": "Sunday 10am average",
+      "value": "10-12",
+      "status": "estimate",
+      "source": "USER.md"
+    },
+    {
+      "id": "sunday-capacity",
+      "label": "Sunday 10am capacity",
+      "value": 30,
+      "status": "known",
+      "source": "USER.md"
+    },
+    {
+      "id": "classes-per-week",
+      "label": "Classes per week",
+      "value": 11,
+      "status": "known",
+      "source": "USER.md"
+    }
+  ],
+  "locations": [
+    {
+      "id": "bryant-street",
+      "label": "Bryant Street",
+      "detail": "Weekday classes, E15 4RU"
+    },
+    {
+      "id": "eastlea",
+      "label": "Eastlea",
+      "detail": "Sunday classes, E16 4NP"
+    }
+  ]
+}
