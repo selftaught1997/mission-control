@@ -11,6 +11,7 @@ const ROOT = __dirname;
 const WORKSPACE = path.resolve(ROOT, '..');
 const EVENT_LOG = path.join(ROOT, 'events.ndjson');
 const AGENTS = [
+  { id: 'gustav', name: 'Gustav', root: ROOT, statusPath: path.join(ROOT, 'agent-status.json') },
   { id: 'altair', name: 'Altair', root: path.join(WORKSPACE, 'altair'), statusPath: path.join(WORKSPACE, 'altair/status.json') },
   { id: 'lyra', name: 'Lyra', root: path.join(WORKSPACE, 'lyra'), statusPath: path.join(WORKSPACE, 'lyra/status.json') },
   { id: 'vega', name: 'Vega', root: path.join(WORKSPACE, 'vega'), statusPath: path.join(WORKSPACE, 'vega/status.json'), optional: true }
@@ -99,21 +100,22 @@ function summarizeStatus(agent, raw) {
     };
   }
 
+  const lastUpdated = raw.last_updated || raw.updated_at || raw.updatedAt || null;
   return {
     id: agent.id,
-    name: agent.name,
+    name: raw.agent || agent.name,
     status: raw.status || 'unknown',
     available: true,
-    current_task_id: raw.current_task_id || raw.current_brief_id || null,
+    current_task_id: raw.current_task_id || raw.current_brief_id || raw.task || null,
     backend: raw.current_backend || raw.backend || null,
     repo_path: raw.current_repo_path || raw.repo_path || null,
-    last_updated: raw.last_updated || raw.updated_at || raw.updatedAt || null,
+    last_updated: typeof lastUpdated === 'number' ? new Date(lastUpdated).toISOString() : lastUpdated,
     last_task_id: raw.last_task_id || raw.last_brief_id || null,
     last_result_status: raw.last_result_status || null,
     last_report_path: normalizeWorkspacePath(raw.last_report_path),
     last_report_url: raw.last_report_path ? `/files/${normalizeWorkspacePath(raw.last_report_path)}` : null,
     queue_counts: raw.queue_counts || {},
-    notes: raw.notes || [],
+    notes: raw.notes || (raw.detail ? [raw.detail] : []),
     raw
   };
 }
