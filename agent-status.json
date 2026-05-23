@@ -3,13 +3,13 @@
   "agent": "Gustav",
   "status": "idle",
   "state": "idle",
-  "detail": "Lyra avatar direction package is complete and ready for review.",
-  "current_step": "lyra-avatar-choice-pack-ready",
+  "detail": "Mission Control v2.2 layout refinement is validated on the host and ready for Aaron to review.",
+  "current_step": "mission-control-v2-2-review-ready",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1779573287315,
-  "last_updated": "2026-05-23T21:54:47Z",
-  "last_activity_at": "2026-05-23T21:54:47Z",
-  "activity_counter": 11,
-  "emoji": "\ud83e\uddbe"
+  "updatedAt": 1779575100000,
+  "last_updated": "2026-05-23T22:25:00Z",
+  "last_activity_at": "2026-05-23T22:25:00Z",
+  "activity_counter": 12,
+  "emoji": "🦾"
 }

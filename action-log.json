@@ -2094,5 +2094,13 @@
     "status": "success",
     "summary": "Mission Control v2.3 visual and Agent Office shipped",
     "detail": "Added a visual polish pass plus a lightweight runtime-driven Agent Office panel for Gustav, Altair, Lyra, and Vega. The office scene is SVG/CSS-based, tied to real agent state, compatible with collapse/drag/persistence, and validated on the live host without interrupting the runtime feed. Host checks confirmed runtime health, tracked sessions, transcript, timeline, Executive mode, office panel presence, and office-panel layout controls all remained functional."
+  },
+  {
+    "id": 263,
+    "timestamp": "2026-05-23T22:25:00Z",
+    "category": "Mission Control",
+    "status": "success",
+    "summary": "Validated and shipped Mission Control v2.2 layout refinement on the real host.",
+    "detail": "Completed the host-side ship pass for Mission Control v2.2 after Altair landed the client changes. Validated the live page on port 18792 with runtime API checks plus browser automation covering panel collapse/expand, transcript size cycling, timeline filters, mode persistence, reset-layout recovery, and the HTML5 drag/reorder path. Updated the Altair task/report from stale blocked to done, refreshed Mission Control status/history, and prepared clean repo commits so Aaron can review the neater live dashboard without the runtime-first console regressing."
   }
 ]
