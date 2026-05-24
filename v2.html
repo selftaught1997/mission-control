@@ -846,24 +846,28 @@
 
     function badgeClass(status) {
       const s = String(status || '').toLowerCase();
-      if (['backend_running', 'running', 'working', 'rendering', 'assembling', 'validating', 'packaging', 'reading_repo', 'running_tools', 'replying', 'connected'].includes(s)) return 'running';
-      if (['planning', 'thinking', 'reviewing', 'drafting'].includes(s)) return 'planning';
+      if (['backend_running', 'running', 'working', 'rendering', 'assembling', 'validating', 'packaging', 'reading_repo', 'running_tools', 'using_tools', 'replying', 'connected'].includes(s)) return 'running';
+      if (['planning', 'thinking', 'reading', 'reviewing', 'drafting', 'heartbeat_admin'].includes(s)) return 'planning';
       if (['idle'].includes(s)) return 'idle';
       if (['blocked', 'failed', 'missing', 'error', 'backend_failed', 'disconnected', 'connect_error', 'degraded'].includes(s)) return 'failed';
       if (['done', 'complete', 'success', 'subscribed'].includes(s)) return 'done';
-      if (['pending', 'queued', 'waiting', 'claiming_task', 'backfilling', 'subscribing', 'connecting'].includes(s)) return 'waiting';
+      if (['pending', 'queued', 'waiting', 'waiting_on_user', 'claiming_task', 'backfilling', 'subscribing', 'connecting'].includes(s)) return 'waiting';
       if (['active', 'classifying'].includes(s)) return 'active';
       return '';
+    }
+
+    function statusLabel(status) {
+      return String(status || 'unknown').replace(/_/g, ' ');
     }
 
     function officeState(agent) {
       const status = String(agent?.status || agent?.state || '').toLowerCase();
       const stateName = String(agent?.state || '').toLowerCase();
       const result = String(agent?.last_result_status || agent?.last_outcome || '').toLowerCase();
-      if (agent?.runtime?.active || ['backend_running', 'running', 'working', 'rendering', 'assembling', 'validating', 'packaging', 'reading_repo', 'running_tools', 'replying', 'active'].includes(status)) return 'active';
+      if (agent?.runtime?.active || ['backend_running', 'running', 'working', 'rendering', 'assembling', 'validating', 'packaging', 'reading_repo', 'running_tools', 'using_tools', 'replying', 'active'].includes(status)) return 'active';
       if (['blocked', 'failed', 'missing', 'error', 'backend_failed', 'disconnected', 'connect_error', 'degraded'].includes(status) || ['blocked', 'failed'].includes(stateName)) return 'blocked';
-      if (['planning', 'thinking', 'reviewing', 'drafting', 'classifying'].includes(status) || ['planning', 'thinking'].includes(stateName)) return 'planning';
-      if (['pending', 'queued', 'waiting', 'claiming_task', 'backfilling', 'subscribing', 'connecting'].includes(status)) return 'waiting';
+      if (['planning', 'thinking', 'reading', 'reviewing', 'drafting', 'classifying', 'heartbeat_admin'].includes(status) || ['planning', 'thinking'].includes(stateName)) return 'planning';
+      if (['pending', 'queued', 'waiting', 'waiting_on_user', 'claiming_task', 'backfilling', 'subscribing', 'connecting'].includes(status)) return 'waiting';
       if (['done', 'complete', 'success'].includes(status) || ['done', 'complete', 'success'].includes(result)) return 'complete';
       if (status === 'idle' || stateName === 'idle') return 'idle';
       return 'idle';
@@ -1242,7 +1246,7 @@
                 <div class="agent-name">${escapeHtml(agent.name)}</div>
                 <div class="agent-role">${escapeHtml(visual.role || agent.id)}${agent.backend ? ' / ' + escapeHtml(agent.backend) : ''}</div>
               </div>
-              <span class="badge ${badgeClass(agent.status)}">${escapeHtml(agent.status)}</span>
+              <span class="badge ${badgeClass(agent.status)}">${escapeHtml(statusLabel(agent.status))}</span>
             </div>
             <div class="agent-live ${fresh ? 'fresh' : 'stale'}" ${activityTs ? `data-activity-timestamp="${escapeHtml(activityTs)}" data-fresh-seconds="4"` : ''}>
               <span class="pulse"></span>
@@ -1274,7 +1278,7 @@
         return;
       }
       state.selectedAgent = agent.id;
-      els.selectedBadge.textContent = agent.name;
+      els.selectedBadge.textContent = `${agent.name} · ${statusLabel(agent.status)}`;
       els.selectedBadge.className = `badge ${badgeClass(agent.status)}`;
       const tasks = (snapshot.tasks || []).filter(task => task.agent === agent.id).slice(0, 6);
       const reports = (snapshot.reports || []).filter(report => report.agent === agent.id).slice(0, 4);
@@ -1282,7 +1286,7 @@
       const activity = agent.runtime?.recent_activity || [];
       els.details.innerHTML = `
         <div class="kv">
-          <div><strong>Status</strong><span><span class="badge ${badgeClass(agent.status)}">${escapeHtml(agent.status)}</span></span></div>
+          <div><strong>Status</strong><span><span class="badge ${badgeClass(agent.status)}">${escapeHtml(statusLabel(agent.status))}</span></span></div>
           <div><strong>Current</strong><span class="mono">${label(agent.current_task_id)}</span></div>
           <div><strong>Last task</strong><span class="mono">${label(agent.last_task_id)}</span></div>
           <div><strong>Repo</strong><span class="mono">${label(agent.repo_path)}</span></div>

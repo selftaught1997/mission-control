@@ -2214,5 +2214,37 @@
     "status": "success",
     "summary": "Ran an evening heartbeat review and confirmed Mission Control still matches the live draft queue and current status state.",
     "detail": "Reviewed HEARTBEAT.md, confirmed the workspace and nested Mission Control repos were clean, checked that Mission Control, the live draft review queue, and the current status state were still aligned, refreshed mission-control/agent-status.json and agent-history.json for the current evening window, updated drafts/review-tracker.md, and kept the pass quiet because nothing urgent required Aaron's attention."
+  },
+  {
+    "id": 278,
+    "timestamp": "2026-05-23T23:11:36Z",
+    "category": "System",
+    "status": "success",
+    "summary": "Fixed Mission Control v2 avatar asset paths so the new agent portraits render reliably on the live host.",
+    "detail": "Shipped the post-launch avatar asset hotfix for Mission Control v2.4 after the initial integration exposed path-resolution issues on the live host. Updated the Mission Control front end to normalize workspace, submodule, and assets-relative image paths into `/files/...` URLs for both card portraits and Agent Office artwork, then committed the fix in the nested mission-control repo as `b66ebe7` (`fix: normalize avatar asset paths`) and synced the workspace pointer as `06c3925` (`fix: ship avatar asset path hotfix`). Outcome: Gustav, Altair, Lyra, and Vega avatar assets now resolve cleanly through the live dashboard runtime instead of depending on brittle relative paths."
+  },
+  {
+    "id": 279,
+    "timestamp": "2026-05-24T03:02:44Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Ran the daily income research job and selected a local-business SaaS referral funnel around Xero and TIMIFY as today's best opportunity.",
+    "detail": "Daily Income Research completed successfully for 2026-05-24 and updated `research/todays-income-idea.json`, `research/income-ideas-log.json`, and `research/usage-log.json`, then auto-committed the output as git commit `a2eceea` (`chore: income research output 2026-05-24`). The winning idea was `Local Business SaaS Referral Funnel: Xero + TIMIFY buyer guides for service businesses` — a buyer-guide and comparison-page funnel for clubs, PTs, and other local operators choosing booking and back-office software. Supporting research captured official affiliate economics including TIMIFY recurring commission, Clear Books multi-year commission, and adjacent SaaS partner benchmarks. Usage log recorded model `openai-codex/gpt-5.4`, thinking `off`, 16 tool calls, and successful completion; intended Discord destinations were recorded in the research output rather than sent from the run."
+  },
+  {
+    "id": 280,
+    "timestamp": "2026-05-24T17:46:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Drafted a finish-to-ship agent certification plan aimed at getting Gustav toward handling the whole workload.",
+    "detail": "Aaron explicitly asked for a full agent certification plan focused on Gustav increasingly handling the complete workload with finish-to-ship standards rather than demo/progress mode. Drafted the plan in `drafts/agent-certification-plan-finish-to-ship.md`, framing the certification programme around real operational trust, staged capability gates, and high-confidence handoff criteria instead of shallow feature demos. Outcome: the project now has a written strategic plan Aaron can review before deeper implementation and testing phases."
+  },
+  {
+    "id": 281,
+    "timestamp": "2026-05-24T18:35:00Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Built the shared agent certification harness, scorecard, and named test packs for Gustav, Altair, Lyra, and Vega.",
+    "detail": "Completed Phase 2 of the agent certification project as a reusable certification harness. Created `drafts/agent-certification-harness.md` plus `drafts/agent-certification-scorecard.md`, and defined named test packs for Gustav, Altair, Lyra, and Vega so future certification passes use the same gates and evaluation structure. Validation was a structure check across headings, test IDs, gate definitions, and git status. Aaron also clarified that the special renew-point / double-check / sign-off between phases rule is scoped only to this certification project, so Phase 3 should not start until he signs off the Phase 2 report."
   }
 ]

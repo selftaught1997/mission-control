@@ -705,14 +705,173 @@ function summarizeStatus(agent, raw) {
   };
 }
 
+function msSince(timestamp) {
+  if (!timestamp) return Number.POSITIVE_INFINITY;
+  const parsed = Date.parse(timestamp);
+  if (!Number.isFinite(parsed)) return Number.POSITIVE_INFINITY;
+  return Date.now() - parsed;
+}
+
+function isRecentTimestamp(timestamp, maxAgeMs) {
+  return msSince(timestamp) <= maxAgeMs;
+}
+
+function maxTimestamp(...values) {
+  let winner = null;
+  let winnerMs = -Infinity;
+  for (const value of values) {
+    if (!value) continue;
+    const parsed = Date.parse(value);
+    if (!Number.isFinite(parsed)) continue;
+    if (parsed > winnerMs) {
+      winnerMs = parsed;
+      winner = new Date(parsed).toISOString();
+    }
+  }
+  return winner;
+}
+
+function latestTranscriptRow(sessionKey, predicate = () => true) {
+  const rows = getSessionTranscript(sessionKey, 80).slice().reverse();
+  return rows.find(predicate) || null;
+}
+
+function sessionPriority(agentId, session) {
+  if (!session) return -Infinity;
+  const key = String(session.sessionKey || '').toLowerCase();
+  const channel = String(session.channel || '').toLowerCase();
+  const chatType = String(session.chatType || '').toLowerCase();
+  const label = String(session.label || '').toLowerCase();
+  const status = String(session.runtimeStatus || session.status || '').toLowerCase();
+  let score = 0;
+  if (session.subscribed) score += 120;
+  if (!session.stale) score += 70;
+  if (['running', 'active', 'working'].includes(status)) score += 40;
+  if (chatType === 'direct') score += 12;
+  if (agentId === 'gustav') {
+    if (key.includes('telegram:direct:1430710013')) score += 60;
+    if (channel === 'telegram') score += 24;
+    if (channel === 'heartbeat' || label === 'heartbeat') score -= 35;
+    if (key.includes(':cron:')) score -= 28;
+    if (key.includes(':subagent:')) score -= 22;
+  }
+  return score;
+}
+
+function inferLiveStatus(agentId, summary, linkedSessions) {
+  if (agentId !== 'gustav' || !runtimeState.connected || !linkedSessions.length) return null;
+
+  const primarySession = linkedSessions
+    .slice()
+    .sort((a, b) => sessionPriority(agentId, b) - sessionPriority(agentId, a))[0];
+
+  if (!primarySession || primarySession.stale) return null;
+
+  const sessionKey = primarySession.sessionKey;
+  const sessionStatus = String(primarySession.runtimeStatus || primarySession.status || '').toLowerCase();
+  const sessionChannel = String(primarySession.channel || '').toLowerCase();
+  const runtimeRecent = runtimeTimeline(160).filter((event) => event.agent === agentId && event.sessionKey === sessionKey);
+  const lastToolEvent = runtimeRecent.find((event) => ['session.tool', 'transcript.toolcall', 'transcript.toolresult'].includes(String(event.event_type || '').toLowerCase()));
+  const lastAssistantEvent = runtimeRecent.find((event) => ['agent', 'transcript.assistant'].includes(String(event.event_type || '').toLowerCase()));
+  const lastUserRow = latestTranscriptRow(sessionKey, (row) => row.role === 'user');
+  const lastAssistantRow = latestTranscriptRow(sessionKey, (row) => row.role === 'assistant');
+  const lastUserTs = lastUserRow?.timestamp || null;
+  const lastAssistantTs = maxTimestamp(lastAssistantEvent?.timestamp, lastAssistantRow?.timestamp);
+  const lastToolTs = lastToolEvent?.timestamp || null;
+  const lastResponseTs = maxTimestamp(lastAssistantTs, lastToolTs);
+  const isHeartbeatContext = sessionChannel === 'heartbeat' || (!primarySession.subscribed && String(summary.current_step || '').startsWith('heartbeat'));
+
+  if (isHeartbeatContext) {
+    return {
+      status: 'heartbeat_admin',
+      state: 'planning',
+      current_step: 'heartbeat_admin',
+      detail: 'Running heartbeat/admin maintenance work.',
+      last_activity_at: primarySession.lastActivity || summary.last_activity_at || summary.last_updated,
+      status_source: 'runtime'
+    };
+  }
+
+  if (isRecentTimestamp(lastToolTs, 30000)) {
+    return {
+      status: 'using_tools',
+      state: 'active',
+      current_step: 'using_tools',
+      detail: 'Using tools on the live conversation.',
+      last_activity_at: lastToolTs,
+      status_source: 'runtime'
+    };
+  }
+
+  if (isRecentTimestamp(lastAssistantTs, 12000)) {
+    return {
+      status: 'replying',
+      state: 'active',
+      current_step: 'replying',
+      detail: 'Replying in the live conversation.',
+      last_activity_at: lastAssistantTs,
+      status_source: 'runtime'
+    };
+  }
+
+  if (lastUserTs && (!lastResponseTs || Date.parse(lastUserTs) > Date.parse(lastResponseTs))) {
+    if (isRecentTimestamp(lastUserTs, 7000)) {
+      return {
+        status: 'reading',
+        state: 'planning',
+        current_step: 'reading',
+        detail: 'Reading the latest user message.',
+        last_activity_at: lastUserTs,
+        status_source: 'runtime'
+      };
+    }
+    if (isRecentTimestamp(lastUserTs, 90000)) {
+      return {
+        status: 'thinking',
+        state: 'planning',
+        current_step: 'thinking',
+        detail: 'Thinking through the latest user request.',
+        last_activity_at: lastUserTs,
+        status_source: 'runtime'
+      };
+    }
+  }
+
+  if (!primarySession.stale && ['running', 'active', 'working'].includes(sessionStatus)) {
+    return {
+      status: 'waiting_on_user',
+      state: 'waiting',
+      current_step: 'waiting_on_user',
+      detail: 'Waiting for the next user message.',
+      last_activity_at: primarySession.lastActivity || summary.last_activity_at || summary.last_updated,
+      status_source: 'runtime'
+    };
+  }
+
+  return null;
+}
+
 async function collectAgents() {
   const sessions = listSessions();
   const agents = [];
   for (const agent of AGENTS) {
-    const summary = summarizeStatus(agent, await readJson(agent.statusPath, null));
+    const stored = summarizeStatus(agent, await readJson(agent.statusPath, null));
     const linkedSessions = sessions.filter((session) => session.ownerAgent === agent.id).slice(0, 8);
     const runtimeRecent = runtimeTimeline(80).filter((event) => event.agent === agent.id).slice(0, 8);
     const runtimeActive = linkedSessions.some((session) => session.subscribed && !session.stale && ['running', 'active', 'working'].includes(String(session.runtimeStatus || '').toLowerCase()));
+    const liveOverride = inferLiveStatus(agent.id, stored, linkedSessions);
+    const summary = liveOverride ? {
+      ...stored,
+      status: liveOverride.status,
+      state: liveOverride.state,
+      current_step: liveOverride.current_step,
+      detail: liveOverride.detail,
+      last_activity_at: liveOverride.last_activity_at || stored.last_activity_at,
+      stored_status: stored.status,
+      stored_state: stored.state,
+      stored_detail: stored.detail,
+      status_source: liveOverride.status_source || 'runtime'
+    } : stored;
     agents.push({
       ...summary,
       runtime: {
@@ -1068,7 +1227,7 @@ async function buildSnapshot() {
     acc.pending += Number(agent.queue_counts.pending || 0);
     acc.done += Number(agent.queue_counts.done || 0);
     acc.failed += Number(agent.queue_counts.failed || 0);
-    if (['backend_running', 'running', 'working', 'active'].includes(agent.status)) acc.running += 1;
+    if (['backend_running', 'running', 'working', 'active', 'using_tools', 'replying', 'reading', 'thinking'].includes(agent.status) || agent.runtime?.active) acc.running += 1;
     return acc;
   }, { active: 0, blocked: 0, pending: 0, done: 0, failed: 0, running: 0 });
 
