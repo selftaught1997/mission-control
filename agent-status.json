@@ -3,13 +3,13 @@
   "agent": "Gustav",
   "status": "idle",
   "state": "idle",
-  "detail": "After-midnight heartbeat complete \u2014 Mission Control and draft queue still aligned, no new user-facing issues.",
+  "detail": "After-midnight heartbeat complete \u2014 Mission Control rolled into 25 May, no new user-facing issues.",
   "current_step": "heartbeat-mission-control-review",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1779663120000,
-  "last_updated": "2026-05-24T22:52:00Z",
-  "last_activity_at": "2026-05-24T22:52:00Z",
-  "activity_counter": 31,
+  "updatedAt": 1779665220000,
+  "last_updated": "2026-05-24T23:27:00Z",
+  "last_activity_at": "2026-05-24T23:27:00Z",
+  "activity_counter": 32,
   "emoji": "\ud83e\uddbe"
 }
