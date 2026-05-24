@@ -3,13 +3,13 @@
   "agent": "Gustav",
   "status": "idle",
   "state": "idle",
-  "detail": "Heartbeat complete — workspace scratch files cleaned, no new user-facing issues.",
-  "current_step": "heartbeat-workspace-cleanup",
+  "detail": "Pre-dawn heartbeat complete \u2014 24 May income idea synced, no new user-facing issues.",
+  "current_step": "heartbeat-income-idea-sync",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1779587700000,
-  "last_updated": "2026-05-24T01:55:00Z",
-  "last_activity_at": "2026-05-24T01:55:00Z",
-  "activity_counter": 19,
-  "emoji": "🦾"
+  "updatedAt": 1779591960000,
+  "last_updated": "2026-05-24T03:06:00Z",
+  "last_activity_at": "2026-05-24T03:06:00Z",
+  "activity_counter": 20,
+  "emoji": "\ud83e\uddbe"
 }
