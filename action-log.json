@@ -2126,5 +2126,13 @@
     "status": "success",
     "summary": "Ran a late-night heartbeat cleanup and cleared leftover workspace scratch files.",
     "detail": "Reviewed HEARTBEAT.md, found the task queue itself complete, removed six leftover temporary Mission Control validation files from the workspace via trash, refreshed Mission Control status/history for the quiet late-night window, and kept the pass non-intrusive because nothing user-facing needed Aaron's attention."
+  },
+  {
+    "id": 267,
+    "timestamp": "2026-05-24T00:45:00Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Cleaned stray workspace scratch files during the late-night heartbeat review.",
+    "detail": "Reviewed HEARTBEAT.md, found the actual work queue complete, then cleaned six obvious temporary ts-serve/plist scratch files from the workspace root via Trash so the repo stayed tidy. Refreshed Mission Control status/history and logged the quiet cleanup; no user-facing alert was needed at 01:45 because it was late and there was nothing urgent beyond housekeeping."
   }
 ]
