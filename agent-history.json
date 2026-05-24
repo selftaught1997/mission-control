@@ -3,6 +3,11 @@
     {
       "status": "working",
       "task": "Late-night heartbeat workspace cleanup",
+      "ts": 1779587700000
+    },
+    {
+      "status": "working",
+      "task": "Late-night heartbeat workspace cleanup",
       "ts": 1779583500000
     },
     {
@@ -74,11 +79,6 @@
       "status": "working",
       "task": "Night heartbeat Lyra lead-gen task sync",
       "ts": 1779484980000
-    },
-    {
-      "status": "working",
-      "task": "Night heartbeat Lyra photo-poster review sync",
-      "ts": 1779482880000
     }
   ]
 }
