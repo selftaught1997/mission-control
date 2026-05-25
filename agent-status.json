@@ -1,15 +1,15 @@
 {
   "schema_version": "1.1",
   "agent": "Gustav",
-  "status": "idle",
-  "state": "idle",
-  "detail": "Heartbeat reviewed Mission Control, cleaned transient outputs, and committed current Lyra/Vega build progress.",
-  "current_step": "heartbeat-mission-control-review",
+  "status": "working",
+  "state": "working",
+  "detail": "Executing Phase 7 orchestration certification under FINISH_TO_SHIP. Vega foundation/certification finished enough to move on; next live work is orchestration drills, then end-to-end workload drills.",
+  "current_step": "phase-7-orchestration-certification",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1779714342301,
-  "last_updated": "2026-05-25T13:05:42Z",
-  "last_activity_at": "2026-05-25T13:05:42Z",
-  "activity_counter": 38,
+  "updatedAt": 1779720836301,
+  "last_updated": "2026-05-25T14:53:56Z",
+  "last_activity_at": "2026-05-25T14:53:56Z",
+  "activity_counter": 40,
   "emoji": "\ud83e\uddbe"
 }
