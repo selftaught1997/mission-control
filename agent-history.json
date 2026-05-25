@@ -3,6 +3,11 @@
     {
       "status": "working",
       "task": "Morning heartbeat Mission Control review",
+      "ts": 1779697020000
+    },
+    {
+      "status": "working",
+      "task": "Morning heartbeat Mission Control review",
       "ts": 1779681120000
     },
     {
@@ -94,11 +99,6 @@
       "status": "working",
       "task": "Late-night heartbeat workspace cleanup",
       "ts": 1779579300000
-    },
-    {
-      "status": "working",
-      "task": "Late-night heartbeat Mission Control v2.2 ship validation sync",
-      "ts": 1779575100000
     }
   ]
 }
