@@ -2,6 +2,11 @@
   "entries": [
     {
       "status": "working",
+      "task": "Late-evening heartbeat certification housekeeping sync",
+      "ts": 1779731580000
+    },
+    {
+      "status": "working",
       "task": "Evening heartbeat Mission Control review",
       "ts": 1779727380000
     },
@@ -94,11 +99,6 @@
       "status": "working",
       "task": "Pre-dawn heartbeat income idea sync",
       "ts": 1779591960000
-    },
-    {
-      "status": "working",
-      "task": "Late-night heartbeat workspace cleanup",
-      "ts": 1779587700000
     }
   ]
 }

@@ -2318,5 +2318,13 @@
     "status": "partial",
     "summary": "Heartbeat reviewed real Vega certification output and committed the current captioned-mode/blocked-case progress cleanly.",
     "detail": "Reviewed HEARTBEAT.md, found fresh uncommitted Vega certification artifacts in the workspace, and verified they were real progress rather than scratch output. The new work adds a `captioned` video-reel path plus example briefs, captures an intentional missing-source blocker drill that correctly lands in `blocked`, and records an honest failed captioned render because the current ffmpeg on this host lacks the `drawtext` filter needed for burned-in captions. Synced that state into Mission Control during the evening heartbeat, refreshed the heartbeat metadata while leaving Gustav pinned to the live Phase 7 orchestration-certification lane, and committed the workspace cleanly instead of leaving the run half-staged."
+  },
+  {
+    "id": 291,
+    "timestamp": "2026-05-25T17:53:00Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Committed the FINISH_TO_SHIP playbook/policy sync during the late-evening heartbeat and kept Mission Control truthful.",
+    "detail": "Reviewed HEARTBEAT.md, found only small uncommitted internal execution-discipline changes rather than a new user-facing task, recorded the durable FINISH_TO_SHIP hardening work (AGENTS.md startup-policy additions plus playbooks/finish-to-ship.md), refreshed the review-tracker heartbeat stamp, kept Gustav's stored Mission Control status pinned to the exact active lane (Phase 7 orchestration certification), and committed the workspace cleanly. No outward alert was needed because nothing urgent required Aaron's attention."
   }
 ]
