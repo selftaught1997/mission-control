@@ -3,13 +3,13 @@
   "agent": "Gustav",
   "status": "idle",
   "state": "idle",
-  "detail": "Late-night heartbeat complete \u2014 certification review pack synced, Mission Control aligned, no urgent user-facing issues.",
+  "detail": "Late-night heartbeat complete \u2014 two new certification follow-up drafts surfaced for review, Mission Control aligned.",
   "current_step": "heartbeat-mission-control-review",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1779743400000,
-  "last_updated": "2026-05-25T21:10:00Z",
-  "last_activity_at": "2026-05-25T21:10:00Z",
-  "activity_counter": 46,
+  "updatedAt": 1779747600000,
+  "last_updated": "2026-05-25T22:20:00Z",
+  "last_activity_at": "2026-05-25T22:20:00Z",
+  "activity_counter": 47,
   "emoji": "\ud83e\uddbe"
 }

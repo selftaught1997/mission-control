@@ -2,6 +2,11 @@
   "entries": [
     {
       "status": "working",
+      "task": "Late-night heartbeat certification follow-up draft sync",
+      "ts": 1779747600000
+    },
+    {
+      "status": "working",
       "task": "Late-night heartbeat certification review pack sync",
       "ts": 1779743400000
     },
@@ -94,11 +99,6 @@
       "status": "working",
       "task": "Midday heartbeat Mission Control review",
       "ts": 1779617100000
-    },
-    {
-      "status": "working",
-      "task": "Late-morning heartbeat Mission Control review",
-      "ts": 1779603300000
     }
   ]
 }
