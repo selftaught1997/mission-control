@@ -2,6 +2,11 @@
   "entries": [
     {
       "status": "working",
+      "task": "Pre-dawn heartbeat income idea sync",
+      "ts": 1779679320000
+    },
+    {
+      "status": "working",
       "task": "After-midnight heartbeat Mission Control review",
       "ts": 1779665220000
     },
@@ -94,11 +99,6 @@
       "status": "working",
       "task": "Evening heartbeat Mission Control review",
       "ts": 1779564300000
-    },
-    {
-      "status": "working",
-      "task": "Evening heartbeat Mission Control review",
-      "ts": 1779558000000
     }
   ]
 }
