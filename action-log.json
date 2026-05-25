@@ -2310,5 +2310,13 @@
     "status": "success",
     "summary": "Heartbeat reviewed Mission Control and committed current Lyra/Vega build progress",
     "detail": "Reviewed HEARTBEAT.md always-on items. Confirmed no new /workspace/drafts/ outputs required user notification from this heartbeat. Cleaned transient video-editor intermediates, kept the new Lyra document/social/leaflet/event outputs plus Vega foundation and successful certification outputs, refreshed Gustav heartbeat status, and prepared workspace+mission-control commits so the current build state is durably recorded."
+  },
+  {
+    "id": 290,
+    "timestamp": "2026-05-25T16:43:00Z",
+    "category": "Automation",
+    "status": "partial",
+    "summary": "Heartbeat reviewed real Vega certification output and committed the current captioned-mode/blocked-case progress cleanly.",
+    "detail": "Reviewed HEARTBEAT.md, found fresh uncommitted Vega certification artifacts in the workspace, and verified they were real progress rather than scratch output. The new work adds a `captioned` video-reel path plus example briefs, captures an intentional missing-source blocker drill that correctly lands in `blocked`, and records an honest failed captioned render because the current ffmpeg on this host lacks the `drawtext` filter needed for burned-in captions. Synced that state into Mission Control during the evening heartbeat, refreshed the heartbeat metadata while leaving Gustav pinned to the live Phase 7 orchestration-certification lane, and committed the workspace cleanly instead of leaving the run half-staged."
   }
 ]
