@@ -2302,5 +2302,13 @@
     "status": "success",
     "summary": "Ran a morning heartbeat review and confirmed Mission Control still matches the live draft queue and current status state.",
     "detail": "Reviewed HEARTBEAT.md, confirmed the workspace and nested Mission Control repos were clean, checked that Mission Control, the live draft review queue, and the current status state were still aligned, refreshed mission-control/agent-status.json and agent-history.json for the current morning window, updated drafts/review-tracker.md, and kept the pass quiet because nothing urgent required Aaron's attention."
+  },
+  {
+    "id": 289,
+    "timestamp": "2026-05-25T13:03:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Heartbeat reviewed Mission Control and committed current Lyra/Vega build progress",
+    "detail": "Reviewed HEARTBEAT.md always-on items. Confirmed no new /workspace/drafts/ outputs required user notification from this heartbeat. Cleaned transient video-editor intermediates, kept the new Lyra document/social/leaflet/event outputs plus Vega foundation and successful certification outputs, refreshed Gustav heartbeat status, and prepared workspace+mission-control commits so the current build state is durably recorded."
   }
 ]
