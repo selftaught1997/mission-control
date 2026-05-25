@@ -2366,5 +2366,13 @@
     "status": "success",
     "summary": "Ran a late-night heartbeat review and surfaced two new certification follow-up drafts for Aaron review.",
     "detail": "Reviewed HEARTBEAT.md, found two fresh untracked drafts already saved in /workspace/drafts (`agent-certification-executive-summary.md` and `agent-practical-uses-next.md`), confirmed they were real review-ready follow-up docs rather than scratch output, updated drafts/review-tracker.md to surface them explicitly, refreshed mission-control/agent-status.json and agent-history.json for the current late-night window, synced the new heartbeat step into both action histories, and prepared a clean workspace commit. This pass turned the loose drafts into visible review items rather than leaving them buried as untracked files."
+  },
+  {
+    "id": 297,
+    "timestamp": "2026-05-25T23:30:00Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Ran an after-midnight heartbeat review and rolled Mission Control into 26 May while confirming the review queue is unchanged.",
+    "detail": "Reviewed HEARTBEAT.md, confirmed the workspace and nested Mission Control repos were clean, checked that the live draft review queue and current status state were still aligned with Mission Control, rolled mission-control/agent-status.json and agent-history.json into the new day for the 00:30 BST heartbeat window, updated drafts/review-tracker.md, created today's memory note, and kept the pass quiet because nothing urgent required Aaron's attention."
   }
 ]
