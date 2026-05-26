@@ -2390,5 +2390,21 @@
     "status": "success",
     "summary": "Set up and populated the shared Google Drive review workspace for Aaron.",
     "detail": "Used the existing Google service account / Drive API route to create or ensure a top-level 'Gustav Workspace' folder with subfolders 'Review Packs', 'Sunday Beginner Growth Pack', and 'Agent Outputs', shared it with aaronstorey007@gmail.com, and uploaded the Sunday Beginner Growth Pack so Aaron can review it more easily on mobile from Google Drive → Shared with me."
+  },
+  {
+    "id": 300,
+    "timestamp": "2026-05-25T19:48:24Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Completed the agent certification stack and packaged the final Gustav certification review set.",
+    "detail": "Committed the full certification completion pass as git commit 017af94 ('feat: complete agent certification stack'). Outcome included the final Gustav phase report and overall certification report in drafts, new end-to-end drill briefs, a completed Altair mixed-queue rollup tool result packet, Lyra social-square orchestration outputs, and Vega orchestration/captioned render outputs. Memory notes confirm the internal certification stack was completed with Altair, Lyra, Vega, and Gustav ready for real internal use, with the only accepted exception being Altair's secondary Claude backend smoke still blocked by external Claude org/auth access."
+  },
+  {
+    "id": 301,
+    "timestamp": "2026-05-26T03:03:27Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Ran the daily income research job and selected a Loopy Loyalty referral funnel as the strongest 26 May opportunity.",
+    "detail": "The 2026-05-26 income research run auto-committed its output as git commit 5e41f57 ('chore: income research output 2026-05-26'), with the follow-up brief added in commit 4893ed2. Updated files: research/income-ideas-log.json, research/todays-income-idea.json, and research/usage-log.json. Today's winner was 'Loopy Loyalty Referral Funnel for UK Local Service Businesses' — a buyer-guide and outreach funnel helping local service businesses adopt digital stamp-card loyalty programs, with Gustav handling guides, landing pages, outreach, nurture, and tracking. Recorded economics: Loopy Loyalty's official 25% recurring commission for the first 12 months, with realistic early income around £150-£1,500/month and upside into the low four figures."
   }
 ]
