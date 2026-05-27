@@ -2,6 +2,11 @@
   "entries": [
     {
       "status": "working",
+      "task": "Dawn heartbeat Mission Control review",
+      "ts": 1779856920000
+    },
+    {
+      "status": "working",
       "task": "Pre-dawn heartbeat workspace log sync",
       "ts": 1779852720000
     },
@@ -94,11 +99,6 @@
       "status": "working",
       "task": "Mid-afternoon heartbeat Mission Control review",
       "ts": 1779628500000
-    },
-    {
-      "status": "working",
-      "task": "Afternoon heartbeat Mission Control review",
-      "ts": 1779625800000
     }
   ]
 }
