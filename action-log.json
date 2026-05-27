@@ -2526,5 +2526,21 @@
     "status": "success",
     "summary": "Ran an evening heartbeat review and confirmed Mission Control still matches the live review queue.",
     "detail": "Reviewed HEARTBEAT.md, confirmed the workspace and nested Mission Control repos were clean, checked that Mission Control and the live draft review queue were still aligned, refreshed mission-control/agent-status.json and agent-history.json for the current evening window, updated drafts/review-tracker.md, and logged the quiet sync in today's memory. No outward alert was needed because nothing urgent required Aaron's attention."
+  },
+  {
+    "id": 317,
+    "timestamp": "2026-05-27T03:03:27Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Ran the daily income research job and selected a CRM referral funnel for UK one-person service businesses as the strongest 27 May opportunity.",
+    "detail": "Daily Income Research completed successfully for 2026-05-27 and auto-committed the updated research files as git commit 689b2b6 ('chore: income research output 2026-05-27'). The winning idea was 'CRM Referral Funnel for UK One-Person Service Businesses' — a narrow buyer-guide and outreach funnel around simple CRM tools like Capsule CRM and OnePageCRM for operators such as karate clubs, PTs, tutors, trades, and other local one-person service businesses. The run updated research/todays-income-idea.json, research/income-ideas-log.json, and research/usage-log.json, scored the winner 22/25 against four alternatives, recorded 14 tool calls with successful completion, and noted the intended Discord destinations (#trading-desk for the full report and #morning-brief for the 2-line summary) without sending them from the isolated run."
+  },
+  {
+    "id": 318,
+    "timestamp": "2026-05-27T19:33:00Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Ran a night heartbeat review, resynced the workspace action history, and confirmed the live review queue is unchanged.",
+    "detail": "Reviewed HEARTBEAT.md, found the nested Mission Control repo still carrying the uncommitted 27 May income-research log update while the top-level workspace action log was one entry behind, synced both histories, refreshed mission-control/agent-status.json and agent-history.json for the current night window, updated drafts/review-tracker.md, and logged the quiet sync in today's memory. No outward alert was needed because the review queue was unchanged and nothing urgent required Aaron's attention."
   }
 ]
