@@ -3,13 +3,13 @@
   "agent": "Gustav",
   "status": "idle",
   "state": "idle",
-  "detail": "After-midnight heartbeat review completed. Workspace is clean and the new daily memory note for 27 May has been created.",
-  "current_step": "heartbeat-after-midnight-rollover",
+  "detail": "Pre-dawn heartbeat review completed. Workspace/action logs are synced and the review queue is unchanged.",
+  "current_step": "heartbeat-pre-dawn-review",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1779838091751,
-  "last_updated": "2026-05-26T23:28:11Z",
-  "last_activity_at": "2026-05-26T23:28:11Z",
-  "activity_counter": 61,
-  "emoji": "\ud83e\uddbe"
+  "updatedAt": 1779852720000,
+  "last_updated": "2026-05-27T03:32:00Z",
+  "last_activity_at": "2026-05-27T03:32:00Z",
+  "activity_counter": 62,
+  "emoji": "🦾"
 }
