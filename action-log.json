@@ -2638,5 +2638,13 @@
     "status": "success",
     "summary": "Ran a late-afternoon heartbeat review and confirmed Mission Control still matches the live review queue.",
     "detail": "Reviewed HEARTBEAT.md, confirmed the workspace and nested Mission Control repos were clean, checked that Mission Control, the live draft review queue, and the current status state were still aligned, refreshed mission-control/agent-status.json and agent-history.json for the current late-afternoon window, updated drafts/review-tracker.md, and kept the pass quiet because nothing urgent required Aaron's attention."
+  },
+  {
+    "id": 331,
+    "timestamp": "2026-05-28T18:02:00Z",
+    "category": "Infrastructure",
+    "status": "success",
+    "summary": "Logged the daily diagnostic blockers, refreshed Mission Control heartbeat metadata, and kept the external publish step blocked pending approval.",
+    "detail": "Reviewed HEARTBEAT.md after the daily diagnostic and updated Mission Control to reflect the real current state. Confirmed the published GitHub Pages dashboard is still stale because the local mission-control repo is 296 commits ahead of origin/main, captured the content-review bottleneck explicitly (25 review items waiting while Buffer has 0 drafts and 0 scheduled posts), refreshed mission-control/agent-status.json and agent-history.json for the 19:02 BST heartbeat window, and kept the public push blocked because publishing would leave the machine and needs Aaron approval."
   }
 ]

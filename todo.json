@@ -21,7 +21,7 @@
     {
       "id": 3,
       "title": "Push Mission Control repo to GitHub Pages origin",
-      "detail": "Local mission-control repo is far ahead of origin/main, so GitHub Pages is stale. Needs an explicit push to publish the current dashboard state. Ask Aaron before pushing because this leaves the machine/publicly updates the site.",
+      "detail": "Local mission-control repo remains 296 commits ahead of origin/main as of the 28 May diagnostic, so GitHub Pages is stale and still showing the old April state. Needs an explicit push to publish the current dashboard. Ask Aaron before pushing because this leaves the machine/publicly updates the site.",
       "priority": "high",
       "status": "blocked",
       "category": "Infrastructure",
@@ -134,6 +134,15 @@
       "status": "done",
       "category": "Automation",
       "createdAt": "2026-05-23T01:44:16Z"
+    },
+    {
+      "id": 16,
+      "title": "Clear the draft-review backlog and turn approved items into scheduled content",
+      "detail": "Current queue: 25 items waiting in drafts/review-tracker.md while the latest Buffer health check succeeded but found 0 drafts and 0 scheduled posts across the connected channels. This is mainly blocked on Aaron review/approval; once priorities are chosen, convert the first approved batch into scheduled posts and/or outbound actions.",
+      "priority": "high",
+      "status": "blocked",
+      "category": "Content",
+      "createdAt": "2026-05-28T18:02:00Z"
     }
   ]
 }
