@@ -2574,5 +2574,13 @@
     "status": "success",
     "summary": "Ran an after-midnight heartbeat review and rolled Mission Control into 28 May while confirming the review queue is unchanged.",
     "detail": "Reviewed HEARTBEAT.md, confirmed the workspace and nested Mission Control repos were clean, rolled mission-control/agent-status.json and agent-history.json into the new day for the 00:03 BST heartbeat window, updated drafts/review-tracker.md, created today's memory note, and kept the pass quiet because nothing urgent required Aaron's attention."
+  },
+  {
+    "id": 323,
+    "timestamp": "2026-05-28T00:13:00Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Ran a night heartbeat review and confirmed Mission Control still matches the live review queue.",
+    "detail": "Reviewed HEARTBEAT.md, confirmed the workspace and nested Mission Control repos were clean, checked that Mission Control, the live draft review queue, and the current status state were still aligned, refreshed mission-control/agent-status.json and agent-history.json for the current night window, updated drafts/review-tracker.md, and kept the pass quiet because nothing urgent required Aaron's attention."
   }
 ]
