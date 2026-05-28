@@ -2646,5 +2646,13 @@
     "status": "success",
     "summary": "Logged the daily diagnostic blockers, refreshed Mission Control heartbeat metadata, and kept the external publish step blocked pending approval.",
     "detail": "Reviewed HEARTBEAT.md after the daily diagnostic and updated Mission Control to reflect the real current state. Confirmed the published GitHub Pages dashboard is still stale because the local mission-control repo is 296 commits ahead of origin/main, captured the content-review bottleneck explicitly (25 review items waiting while Buffer has 0 drafts and 0 scheduled posts), refreshed mission-control/agent-status.json and agent-history.json for the 19:02 BST heartbeat window, and kept the public push blocked because publishing would leave the machine and needs Aaron approval."
+  },
+  {
+    "id": 332,
+    "timestamp": "2026-05-28T03:00:00Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Ran the daily income research job and selected a Collect.chat referral funnel for UK one-person service businesses as the strongest 28 May opportunity.",
+    "detail": "Daily Income Research completed successfully for 2026-05-28 and auto-committed the updated research files as git commit 91c3faf ('chore: income research output 2026-05-28'). The winning idea was 'Collect.chat Referral Funnel for UK One-Person Service Businesses' — a narrow buyer-guide and outreach funnel helping UK one-person service businesses replace dead contact forms with conversational lead-capture widgets using Collect.chat. Updated files: research/todays-income-idea.json, research/income-ideas-log.json, and research/usage-log.json. Usage log recorded model openai-codex/gpt-5.4 with thinking high, 88k input tokens, 5.5k output tokens, 15 tool calls, and successful completion. Intended Discord destinations were recorded in the research output for #trading-desk and #morning-brief rather than sent from the isolated run."
   }
 ]
