@@ -2662,5 +2662,13 @@
     "status": "success",
     "summary": "Ran an after-midnight heartbeat review and rolled Mission Control into 29 May while confirming the live review queue is unchanged.",
     "detail": "Reviewed HEARTBEAT.md, confirmed the workspace and nested Mission Control repos were clean, checked that the live draft review queue and current status state were still aligned with Mission Control, rolled mission-control/agent-status.json and agent-history.json into the new day for the 00:33 BST heartbeat window, updated drafts/review-tracker.md, created today's memory note, and kept the pass quiet because nothing urgent required Aaron's attention."
+  },
+  {
+    "id": 334,
+    "timestamp": "2026-05-29T03:04:39Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Ran the daily income research job and selected a Tidio Referral Funnel for UK One-Person Service Businesses as the strongest 2026-05-29 opportunity.",
+    "detail": "Reviewed HEARTBEAT.md after the daily income research completion, found today's winning idea recorded as 'Tidio Referral Funnel for UK One-Person Service Businesses', logged it into both workspace action histories so Mission Control reflects the latest overnight work, refreshed mission-control/agent-status.json and agent-history.json for the current pre-dawn window, updated drafts/review-tracker.md, and logged the quiet sync in today's memory. The research run recorded the intended Discord destinations (#trading-desk for the full report and #morning-brief for the 2-line summary) without sending them from the isolated run."
   }
 ]
