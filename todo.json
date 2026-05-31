@@ -143,6 +143,15 @@
       "status": "blocked",
       "category": "Content",
       "createdAt": "2026-05-28T18:02:00Z"
+    },
+    {
+      "id": 17,
+      "title": "Fix Codex model/account mismatch for heartbeat runs",
+      "detail": "Repeated system warnings on 31 May show Codex-backed runs attempting `gpt-5.4` with a ChatGPT account, which OpenAI rejects (`The 'gpt-5.4' model is not supported when using Codex with a ChatGPT account.`). Find the runner/config choosing that model for ChatGPT-backed Codex sessions and switch those runs to a supported model or account path.",
+      "priority": "high",
+      "status": "blocked",
+      "category": "Infrastructure",
+      "createdAt": "2026-05-31T18:21:52Z"
     }
   ]
 }
