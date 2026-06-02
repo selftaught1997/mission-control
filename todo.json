@@ -21,7 +21,7 @@
     {
       "id": 3,
       "title": "Push Mission Control repo to GitHub Pages origin",
-      "detail": "Local mission-control repo remains 296 commits ahead of origin/main as of the 28 May diagnostic, so GitHub Pages is stale and still showing the old April state. Needs an explicit push to publish the current dashboard. Ask Aaron before pushing because this leaves the machine/publicly updates the site.",
+      "detail": "Local `mission-control` repo is clean but remains 321 commits ahead of `origin/main` as of the 2 June daily diagnostic, so GitHub Pages is stale and still showing the old April-era site. Needs an explicit push to publish the current dashboard. Ask Aaron before pushing because this leaves the machine/publicly updates the site.",
       "priority": "high",
       "status": "blocked",
       "category": "Infrastructure",
@@ -138,7 +138,7 @@
     {
       "id": 16,
       "title": "Clear the draft-review backlog and turn approved items into scheduled content",
-      "detail": "Current queue: 25 items waiting in drafts/review-tracker.md while the latest Buffer health check succeeded but found 0 drafts and 0 scheduled posts across the connected channels. This is mainly blocked on Aaron review/approval; once priorities are chosen, convert the first approved batch into scheduled posts and/or outbound actions.",
+      "detail": "Fresh Buffer health evidence from the 2 June daily diagnostic succeeded at 18:38 BST (login OK, schedule page OK, no stuck/failed evidence) but the queue is still empty: 0 scheduled posts for Stratford karate club and 0 Buffer drafts. `drafts/review-tracker.md` still shows 25 items awaiting Aaron review, so this remains blocked on approvals before anything can be loaded into the scheduling queue.",
       "priority": "high",
       "status": "blocked",
       "category": "Content",
@@ -146,8 +146,8 @@
     },
     {
       "id": 17,
-      "title": "Fix Codex model/account mismatch for heartbeat runs",
-      "detail": "Repeated system warnings on 31 May show Codex-backed runs attempting `gpt-5.4` with a ChatGPT account, which OpenAI rejects (`The 'gpt-5.4' model is not supported when using Codex with a ChatGPT account.`). Find the runner/config choosing that model for ChatGPT-backed Codex sessions and switch those runs to a supported model or account path.",
+      "title": "Stabilize Codex-backed cron runs for heartbeat and Morning Brief",
+      "detail": "Repeated system warnings on 31 May showed Codex-backed runs attempting `gpt-5.4` with a ChatGPT account, which OpenAI rejects (`The 'gpt-5.4' model is not supported when using Codex with a ChatGPT account.`). The 2 June daily diagnostic then confirmed a visible user impact: Morning Brief is in error state and its latest run failed with `OAuth token refresh failed for openai-codex`. Audit the cron/model/auth path for Codex-backed scheduled runs and switch them to a supported, stable configuration.",
       "priority": "high",
       "status": "blocked",
       "category": "Infrastructure",
