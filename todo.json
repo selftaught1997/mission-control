@@ -21,7 +21,7 @@
     {
       "id": 3,
       "title": "Push Mission Control repo to GitHub Pages origin",
-      "detail": "Local `mission-control` repo is clean but remained 332 commits ahead of `origin/main` at the 3 June early-evening heartbeat, so GitHub Pages is still stale and still showing the old April-era site. Needs an explicit push to publish the current dashboard. Ask Aaron before pushing because this leaves the machine/publicly updates the site.",
+      "detail": "Local `mission-control` repo is clean but remains hundreds of commits ahead of `origin/main`, so GitHub Pages is still stale and still showing the old April-era site. Needs an explicit push to publish the current dashboard. Ask Aaron before pushing because this leaves the machine/publicly updates the site.",
       "priority": "high",
       "status": "blocked",
       "category": "Infrastructure",
