@@ -147,7 +147,7 @@
     {
       "id": 17,
       "title": "Stabilize Codex-backed cron runs for heartbeat and Morning Brief",
-      "detail": "Repeated system warnings on 31 May showed Codex-backed runs attempting `gpt-5.4` with a ChatGPT account, which OpenAI rejects (`The 'gpt-5.4' model is not supported when using Codex with a ChatGPT account.`). The 2 June daily diagnostic confirmed visible user impact, and a fresh `openclaw cron list` check at 2026-06-03 03:07 BST still shows Morning Brief in `error`. This is not blocked on Aaron; it is an internal repair lane. Audit the cron/model/auth path for Codex-backed scheduled runs and switch them to a supported, stable configuration.",
+      "detail": "Repeated system warnings on 31 May showed Codex-backed runs attempting `gpt-5.4` with a ChatGPT account, which OpenAI rejects (`The 'gpt-5.4' model is not supported when using Codex with a ChatGPT account.`). The 2 June daily diagnostic confirmed visible user impact, and `openclaw cron list` still showed Morning Brief in `error` at 2026-06-03 03:07 BST. At 03:38 BST on 2026-06-03, Morning Brief was patched away from the flaky OpenAI Codex OAuth path onto explicit `anthropic/claude-sonnet-4-6` with `thinking: off`, `timeoutSeconds: 600`, and `tz: Europe/London`. Remaining step: verify the next scheduled 10:00 BST run succeeds and then clear the task or capture any new failure mode.",
       "priority": "high",
       "status": "todo",
       "category": "Infrastructure",
