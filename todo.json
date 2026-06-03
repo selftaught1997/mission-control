@@ -138,7 +138,7 @@
     {
       "id": 16,
       "title": "Clear the draft-review backlog and turn approved items into scheduled content",
-      "detail": "The 2 June daily diagnostic last verified Buffer itself was healthy at 18:38 BST (login OK, schedule page OK, no stuck/failed evidence) and the queue was empty at that point: 0 scheduled posts for Stratford karate club and 0 Buffer drafts. The 3 June late-afternoon heartbeat then confirmed the human blocker is unchanged: `drafts/review-tracker.md` still shows 25 items awaiting Aaron review, so this remains blocked on approvals before anything can be loaded into the scheduling queue.",
+      "detail": "Buffer itself is healthy, but the content pipeline is empty. The fresh 3 June diagnostic refresh at 18:00 BST succeeded with login OK, schedule page OK, no stuck/failed evidence, and `automation/logs/buffer-health-latest.json` now shows `queuePosts: 0` and `draftPosts: 0`. At the same time, `drafts/review-tracker.md` still shows 25 items awaiting Aaron review, so approvals remain the real bottleneck before anything can be loaded into the scheduling queue.",
       "priority": "high",
       "status": "blocked",
       "category": "Content",
