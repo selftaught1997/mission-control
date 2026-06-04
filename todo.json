@@ -138,9 +138,9 @@
     {
       "id": 16,
       "title": "Clear the draft-review backlog and turn approved items into scheduled content",
-      "detail": "Buffer itself is healthy, but the content pipeline is empty. The fresh 3 June diagnostic refresh at 18:00 BST succeeded with login OK, schedule page OK, no stuck/failed evidence, and `automation/logs/buffer-health-latest.json` now shows `queuePosts: 0` and `draftPosts: 0`. At the same time, `drafts/review-tracker.md` still shows 25 substantive items awaiting Aaron review, so approvals remain the real bottleneck before anything can be loaded into the scheduling queue. A new helper draft now exists at `drafts/content-approval-priority-shortlist-2026-06-04.md` recommending the first five approvals to speed up that decision.",
+      "detail": "Buffer itself is healthy, but the content pipeline is empty. The fresh 3 June diagnostic refresh at 18:00 BST succeeded with login OK, schedule page OK, no stuck/failed evidence, and `automation/logs/buffer-health-latest.json` now shows `queuePosts: 0` and `draftPosts: 0`. At the same time, `drafts/review-tracker.md` still shows 25 substantive items awaiting Aaron review, so Aaron's approvals are still required before anything can be loaded into the scheduling queue. However, this is no longer a pure external blocker: `drafts/content-approval-priority-shortlist-2026-06-04.md` now recommends the first five approvals, and `drafts/content-queue-first-batch-plan-2026-06-04.md` pre-stages the first queue sequence once those approvals land.",
       "priority": "high",
-      "status": "blocked",
+      "status": "todo",
       "category": "Content",
       "createdAt": "2026-05-28T18:02:00Z"
     },
