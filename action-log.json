@@ -2774,5 +2774,45 @@
     "summary": "Ran the daily income research job and selected a TalentLMS referral funnel for UK coaches, training providers, and membership businesses as the strongest current opportunity.",
     "detail": "Daily Income Research completed successfully for 2026-06-02 and committed the updated research files as git commit `c333590` (`chore: income research output 2026-06-02`). The winning idea was `TalentLMS Referral Funnel for UK Coaches, Training Providers & Membership Businesses` — a narrow buyer-guide and outreach funnel helping UK coaches, martial arts schools, training providers, and membership operators choose a simple LMS while Gustav handles the guides, niche pages, follow-up, and tracking. Updated `research/todays-income-idea.json`, `research/income-ideas-log.json`, and `research/usage-log.json`; usage log recorded model `openai-codex/gpt-5.4`, thinking `high`, 17 tool calls, and successful completion.",
     "id": 347
+  },
+  {
+    "id": 348,
+    "timestamp": "2026-06-03T20:20:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Repaired the failing AI cron lane by proving Anthropic OAuth was blocked and repinning the three key jobs to `openai-codex/gpt-5.4`.",
+    "detail": "Audited the live cron failures affecting `Morning Brief`, `Daily Income Research`, and `Daily Activity Log Tidy`. Verified the problem was not a missing model pin by running direct gateway probes with `openclaw infer model run --gateway`: `anthropic/claude-sonnet-4-6` returned `permission_error: OAuth authentication is currently not allowed for this organization`, while `openai-codex/gpt-5.4` returned `OK`. Confirmed the same split in the cron path itself with two disposable isolated cron probes, then patched all three production cron jobs back onto explicit `openai-codex/gpt-5.4` so the next scheduled runs could serve as the recovery checkpoint."
+  },
+  {
+    "id": 349,
+    "timestamp": "2026-06-04T03:06:00Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Ran the daily income research job and selected a `Dojo Docs` Canva-template shop for martial arts club owners as the strongest current opportunity.",
+    "detail": "The repaired `Daily Income Research` cron completed successfully on its first scheduled `openai-codex/gpt-5.4` run after the provider fix. It chose `Dojo Docs: B2B Canva Template Shop for Martial Arts Club Owners` as the winning idea, appended `research/income-ideas-log.json`, updated `research/todays-income-idea.json` and `research/usage-log.json`, recorded successful report delivery to Discord `#trading-desk` and `#morning-brief` in the run summary, and committed the research output as `b2c6f2e` (`chore: income research output 2026-06-04`)."
+  },
+  {
+    "id": 350,
+    "timestamp": "2026-06-04T10:07:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Collapsed the Sunday-beginner content backlog into a single approval pack and master handoff so the first queue batch can move straight into execution.",
+    "detail": "Used the overnight heartbeat window to turn a fragmented Sunday-beginner content queue into one Aaron-facing approval path. Created and extended a coordinated set of queue docs including the first-batch plan, rough captions, Buffer-ready variants, platform variants, assembly checklist, approval pack, loading sheet, visual shortlist, first-three-post bundle, timing matrix, Buffer entry matrix, and the top-level `drafts/content-queue-master-handoff-v1-2026-06-04.md`. Updated `QUESTIONS.md`, `HEARTBEAT.md`, and Mission Control item 16 so future wakes treat the master handoff as the canonical entry point and stop spawning near-duplicate prep docs unless a genuinely new gap appears."
+  },
+  {
+    "id": 351,
+    "timestamp": "2026-06-04T09:06:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Verified the repaired `Morning Brief` cron fully recovered on its scheduled 10:00 BST run.",
+    "detail": "Checked the first scheduled post-repair `Morning Brief` execution and confirmed the recovery criteria passed: live cron state showed `lastRunStatus: ok`, `lastDeliveryStatus: delivered`, and no fresh auth/provider regression after the switch back to `openai-codex/gpt-5.4`. The only remaining diagnostic noise was a separate non-auth calendar-script warning, so the provider/model failure lane was considered resolved for `Morning Brief`."
+  },
+  {
+    "id": 352,
+    "timestamp": "2026-06-04T10:37:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Fixed a stale prompt reference in `Daily Activity Log Tidy` so it now reads the live income-research run history.",
+    "detail": "Found and corrected a hidden prompt-level failure risk in the remaining `Daily Activity Log Tidy` cron before its 20:00 BST recovery check. The embedded income-research history step was pointing at an outdated cron ID ending `...51c9b8`; updated it to the live `Daily Income Research` job ID `7c5c35ff-a5b5-419b-acb9-af634b55c9b8`, removing a silent lookup error path unrelated to auth or scheduler health."
   }
 ]
