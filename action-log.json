@@ -3070,5 +3070,13 @@
     "status": "success",
     "summary": "Posted the anti-bullying short-call checklist to Discord #approvals for Aaron review.",
     "detail": "Sent the anti-bullying short-call checklist notification to Discord `#approvals` (`1488508811538071553`) so Aaron can review the booked-call handoff behind the workshop reply templates. The note pointed at `drafts/anti-bullying-workshop-short-call-checklist-2026-06-05.md` and described it as the short-call handoff for a warm school reply, keeping the package anchoring clear and turning the call into one simple next-step decision. Discord message id: `1512526380917850255`."
+  },
+  {
+    "id": 385,
+    "timestamp": "2026-06-05T19:06:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Removed the Morning Brief calendar-runner warning by pinning the job to a known-good Python wrapper.",
+    "detail": "Investigated the fresh Morning Brief diagnostic warning (`run python3.13 (agent) failed`) and confirmed the local mismatch: `/usr/bin/python3` is Python 3.9.6, while the calendar script runs cleanly via Homebrew Python. Added `scripts/run-calendar-check.sh` as a small wrapper that always invokes `/opt/homebrew/bin/python3` against `scripts/check-calendar.py`, verified the wrapper returns live calendar output, and updated the `Morning Brief` cron job (`657e7a64-378e-4182-8fb4-2d9edb1fbe5d`) to call the wrapper instead of a generic `python3` command. This closes the leftover non-auth calendar-path warning noted after the broader cron recovery work."
   }
 ]
