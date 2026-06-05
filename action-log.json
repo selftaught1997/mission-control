@@ -3054,5 +3054,21 @@
     "status": "success",
     "summary": "Posted the anti-bullying reply-template pack to Discord #approvals for Aaron review.",
     "detail": "Sent the anti-bullying reply-template notification to Discord `#approvals` (`1488508811538071553`) so Aaron can review the inbound-response layer behind the workshop mini-pack. The note pointed at `drafts/anti-bullying-workshop-reply-templates-2026-06-05.md` and described it as the reply pack for interested schools, budget questions, timing issues, right-contact forwards, and short call requests. Discord message id: `1512518774052356319`."
+  },
+  {
+    "id": 383,
+    "timestamp": "2026-06-05T18:36:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Built a short-call checklist for the anti-bullying workshop lane and added it to Aaron's review queue.",
+    "detail": "Filled the next real call-stage gap behind the anti-bullying workshop stack by creating `drafts/anti-bullying-workshop-short-call-checklist-2026-06-05.md`. The new draft gives Aaron a simple structure for warm school calls, keeps the `GBP595` half-day anchor clear, shows when to fall back to the `GBP295` assembly, and narrows each call to one next step. Added the draft to `drafts/review-tracker.md`, which moved the live review count to `40`, refreshed `HEARTBEAT.md`, corrected the live count in `QUESTIONS.md`, and updated `drafts/review-priority-shortlist-2026-06-05.md` so the backlog number stays accurate."
+  },
+  {
+    "id": 384,
+    "timestamp": "2026-06-05T18:39:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Posted the anti-bullying short-call checklist to Discord #approvals for Aaron review.",
+    "detail": "Sent the anti-bullying short-call checklist notification to Discord `#approvals` (`1488508811538071553`) so Aaron can review the booked-call handoff behind the workshop reply templates. The note pointed at `drafts/anti-bullying-workshop-short-call-checklist-2026-06-05.md` and described it as the short-call handoff for a warm school reply, keeping the package anchoring clear and turning the call into one simple next-step decision. Discord message id: `1512526380917850255`."
   }
 ]
