@@ -2838,5 +2838,13 @@
     "status": "success",
     "summary": "Rechecked the exact five approval-pack items and confirmed the recommended first batch still matches the live review stack.",
     "detail": "Ran a narrower 09:07 BST audit against the Sunday-beginner approval shortcut itself so the lane was tested on a different failure mode than the earlier broad handoff-link check. Confirmed all five recommended approval-pack items still exist on disk, including the paired source/doc and poster assets (`00-START-HERE-sunday-beginner-growth-pack.txt`, `sunday-beginner-growth-pack-v1.md`, `lyra-poster-sunday-beginners-v2.png`, `lyra-poster-sunday-beginners-v2.pdf`, `referral-campaign.md`, `nextdoor-post.md`, and `social-media-content-strategy.md`). Rechecked `drafts/review-tracker.md` and confirmed that each of those review items is still listed there and that the live approval-bound total remains `26`. Result: the Aaron-facing shortcut still lines up cleanly with the underlying review queue, so the blocker remains approval rather than missing or drifted source material."
+  },
+  {
+    "id": 356,
+    "timestamp": "2026-06-05T10:06:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Built a one-page anti-bullying workshop offer draft from the 5 June income idea and added it to Aaron's review queue.",
+    "detail": "Used the morning brief's explicit next move to turn the fresh income-research winner into a real operator-ready draft: `drafts/anti-bullying-workshop-offer-one-page-2026-06-05.md`. The draft packages the offer into three school-facing products (`GBP295` assembly, `GBP595` half-day anchor, `GBP895` full day), three core outcomes (confidence, anti-bullying awareness, and respect/boundaries), and a clean positioning line Aaron can later reuse in brochure/outreach work. Added the draft to `drafts/review-tracker.md` as a new Aaron-review item, which moved the live review count to `27`, then refreshed `HEARTBEAT.md` and Mission Control so the queue count stays consistent while the Sunday-beginner lane remains approval-bound rather than missing-prep-bound."
   }
 ]
