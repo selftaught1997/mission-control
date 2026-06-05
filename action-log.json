@@ -3086,5 +3086,13 @@
     "status": "success",
     "summary": "Refreshed the Sunday-beginner approval shortcuts so they match the live backlog state without adding more prep docs.",
     "detail": "Cleaned up the approval-facing Sunday-beginner lane in place rather than creating more near-duplicate queue-prep material. Updated `QUESTIONS.md` to remove the stale 3 June queue-check timestamp from Aaron's blocker prompt, tightened `drafts/content-queue-master-handoff-v1-2026-06-04.md` so it now calls out the broader `40`-item review backlog explicitly, and updated `drafts/sunday-beginner-queue-approval-pack-2026-06-04.md` to keep its role clear as the cleanest Sunday-only approval shortcut inside that wider backlog."
+  },
+  {
+    "id": 387,
+    "timestamp": "2026-06-05T20:36:00Z",
+    "category": "Infrastructure",
+    "status": "success",
+    "summary": "Refreshed the Mission Control publish blocker wording with the exact local-ahead count and reply options.",
+    "detail": "Confirmed the nested `mission-control` repo is `390` commits ahead of `origin/main` with local head `cc65738`, then tightened the blocker-facing wording instead of leaving it broad. Updated `QUESTIONS.md` so Aaron now sees the exact publish gap plus the shortest reply choices (`Push Mission Control` / `Keep Mission Control local`), and updated Mission Control todo item `3` so the blocked publish task reflects the same concrete ahead count and local head state."
   }
 ]
