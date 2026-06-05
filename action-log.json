@@ -3094,5 +3094,13 @@
     "status": "success",
     "summary": "Refreshed the Mission Control publish blocker wording with the exact local-ahead count and reply options.",
     "detail": "Confirmed the nested `mission-control` repo is `390` commits ahead of `origin/main` with local head `cc65738`, then tightened the blocker-facing wording instead of leaving it broad. Updated `QUESTIONS.md` so Aaron now sees the exact publish gap plus the shortest reply choices (`Push Mission Control` / `Keep Mission Control local`), and updated Mission Control todo item `3` so the blocked publish task reflects the same concrete ahead count and local head state."
+  },
+  {
+    "id": 388,
+    "timestamp": "2026-06-05T21:06:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Compressed the Sunday-beginner queue blocker in Mission Control back down to the live state and active handoff files.",
+    "detail": "Cleaned up Mission Control item `16`, which had drifted into a long count-by-count history of the day instead of a current blocker description. Rewrote it to focus on the live reality only: Buffer is healthy but empty, the review tracker sits at `40`, the blocker is approval rather than missing prep, the active Sunday-beginner shortcut is `drafts/sunday-beginner-queue-approval-pack-2026-06-04.md`, the execution index is `drafts/content-queue-master-handoff-v1-2026-06-04.md`, and future wakes should keep that stack aligned without inventing more near-duplicate prep docs unless a genuine new gap appears."
   }
 ]
