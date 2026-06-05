@@ -3038,5 +3038,21 @@
     "status": "success",
     "summary": "Posted the send-ready anti-bullying mini-pack to Discord #approvals for Aaron review.",
     "detail": "Sent the send-ready anti-bullying mini-pack notification to Discord `#approvals` (`1488508811538071553`) so Aaron can review the exact first-contact bundle behind the workshop lane. The note pointed at `drafts/anti-bullying-workshop-send-ready-mini-pack-2026-06-05.md` and described it as the exact first-contact bundle showing what to send first, what to hold back, and how to use the offer/email/brochure stack without clutter. Discord message id: `1512511190566309990`."
+  },
+  {
+    "id": 381,
+    "timestamp": "2026-06-05T18:06:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Built a reply-template pack for the anti-bullying workshop outreach lane and added it to Aaron's review queue.",
+    "detail": "Filled the next real inbound-response gap behind the anti-bullying workshop stack by creating `drafts/anti-bullying-workshop-reply-templates-2026-06-05.md`. The new draft gives Aaron ready-made replies for interested schools, budget questions, timing issues, right-contact forwards, and short call requests, keeps the `GBP595` half-day anchor consistent, moved `drafts/review-tracker.md` to `39`, refreshed `HEARTBEAT.md`, corrected the live count in `QUESTIONS.md`, and updated `drafts/review-priority-shortlist-2026-06-05.md` so the backlog number stays accurate."
+  },
+  {
+    "id": 382,
+    "timestamp": "2026-06-05T18:09:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Posted the anti-bullying reply-template pack to Discord #approvals for Aaron review.",
+    "detail": "Sent the anti-bullying reply-template notification to Discord `#approvals` (`1488508811538071553`) so Aaron can review the inbound-response layer behind the workshop mini-pack. The note pointed at `drafts/anti-bullying-workshop-reply-templates-2026-06-05.md` and described it as the reply pack for interested schools, budget questions, timing issues, right-contact forwards, and short call requests. Discord message id: `1512518774052356319`."
   }
 ]
