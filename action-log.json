@@ -2958,5 +2958,21 @@
     "status": "success",
     "summary": "Posted the anti-bullying first-contact Wave 1 handoff to Discord #approvals for Aaron review.",
     "detail": "Sent the Wave 1 handoff notification to Discord `#approvals` (`1488508811538071553`) so Aaron can review it alongside the rest of the anti-bullying workshop stack. The note pointed at `drafts/anti-bullying-workshop-first-contact-wave-2026-06-05.md` and described it as the exact send-order handoff for the first four schools, including cadence, fallback offer logic, and follow-up timing. Discord message id: `1512473237815165050`."
+  },
+  {
+    "id": 371,
+    "timestamp": "2026-06-05T15:36:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Built a phone follow-up script for the anti-bullying workshop outreach wave and added it to Aaron's review queue.",
+    "detail": "Extended the anti-bullying outreach stack from email-first planning into a simple call-based follow-up path. Created `drafts/anti-bullying-workshop-phone-follow-up-script-2026-06-05.md` with a short office-call script, clarification lines, fallback responses, voicemail version, and post-call note guidance for schools that do not reply to the first outreach email. Added the draft to `drafts/review-tracker.md`, which moved the live review count to `34`, and refreshed `HEARTBEAT.md` so the blocker count remains aligned."
+  },
+  {
+    "id": 372,
+    "timestamp": "2026-06-05T15:36:30Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Posted the anti-bullying phone follow-up script to Discord #approvals for Aaron review.",
+    "detail": "Sent the phone-follow-up script notification to Discord `#approvals` (`1488508811538071553`) so Aaron can review it alongside the rest of the anti-bullying workshop outreach stack. The note pointed at `drafts/anti-bullying-workshop-phone-follow-up-script-2026-06-05.md` and described it as the short call script for schools that do not reply to the first email, including voicemail and fallback responses. Discord message id: `1512480817455169677`."
   }
 ]
