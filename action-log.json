@@ -3102,5 +3102,13 @@
     "status": "success",
     "summary": "Compressed the Sunday-beginner queue blocker in Mission Control back down to the live state and active handoff files.",
     "detail": "Cleaned up Mission Control item `16`, which had drifted into a long count-by-count history of the day instead of a current blocker description. Rewrote it to focus on the live reality only: Buffer is healthy but empty, the review tracker sits at `40`, the blocker is approval rather than missing prep, the active Sunday-beginner shortcut is `drafts/sunday-beginner-queue-approval-pack-2026-06-04.md`, the execution index is `drafts/content-queue-master-handoff-v1-2026-06-04.md`, and future wakes should keep that stack aligned without inventing more near-duplicate prep docs unless a genuine new gap appears."
+  },
+  {
+    "id": 389,
+    "timestamp": "2026-06-05T21:36:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Aligned HEARTBEAT.md with the live cross-stack approval shortcut so future wakes stop rediscovering it.",
+    "detail": "Updated `HEARTBEAT.md` so the active Sunday-beginner queue lane now names both the Sunday-only approval shortcut (`drafts/sunday-beginner-queue-approval-pack-2026-06-04.md`) and the broader cross-stack shortcut (`drafts/review-priority-shortlist-2026-06-05.md`). This keeps future heartbeats pointed at the right approval surfaces when the real blocker is the wider `40`-item review backlog rather than missing Sunday-beginner prep."
   }
 ]
