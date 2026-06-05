@@ -3126,5 +3126,13 @@
     "status": "success",
     "summary": "Linked the cross-stack approval shortcut directly into the Sunday-beginner handoff docs.",
     "detail": "Updated `drafts/content-queue-master-handoff-v1-2026-06-04.md` and `drafts/sunday-beginner-queue-approval-pack-2026-06-04.md` so they now point at `drafts/review-priority-shortlist-2026-06-05.md` when the real blocker is the broader mixed review backlog rather than the Sunday lane alone. This keeps future wakes from starting in the wrong approval file while still preserving the Sunday-only shortcut."
+  },
+  {
+    "id": 392,
+    "timestamp": "2026-06-05T23:06:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Trimmed the completed cron-recovery recap in HEARTBEAT.md now that it is no longer the active lane.",
+    "detail": "Reduced token drag in future wakes by collapsing the verbose completed cron-recovery section in `HEARTBEAT.md` down to a single reminder line. The active queue lane and blocker notes stay intact, while the already-closed recovery lane no longer consumes repeated heartbeat context unless a fresh regression appears."
   }
 ]
