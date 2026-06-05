@@ -2814,5 +2814,13 @@
     "status": "success",
     "summary": "Fixed a stale prompt reference in `Daily Activity Log Tidy` so it now reads the live income-research run history.",
     "detail": "Found and corrected a hidden prompt-level failure risk in the remaining `Daily Activity Log Tidy` cron before its 20:00 BST recovery check. The embedded income-research history step was pointing at an outdated cron ID ending `...51c9b8`; updated it to the live `Daily Income Research` job ID `7c5c35ff-a5b5-419b-acb9-af634b55c9b8`, removing a silent lookup error path unrelated to auth or scheduler health."
+  },
+  {
+    "id": 353,
+    "timestamp": "2026-06-05T03:05:08Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Ran the daily income research job and selected assistant-led anti-bullying and confidence workshops for East London primary schools as the strongest 5 June opportunity.",
+    "detail": "The 5 June `Daily Income Research` run completed successfully and chose `Assistant-Led Anti-Bullying & Confidence Workshops for East London Primary Schools` as the winning idea. It appended the full report to `research/income-ideas-log.json`, updated `research/todays-income-idea.json` with the Discord link, appended `research/usage-log.json`, posted the full report to Discord `#trading-desk` (`1512291046233735168`), posted the 2-line summary to `#morning-brief` (`1512291031188766810`), and committed the research output as `60ee989` (`chore: income research output 2026-06-05`). Core economics captured in the report: suggested pricing of `GBP295` for an assembly, `GBP595` for a half-day, and `GBP895` for a full day; a realistic income range of about `GBP1,190-GBP3,580/month`; and an Aaron time target of about `30-60 min/week` after setup by keeping delivery assistant-led while Gustav handles admin and outreach."
   }
 ]

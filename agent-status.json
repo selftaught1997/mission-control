@@ -3,13 +3,13 @@
   "agent": "Gustav",
   "status": "idle",
   "state": "idle",
-  "detail": "Heartbeat housekeeping complete after trading-analyst foundation bookkeeping.",
+  "detail": "Heartbeat bookkeeping complete after the 5 June income-research sync.",
   "current_step": "idle",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1780449030277,
-  "last_updated": "2026-06-03T01:10:30Z",
-  "last_activity_at": "2026-06-03T01:10:30Z",
-  "activity_counter": 119,
+  "updatedAt": 1780628880530,
+  "last_updated": "2026-06-05T03:08:00Z",
+  "last_activity_at": "2026-06-05T03:08:00Z",
+  "activity_counter": 120,
   "emoji": "\ud83e\uddbe"
 }
