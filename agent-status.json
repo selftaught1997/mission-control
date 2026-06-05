@@ -3,13 +3,13 @@
   "agent": "Gustav",
   "status": "idle",
   "state": "idle",
-  "detail": "Heartbeat audit complete after rechecking the Sunday-beginner queue handoff stack.",
+  "detail": "Heartbeat audit complete after rechecking the Sunday-beginner approval-pack items against the live review queue.",
   "current_step": "idle",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1780643272484,
-  "last_updated": "2026-06-05T07:07:52Z",
-  "last_activity_at": "2026-06-05T07:07:52Z",
-  "activity_counter": 121,
+  "updatedAt": 1780646825000,
+  "last_updated": "2026-06-05T08:07:05Z",
+  "last_activity_at": "2026-06-05T08:07:05Z",
+  "activity_counter": 122,
   "emoji": "\ud83e\uddbe"
 }
