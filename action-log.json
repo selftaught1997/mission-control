@@ -2894,5 +2894,21 @@
     "status": "success",
     "summary": "Posted the anti-bullying brochure-copy draft to Discord #approvals for Aaron review.",
     "detail": "Sent the brochure-copy draft notification to Discord `#approvals` (`1488508811538071553`) so Aaron can review it in the same lane as the offer page and outreach email drafts. The note pointed at `drafts/anti-bullying-workshop-brochure-copy-2026-06-05.md` and framed it as the one-page brochure / PDF copy version of the workshop offer, ready for later design work if approved. Discord message id: `1512442966244069519`."
+  },
+  {
+    "id": 363,
+    "timestamp": "2026-06-05T13:36:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Built a stripped-down landing-page draft for the anti-bullying workshop offer and added it to Aaron's review queue.",
+    "detail": "Kept extending the anti-bullying workshop offer stack while the Sunday-beginner queue remained approval-bound. Created `drafts/anti-bullying-workshop-landing-page-draft-2026-06-05.md` as a simple landing-page copy structure covering hero, outcomes, packages, fit, FAQs, and contact CTA blocks. Added the new file to `drafts/review-tracker.md`, which moved the live review count to `30`, and refreshed `HEARTBEAT.md` so the blocker count remains aligned."
+  },
+  {
+    "id": 364,
+    "timestamp": "2026-06-05T13:36:30Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Posted the anti-bullying landing-page draft to Discord #approvals for Aaron review.",
+    "detail": "Sent the landing-page draft notification to Discord `#approvals` (`1488508811538071553`) so Aaron can review it in the same lane as the other anti-bullying workshop assets. The note pointed at `drafts/anti-bullying-workshop-landing-page-draft-2026-06-05.md` and described it as the stripped-down landing-page version of the workshop offer with hero, outcomes, package, FAQ, and CTA sections. Discord message id: `1512450557762076792`."
   }
 ]
