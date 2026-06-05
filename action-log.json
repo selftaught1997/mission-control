@@ -2910,5 +2910,21 @@
     "status": "success",
     "summary": "Posted the anti-bullying landing-page draft to Discord #approvals for Aaron review.",
     "detail": "Sent the landing-page draft notification to Discord `#approvals` (`1488508811538071553`) so Aaron can review it in the same lane as the other anti-bullying workshop assets. The note pointed at `drafts/anti-bullying-workshop-landing-page-draft-2026-06-05.md` and described it as the stripped-down landing-page version of the workshop offer with hero, outcomes, package, FAQ, and CTA sections. Discord message id: `1512450557762076792`."
+  },
+  {
+    "id": 365,
+    "timestamp": "2026-06-05T14:06:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Built a first nearby-school target list for the anti-bullying workshop offer and added it to Aaron's review queue.",
+    "detail": "Moved from generic copy assets into a more operational next step while the Sunday-beginner queue remained approval-bound. Created `drafts/anti-bullying-workshop-first-school-target-list-2026-06-05.md` with a first-pass batch of nearby East London primary schools, ordered into a Stratford-first contact sequence and backed by verified public contact details pulled from official school or official public-sector pages checked on 5 June 2026. Added the draft to `drafts/review-tracker.md`, which moved the live review count to `31`, and refreshed `HEARTBEAT.md` so the blocker count remains aligned."
+  },
+  {
+    "id": 366,
+    "timestamp": "2026-06-05T14:06:30Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Posted the anti-bullying first-school target list to Discord #approvals for Aaron review.",
+    "detail": "Sent the target-list draft notification to Discord `#approvals` (`1488508811538071553`) so Aaron can review it alongside the rest of the anti-bullying workshop offer stack. The note pointed at `drafts/anti-bullying-workshop-first-school-target-list-2026-06-05.md` and described it as a Stratford-first shortlist of nearby East London primary schools with verified public contact details. Discord message id: `1512458780451799122`."
   }
 ]
