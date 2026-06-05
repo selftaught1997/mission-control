@@ -2862,5 +2862,21 @@
     "status": "success",
     "summary": "Posted the anti-bullying workshop offer draft to Discord #approvals so Aaron can review it in the normal decision channel.",
     "detail": "Closed the notification gap left by the earlier heartbeat-route delivery failure. Sent Aaron a concise review note to Discord `#approvals` (`1488508811538071553`) pointing at `drafts/anti-bullying-workshop-offer-one-page-2026-06-05.md`, highlighting the three packages, three outcomes, and the `GBP595` half-day anchor, and framing brochure copy plus school outreach as the next immediate lane if he approves the structure. Discord message id: `1512427563782504600`."
+  },
+  {
+    "id": 359,
+    "timestamp": "2026-06-05T12:36:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Built the first school-outreach email draft for the anti-bullying workshop offer and added it to Aaron's review queue.",
+    "detail": "Used the still-blocked queue lane to keep working on a different internal draft path rather than re-auditing the same approval state. Created `drafts/anti-bullying-workshop-school-outreach-email-2026-06-05.md` with short, standard, and follow-up outreach versions for East London primary schools, all framed around the already-drafted anti-bullying / confidence workshop offer and its `GBP295` / `GBP595` / `GBP895` pricing structure. Added the new file to `drafts/review-tracker.md`, which moved the live review count to `28`, and refreshed `HEARTBEAT.md` so the blocker count remains aligned while the Sunday-beginner queue lane is still approval-bound."
+  },
+  {
+    "id": 360,
+    "timestamp": "2026-06-05T12:36:30Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Posted the anti-bullying school-outreach email draft to Discord #approvals for Aaron review.",
+    "detail": "Sent the new outreach-email draft notification to Discord `#approvals` (`1488508811538071553`) so Aaron can review it in the same decision lane as the one-page workshop offer. The note pointed at `drafts/anti-bullying-workshop-school-outreach-email-2026-06-05.md`, explained that it contains short, standard, and follow-up outreach versions for East London primary schools, and framed it as the next usable asset behind the main offer draft. Discord message id: `1512435466081800262`."
   }
 ]
