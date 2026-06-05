@@ -3110,5 +3110,13 @@
     "status": "success",
     "summary": "Aligned HEARTBEAT.md with the live cross-stack approval shortcut so future wakes stop rediscovering it.",
     "detail": "Updated `HEARTBEAT.md` so the active Sunday-beginner queue lane now names both the Sunday-only approval shortcut (`drafts/sunday-beginner-queue-approval-pack-2026-06-04.md`) and the broader cross-stack shortcut (`drafts/review-priority-shortlist-2026-06-05.md`). This keeps future heartbeats pointed at the right approval surfaces when the real blocker is the wider `40`-item review backlog rather than missing Sunday-beginner prep."
+  },
+  {
+    "id": 390,
+    "timestamp": "2026-06-05T22:06:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Added the existing approval shortcuts to the top of the review tracker so the 40-item backlog has a real start-here path.",
+    "detail": "Updated `drafts/review-tracker.md` in place instead of creating more prep material. The tracker now opens with the three existing shortcut files that matter most in the live backlog: the cross-stack review shortlist, the Sunday-only approval pack, and the anti-bullying grouped approval pack. Also refreshed the tracker timestamp so future wakes can see that the list and count are still current."
   }
 ]
