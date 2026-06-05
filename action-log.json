@@ -2854,5 +2854,13 @@
     "status": "success",
     "summary": "Refreshed Aaron's queue-approval blocker note so it matches the live 27-item review backlog and still points at the existing Sunday-beginner shortcut.",
     "detail": "Ran a blocker-alignment pass against the queue-readiness lane instead of generating more prep docs. Confirmed again that the real constraint is still approval rather than missing execution material, then updated `QUESTIONS.md` so the content-queue prompt now reflects the exact live `27`-item review count, repeats the correct shortcut file (`drafts/sunday-beginner-queue-approval-pack-2026-06-04.md`), and gives the fastest approval-reply formats Aaron can send to unlock direct queue assembly. This keeps the approval path current while preserving the existing rule: execution should begin from the current handoff stack once approval lands, not from more near-duplicate prep."
+  },
+  {
+    "id": 358,
+    "timestamp": "2026-06-05T12:06:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Posted the anti-bullying workshop offer draft to Discord #approvals so Aaron can review it in the normal decision channel.",
+    "detail": "Closed the notification gap left by the earlier heartbeat-route delivery failure. Sent Aaron a concise review note to Discord `#approvals` (`1488508811538071553`) pointing at `drafts/anti-bullying-workshop-offer-one-page-2026-06-05.md`, highlighting the three packages, three outcomes, and the `GBP595` half-day anchor, and framing brochure copy plus school outreach as the next immediate lane if he approves the structure. Discord message id: `1512427563782504600`."
   }
 ]
