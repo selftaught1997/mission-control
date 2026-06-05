@@ -3134,5 +3134,13 @@
     "status": "success",
     "summary": "Trimmed the completed cron-recovery recap in HEARTBEAT.md now that it is no longer the active lane.",
     "detail": "Reduced token drag in future wakes by collapsing the verbose completed cron-recovery section in `HEARTBEAT.md` down to a single reminder line. The active queue lane and blocker notes stay intact, while the already-closed recovery lane no longer consumes repeated heartbeat context unless a fresh regression appears."
+  },
+  {
+    "id": 393,
+    "timestamp": "2026-06-06T00:36:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Marked the three real approval entry points as `Start here` inside the live review tracker.",
+    "detail": "Verified that the active shortcut files and the `40`-item review count still line up, then improved the tracker in place instead of creating more docs. Updated `drafts/review-tracker.md` so `review-priority-shortlist-2026-06-05.md`, `sunday-beginner-queue-approval-pack-2026-06-04.md`, and `anti-bullying-workshop-approval-pack-2026-06-05.md` now stand out as the actual first review choices inside the main table rather than looking like ordinary backlog items."
   }
 ]
