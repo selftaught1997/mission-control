@@ -3022,5 +3022,21 @@
     "status": "success",
     "summary": "Posted the review priority shortlist to Discord #approvals for Aaron review.",
     "detail": "Sent the review-priority shortlist notification to Discord `#approvals` (`1488508811538071553`) so Aaron can see the cross-stack shortcut alongside the lane-specific approval packs. The note pointed at `drafts/review-priority-shortlist-2026-06-05.md` and described it as the shortest top-level review path for the current backlog, centered on the Sunday-beginner batch and the anti-bullying workshop batch. Discord message id: `1512503614206251171`."
+  },
+  {
+    "id": 379,
+    "timestamp": "2026-06-05T17:36:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Built a send-ready mini-pack for the anti-bullying workshop outreach lane and added it to Aaron's review queue.",
+    "detail": "Filled the next real operational gap behind the anti-bullying workshop stack by creating `drafts/anti-bullying-workshop-send-ready-mini-pack-2026-06-05.md`. The new draft turns the existing offer, standard outreach email, and brochure copy into one exact first-contact bundle, explains what to send first versus what to hold back, keeps the `GBP595` half-day anchor clear, moved `drafts/review-tracker.md` to `38`, refreshed `HEARTBEAT.md`, corrected the live count in `QUESTIONS.md`, and updated `drafts/review-priority-shortlist-2026-06-05.md` so the backlog number stays accurate."
+  },
+  {
+    "id": 380,
+    "timestamp": "2026-06-05T17:39:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Posted the send-ready anti-bullying mini-pack to Discord #approvals for Aaron review.",
+    "detail": "Sent the send-ready anti-bullying mini-pack notification to Discord `#approvals` (`1488508811538071553`) so Aaron can review the exact first-contact bundle behind the workshop lane. The note pointed at `drafts/anti-bullying-workshop-send-ready-mini-pack-2026-06-05.md` and described it as the exact first-contact bundle showing what to send first, what to hold back, and how to use the offer/email/brochure stack without clutter. Discord message id: `1512511190566309990`."
   }
 ]
