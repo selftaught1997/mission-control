@@ -2990,5 +2990,21 @@
     "status": "success",
     "summary": "Posted the anti-bullying outreach results log to Discord #approvals for Aaron review.",
     "detail": "Sent the outreach-results-log notification to Discord `#approvals` (`1488508811538071553`) so Aaron can review it alongside the rest of the anti-bullying workshop outreach stack. The note pointed at `drafts/anti-bullying-workshop-outreach-results-log-2026-06-05.md` and described it as the lightweight results log for real school replies, resends, follow-ups, and early booking signals. Discord message id: `1512488757918695674`."
+  },
+  {
+    "id": 375,
+    "timestamp": "2026-06-05T16:36:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Built a one-page approval shortcut for the anti-bullying workshop stack and added it to Aaron's review queue.",
+    "detail": "Shifted the anti-bullying workshop lane from scattered review items toward a grouped approval path by creating `drafts/anti-bullying-workshop-approval-pack-2026-06-05.md`. The new draft collapses the core workshop offer, school outreach email, brochure copy, and first-contact wave into one approval decision, points to the remaining support assets already prepared behind the scenes, moved `drafts/review-tracker.md` to `36`, refreshed `HEARTBEAT.md`, and updated `QUESTIONS.md` so Aaron now sees the live backlog and the new workshop-specific shortcut."
+  },
+  {
+    "id": 376,
+    "timestamp": "2026-06-05T16:39:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Posted the anti-bullying approval shortcut to Discord #approvals for Aaron review.",
+    "detail": "Sent the anti-bullying approval-pack notification to Discord `#approvals` (`1488508811538071553`) so Aaron can review the grouped workshop shortcut alongside the rest of the anti-bullying stack. The note pointed at `drafts/anti-bullying-workshop-approval-pack-2026-06-05.md` and described it as the one-page grouped review path for the core offer, outreach email, brochure copy, and Wave 1 send order. Discord message id: `1512496133375660204`."
   }
 ]
