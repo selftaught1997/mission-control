@@ -3006,5 +3006,21 @@
     "status": "success",
     "summary": "Posted the anti-bullying approval shortcut to Discord #approvals for Aaron review.",
     "detail": "Sent the anti-bullying approval-pack notification to Discord `#approvals` (`1488508811538071553`) so Aaron can review the grouped workshop shortcut alongside the rest of the anti-bullying stack. The note pointed at `drafts/anti-bullying-workshop-approval-pack-2026-06-05.md` and described it as the one-page grouped review path for the core offer, outreach email, brochure copy, and Wave 1 send order. Discord message id: `1512496133375660204`."
+  },
+  {
+    "id": 377,
+    "timestamp": "2026-06-05T17:06:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Built a top-level review priority shortlist across the live backlog and added it to Aaron's review queue.",
+    "detail": "Reduced approval friction across the now-larger mixed backlog by creating `drafts/review-priority-shortlist-2026-06-05.md`. The new draft points Aaron at the two approval decisions that unlock the most useful next moves right now: the Sunday-beginner queue batch and the anti-bullying workshop batch. Added the draft to `drafts/review-tracker.md`, which moved the live review count to `37`, refreshed `HEARTBEAT.md`, and updated `QUESTIONS.md` so Aaron now sees the cross-stack shortcut alongside the lane-specific approval packs."
+  },
+  {
+    "id": 378,
+    "timestamp": "2026-06-05T17:09:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Posted the review priority shortlist to Discord #approvals for Aaron review.",
+    "detail": "Sent the review-priority shortlist notification to Discord `#approvals` (`1488508811538071553`) so Aaron can see the cross-stack shortcut alongside the lane-specific approval packs. The note pointed at `drafts/review-priority-shortlist-2026-06-05.md` and described it as the shortest top-level review path for the current backlog, centered on the Sunday-beginner batch and the anti-bullying workshop batch. Discord message id: `1512503614206251171`."
   }
 ]
