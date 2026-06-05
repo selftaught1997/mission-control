@@ -2974,5 +2974,21 @@
     "status": "success",
     "summary": "Posted the anti-bullying phone follow-up script to Discord #approvals for Aaron review.",
     "detail": "Sent the phone-follow-up script notification to Discord `#approvals` (`1488508811538071553`) so Aaron can review it alongside the rest of the anti-bullying workshop outreach stack. The note pointed at `drafts/anti-bullying-workshop-phone-follow-up-script-2026-06-05.md` and described it as the short call script for schools that do not reply to the first email, including voicemail and fallback responses. Discord message id: `1512480817455169677`."
+  },
+  {
+    "id": 373,
+    "timestamp": "2026-06-05T16:06:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Built an outreach results log for the anti-bullying workshop school-contact wave and added it to Aaron's review queue.",
+    "detail": "Extended the anti-bullying outreach stack from send-order planning into reply tracking by creating `drafts/anti-bullying-workshop-outreach-results-log-2026-06-05.md`. The new draft provides a lightweight outcomes log for real school replies, resends, follow-ups, and booking signals behind the target list, outreach tracker, Wave 1 handoff, and phone script. Added the draft to `drafts/review-tracker.md`, which moved the live review count to `35`, and refreshed `HEARTBEAT.md` so the blocker count remains aligned."
+  },
+  {
+    "id": 374,
+    "timestamp": "2026-06-05T16:10:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Posted the anti-bullying outreach results log to Discord #approvals for Aaron review.",
+    "detail": "Sent the outreach-results-log notification to Discord `#approvals` (`1488508811538071553`) so Aaron can review it alongside the rest of the anti-bullying workshop outreach stack. The note pointed at `drafts/anti-bullying-workshop-outreach-results-log-2026-06-05.md` and described it as the lightweight results log for real school replies, resends, follow-ups, and early booking signals. Discord message id: `1512488757918695674`."
   }
 ]
