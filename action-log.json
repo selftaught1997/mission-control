@@ -2878,5 +2878,21 @@
     "status": "success",
     "summary": "Posted the anti-bullying school-outreach email draft to Discord #approvals for Aaron review.",
     "detail": "Sent the new outreach-email draft notification to Discord `#approvals` (`1488508811538071553`) so Aaron can review it in the same decision lane as the one-page workshop offer. The note pointed at `drafts/anti-bullying-workshop-school-outreach-email-2026-06-05.md`, explained that it contains short, standard, and follow-up outreach versions for East London primary schools, and framed it as the next usable asset behind the main offer draft. Discord message id: `1512435466081800262`."
+  },
+  {
+    "id": 361,
+    "timestamp": "2026-06-05T13:06:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Built one-page brochure copy for the anti-bullying workshop offer and added it to Aaron's review queue.",
+    "detail": "Kept working on the anti-bullying workshop lane while the Sunday-beginner queue remained approval-bound. Created `drafts/anti-bullying-workshop-brochure-copy-2026-06-05.md` as school-facing one-page brochure / PDF copy built from the same workshop structure and pricing already used in the offer page and outreach email drafts. Added the new brochure-copy file to `drafts/review-tracker.md`, which moved the live review count to `29`, and refreshed `HEARTBEAT.md` so the blocker count stays aligned."
+  },
+  {
+    "id": 362,
+    "timestamp": "2026-06-05T13:06:30Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Posted the anti-bullying brochure-copy draft to Discord #approvals for Aaron review.",
+    "detail": "Sent the brochure-copy draft notification to Discord `#approvals` (`1488508811538071553`) so Aaron can review it in the same lane as the offer page and outreach email drafts. The note pointed at `drafts/anti-bullying-workshop-brochure-copy-2026-06-05.md` and framed it as the one-page brochure / PDF copy version of the workshop offer, ready for later design work if approved. Discord message id: `1512442966244069519`."
   }
 ]
