@@ -2846,5 +2846,13 @@
     "status": "success",
     "summary": "Built a one-page anti-bullying workshop offer draft from the 5 June income idea and added it to Aaron's review queue.",
     "detail": "Used the morning brief's explicit next move to turn the fresh income-research winner into a real operator-ready draft: `drafts/anti-bullying-workshop-offer-one-page-2026-06-05.md`. The draft packages the offer into three school-facing products (`GBP295` assembly, `GBP595` half-day anchor, `GBP895` full day), three core outcomes (confidence, anti-bullying awareness, and respect/boundaries), and a clean positioning line Aaron can later reuse in brochure/outreach work. Added the draft to `drafts/review-tracker.md` as a new Aaron-review item, which moved the live review count to `27`, then refreshed `HEARTBEAT.md` and Mission Control so the queue count stays consistent while the Sunday-beginner lane remains approval-bound rather than missing-prep-bound."
+  },
+  {
+    "id": 357,
+    "timestamp": "2026-06-05T11:36:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Refreshed Aaron's queue-approval blocker note so it matches the live 27-item review backlog and still points at the existing Sunday-beginner shortcut.",
+    "detail": "Ran a blocker-alignment pass against the queue-readiness lane instead of generating more prep docs. Confirmed again that the real constraint is still approval rather than missing execution material, then updated `QUESTIONS.md` so the content-queue prompt now reflects the exact live `27`-item review count, repeats the correct shortcut file (`drafts/sunday-beginner-queue-approval-pack-2026-06-04.md`), and gives the fastest approval-reply formats Aaron can send to unlock direct queue assembly. This keeps the approval path current while preserving the existing rule: execution should begin from the current handoff stack once approval lands, not from more near-duplicate prep."
   }
 ]
