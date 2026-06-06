@@ -3182,5 +3182,13 @@
     "status": "success",
     "summary": "Marked the remaining QUESTIONS.md prompts as background so they stop competing with the live approval blockers.",
     "detail": "Kept the trading and school-outreach questions intact, but grouped them under a new `Background Questions` section with a one-line note that they are useful but not the active blocker. This makes `QUESTIONS.md` read in priority order: queue approvals first, Mission Control publish second, and older discovery prompts last."
+  },
+  {
+    "id": 399,
+    "timestamp": "2026-06-06T02:36:00Z",
+    "category": "Infrastructure",
+    "status": "success",
+    "summary": "Resynced the Mission Control publish blocker with the current local-ahead count after the overnight commits.",
+    "detail": "Confirmed the nested `mission-control` repo has moved on again and is now `402` commits ahead of `origin/main` with local head `2c38ccd`. Updated `QUESTIONS.md` and Mission Control todo item `3` so the publish blocker once again reflects the live ahead count and exact head instead of the older `390` / `cc65738` state."
   }
 ]
