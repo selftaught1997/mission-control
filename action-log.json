@@ -3278,5 +3278,13 @@
     "status": "success",
     "summary": "Bundled the queue audit and Mission Control refresh into one heartbeat admin runner and validated it end to end.",
     "detail": "Added `scripts/run-queue-heartbeat-admin.py` so future approval-bound queue wakes can run the full `scripts/check-queue-readiness.py` stack and then refresh Gustav's Mission Control status/history in one command. Validated it live with `--history-task \"Late-morning heartbeat queue admin sync\"`: the queue-readiness audit still passed cleanly, and Mission Control status/history advanced to the current morning heartbeat state without needing separate manual bookkeeping."
+  },
+  {
+    "id": 411,
+    "timestamp": "2026-06-06T09:06:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Added a reusable Daily Income Research health check after a fresh overnight completion regression surfaced in the morning brief.",
+    "detail": "Morning Brief's 10:00 BST run showed that `💡 Today's Income Idea` had to be omitted because `research/todays-income-idea.json` was still dated `2026-06-05`. A fresh audit confirmed the Sunday queue lane was still healthy, but the 04:00 BST `Daily Income Research` run had failed after about 188 seconds with the generic error `Codex stopped before confirming the turn was complete` even though the job still points at the correct explicit model `openai-codex/gpt-5.4`. Added `scripts/check-income-research-health.py` so future wakes can compare cron state against idea-file freshness in one command, surface the latest run/session breadcrumbs immediately, and distinguish a real overnight income-research failure from a harmless queue-lane status check."
   }
 ]

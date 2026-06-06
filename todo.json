@@ -152,6 +152,15 @@
       "status": "done",
       "category": "Infrastructure",
       "createdAt": "2026-05-31T18:21:52Z"
+    },
+    {
+      "id": 18,
+      "title": "Diagnose fresh Daily Income Research completion regression",
+      "detail": "A fresh regression appeared on 2026-06-06: the 04:00 BST `Daily Income Research` run stayed on the correct explicit model (`openai-codex/gpt-5.4`) but still finished with the generic error `Codex stopped before confirming the turn was complete`. The visible symptom was the 10:00 BST Morning Brief omitting `💡 Today's Income Idea` because `research/todays-income-idea.json` was still dated `2026-06-05`. `scripts/check-income-research-health.py` now audits that exact failure mode by comparing cron state with the idea-file date and printing the latest run/session breadcrumbs. Next recovery step is to inspect the failed isolated run/session (`60533a22-abf2-44c4-a861-65a2ba86c791`) or otherwise harden the cron lane before the next 04:00 BST run.",
+      "priority": "high",
+      "status": "todo",
+      "category": "Automation",
+      "createdAt": "2026-06-06T09:06:00Z"
     }
   ]
 }
