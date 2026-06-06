@@ -3254,5 +3254,13 @@
     "status": "success",
     "summary": "Added the missing Sunday approval-pack audit and folded it into the one-command queue-readiness runner.",
     "detail": "Added `scripts/check-sunday-approval-pack.py` so future wakes can verify the Aaron-facing Sunday approval shortcut itself instead of relying on an old manual one-off check. The new helper confirms that the five recommended approval-pack slots still resolve to seven concrete draft files on disk and that each one is still represented in `drafts/review-tracker.md`. Expanded `scripts/check-queue-readiness.py` to include that new approval-pack audit alongside the tracker and handoff audits, then reran the combined check successfully. Updated `MEMORY.md`, today's daily memory, and Mission Control item `16` so the queue lane now treats that approval-pack integrity check as part of the standard one-command revalidation path."
+  },
+  {
+    "id": 408,
+    "timestamp": "2026-06-06T07:36:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Added a queue entry-point audit so the blocker surfaces themselves stay aligned with the live Sunday lane.",
+    "detail": "Added `scripts/check-queue-entry-points.py` to verify that `HEARTBEAT.md`, `MEMORY.md`, `drafts/content-queue-master-handoff-v1-2026-06-04.md`, and Mission Control item `16` all still point at `drafts/review-tracker.md`, the current Sunday and cross-stack approval shortcuts, and the literal `python3 scripts/check-queue-readiness.py` command. Expanded the one-command readiness runner to include that new entry-point audit too. The first run immediately caught a real alignment miss in `MEMORY.md`, where the runner was described but the literal command string was missing; after fixing that wording, the full combined queue-readiness check passed cleanly."
   }
 ]
