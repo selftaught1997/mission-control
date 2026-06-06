@@ -2,11 +2,6 @@
   "entries": [
     {
       "status": "working",
-      "task": "Early-evening heartbeat Mission Control review",
-      "ts": 1780249500000
-    },
-    {
-      "status": "working",
       "task": "Pre-dawn heartbeat Mission Control review",
       "ts": 1780100783537
     },
@@ -124,6 +119,11 @@
       "status": "idle",
       "task": "Late-morning heartbeat queue admin sync",
       "ts": 1780735066000
+    },
+    {
+      "status": "idle",
+      "task": "Morning heartbeat income research health audit",
+      "ts": 1780737078000
     }
   ]
 }
