@@ -3214,5 +3214,13 @@
     "status": "success",
     "summary": "Captured the blocker-wording durability rule in long-term memory so future wakes do not regress into count churn.",
     "detail": "Updated `MEMORY.md` to preserve the actual lesson from the overnight cleanup: queue blocker surfaces should point at `drafts/review-tracker.md` as the live source of truth, and the Mission Control publish blocker should use durable threshold wording like `well over 400 commits ahead` instead of exact counts that drift after harmless local commits."
+  },
+  {
+    "id": 403,
+    "timestamp": "2026-06-06T04:36:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Added a reusable review-tracker audit helper and fixed a stale support-asset total it exposed immediately.",
+    "detail": "Added `scripts/check-review-tracker.py` so future wakes can verify the live review tracker mechanically instead of eyeballing counts and top-row ordering by hand. The first run caught a real mismatch in `drafts/review-tracker.md`: the support-assets quick total still said `14` while the bullet list had `15`, so the tracker summary was corrected and the helper rerun cleanly."
   }
 ]
