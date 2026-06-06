@@ -3150,5 +3150,13 @@
     "status": "success",
     "summary": "Added exact reply formats to the top of the review tracker so the backlog can be actioned from one file.",
     "detail": "Extended the `Fastest way through the live backlog` section in `drafts/review-tracker.md` so each existing shortcut now includes the shortest useful approval reply. The tracker now tells Aaron not just which file to open first, but also the exact reply formats for the cross-stack, Sunday-only, and anti-bullying lanes without needing to open a second doc."
+  },
+  {
+    "id": 395,
+    "timestamp": "2026-06-06T00:36:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Moved the three `Start here` approval rows to the top of the live review table.",
+    "detail": "Reordered `drafts/review-tracker.md` so the three real approval entry points now appear at the top of the `Awaiting Aaron Review` table instead of being buried in their original chronological positions. The cross-stack shortlist, Sunday-only approval pack, and anti-bullying approval pack are now the first rows Aaron sees when opening the tracker."
   }
 ]
