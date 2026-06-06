@@ -3270,5 +3270,13 @@
     "status": "success",
     "summary": "Added a Mission Control heartbeat-status refresher and used it to bring Gustav's live dashboard state back to the current queue lane.",
     "detail": "Found `mission-control/agent-status.json` and `agent-history.json` still stuck on older 5 June heartbeat details even though the queue-readiness lane had been maintained overnight. Added `scripts/refresh-gustav-mission-control.py` so future heartbeats can refresh both files in one step after meaningful work, then used it to set Gustav's live Mission Control status back to the actual current state: queue-readiness checks are green and the Sunday lane remains approval-bound rather than prep-bound."
+  },
+  {
+    "id": 410,
+    "timestamp": "2026-06-06T08:36:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Bundled the queue audit and Mission Control refresh into one heartbeat admin runner and validated it end to end.",
+    "detail": "Added `scripts/run-queue-heartbeat-admin.py` so future approval-bound queue wakes can run the full `scripts/check-queue-readiness.py` stack and then refresh Gustav's Mission Control status/history in one command. Validated it live with `--history-task \"Late-morning heartbeat queue admin sync\"`: the queue-readiness audit still passed cleanly, and Mission Control status/history advanced to the current morning heartbeat state without needing separate manual bookkeeping."
   }
 ]

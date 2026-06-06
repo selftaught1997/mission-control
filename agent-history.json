@@ -119,6 +119,11 @@
       "status": "idle",
       "task": "Morning heartbeat queue readiness admin sync",
       "ts": 1780733316000
+    },
+    {
+      "status": "idle",
+      "task": "Late-morning heartbeat queue admin sync",
+      "ts": 1780735066000
     }
   ]
 }
