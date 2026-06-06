@@ -3230,5 +3230,13 @@
     "status": "success",
     "summary": "Added a queue-handoff audit helper and verified the active Sunday execution stack resolves cleanly on disk.",
     "detail": "Added `scripts/check-queue-handoff.py` so future wakes can verify the live Sunday queue handoff mechanically instead of reopening the same docs by hand. The first run checked `18` referenced draft paths across `content-queue-master-handoff-v1-2026-06-04.md`, `sunday-beginner-queue-approval-pack-2026-06-04.md`, and `review-priority-shortlist-2026-06-05.md`, and every reference resolved successfully."
+  },
+  {
+    "id": 405,
+    "timestamp": "2026-06-06T06:06:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Added a one-command queue-readiness runner so future wakes can revalidate the approval-bound Sunday stack faster.",
+    "detail": "Added `scripts/check-queue-readiness.py` as a small wrapper around `scripts/check-review-tracker.py` and `scripts/check-queue-handoff.py`, then ran it successfully against the live queue lane. The combined check now confirms both halves of the approval-bound stack in one pass: tracker totals / start-here ordering still match, and all referenced handoff files still resolve on disk. Updated `MEMORY.md`, today's daily memory, and Mission Control item `16` so future wakes know to use the new one-command audit before reopening the same queue docs by hand."
   }
 ]
