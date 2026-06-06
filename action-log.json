@@ -3222,5 +3222,13 @@
     "status": "success",
     "summary": "Added a reusable review-tracker audit helper and fixed a stale support-asset total it exposed immediately.",
     "detail": "Added `scripts/check-review-tracker.py` so future wakes can verify the live review tracker mechanically instead of eyeballing counts and top-row ordering by hand. The first run caught a real mismatch in `drafts/review-tracker.md`: the support-assets quick total still said `14` while the bullet list had `15`, so the tracker summary was corrected and the helper rerun cleanly."
+  },
+  {
+    "id": 404,
+    "timestamp": "2026-06-06T05:06:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Added a queue-handoff audit helper and verified the active Sunday execution stack resolves cleanly on disk.",
+    "detail": "Added `scripts/check-queue-handoff.py` so future wakes can verify the live Sunday queue handoff mechanically instead of reopening the same docs by hand. The first run checked `18` referenced draft paths across `content-queue-master-handoff-v1-2026-06-04.md`, `sunday-beginner-queue-approval-pack-2026-06-04.md`, and `review-priority-shortlist-2026-06-05.md`, and every reference resolved successfully."
   }
 ]
