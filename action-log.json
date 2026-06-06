@@ -3166,5 +3166,13 @@
     "status": "success",
     "summary": "Refreshed long-term memory so future wakes stop relying on stale April cron and draft assumptions.",
     "detail": "Updated `MEMORY.md` to reflect the current June operating state instead of the older April snapshot. Added a concise current-ops section covering the approval-bound Sunday queue lane, the cross-stack / Sunday-only / anti-bullying shortcut files, the Mission Control publish blocker, and the Morning Brief Python-wrapper fix. Also replaced the old 'all cron jobs disabled' framing with a historical note plus live-state guidance, and pointed the drafts section at `drafts/review-tracker.md` as the actual source of truth."
+  },
+  {
+    "id": 397,
+    "timestamp": "2026-06-06T01:36:00Z",
+    "category": "Operations",
+    "status": "success",
+    "summary": "Reordered QUESTIONS.md so the live approval blockers appear before older background prompts.",
+    "detail": "Kept the actual question content intact, but moved `Content Queue Approvals` and `Mission Control Pages Publish` to the top of `QUESTIONS.md`. The queue is still approval-bound rather than prep-bound, so this puts the real unblockers first when Aaron skims the file instead of making him scroll past older trading and school-outreach discovery questions."
   }
 ]
