@@ -3198,5 +3198,13 @@
     "status": "success",
     "summary": "Made the Mission Control publish blocker durable so future wakes stop chasing count drift.",
     "detail": "After the exact `402` / `2c38ccd` blocker wording drifted again one wake later, rewrote the publish blocker in `QUESTIONS.md` and Mission Control todo item `3` around the stable truth instead: the local repo is well over `400` commits ahead, the public site is stale, and pushing still needs Aaron approval. This avoids wasting future wakes on self-inflicted exact-count churn from harmless local housekeeping commits."
+  },
+  {
+    "id": 401,
+    "timestamp": "2026-06-06T03:36:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Made the queue-approval blocker wording durable across the Sunday handoff stack.",
+    "detail": "Replaced brittle exact `40`-item backlog references across the live Sunday queue files with stable wording that points to `drafts/review-tracker.md` as the source of truth for the current approval backlog. Updated `HEARTBEAT.md`, `MEMORY.md`, `QUESTIONS.md`, the Sunday approval pack, the queue master handoff, the cross-stack review shortlist, and Mission Control item `16` so future wakes stop wasting cycles on self-inflicted backlog-count drift."
   }
 ]
