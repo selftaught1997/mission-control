@@ -3262,5 +3262,13 @@
     "status": "success",
     "summary": "Added a queue entry-point audit so the blocker surfaces themselves stay aligned with the live Sunday lane.",
     "detail": "Added `scripts/check-queue-entry-points.py` to verify that `HEARTBEAT.md`, `MEMORY.md`, `drafts/content-queue-master-handoff-v1-2026-06-04.md`, and Mission Control item `16` all still point at `drafts/review-tracker.md`, the current Sunday and cross-stack approval shortcuts, and the literal `python3 scripts/check-queue-readiness.py` command. Expanded the one-command readiness runner to include that new entry-point audit too. The first run immediately caught a real alignment miss in `MEMORY.md`, where the runner was described but the literal command string was missing; after fixing that wording, the full combined queue-readiness check passed cleanly."
+  },
+  {
+    "id": 409,
+    "timestamp": "2026-06-06T08:06:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Added a Mission Control heartbeat-status refresher and used it to bring Gustav's live dashboard state back to the current queue lane.",
+    "detail": "Found `mission-control/agent-status.json` and `agent-history.json` still stuck on older 5 June heartbeat details even though the queue-readiness lane had been maintained overnight. Added `scripts/refresh-gustav-mission-control.py` so future heartbeats can refresh both files in one step after meaningful work, then used it to set Gustav's live Mission Control status back to the actual current state: queue-readiness checks are green and the Sunday lane remains approval-bound rather than prep-bound."
   }
 ]
