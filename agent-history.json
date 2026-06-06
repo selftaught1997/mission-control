@@ -2,11 +2,6 @@
   "entries": [
     {
       "status": "working",
-      "task": "Pre-dawn heartbeat Mission Control review",
-      "ts": 1780100783537
-    },
-    {
-      "status": "working",
       "task": "After-midnight heartbeat Mission Control review",
       "ts": 1780096573646
     },
@@ -124,6 +119,11 @@
       "status": "idle",
       "task": "Morning heartbeat income research health audit",
       "ts": 1780737078000
+    },
+    {
+      "status": "idle",
+      "task": "Late-morning heartbeat blocker-surface audit",
+      "ts": 1780738745000
     }
   ]
 }

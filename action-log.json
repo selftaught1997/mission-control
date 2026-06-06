@@ -3286,5 +3286,13 @@
     "status": "success",
     "summary": "Added a reusable Daily Income Research health check after a fresh overnight completion regression surfaced in the morning brief.",
     "detail": "Morning Brief's 10:00 BST run showed that `💡 Today's Income Idea` had to be omitted because `research/todays-income-idea.json` was still dated `2026-06-05`. A fresh audit confirmed the Sunday queue lane was still healthy, but the 04:00 BST `Daily Income Research` run had failed after about 188 seconds with the generic error `Codex stopped before confirming the turn was complete` even though the job still points at the correct explicit model `openai-codex/gpt-5.4`. Added `scripts/check-income-research-health.py` so future wakes can compare cron state against idea-file freshness in one command, surface the latest run/session breadcrumbs immediately, and distinguish a real overnight income-research failure from a harmless queue-lane status check."
+  },
+  {
+    "id": 412,
+    "timestamp": "2026-06-06T09:36:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Extended the queue entry-point audit to cover `QUESTIONS.md`, closing the last blocker-surface blind spot in the Sunday queue lane.",
+    "detail": "Rechecked the approval-bound Sunday queue lane with `python3 scripts/check-queue-readiness.py` and confirmed the existing tracker, approval-pack, handoff, and entry-point audits were still green. That audit pass exposed one remaining blind spot rather than a content gap: `QUESTIONS.md` is one of the live Aaron-facing blocker surfaces, but `scripts/check-queue-entry-points.py` had only been checking `HEARTBEAT.md`, `MEMORY.md`, the Sunday master handoff, and Mission Control item `16`. Expanded the helper so it now also verifies that `QUESTIONS.md` still points at `drafts/review-tracker.md`, the current Sunday and cross-stack shortcuts, the anti-bullying grouped shortcut, and the live execution index. Updated Mission Control item `16`, long-term memory, and today's daily memory to reflect the broader blocker-surface audit, then reran the full queue-readiness stack cleanly."
   }
 ]

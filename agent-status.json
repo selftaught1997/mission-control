@@ -3,13 +3,13 @@
   "agent": "Gustav",
   "status": "idle",
   "state": "idle",
-  "detail": "Queue lane is green; Daily Income Research health helper added after a fresh 2026-06-06 overnight completion failure.",
+  "detail": "Queue readiness checks are green, and blocker-surface audits now include QUESTIONS.md so the Sunday approval lane stays aligned end to end.",
   "current_step": "idle",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1780737078000,
-  "last_updated": "2026-06-06T09:11:18Z",
-  "last_activity_at": "2026-06-06T09:11:18Z",
-  "activity_counter": 125,
+  "updatedAt": 1780738745000,
+  "last_updated": "2026-06-06T09:39:05Z",
+  "last_activity_at": "2026-06-06T09:39:05Z",
+  "activity_counter": 126,
   "emoji": "\ud83e\uddbe"
 }
