@@ -3238,5 +3238,13 @@
     "status": "success",
     "summary": "Added a one-command queue-readiness runner so future wakes can revalidate the approval-bound Sunday stack faster.",
     "detail": "Added `scripts/check-queue-readiness.py` as a small wrapper around `scripts/check-review-tracker.py` and `scripts/check-queue-handoff.py`, then ran it successfully against the live queue lane. The combined check now confirms both halves of the approval-bound stack in one pass: tracker totals / start-here ordering still match, and all referenced handoff files still resolve on disk. Updated `MEMORY.md`, today's daily memory, and Mission Control item `16` so future wakes know to use the new one-command audit before reopening the same queue docs by hand."
+  },
+  {
+    "id": 406,
+    "timestamp": "2026-06-06T06:36:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Surfaced the queue-readiness runner in the live operator entry points so future wakes start with the one-command audit.",
+    "detail": "Updated `HEARTBEAT.md`, `drafts/content-queue-master-handoff-v1-2026-06-04.md`, today's daily memory, and Mission Control item `16` so the Sunday queue lane now explicitly tells future wakes to run `python3 scripts/check-queue-readiness.py` before reopening the handoff docs by hand. Reran the combined audit after the wording cleanup and it still passed cleanly, confirming the lane remains approval-bound rather than missing-prep-bound."
   }
 ]
