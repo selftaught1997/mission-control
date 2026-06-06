@@ -3246,5 +3246,13 @@
     "status": "success",
     "summary": "Surfaced the queue-readiness runner in the live operator entry points so future wakes start with the one-command audit.",
     "detail": "Updated `HEARTBEAT.md`, `drafts/content-queue-master-handoff-v1-2026-06-04.md`, today's daily memory, and Mission Control item `16` so the Sunday queue lane now explicitly tells future wakes to run `python3 scripts/check-queue-readiness.py` before reopening the handoff docs by hand. Reran the combined audit after the wording cleanup and it still passed cleanly, confirming the lane remains approval-bound rather than missing-prep-bound."
+  },
+  {
+    "id": 407,
+    "timestamp": "2026-06-06T07:06:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Added the missing Sunday approval-pack audit and folded it into the one-command queue-readiness runner.",
+    "detail": "Added `scripts/check-sunday-approval-pack.py` so future wakes can verify the Aaron-facing Sunday approval shortcut itself instead of relying on an old manual one-off check. The new helper confirms that the five recommended approval-pack slots still resolve to seven concrete draft files on disk and that each one is still represented in `drafts/review-tracker.md`. Expanded `scripts/check-queue-readiness.py` to include that new approval-pack audit alongside the tracker and handoff audits, then reran the combined check successfully. Updated `MEMORY.md`, today's daily memory, and Mission Control item `16` so the queue lane now treats that approval-pack integrity check as part of the standard one-command revalidation path."
   }
 ]
