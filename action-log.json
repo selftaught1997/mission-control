@@ -3190,5 +3190,13 @@
     "status": "success",
     "summary": "Resynced the Mission Control publish blocker with the current local-ahead count after the overnight commits.",
     "detail": "Confirmed the nested `mission-control` repo has moved on again and is now `402` commits ahead of `origin/main` with local head `2c38ccd`. Updated `QUESTIONS.md` and Mission Control todo item `3` so the publish blocker once again reflects the live ahead count and exact head instead of the older `390` / `cc65738` state."
+  },
+  {
+    "id": 400,
+    "timestamp": "2026-06-06T03:06:00Z",
+    "category": "Infrastructure",
+    "status": "success",
+    "summary": "Made the Mission Control publish blocker durable so future wakes stop chasing count drift.",
+    "detail": "After the exact `402` / `2c38ccd` blocker wording drifted again one wake later, rewrote the publish blocker in `QUESTIONS.md` and Mission Control todo item `3` around the stable truth instead: the local repo is well over `400` commits ahead, the public site is stale, and pushing still needs Aaron approval. This avoids wasting future wakes on self-inflicted exact-count churn from harmless local housekeeping commits."
   }
 ]
