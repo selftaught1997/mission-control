@@ -3158,5 +3158,13 @@
     "status": "success",
     "summary": "Moved the three `Start here` approval rows to the top of the live review table.",
     "detail": "Reordered `drafts/review-tracker.md` so the three real approval entry points now appear at the top of the `Awaiting Aaron Review` table instead of being buried in their original chronological positions. The cross-stack shortlist, Sunday-only approval pack, and anti-bullying approval pack are now the first rows Aaron sees when opening the tracker."
+  },
+  {
+    "id": 396,
+    "timestamp": "2026-06-06T01:06:00Z",
+    "category": "Operations",
+    "status": "success",
+    "summary": "Refreshed long-term memory so future wakes stop relying on stale April cron and draft assumptions.",
+    "detail": "Updated `MEMORY.md` to reflect the current June operating state instead of the older April snapshot. Added a concise current-ops section covering the approval-bound Sunday queue lane, the cross-stack / Sunday-only / anti-bullying shortcut files, the Mission Control publish blocker, and the Morning Brief Python-wrapper fix. Also replaced the old 'all cron jobs disabled' framing with a historical note plus live-state guidance, and pointed the drafts section at `drafts/review-tracker.md` as the actual source of truth."
   }
 ]
