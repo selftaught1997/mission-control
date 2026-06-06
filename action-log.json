@@ -3142,5 +3142,13 @@
     "status": "success",
     "summary": "Marked the three real approval entry points as `Start here` inside the live review tracker.",
     "detail": "Verified that the active shortcut files and the `40`-item review count still line up, then improved the tracker in place instead of creating more docs. Updated `drafts/review-tracker.md` so `review-priority-shortlist-2026-06-05.md`, `sunday-beginner-queue-approval-pack-2026-06-04.md`, and `anti-bullying-workshop-approval-pack-2026-06-05.md` now stand out as the actual first review choices inside the main table rather than looking like ordinary backlog items."
+  },
+  {
+    "id": 394,
+    "timestamp": "2026-06-06T00:06:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Added exact reply formats to the top of the review tracker so the backlog can be actioned from one file.",
+    "detail": "Extended the `Fastest way through the live backlog` section in `drafts/review-tracker.md` so each existing shortcut now includes the shortest useful approval reply. The tracker now tells Aaron not just which file to open first, but also the exact reply formats for the cross-stack, Sunday-only, and anti-bullying lanes without needing to open a second doc."
   }
 ]
