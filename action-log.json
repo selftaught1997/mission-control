@@ -3174,5 +3174,13 @@
     "status": "success",
     "summary": "Reordered QUESTIONS.md so the live approval blockers appear before older background prompts.",
     "detail": "Kept the actual question content intact, but moved `Content Queue Approvals` and `Mission Control Pages Publish` to the top of `QUESTIONS.md`. The queue is still approval-bound rather than prep-bound, so this puts the real unblockers first when Aaron skims the file instead of making him scroll past older trading and school-outreach discovery questions."
+  },
+  {
+    "id": 398,
+    "timestamp": "2026-06-06T02:06:00Z",
+    "category": "Operations",
+    "status": "success",
+    "summary": "Marked the remaining QUESTIONS.md prompts as background so they stop competing with the live approval blockers.",
+    "detail": "Kept the trading and school-outreach questions intact, but grouped them under a new `Background Questions` section with a one-line note that they are useful but not the active blocker. This makes `QUESTIONS.md` read in priority order: queue approvals first, Mission Control publish second, and older discovery prompts last."
   }
 ]
