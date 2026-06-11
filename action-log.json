@@ -3406,5 +3406,13 @@
     "status": "success",
     "summary": "Hardened the approval-bound heartbeat runners so Mission Control no longer writes Gustav back as idle while he is actively keeping the Sunday queue lane execution-ready.",
     "detail": "The approval-bound lane stayed green again, and this wake fixed a real Mission Control drift: the green-lane runners had still been refreshing Gustav as idle even while he was actively keeping the Sunday queue execution-ready. The runner defaults now keep the saved status pinned to active queue-lane maintenance instead of vague idle state."
+  },
+  {
+    "id": 427,
+    "timestamp": "2026-06-11T09:07:22Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Preserved the approval-bound Sunday queue heartbeat path after another clean end-to-end pass, keeping the queue audits, bookkeeping, and active-lane Mission Control state aligned while approval remains the real blocker.",
+    "detail": "The approval-bound Sunday queue lane stayed green again after the documented end-to-end heartbeat pass. Queue readiness, memory continuity, Mission Control refresh, and the matching bookkeeping all stayed aligned, so the useful work this wake was preserving the truthful active-lane history while Aaron remains the only blocker."
   }
 ]
