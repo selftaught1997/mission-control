@@ -3366,5 +3366,13 @@
     "status": "success",
     "summary": "Added a Mission Control action-log helper so approval-bound heartbeats can append Gustav entries without hand-editing the JSON list.",
     "detail": "Started the wake with the now-default `python3 scripts/run-queue-heartbeat-admin.py` flow after the usual context reload, and the Sunday queue lane remained fully green again: tracker totals/order, Sunday approval-pack references, handoff references, blocker surfaces, and June daily-memory continuity all stayed aligned. With no genuine new queue execution gap to fix, the useful work stayed in workspace hygiene. Added `scripts/log-mission-control-action.py`, which appends a timestamped Gustav entry to `mission-control/action-log.json` with the next numeric id, and documented it in `MEMORY.md` so future approval-bound wakes can stop hand-editing the action log JSON. The first live invocation exposed a shell-quoting pitfall around backticks in long detail text, so the helper now also supports `--detail-file` for safer longer entries."
+  },
+  {
+    "id": 422,
+    "timestamp": "2026-06-11T06:07:48Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Hardened the daily-memory logging helper with a safer file-based input path so longer heartbeat notes no longer rely on shell-safe inline text.",
+    "detail": "Started the wake with the now-default `python3 scripts/run-queue-heartbeat-admin.py` flow after the usual context reload, and the Sunday queue lane remained fully green again: tracker totals/order, Sunday approval-pack references, handoff references, blocker surfaces, and June daily-memory continuity all stayed aligned. With no genuine new queue execution gap to fix, the useful work stayed in workspace hygiene. Hardened `scripts/log-daily-memory.py` so it now also supports `--text-file` for longer notes, mirroring the safer file-based path already added to the Mission Control action-log helper after the earlier shell-quoting pitfall. Updated `MEMORY.md` to document the safer daily-memory logging path, then used both helpers via temporary detail files so this wake's bookkeeping exercised the hardened route instead of falling back to inline shell text."
   }
 ]
