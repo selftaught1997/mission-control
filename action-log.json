@@ -3598,5 +3598,13 @@
     "status": "success",
     "summary": "Compact the income-research idea catalog input path",
     "detail": "Reran the approval-bound green-lane pass after another clean queue-readiness audit, then used the remaining non-approval side lane to reduce the input footprint of the still-stale Daily Income Research cron before the next 04:12 BST checkpoint. The failed 2026-06-11 run had been encouraged to read the giant income ideas JSON directly, which is a bad fit for a long-lived isolated job that only needs prior idea headlines to avoid repeats. Added scripts/list-income-idea-headlines.py to emit a compact id, date, and title catalog from the research log, patched the live Daily Income Research cron prompt so step one now calls that helper instead of reading the full JSON payload, updated scripts/check-income-research-readiness.py to verify the helper path and run it locally, and refreshed MEMORY.md plus the default approval-bound support-file commit set so the saved operator path matches the hardened scheduler. Validated the helper chain live after the cron patch; the remaining overnight risk is now provider or model behavior rather than oversized prior-idea context loading."
+  },
+  {
+    "id": 451,
+    "timestamp": "2026-06-11T21:39:17Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Add an output-contract helper for Daily Income Research",
+    "detail": "Queue readiness still passed cleanly and the approval blocker did not change. I added a compact output-contract helper for the Daily Income Research lane, patched the live 04:12 BST cron prompt to call it after the prior-ideas catalog helper, updated the readiness checker to verify both helper surfaces, and documented plus staged the new helper in the default approval-bound support-file path."
   }
 ]
