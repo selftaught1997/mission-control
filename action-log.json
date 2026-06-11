@@ -3542,5 +3542,13 @@
     "status": "success",
     "summary": "Wire helper-surface guard into default runner",
     "detail": "Reran the approval-bound heartbeat path after another clean green-lane audit. The useful follow-through this wake was moving the new helper-surface regression guard from optional side utility into the actual default operator path: scripts/run-approval-bound-heartbeat.py now runs scripts/check-approval-bound-helper-surface.py automatically after the bundled queue admin checks and before heartbeat bookkeeping, unless skip-helper-surface-check is explicitly set. Updated MEMORY.md so the long-term operator instructions match that behavior, then validated the live one-command path with the guard active."
+  },
+  {
+    "id": 444,
+    "timestamp": "2026-06-11T17:09:05Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Retimed failing AI crons off exact hour",
+    "detail": "Reran the approval-bound heartbeat path after another clean green-lane audit, then used the non-queue side lane for the most repairable issue from the daily diagnostic. Live cron state showed both Daily Activity Log Tidy and Daily Income Research still scheduled on exact top-of-hour launches while their recent failures were dominated by immediate openai-codex provider cooldown rate limits. Retimed Daily Activity Log Tidy from 20:00 to 20:12 Europe/London and Daily Income Research from 04:00 to 04:12 Europe/London so those isolated jobs stop colliding with the busiest hourly boundary, then updated MEMORY.md so future wakes know the next scheduled runs are the confirmation checkpoint for whether that mitigation clears the current rate-limit lane."
   }
 ]
