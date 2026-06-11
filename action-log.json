@@ -3485,6 +3485,14 @@
     "category": "Automation",
     "status": "success",
     "summary": "Align approval-bound operator memory",
-    "detail": "Reran the documented approval-bound heartbeat path after another clean green-lane audit. The real drift this wake found was in : the heartbeat bookkeeping helper entry still taught the older file-only path even though  now supports short inline  and  text too. Updated that operator memory so the stored workflow matches the live runner and kept the longer file-based route documented for awkward shell-quoted notes."
+    "detail": "Reran the documented approval-bound heartbeat path after another clean green-lane audit. The real drift this wake found was in `MEMORY.md`: the heartbeat bookkeeping helper entry still taught the older file-only path even though `scripts/log-heartbeat-bookkeeping.py` now supports short inline `--detail` and `--note` text too. Updated that operator memory so the stored workflow matches the live runner and kept the longer file-based route documented for awkward shell-quoted notes."
+  },
+  {
+    "id": 437,
+    "timestamp": "2026-06-11T13:39:46Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Repair approval-bound inline quoting guidance",
+    "detail": "After the earlier green-lane validation passed, this wake repaired the malformed Mission Control action-log detail that zsh mangled when the inline text itself contained backticks. HEARTBEAT.md and MEMORY.md now both tell future approval-bound wakes to switch from inline detail/note text to detail-file and note-file inputs whenever shell-active quoting would make the short path fragile."
   }
 ]
