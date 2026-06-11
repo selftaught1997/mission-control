@@ -2,11 +2,6 @@
   "entries": [
     {
       "status": "working",
-      "task": "After-midnight heartbeat Mission Control review",
-      "ts": 1780096573646
-    },
-    {
-      "status": "working",
       "task": "Late-night heartbeat Mission Control review",
       "ts": 1780089285466
     },
@@ -124,6 +119,11 @@
       "status": "idle",
       "task": "Late-morning heartbeat blocker-surface audit",
       "ts": 1780738745000
+    },
+    {
+      "status": "idle",
+      "task": "Pre-dawn heartbeat continuity repair",
+      "ts": 1781141891000
     }
   ]
 }

@@ -3,13 +3,13 @@
   "agent": "Gustav",
   "status": "idle",
   "state": "idle",
-  "detail": "Queue readiness checks are green, and blocker-surface audits now include QUESTIONS.md so the Sunday approval lane stays aligned end to end.",
+  "detail": "Queue readiness checks are still green; missing daily memory files for 2026-06-10 and 2026-06-11 were backfilled to restore continuity.",
   "current_step": "idle",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1780738745000,
-  "last_updated": "2026-06-06T09:39:05Z",
-  "last_activity_at": "2026-06-06T09:39:05Z",
-  "activity_counter": 126,
+  "updatedAt": 1781141891000,
+  "last_updated": "2026-06-11T01:38:11Z",
+  "last_activity_at": "2026-06-11T01:38:11Z",
+  "activity_counter": 127,
   "emoji": "\ud83e\uddbe"
 }
