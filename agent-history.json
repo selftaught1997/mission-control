@@ -2,11 +2,6 @@
   "entries": [
     {
       "status": "idle",
-      "task": "Late-morning heartbeat queue admin sync",
-      "ts": 1780735066000
-    },
-    {
-      "status": "idle",
       "task": "Morning heartbeat income research health audit",
       "ts": 1780737078000
     },
@@ -124,6 +119,11 @@
       "status": "working",
       "task": "Heartbeat approval-bound runner",
       "ts": 1781177889000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat approval-bound runner",
+      "ts": 1781179669000
     }
   ]
 }

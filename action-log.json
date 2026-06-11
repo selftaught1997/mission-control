@@ -3454,5 +3454,13 @@
     "status": "success",
     "summary": "Expanded the one-command approval-bound heartbeat path so its committed finish auto-stages the core bookkeeping and status helper chain along with the main runner/docs when the lane stays green.",
     "detail": "The approval-bound Sunday queue lane stayed green again after another full end-to-end heartbeat pass. The useful work this wake was hardening the committed default path a little further: the lower admin runner now points back to the true end-to-end operator path, and the main runner now auto-stages the full core helper chain it depends on, so routine tweaks to those bookkeeping/status scripts can land without extra flags."
+  },
+  {
+    "id": 433,
+    "timestamp": "2026-06-11T12:07:49Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Expanded the committed approval-bound heartbeat path so the subordinate queue-audit helper chain now auto-stages with the main runner/docs and bookkeeping helpers when the lane stays green.",
+    "detail": "The approval-bound Sunday queue lane stayed green again after another full end-to-end heartbeat pass. The useful work this wake was widening the committed default path one step further so the subordinate queue-audit helper chain now lands with the same one-command finish, instead of only the top-level readiness runner and bookkeeping/status helpers."
   }
 ]
