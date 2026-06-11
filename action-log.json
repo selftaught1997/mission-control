@@ -3470,5 +3470,13 @@
     "status": "success",
     "summary": "Fixed the approval-bound heartbeat short-text path so inline detail now works all the way through bookkeeping and commit-finish, not just in the top-level runner.",
     "detail": "The approval-bound Sunday queue lane stayed green again after another full end-to-end heartbeat pass. This wake repaired the real bug exposed by the shorter operator path: the top-level runner had learned inline detail text, but the nested heartbeat bookkeeping helper still required detail-file input. The helper now accepts either inline detail or detail-file, so the one-command committed path genuinely works for short runs as documented."
+  },
+  {
+    "id": 435,
+    "timestamp": "2026-06-11T13:08:07Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Hardened approval-bound heartbeat bookkeeping so the action log is validated and written before the daily memory note, reducing half-written heartbeat passes.",
+    "detail": "The approval-bound Sunday queue lane stayed green again after another full end-to-end heartbeat pass. This wake hardened the bookkeeping helper after the earlier short-text regression exposed a partial-write risk: it now preloads both note/detail inputs before any writes and records the more failure-prone Mission Control action log before appending the daily memory note, so a broken pass is less likely to leave behind only half the heartbeat history."
   }
 ]
