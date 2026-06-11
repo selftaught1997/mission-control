@@ -3398,5 +3398,13 @@
     "status": "success",
     "summary": "Aligned the approval-bound wake instructions with the end-to-end runner so the default documented path now matches the workflow Gustav actually executes on green-lane wakes.",
     "detail": "Started the wake with the usual context reload and found no genuine new Sunday queue execution gap again. The queue remained approval-bound rather than prep-bound, which kept the useful work in workspace hygiene. Updated `HEARTBEAT.md` so the default approval-bound wake flow now points at `python3 scripts/run-approval-bound-heartbeat.py --summary \"...\" --detail-file /tmp/detail.txt --note-file /tmp/note.txt` instead of the older admin-only runner, and adjusted the runner's own default Mission Control detail/history text to match that end-to-end path. Then validated the updated runner live via temporary files so the saved daily-memory note and Mission Control entry both reflect the aligned default."
+  },
+  {
+    "id": 426,
+    "timestamp": "2026-06-11T08:38:17Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Hardened the approval-bound heartbeat runners so Mission Control no longer writes Gustav back as idle while he is actively keeping the Sunday queue lane execution-ready.",
+    "detail": "The approval-bound lane stayed green again, and this wake fixed a real Mission Control drift: the green-lane runners had still been refreshing Gustav as idle even while he was actively keeping the Sunday queue execution-ready. The runner defaults now keep the saved status pinned to active queue-lane maintenance instead of vague idle state."
   }
 ]

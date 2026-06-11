@@ -2,11 +2,6 @@
   "entries": [
     {
       "status": "working",
-      "task": "Late-morning heartbeat Mission Control review",
-      "ts": 1779957420000
-    },
-    {
-      "status": "working",
       "task": "Morning heartbeat Mission Control review",
       "ts": 1779946920000
     },
@@ -124,6 +119,11 @@
       "status": "idle",
       "task": "Heartbeat approval-bound runner",
       "ts": 1781163460000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat approval-bound runner",
+      "ts": 1781167096000
     }
   ]
 }

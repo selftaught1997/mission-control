@@ -1,15 +1,15 @@
 {
   "schema_version": "1.1",
   "agent": "Gustav",
-  "status": "idle",
-  "state": "idle",
+  "status": "working",
+  "state": "working",
   "detail": "Queue readiness and memory continuity are green; the Sunday lane remains approval-bound, and the end-to-end approval-bound heartbeat runner is the default green-lane path.",
-  "current_step": "idle",
+  "current_step": "Keeping the approval-bound Sunday queue lane execution-ready",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1781163460000,
-  "last_updated": "2026-06-11T07:37:40Z",
-  "last_activity_at": "2026-06-11T07:37:40Z",
-  "activity_counter": 141,
+  "updatedAt": 1781167096000,
+  "last_updated": "2026-06-11T08:38:16Z",
+  "last_activity_at": "2026-06-11T08:38:16Z",
+  "activity_counter": 142,
   "emoji": "\ud83e\uddbe"
 }
