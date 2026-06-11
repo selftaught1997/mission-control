@@ -2,11 +2,6 @@
   "entries": [
     {
       "status": "idle",
-      "task": "Pre-dawn heartbeat admin runner upgrade",
-      "ts": 1781150875000
-    },
-    {
-      "status": "idle",
       "task": "Dawn heartbeat bundled admin check",
       "ts": 1781152626000
     },
@@ -124,6 +119,11 @@
       "status": "working",
       "task": "Heartbeat approval-bound runner",
       "ts": 1781190441000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat approval-bound runner",
+      "ts": 1781192268000
     }
   ]
 }

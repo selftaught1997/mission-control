@@ -3518,5 +3518,13 @@
     "status": "success",
     "summary": "Clarify daily-memory legacy fallback",
     "detail": "Reran the approval-bound heartbeat path after another clean green-lane audit. The only remaining drift this wake found was in the lowest-level helper help surface: scripts/log-daily-memory.py had already moved to note and note-file terminology, but its fallback positional argument still presented itself generically as text. Updated the helper help so the positional form is explicitly labeled as the legacy NOTE path and the file-input help now talks about daily memory notes directly, which makes the low-level interface read truthfully alongside the rest of the approval-bound runner chain."
+  },
+  {
+    "id": 441,
+    "timestamp": "2026-06-11T15:37:48Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Normalize daily-memory helper internals",
+    "detail": "Reran the approval-bound heartbeat path after another clean green-lane audit. The real work this wake was finishing was inside the lowest-level helper rather than in the queue lane itself: scripts/log-daily-memory.py already exposed note-based flags publicly, but its parser group, positional argument name, and local variable names were still carrying the older text vocabulary. Normalized those internal names to note-group, note-positional, and note-text so the script now reads the same way it behaves, without changing the public interface or breaking the existing aliases."
   }
 ]
