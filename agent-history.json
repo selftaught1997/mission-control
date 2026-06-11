@@ -2,11 +2,6 @@
   "entries": [
     {
       "status": "idle",
-      "task": "Dawn heartbeat bundled admin check",
-      "ts": 1781152626000
-    },
-    {
-      "status": "idle",
       "task": "Heartbeat bundled queue admin sync",
       "ts": 1781152666000
     },
@@ -124,6 +119,11 @@
       "status": "working",
       "task": "Heartbeat approval-bound runner",
       "ts": 1781192268000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat approval-bound runner",
+      "ts": 1781194089000
     }
   ]
 }

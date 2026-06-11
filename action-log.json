@@ -3526,5 +3526,13 @@
     "status": "success",
     "summary": "Normalize daily-memory helper internals",
     "detail": "Reran the approval-bound heartbeat path after another clean green-lane audit. The real work this wake was finishing was inside the lowest-level helper rather than in the queue lane itself: scripts/log-daily-memory.py already exposed note-based flags publicly, but its parser group, positional argument name, and local variable names were still carrying the older text vocabulary. Normalized those internal names to note-group, note-positional, and note-text so the script now reads the same way it behaves, without changing the public interface or breaking the existing aliases."
+  },
+  {
+    "id": 442,
+    "timestamp": "2026-06-11T16:08:09Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Add approval-bound helper surface check",
+    "detail": "Reran the approval-bound heartbeat path after another clean green-lane audit. The useful gap this wake found was that the helper-interface cleanup work had become repeatable enough to deserve its own small regression check instead of more one-off drift hunts. Added scripts/check-approval-bound-helper-surface.py, which verifies the help output for the low-level daily-memory helper, the bookkeeping helper, and the end-to-end approval-bound runner so future wakes can confirm the expected note and detail flags mechanically. Documented the check in MEMORY.md and added it to the default approval-bound support files so commit-after-run carries the guard forward automatically."
   }
 ]
