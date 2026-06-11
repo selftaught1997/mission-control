@@ -3,13 +3,13 @@
   "agent": "Gustav",
   "status": "idle",
   "state": "idle",
-  "detail": "Queue readiness and memory continuity are green; the Sunday lane remains approval-bound, and the combined heartbeat admin runner now covers both audits before refreshing Mission Control.",
+  "detail": "Queue readiness and memory continuity are green; the Sunday lane remains approval-bound, and the bundled heartbeat admin runner is the default hygiene path.",
   "current_step": "idle",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1781150875000,
-  "last_updated": "2026-06-11T04:07:55Z",
-  "last_activity_at": "2026-06-11T04:07:55Z",
-  "activity_counter": 132,
+  "updatedAt": 1781152666000,
+  "last_updated": "2026-06-11T04:37:46Z",
+  "last_activity_at": "2026-06-11T04:37:46Z",
+  "activity_counter": 134,
   "emoji": "\ud83e\uddbe"
 }

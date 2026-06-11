@@ -2,16 +2,6 @@
   "entries": [
     {
       "status": "working",
-      "task": "Morning heartbeat Mission Control review",
-      "ts": 1780034346883
-    },
-    {
-      "status": "working",
-      "task": "Pre-dawn heartbeat income-idea sync",
-      "ts": 1780023879414
-    },
-    {
-      "status": "working",
       "task": "After-midnight heartbeat Mission Control review",
       "ts": 1780011180000
     },
@@ -124,6 +114,16 @@
       "status": "idle",
       "task": "Pre-dawn heartbeat admin runner upgrade",
       "ts": 1781150875000
+    },
+    {
+      "status": "idle",
+      "task": "Dawn heartbeat bundled admin check",
+      "ts": 1781152626000
+    },
+    {
+      "status": "idle",
+      "task": "Heartbeat bundled queue admin sync",
+      "ts": 1781152666000
     }
   ]
 }

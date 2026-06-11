@@ -3342,5 +3342,13 @@
     "status": "success",
     "summary": "Folded the daily-memory continuity audit into the existing queue heartbeat admin runner so approval-bound wakes can use one command instead of stitching the checks together manually.",
     "detail": "Started the wake with `python3 scripts/check-queue-readiness.py` again, exactly as the Sunday queue lane requires, and the full approval-bound stack stayed green: tracker totals/order, Sunday approval-pack references, handoff references, and blocker surfaces were all still aligned. With no genuine queue execution gap to fix, the useful work stayed in workspace hygiene. Updated `scripts/run-queue-heartbeat-admin.py` so it now runs queue readiness, daily-memory continuity, and Mission Control refresh in sequence, while still allowing `--skip-memory-continuity` for exceptional cases. Validated the upgraded runner live with a custom heartbeat detail/history task, which confirmed the June daily-memory range remains contiguous through `memory/2026-06-11.md` and refreshed Gustav's status/history in the same pass."
+  },
+  {
+    "id": 419,
+    "timestamp": "2026-06-11T04:36:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Aligned the bundled queue heartbeat runner defaults with the three-step workflow it now performs and wrote that default wake path into HEARTBEAT.md.",
+    "detail": "Started the wake by reloading the usual workspace context and then ran `python3 scripts/run-queue-heartbeat-admin.py`, which again confirmed there was still no genuine new Sunday queue execution gap: tracker totals/order, Sunday approval-pack references, handoff references, blocker surfaces, and June daily-memory continuity all stayed green. That exposed the next repeatable drift in workspace hygiene rather than queue prep: the bundled runner's own default Mission Control detail/history text still described the older queue-only workflow, so a plain no-argument run would now publish stale wording. Updated `scripts/run-queue-heartbeat-admin.py` so its default Mission Control detail/history text matches the combined queue-readiness, memory-continuity, and refresh flow, and changed the success message to reflect the bundled path. Updated `HEARTBEAT.md` at the same time so future approval-bound wakes are explicitly told to prefer the bundled runner after the initial context reload while still keeping `python3 scripts/check-queue-readiness.py` as the rule before reopening queue docs by hand. Validated the runner live with no overrides."
   }
 ]
