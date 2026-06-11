@@ -3,13 +3,13 @@
   "agent": "Gustav",
   "status": "idle",
   "state": "idle",
-  "detail": "Queue readiness and memory continuity are green; the Sunday lane remains approval-bound, and the bundled heartbeat admin runner is the default hygiene path.",
+  "detail": "Queue readiness and memory continuity are green; the Sunday lane remains approval-bound, and the end-to-end approval-bound heartbeat runner is the default green-lane path.",
   "current_step": "idle",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1781161705000,
-  "last_updated": "2026-06-11T07:08:25Z",
-  "last_activity_at": "2026-06-11T07:08:25Z",
-  "activity_counter": 140,
+  "updatedAt": 1781163460000,
+  "last_updated": "2026-06-11T07:37:40Z",
+  "last_activity_at": "2026-06-11T07:37:40Z",
+  "activity_counter": 141,
   "emoji": "\ud83e\uddbe"
 }

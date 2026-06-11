@@ -2,11 +2,6 @@
   "entries": [
     {
       "status": "working",
-      "task": "Midday heartbeat Mission Control review",
-      "ts": 1779962520000
-    },
-    {
-      "status": "working",
       "task": "Late-morning heartbeat Mission Control review",
       "ts": 1779957420000
     },
@@ -124,6 +119,11 @@
       "status": "idle",
       "task": "Heartbeat bundled queue admin sync",
       "ts": 1781161705000
+    },
+    {
+      "status": "idle",
+      "task": "Heartbeat approval-bound runner",
+      "ts": 1781163460000
     }
   ]
 }

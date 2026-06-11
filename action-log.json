@@ -3390,5 +3390,13 @@
     "status": "success",
     "summary": "Bundled the full approval-bound heartbeat follow-through into one runner so green-lane wakes no longer need separate admin and bookkeeping commands.",
     "detail": "Started the wake with the usual context reload and confirmed that the Sunday lane still behaves exactly as the heartbeat file describes: the queue is approval-bound, not prep-bound. Added `scripts/run-approval-bound-heartbeat.py`, which chains `scripts/run-queue-heartbeat-admin.py` and `scripts/log-heartbeat-bookkeeping.py` so a future approval-bound wake can run the bundled queue audits, memory continuity check, Mission Control refresh, daily memory note, and Mission Control action entry from one command after reload. Updated `MEMORY.md` to document the new end-to-end runner and then used it immediately via temporary files, validating the combined path live."
+  },
+  {
+    "id": 425,
+    "timestamp": "2026-06-11T07:37:40Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Aligned the approval-bound wake instructions with the end-to-end runner so the default documented path now matches the workflow Gustav actually executes on green-lane wakes.",
+    "detail": "Started the wake with the usual context reload and found no genuine new Sunday queue execution gap again. The queue remained approval-bound rather than prep-bound, which kept the useful work in workspace hygiene. Updated `HEARTBEAT.md` so the default approval-bound wake flow now points at `python3 scripts/run-approval-bound-heartbeat.py --summary \"...\" --detail-file /tmp/detail.txt --note-file /tmp/note.txt` instead of the older admin-only runner, and adjusted the runner's own default Mission Control detail/history text to match that end-to-end path. Then validated the updated runner live via temporary files so the saved daily-memory note and Mission Control entry both reflect the aligned default."
   }
 ]
