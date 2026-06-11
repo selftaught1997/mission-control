@@ -3374,5 +3374,13 @@
     "status": "success",
     "summary": "Hardened the daily-memory logging helper with a safer file-based input path so longer heartbeat notes no longer rely on shell-safe inline text.",
     "detail": "Started the wake with the now-default `python3 scripts/run-queue-heartbeat-admin.py` flow after the usual context reload, and the Sunday queue lane remained fully green again: tracker totals/order, Sunday approval-pack references, handoff references, blocker surfaces, and June daily-memory continuity all stayed aligned. With no genuine new queue execution gap to fix, the useful work stayed in workspace hygiene. Hardened `scripts/log-daily-memory.py` so it now also supports `--text-file` for longer notes, mirroring the safer file-based path already added to the Mission Control action-log helper after the earlier shell-quoting pitfall. Updated `MEMORY.md` to document the safer daily-memory logging path, then used both helpers via temporary detail files so this wake's bookkeeping exercised the hardened route instead of falling back to inline shell text."
+  },
+  {
+    "id": 423,
+    "timestamp": "2026-06-11T06:37:46Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Bundled the approval-bound heartbeat bookkeeping into one helper so the daily memory note and Mission Control action entry can be appended together.",
+    "detail": "Started the wake with the now-default `python3 scripts/run-queue-heartbeat-admin.py` flow after the usual context reload, and the Sunday queue lane remained fully green again: tracker totals/order, Sunday approval-pack references, handoff references, blocker surfaces, and June daily-memory continuity all stayed aligned. With no genuine new queue execution gap to fix, the useful work stayed in workspace hygiene. Added `scripts/log-heartbeat-bookkeeping.py`, which wraps the safer daily-memory note helper and Mission Control action-log helper so approval-bound heartbeats can append both records in one command after the queue lane stays green. Updated `MEMORY.md` to document the new bundle and used the helper immediately via temporary files so this wake validated the single-command bookkeeping path."
   }
 ]
