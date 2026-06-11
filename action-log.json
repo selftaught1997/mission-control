@@ -3614,5 +3614,13 @@
     "status": "success",
     "summary": "Collapse Daily Income Research writes into one validated apply helper",
     "detail": "Queue readiness still passed cleanly and the approval blocker did not change. I added a consolidated apply helper for the Daily Income Research lane so the overnight job can fan one validated payload back into the three source-of-truth research JSON files instead of hand-editing them separately, patched the live 04:12 BST cron prompt to use that helper, updated the readiness checker to dry-run and verify the new write path, and documented plus staged the helper in the default approval-bound support-file path."
+  },
+  {
+    "id": 453,
+    "timestamp": "2026-06-11T22:39:51Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Collapse Daily Income Research Discord sends and link capture into one helper",
+    "detail": "Queue readiness still passed cleanly and the approval blocker did not change. I added a Discord-post helper for the Daily Income Research lane so the overnight job can post the full report to #trading-desk, post the 2-line summary to #morning-brief, and emit a best-effort discordLink surface from one JSON-returning step instead of hand-crafting two separate openclaw message sends. I patched the live 04:12 BST cron prompt to use that helper, updated the readiness checker to dry-run and verify the new post surface, and documented plus staged the helper in the default approval-bound support-file path."
   }
 ]
