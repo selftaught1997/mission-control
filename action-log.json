@@ -3326,5 +3326,13 @@
     "status": "success",
     "summary": "Closed the last June continuity mismatch by backfilling `memory/2026-06-01.md` after another clean queue-readiness pass.",
     "detail": "Re-ran `python3 scripts/check-queue-readiness.py` before touching the Sunday handoff docs and got the same fully green result again: tracker totals/order, Sunday approval-pack items, handoff references, and blocker surfaces all remained aligned. That left no real queue-execution gap to fix, so the useful work stayed in workspace hygiene. A final continuity check showed that `MEMORY.md` now claimed the June daily-memory range was contiguous through `memory/2026-06-11.md`, but the actual directory still lacked `memory/2026-06-01.md`. Backfilled that missing 1 June file with an explicit gap-preservation note instead of fabricating activity, which makes the long-term continuity note materially true while the queue lane remains approval-bound."
+  },
+  {
+    "id": 417,
+    "timestamp": "2026-06-11T03:36:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Added a reusable daily-memory continuity checker after the June backfill cleanup repeated across several wakes.",
+    "detail": "Re-ran `python3 scripts/check-queue-readiness.py` first and confirmed the Sunday queue lane was still fully green: no new execution gap had appeared in the tracker, approval-pack, handoff, or blocker-surface audits. That left workspace hygiene as the useful lane again, and the repeated manual continuity repairs had exposed a clear reusable workflow opportunity. Added `scripts/check-memory-continuity.py`, which checks for missing `memory/YYYY-MM-DD.md` files across a date range and defaults to the current month in Europe/London. Updated `MEMORY.md` and today's daily note so future wakes know to use the helper instead of manually scanning the directory, then ran the new checker successfully against the live June range to confirm the month is now contiguous."
   }
 ]
