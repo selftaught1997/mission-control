@@ -2,16 +2,6 @@
   "entries": [
     {
       "status": "idle",
-      "task": "Morning heartbeat income research health audit",
-      "ts": 1780737078000
-    },
-    {
-      "status": "idle",
-      "task": "Late-morning heartbeat blocker-surface audit",
-      "ts": 1780738745000
-    },
-    {
-      "status": "idle",
       "task": "Pre-dawn heartbeat continuity repair",
       "ts": 1781141891000
     },
@@ -124,6 +114,16 @@
       "status": "working",
       "task": "Heartbeat approval-bound runner",
       "ts": 1781179669000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat approval-bound runner",
+      "ts": 1781181460000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat approval-bound runner",
+      "ts": 1781181499000
     }
   ]
 }

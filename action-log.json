@@ -3462,5 +3462,13 @@
     "status": "success",
     "summary": "Expanded the committed approval-bound heartbeat path so the subordinate queue-audit helper chain now auto-stages with the main runner/docs and bookkeeping helpers when the lane stays green.",
     "detail": "The approval-bound Sunday queue lane stayed green again after another full end-to-end heartbeat pass. The useful work this wake was widening the committed default path one step further so the subordinate queue-audit helper chain now lands with the same one-command finish, instead of only the top-level readiness runner and bookkeeping/status helpers."
+  },
+  {
+    "id": 434,
+    "timestamp": "2026-06-11T12:38:19Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Fixed the approval-bound heartbeat short-text path so inline detail now works all the way through bookkeeping and commit-finish, not just in the top-level runner.",
+    "detail": "The approval-bound Sunday queue lane stayed green again after another full end-to-end heartbeat pass. This wake repaired the real bug exposed by the shorter operator path: the top-level runner had learned inline detail text, but the nested heartbeat bookkeeping helper still required detail-file input. The helper now accepts either inline detail or detail-file, so the one-command committed path genuinely works for short runs as documented."
   }
 ]
