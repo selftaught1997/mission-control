@@ -3422,5 +3422,13 @@
     "status": "success",
     "summary": "Preserved the approval-bound Sunday queue heartbeat path after another clean end-to-end pass, keeping the queue audits, bookkeeping, and active-lane Mission Control state aligned while approval remains the only blocker.",
     "detail": "The approval-bound Sunday queue lane stayed green again after another full end-to-end heartbeat pass. Queue readiness, memory continuity, Mission Control refresh, and the matching bookkeeping all remained aligned, so the useful work this wake was preserving the execution-ready lane without inventing more prep while Aaron approval remains the only blocker."
+  },
+  {
+    "id": 429,
+    "timestamp": "2026-06-11T10:08:13Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Added a commit helper for approval-bound green-lane wakes so the nested Mission Control refresh and the matching workspace memory note plus subrepo pointer can be committed in one scripted finish.",
+    "detail": "The approval-bound Sunday queue lane stayed green again after another full end-to-end heartbeat pass. The useful work this wake was removing the repeat post-run commit churn: future approval-bound wakes can now commit the nested Mission Control refresh and the matching workspace memory note plus subrepo pointer in one scripted pass instead of always needing a follow-up pointer cleanup commit."
   }
 ]
