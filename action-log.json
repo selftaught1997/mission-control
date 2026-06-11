@@ -3558,5 +3558,13 @@
     "status": "success",
     "summary": "Add AI cron health helper",
     "detail": "Reran the approval-bound heartbeat path after another clean green-lane audit, then turned the rate-limit mitigation lane into a reusable health check instead of another manual cron spelunking pass. Added scripts/check-ai-cron-health.py, which audits the two openai-codex isolated jobs most exposed to provider pressure: Daily Activity Log Tidy and Daily Income Research. The helper already confirms the new 20:12 and 04:12 Europe/London staggered schedules and the expected model pins, while still failing loudly because the latest real runs remain in error and the income idea file is stale. Documented it in MEMORY.md and added it to the default approval-bound support-file commit set so future wakes can confirm both the applied stagger and the remaining stale-state symptoms from one command."
+  },
+  {
+    "id": 446,
+    "timestamp": "2026-06-11T18:08:13Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Add activity-log tidy readiness helper",
+    "detail": "Reran the approval-bound heartbeat path after another clean green-lane audit, then turned the immediate 20:12 activity-log checkpoint into a reusable preflight instead of another one-off manual audit. Added scripts/check-activity-log-tidy-readiness.py, which validates the local files and prompt-surface commands the Daily Activity Log Tidy cron depends on: mission-control/action-log.json parsing, today and yesterday memory files, the income-research run-history lookup, and the recent git log command. Ran it live and it passed cleanly, which means the upcoming 20:12 BST run is now gated mainly on provider behavior rather than a hidden local input failure. Documented the helper in MEMORY.md and added it to the default approval-bound support-file commit set."
   }
 ]
