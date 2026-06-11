@@ -3510,5 +3510,13 @@
     "status": "success",
     "summary": "Align daily-memory note terminology",
     "detail": "Reran the approval-bound heartbeat path after another clean green-lane audit. The useful drift this wake found was at the bottom of the helper chain: scripts/log-daily-memory.py still exposed text and text-file naming even though the surrounding approval-bound runner stack already talks in terms of notes and note files. Added note and note-file as the primary low-level interface, kept the older text aliases for compatibility, switched heartbeat bookkeeping to call the named note form, and refreshed MEMORY.md so the documented daily-memory helper matches the rest of the runner vocabulary."
+  },
+  {
+    "id": 440,
+    "timestamp": "2026-06-11T15:07:21Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Clarify daily-memory legacy fallback",
+    "detail": "Reran the approval-bound heartbeat path after another clean green-lane audit. The only remaining drift this wake found was in the lowest-level helper help surface: scripts/log-daily-memory.py had already moved to note and note-file terminology, but its fallback positional argument still presented itself generically as text. Updated the helper help so the positional form is explicitly labeled as the legacy NOTE path and the file-input help now talks about daily memory notes directly, which makes the low-level interface read truthfully alongside the rest of the approval-bound runner chain."
   }
 ]
