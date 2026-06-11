@@ -1,11 +1,6 @@
 {
   "entries": [
     {
-      "status": "working",
-      "task": "Late-morning heartbeat approval-pack audit",
-      "ts": 1780646825000
-    },
-    {
       "status": "idle",
       "task": "Morning heartbeat queue readiness admin sync",
       "ts": 1780733316000
@@ -124,6 +119,11 @@
       "status": "working",
       "task": "Heartbeat approval-bound runner",
       "ts": 1781174270000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat approval-bound runner",
+      "ts": 1781176082000
     }
   ]
 }

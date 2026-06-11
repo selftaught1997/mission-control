@@ -3438,5 +3438,13 @@
     "status": "success",
     "summary": "Upgraded the approval-bound heartbeat runner so it can finish the nested Mission Control refresh and matching workspace heartbeat commit in the same command when the lane stays green.",
     "detail": "The approval-bound Sunday queue lane stayed green again after another full end-to-end heartbeat pass. The useful work this wake was removing the last routine split in the operator path: the main approval-bound runner can now finish the nested Mission Control refresh and matching workspace heartbeat commit itself, so a future green-lane wake no longer has to remember a separate commit helper step."
+  },
+  {
+    "id": 431,
+    "timestamp": "2026-06-11T11:08:02Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Hardened the one-command approval-bound heartbeat path so its commit-finish step auto-includes the standard heartbeat support files when the lane stays green.",
+    "detail": "The approval-bound Sunday queue lane stayed green again after another full end-to-end heartbeat pass. The useful work this wake was hardening the one-command committed path itself: the main runner now auto-includes the standard heartbeat support files in its commit-finish step, so routine workflow doc and runner tweaks no longer need extra commit-root-path flags to land cleanly."
   }
 ]
