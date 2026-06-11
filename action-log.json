@@ -3582,5 +3582,13 @@
     "status": "success",
     "summary": "Ignore income-research temp artifacts and harden readiness check",
     "detail": "Reran the approval-bound green-lane pass after another clean queue-readiness audit, then used the remaining non-approval side lane to inspect the still-stale Daily Income Research workflow before the next 04:12 BST checkpoint. The failed 2026-06-11 isolated run transcript showed that the lane still touches legacy scratch files `research/today_report.tmp` and `research/today_summary.tmp`, and git history confirmed those files have been getting swept into prior overnight research commits alongside the real source-of-truth outputs. Since nothing in the current workspace references those files as tracked assets, added them to `.gitignore`, removed them from the git index while leaving the working copies available as scratch space, and hardened `scripts/check-income-research-readiness.py` so it now fails loudly if those temp files ever become tracked again. Documented the temp-file rule in MEMORY.md, validated the helper live, and kept the queue lane untouched while reducing future overnight commit noise in the income-research path."
+  },
+  {
+    "id": 449,
+    "timestamp": "2026-06-11T20:08:47Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Pin income-research cron commits to source-of-truth files",
+    "detail": "Reran the approval-bound green-lane pass after another clean queue-readiness audit, then used the remaining non-approval side lane to harden the still-stale Daily Income Research cron before the next 04:12 BST checkpoint. The live job prompt still used a broad  commit step even after the temp-file hygiene cleanup, which left room for future scratch artifacts to leak back into overnight commits. Patched the live Daily Income Research cron payload so its commit step now stages only the three source-of-truth outputs: , , and . Updated  to verify that exact prompt snippet is present and to dry-run the same explicit git add targets locally, then refreshed MEMORY.md so the saved operator notes match the hardened cron path. Validated the helper live after the cron patch; the remaining overnight risk is now model/provider behavior rather than local output-selection drift."
   }
 ]
