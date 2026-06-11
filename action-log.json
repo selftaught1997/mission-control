@@ -3446,5 +3446,13 @@
     "status": "success",
     "summary": "Hardened the one-command approval-bound heartbeat path so its commit-finish step auto-includes the standard heartbeat support files when the lane stays green.",
     "detail": "The approval-bound Sunday queue lane stayed green again after another full end-to-end heartbeat pass. The useful work this wake was hardening the one-command committed path itself: the main runner now auto-includes the standard heartbeat support files in its commit-finish step, so routine workflow doc and runner tweaks no longer need extra commit-root-path flags to land cleanly."
+  },
+  {
+    "id": 432,
+    "timestamp": "2026-06-11T11:38:09Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Expanded the one-command approval-bound heartbeat path so its committed finish auto-stages the core bookkeeping and status helper chain along with the main runner/docs when the lane stays green.",
+    "detail": "The approval-bound Sunday queue lane stayed green again after another full end-to-end heartbeat pass. The useful work this wake was hardening the committed default path a little further: the lower admin runner now points back to the true end-to-end operator path, and the main runner now auto-stages the full core helper chain it depends on, so routine tweaks to those bookkeeping/status scripts can land without extra flags."
   }
 ]
