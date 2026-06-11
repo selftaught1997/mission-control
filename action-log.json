@@ -3606,5 +3606,13 @@
     "status": "success",
     "summary": "Add an output-contract helper for Daily Income Research",
     "detail": "Queue readiness still passed cleanly and the approval blocker did not change. I added a compact output-contract helper for the Daily Income Research lane, patched the live 04:12 BST cron prompt to call it after the prior-ideas catalog helper, updated the readiness checker to verify both helper surfaces, and documented plus staged the new helper in the default approval-bound support-file path."
+  },
+  {
+    "id": 452,
+    "timestamp": "2026-06-11T22:09:44Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Collapse Daily Income Research writes into one validated apply helper",
+    "detail": "Queue readiness still passed cleanly and the approval blocker did not change. I added a consolidated apply helper for the Daily Income Research lane so the overnight job can fan one validated payload back into the three source-of-truth research JSON files instead of hand-editing them separately, patched the live 04:12 BST cron prompt to use that helper, updated the readiness checker to dry-run and verify the new write path, and documented plus staged the helper in the default approval-bound support-file path."
   }
 ]
