@@ -3382,5 +3382,13 @@
     "status": "success",
     "summary": "Bundled the approval-bound heartbeat bookkeeping into one helper so the daily memory note and Mission Control action entry can be appended together.",
     "detail": "Started the wake with the now-default `python3 scripts/run-queue-heartbeat-admin.py` flow after the usual context reload, and the Sunday queue lane remained fully green again: tracker totals/order, Sunday approval-pack references, handoff references, blocker surfaces, and June daily-memory continuity all stayed aligned. With no genuine new queue execution gap to fix, the useful work stayed in workspace hygiene. Added `scripts/log-heartbeat-bookkeeping.py`, which wraps the safer daily-memory note helper and Mission Control action-log helper so approval-bound heartbeats can append both records in one command after the queue lane stays green. Updated `MEMORY.md` to document the new bundle and used the helper immediately via temporary files so this wake validated the single-command bookkeeping path."
+  },
+  {
+    "id": 424,
+    "timestamp": "2026-06-11T07:08:25Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Bundled the full approval-bound heartbeat follow-through into one runner so green-lane wakes no longer need separate admin and bookkeeping commands.",
+    "detail": "Started the wake with the usual context reload and confirmed that the Sunday lane still behaves exactly as the heartbeat file describes: the queue is approval-bound, not prep-bound. Added `scripts/run-approval-bound-heartbeat.py`, which chains `scripts/run-queue-heartbeat-admin.py` and `scripts/log-heartbeat-bookkeeping.py` so a future approval-bound wake can run the bundled queue audits, memory continuity check, Mission Control refresh, daily memory note, and Mission Control action entry from one command after reload. Updated `MEMORY.md` to document the new end-to-end runner and then used it immediately via temporary files, validating the combined path live."
   }
 ]
