@@ -3478,5 +3478,13 @@
     "status": "success",
     "summary": "Hardened approval-bound heartbeat bookkeeping so the action log is validated and written before the daily memory note, reducing half-written heartbeat passes.",
     "detail": "The approval-bound Sunday queue lane stayed green again after another full end-to-end heartbeat pass. This wake hardened the bookkeeping helper after the earlier short-text regression exposed a partial-write risk: it now preloads both note/detail inputs before any writes and records the more failure-prone Mission Control action log before appending the daily memory note, so a broken pass is less likely to leave behind only half the heartbeat history."
+  },
+  {
+    "id": 436,
+    "timestamp": "2026-06-11T13:38:29Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Align approval-bound operator memory",
+    "detail": "Reran the documented approval-bound heartbeat path after another clean green-lane audit. The real drift this wake found was in : the heartbeat bookkeeping helper entry still taught the older file-only path even though  now supports short inline  and  text too. Updated that operator memory so the stored workflow matches the live runner and kept the longer file-based route documented for awkward shell-quoted notes."
   }
 ]

@@ -2,11 +2,6 @@
   "entries": [
     {
       "status": "idle",
-      "task": "Night heartbeat continuity completion",
-      "ts": 1781143666000
-    },
-    {
-      "status": "idle",
       "task": "Night heartbeat memory refresh",
       "ts": 1781145459000
     },
@@ -124,6 +119,11 @@
       "status": "working",
       "task": "Heartbeat approval-bound runner",
       "ts": 1781183287000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat approval-bound runner",
+      "ts": 1781185109000
     }
   ]
 }
