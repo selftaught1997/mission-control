@@ -1,11 +1,6 @@
 {
   "entries": [
     {
-      "status": "idle",
-      "task": "Heartbeat approval-bound runner",
-      "ts": 1781163460000
-    },
-    {
       "status": "working",
       "task": "Heartbeat approval-bound runner",
       "ts": 1781167096000
@@ -124,6 +119,11 @@
       "status": "working",
       "task": "Heartbeat approval-bound runner",
       "ts": 1781208527000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat approval-bound runner",
+      "ts": 1781210341000
     }
   ]
 }

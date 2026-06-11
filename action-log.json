@@ -3590,5 +3590,13 @@
     "status": "success",
     "summary": "Pin income-research cron commits to source-of-truth files",
     "detail": "Reran the approval-bound green-lane pass after another clean queue-readiness audit, then used the remaining non-approval side lane to harden the still-stale Daily Income Research cron before the next 04:12 BST checkpoint. The live job prompt still used a broad `git add research/` commit step even after the temp-file hygiene cleanup, which left room for future scratch artifacts to leak back into overnight commits. Patched the live Daily Income Research cron payload so its commit step now stages only the three source-of-truth outputs: `research/income-ideas-log.json`, `research/todays-income-idea.json`, and `research/usage-log.json`. Updated `scripts/check-income-research-readiness.py` to verify that exact prompt snippet is present and to dry-run the same explicit git add targets locally, then refreshed MEMORY.md so the saved operator notes match the hardened cron path. Validated the helper live after the cron patch; the remaining overnight risk is now model/provider behavior rather than local output-selection drift."
+  },
+  {
+    "id": 450,
+    "timestamp": "2026-06-11T20:39:01Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Compact the income-research idea catalog input path",
+    "detail": "Reran the approval-bound green-lane pass after another clean queue-readiness audit, then used the remaining non-approval side lane to reduce the input footprint of the still-stale Daily Income Research cron before the next 04:12 BST checkpoint. The failed 2026-06-11 run had been encouraged to read the giant income ideas JSON directly, which is a bad fit for a long-lived isolated job that only needs prior idea headlines to avoid repeats. Added scripts/list-income-idea-headlines.py to emit a compact id, date, and title catalog from the research log, patched the live Daily Income Research cron prompt so step one now calls that helper instead of reading the full JSON payload, updated scripts/check-income-research-readiness.py to verify the helper path and run it locally, and refreshed MEMORY.md plus the default approval-bound support-file commit set so the saved operator path matches the hardened scheduler. Validated the helper chain live after the cron patch; the remaining overnight risk is now provider or model behavior rather than oversized prior-idea context loading."
   }
 ]
