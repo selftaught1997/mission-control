@@ -3494,5 +3494,13 @@
     "status": "success",
     "summary": "Repair approval-bound inline quoting guidance",
     "detail": "After the earlier green-lane validation passed, this wake repaired the malformed Mission Control action-log detail that zsh mangled when the inline text itself contained backticks. HEARTBEAT.md and MEMORY.md now both tell future approval-bound wakes to switch from inline detail/note text to detail-file and note-file inputs whenever shell-active quoting would make the short path fragile."
+  },
+  {
+    "id": 438,
+    "timestamp": "2026-06-11T14:07:57Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Align daily-memory helper flags",
+    "detail": "Reran the approval-bound heartbeat path after another clean green-lane audit. The real operator drift this wake found was helper inconsistency rather than queue readiness: scripts/log-daily-memory.py was still the odd helper out, taking short inline text positionally while the surrounding approval-bound tools all use explicit named text flags. Added a named --text form, updated the bookkeeping helper to call it that way, and refreshed MEMORY.md so the documented daily-memory helper matches the cleaner interface."
   }
 ]
