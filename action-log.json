@@ -3566,5 +3566,13 @@
     "status": "success",
     "summary": "Add activity-log tidy readiness helper",
     "detail": "Reran the approval-bound heartbeat path after another clean green-lane audit, then turned the immediate 20:12 activity-log checkpoint into a reusable preflight instead of another one-off manual audit. Added scripts/check-activity-log-tidy-readiness.py, which validates the local files and prompt-surface commands the Daily Activity Log Tidy cron depends on: mission-control/action-log.json parsing, today and yesterday memory files, the income-research run-history lookup, and the recent git log command. Ran it live and it passed cleanly, which means the upcoming 20:12 BST run is now gated mainly on provider behavior rather than a hidden local input failure. Documented the helper in MEMORY.md and added it to the default approval-bound support-file commit set."
+  },
+  {
+    "id": 447,
+    "timestamp": "2026-06-11T19:16:41Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Confirm activity-log recovery and add income-research readiness helper",
+    "detail": "Reran the approval-bound green-lane pass after another clean queue-readiness audit, then used the non-queue side lane for the live cron checkpoint that had become actionable tonight. The retimed Daily Activity Log Tidy cron completed successfully at 20:12 BST on 2026-06-11, clearing its previous rate-limit error streak without any further prompt edits, so that half of the stagger test is now confirmed recovered. With Daily Income Research still the remaining stale lane, added scripts/check-income-research-readiness.py to preflight the local files and prompt-surface steps that job depends on: the three research JSON files, the openclaw message send interface used for Discord delivery, and the git add research staging step used before its auto-commit. Validated the new helper live, documented it in MEMORY.md, and added it to the default approval-bound support-file commit set so future wakes can distinguish a real 04:12 provider failure from a broken local-input path in one command."
   }
 ]
