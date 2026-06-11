@@ -2,11 +2,6 @@
   "entries": [
     {
       "status": "working",
-      "task": "Pre-dawn heartbeat income-idea sync",
-      "ts": 1779938820000
-    },
-    {
-      "status": "working",
       "task": "Pre-dawn heartbeat income-research sync",
       "ts": 1780628880530
     },
@@ -124,6 +119,11 @@
       "status": "working",
       "task": "Heartbeat approval-bound runner",
       "ts": 1781168842000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat approval-bound runner",
+      "ts": 1781170628000
     }
   ]
 }
