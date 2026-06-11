@@ -2,11 +2,6 @@
   "entries": [
     {
       "status": "idle",
-      "task": "Pre-dawn heartbeat continuity truth fix",
-      "ts": 1781147261000
-    },
-    {
-      "status": "idle",
       "task": "Pre-dawn heartbeat continuity helper",
       "ts": 1781149111000
     },
@@ -124,6 +119,11 @@
       "status": "working",
       "task": "Heartbeat approval-bound runner",
       "ts": 1781186877000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat approval-bound runner",
+      "ts": 1781188663000
     }
   ]
 }

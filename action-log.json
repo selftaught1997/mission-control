@@ -3502,5 +3502,13 @@
     "status": "success",
     "summary": "Align daily-memory helper flags",
     "detail": "Reran the approval-bound heartbeat path after another clean green-lane audit. The real operator drift this wake found was helper inconsistency rather than queue readiness: scripts/log-daily-memory.py was still the odd helper out, taking short inline text positionally while the surrounding approval-bound tools all use explicit named text flags. Added a named --text form, updated the bookkeeping helper to call it that way, and refreshed MEMORY.md so the documented daily-memory helper matches the cleaner interface."
+  },
+  {
+    "id": 439,
+    "timestamp": "2026-06-11T14:37:43Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Align daily-memory note terminology",
+    "detail": "Reran the approval-bound heartbeat path after another clean green-lane audit. The useful drift this wake found was at the bottom of the helper chain: scripts/log-daily-memory.py still exposed text and text-file naming even though the surrounding approval-bound runner stack already talks in terms of notes and note files. Added note and note-file as the primary low-level interface, kept the older text aliases for compatibility, switched heartbeat bookkeeping to call the named note form, and refreshed MEMORY.md so the documented daily-memory helper matches the rest of the runner vocabulary."
   }
 ]
