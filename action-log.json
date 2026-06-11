@@ -3334,5 +3334,13 @@
     "status": "success",
     "summary": "Added a reusable daily-memory continuity checker after the June backfill cleanup repeated across several wakes.",
     "detail": "Re-ran `python3 scripts/check-queue-readiness.py` first and confirmed the Sunday queue lane was still fully green: no new execution gap had appeared in the tracker, approval-pack, handoff, or blocker-surface audits. That left workspace hygiene as the useful lane again, and the repeated manual continuity repairs had exposed a clear reusable workflow opportunity. Added `scripts/check-memory-continuity.py`, which checks for missing `memory/YYYY-MM-DD.md` files across a date range and defaults to the current month in Europe/London. Updated `MEMORY.md` and today's daily note so future wakes know to use the helper instead of manually scanning the directory, then ran the new checker successfully against the live June range to confirm the month is now contiguous."
+  },
+  {
+    "id": 418,
+    "timestamp": "2026-06-11T04:06:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Folded the daily-memory continuity audit into the existing queue heartbeat admin runner so approval-bound wakes can use one command instead of stitching the checks together manually.",
+    "detail": "Started the wake with `python3 scripts/check-queue-readiness.py` again, exactly as the Sunday queue lane requires, and the full approval-bound stack stayed green: tracker totals/order, Sunday approval-pack references, handoff references, and blocker surfaces were all still aligned. With no genuine queue execution gap to fix, the useful work stayed in workspace hygiene. Updated `scripts/run-queue-heartbeat-admin.py` so it now runs queue readiness, daily-memory continuity, and Mission Control refresh in sequence, while still allowing `--skip-memory-continuity` for exceptional cases. Validated the upgraded runner live with a custom heartbeat detail/history task, which confirmed the June daily-memory range remains contiguous through `memory/2026-06-11.md` and refreshed Gustav's status/history in the same pass."
   }
 ]

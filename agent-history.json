@@ -3,11 +3,6 @@
     {
       "status": "working",
       "task": "Morning heartbeat Mission Control review",
-      "ts": 1780042153444
-    },
-    {
-      "status": "working",
-      "task": "Morning heartbeat Mission Control review",
       "ts": 1780034346883
     },
     {
@@ -124,6 +119,11 @@
       "status": "idle",
       "task": "Pre-dawn heartbeat continuity helper",
       "ts": 1781149111000
+    },
+    {
+      "status": "idle",
+      "task": "Pre-dawn heartbeat admin runner upgrade",
+      "ts": 1781150875000
     }
   ]
 }
