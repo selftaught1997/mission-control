@@ -3,11 +3,6 @@
     {
       "status": "idle",
       "task": "Heartbeat bundled queue admin sync",
-      "ts": 1781159822000
-    },
-    {
-      "status": "idle",
-      "task": "Heartbeat bundled queue admin sync",
       "ts": 1781161705000
     },
     {
@@ -124,6 +119,11 @@
       "status": "working",
       "task": "Heartbeat approval-bound runner",
       "ts": 1781205401000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat approval-bound runner",
+      "ts": 1781206747000
     }
   ]
 }

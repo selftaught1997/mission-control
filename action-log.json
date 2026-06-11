@@ -3574,5 +3574,13 @@
     "status": "success",
     "summary": "Confirm activity-log recovery and add income-research readiness helper",
     "detail": "Reran the approval-bound green-lane pass after another clean queue-readiness audit, then used the non-queue side lane for the live cron checkpoint that had become actionable tonight. The retimed Daily Activity Log Tidy cron completed successfully at 20:12 BST on 2026-06-11, clearing its previous rate-limit error streak without any further prompt edits, so that half of the stagger test is now confirmed recovered. With Daily Income Research still the remaining stale lane, added scripts/check-income-research-readiness.py to preflight the local files and prompt-surface steps that job depends on: the three research JSON files, the openclaw message send interface used for Discord delivery, and the git add research staging step used before its auto-commit. Validated the new helper live, documented it in MEMORY.md, and added it to the default approval-bound support-file commit set so future wakes can distinguish a real 04:12 provider failure from a broken local-input path in one command."
+  },
+  {
+    "id": 448,
+    "timestamp": "2026-06-11T19:39:07Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Ignore income-research temp artifacts and harden readiness check",
+    "detail": "Reran the approval-bound green-lane pass after another clean queue-readiness audit, then used the remaining non-approval side lane to inspect the still-stale Daily Income Research workflow before the next 04:12 BST checkpoint. The failed 2026-06-11 isolated run transcript showed that the lane still touches legacy scratch files  and , and git history confirmed those files have been getting swept into prior overnight research commits alongside the real source-of-truth outputs. Since nothing in the current workspace references those files as tracked assets, added them to , removed them from the git index while leaving the working copies available as scratch space, and hardened  so it now fails loudly if those temp files ever become tracked again. Documented the temp-file rule in MEMORY.md, validated the helper live, and kept the queue lane untouched while reducing future overnight commit noise in the income-research path."
   }
 ]
