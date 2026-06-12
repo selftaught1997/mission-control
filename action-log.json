@@ -3670,5 +3670,13 @@
     "status": "success",
     "summary": "Trim redundant income research prompt step",
     "detail": "Queue readiness still passed cleanly and the approval blocker did not change, so I stayed on the approval-bound lane and reduced prompt overhead on the remaining Daily Income Research cron before the 04:12 BST checkpoint. The live overnight prompt still had a redundant optional artifact-builder dry-run step even though the publish helper already validates, builds, posts, and applies from the same analysis file. I removed that duplicate step from the live cron, updated scripts/check-income-research-readiness.py so it still locally dry-runs the builder helper but no longer insists that the live prompt mention it, documented the leaner prompt contract in MEMORY.md, and reran the readiness check successfully against the updated cron text."
+  },
+  {
+    "id": 460,
+    "timestamp": "2026-06-12T02:08:04Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Compact income research live prompt further",
+    "detail": "Queue readiness still passed cleanly and the approval blocker did not change, so I stayed on the approval-bound lane and trimmed more prompt weight from the remaining Daily Income Research cron before the 04:12 BST checkpoint. The live overnight prompt still had repeated wording around Aaron's profile, constraints, and the scaffolded analysis write step, so I compressed that prose while keeping the same pinned helper chain, validation step, publish step, and explicit source-of-truth commit command. I updated MEMORY.md to note that the live prompt should stay lean and push detail into helpers where possible, then reran scripts/check-income-research-readiness.py successfully against the shortened cron text. The prompt footprint dropped again from 2601 to 2274 characters without losing any readiness checks."
   }
 ]
