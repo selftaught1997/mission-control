@@ -3814,5 +3814,13 @@
     "status": "success",
     "summary": "Broaden committed runner staging for blocker surfaces",
     "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening queue-prep docs. The useful follow-through this wake was fixing the last default committed-runner gap exposed by the prior pass: `scripts/run-approval-bound-heartbeat.py` now auto-stages `QUESTIONS.md` plus the key queue blocker and shortcut docs under `drafts/` when `--commit-after-run` is used, so routine blocker-surface tweaks do not spill into a second manual cleanup commit. `MEMORY.md` now documents that broader default commit surface too."
+  },
+  {
+    "id": 478,
+    "timestamp": "2026-06-12T11:38:26Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Centralize default approval-bound commit surface",
+    "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening queue-prep docs. The useful follow-through this wake was removing the duplicated default commit-surface definition from the approval-bound flow. `scripts/commit-approval-bound-heartbeat.py` now owns the built-in blocker/helper file surface for workspace heartbeat commits, `scripts/run-approval-bound-heartbeat.py` now delegates to that lower layer instead of carrying its own copy, and `scripts/check-approval-bound-helper-surface.py` plus `MEMORY.md` now cover the commit helper too."
   }
 ]
