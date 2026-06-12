@@ -3686,5 +3686,13 @@
     "status": "success",
     "summary": "Block old income research prompt regressions",
     "detail": "Queue readiness still passed cleanly and the approval blocker did not change, so I stayed on the approval-bound lane and used the stale 2026-06-11 04:00 Daily Income Research transcript to add a more useful guard before the next 04:12 BST checkpoint. That failed run never reached a final report or delivery; it stalled after giant raw income-ideas-log reads and the old broad output path. I updated scripts/check-income-research-readiness.py so it now fails if the live cron prompt regresses to raw income-ideas-log.json reading, direct openclaw message send commands, or broad git add research/ staging, documented that failure pattern in MEMORY.md, and reran the readiness check successfully against the current hardened prompt."
+  },
+  {
+    "id": 462,
+    "timestamp": "2026-06-12T03:07:53Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Add income research prompt size guard",
+    "detail": "Queue readiness still passed cleanly and the approval blocker did not change, so I stayed on the approval-bound lane and turned the recent prompt-compaction work into a reusable guard before the 04:12 BST Daily Income Research run. I updated scripts/check-income-research-readiness.py so it now fails if the live income-research cron prompt grows past a 2400-character ceiling, then documented that ceiling in MEMORY.md and reran the readiness check successfully against the current 2274-character prompt. That keeps future wakes from silently reintroducing prompt bloat after the helper-chain hardening work."
   }
 ]
