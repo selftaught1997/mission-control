@@ -3942,5 +3942,13 @@
     "status": "success",
     "summary": "Fail fast on blank inline approval-bound text",
     "detail": "The queue lane stayed green again, and I closed the last fail-fast gap in the approval-bound runner itself. Blank inline --detail / --note text is now rejected before the admin step can run, and the helper-surface audit verifies that behavior alongside the existing blank-file and missing-file preflight checks."
+  },
+  {
+    "id": 494,
+    "timestamp": "2026-06-12T19:08:01Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Fail fast on blank approval-bound summaries",
+    "detail": "The queue lane stayed green again, and I closed the last empty-field hole in the approval-bound bookkeeping stack. Mission Control action-log summaries are now treated as non-empty inputs too, the top-level runner rejects blank inline summaries before the admin flow starts, and the helper-surface audit behavior-checks those summary guards alongside the existing note/detail preflight rules."
   }
 ]
