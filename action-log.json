@@ -4014,5 +4014,13 @@
     "status": "success",
     "summary": "Harden bookkeeping helper file error labeling",
     "detail": "Kept the Sunday-beginner queue lane execution-ready with another clean queue-readiness pass, then hardened the bookkeeping helper so file-backed text failures now name the offending --detail-file or --note-file flag instead of throwing a generic file error. Updated scripts/log-heartbeat-bookkeeping.py to thread the flag label through its low-level text reader, extended scripts/check-approval-bound-helper-surface.py so it proves the bookkeeping helper now reports flag-specific note/detail file failures as well as the existing non-empty behavior, and refreshed MEMORY.md so the durable handoff records that operator-facing bookkeeping error contract."
+  },
+  {
+    "id": 503,
+    "timestamp": "2026-06-12T23:08:45Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Fix midnight memory bootstrap in admin runner",
+    "detail": "Kept the Sunday-beginner queue lane execution-ready with another clean queue-readiness pass, then fixed the midnight rollover break in the default approval-bound wake flow. Updated scripts/run-queue-heartbeat-admin.py so it now bootstraps today's memory/YYYY-MM-DD.md file before running continuity checks, extended scripts/check-approval-bound-helper-surface.py so it behavior-checks that admin-side memory bootstrap directly, and refreshed MEMORY.md so the durable handoff records that the bundled admin runner now preserves the one-command approval-bound flow across date boundaries."
   }
 ]
