@@ -3902,5 +3902,13 @@
     "status": "success",
     "summary": "Behavior-check daily-memory note normalization",
     "detail": "The queue lane stayed green again, and I upgraded the approval-bound helper audit from a pure help-text check into a real behavior guard. It now imports scripts/log-daily-memory.py and exercises normalize_note_text(...) directly, so duplicate HH:MM ZZZ prefix: and bare prefix: inputs have to normalize to the clean saved note text that the helper docs promise."
+  },
+  {
+    "id": 489,
+    "timestamp": "2026-06-12T16:38:29Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Fail fast on blank approval-bound note/detail input",
+    "detail": "The queue lane stayed green again, and I hardened the approval-bound file-input path so blank inline/file-backed detail or note text now fails fast instead of silently producing empty bookkeeping. The helper-surface audit now checks both the operator-facing wording for non-empty inputs and the actual blank-text guard behavior on the bookkeeping and daily-memory helpers."
   }
 ]
