@@ -3766,5 +3766,13 @@
     "status": "success",
     "summary": "Make approval blocker prompt count-proof",
     "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening any queue-prep docs. The useful drift this wake was in QUESTIONS.md: the top Content Queue Approvals prompt still hard-coded `0` queued posts / `0` drafts even though the lane has already standardized on `drafts/review-tracker.md` as the live source of truth specifically to avoid fragile count wording. I refreshed that question so it now points Aaron at the review tracker for the live backlog and current queue-ready count, keeping the blocker prompt aligned with the same durable rule used elsewhere in the queue handoff stack."
+  },
+  {
+    "id": 472,
+    "timestamp": "2026-06-12T08:37:32Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Guard blocker prompt against frozen queue counts",
+    "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening any queue-prep docs. The useful drift this wake was in the queue audit itself: now that QUESTIONS.md no longer hard-codes `0` queued posts / `0` drafts, I updated scripts/check-queue-entry-points.py so it will actively fail if that fragile count wording ever comes back. This turns the count-proof blocker prompt into an enforced readiness rule instead of a one-off manual cleanup."
   }
 ]
