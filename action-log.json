@@ -4022,5 +4022,13 @@
     "status": "success",
     "summary": "Fix midnight memory bootstrap in admin runner",
     "detail": "Kept the Sunday-beginner queue lane execution-ready with another clean queue-readiness pass, then fixed the midnight rollover break in the default approval-bound wake flow. Updated scripts/run-queue-heartbeat-admin.py so it now bootstraps today's memory/YYYY-MM-DD.md file before running continuity checks, extended scripts/check-approval-bound-helper-surface.py so it behavior-checks that admin-side memory bootstrap directly, and refreshed MEMORY.md so the durable handoff records that the bundled admin runner now preserves the one-command approval-bound flow across date boundaries."
+  },
+  {
+    "id": 504,
+    "timestamp": "2026-06-12T23:39:07Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Pin commit helper memory path to London date",
+    "detail": "Kept the Sunday-beginner queue lane execution-ready with another clean queue-readiness pass, then aligned the approval-bound commit helper with the rest of the London-time heartbeat stack. Updated scripts/commit-approval-bound-heartbeat.py so its default memory/YYYY-MM-DD.md target is now resolved in Europe/London instead of relying on host-local timezone settings, extended scripts/check-approval-bound-helper-surface.py so it verifies that default memory-path behavior directly, and refreshed MEMORY.md so the durable handoff records that the default commit target is now pinned to the same timezone contract as the admin and bookkeeping helpers."
   }
 ]
