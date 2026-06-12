@@ -3974,5 +3974,13 @@
     "status": "success",
     "summary": "Harden low-level action-log detail-file failure path",
     "detail": "Kept the Sunday-beginner queue lane execution-ready with another clean queue-readiness pass, then hardened the low-level Mission Control action-log helper so missing --detail-file inputs now fail cleanly instead of throwing a raw traceback. Updated scripts/log-mission-control-action.py to validate file existence before reading, extended scripts/check-approval-bound-helper-surface.py so it behavior-checks the low-level helper against both missing and whitespace-only detail files, and refreshed MEMORY.md so the durable handoff records that this clean file-backed failure path is part of the audited approval-bound helper contract."
+  },
+  {
+    "id": 498,
+    "timestamp": "2026-06-12T20:37:51Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Audit low-level inline action-log detail guard",
+    "detail": "Kept the Sunday-beginner queue lane execution-ready with another clean queue-readiness pass, then extended the approval-bound helper-surface audit so it now exercises the low-level Mission Control action-log helper's inline --detail path directly as well as its file-backed path. Updated scripts/check-approval-bound-helper-surface.py so the helper must accept non-empty inline detail text and reject blank inline detail text at the lowest layer, and refreshed MEMORY.md so the durable handoff records that inline and file-backed low-level Mission Control detail guards are both part of the audited contract."
   }
 ]
