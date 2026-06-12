@@ -3870,5 +3870,13 @@
     "status": "success",
     "summary": "Include Mission Control todo in nested heartbeat commit",
     "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening queue-prep docs. The useful follow-through this wake was fixing the nested-commit leak exposed by the final tree check: `scripts/commit-approval-bound-heartbeat.py` now includes `mission-control/todo.json` in the built-in Mission Control JSON commit set, and `MEMORY.md` now documents that the helper's default nested commit covers `action-log.json`, `agent-history.json`, `agent-status.json`, and `todo.json`. That means future queue-lane edits to Mission Control item `16` can finish inside the same one-command approval-bound flow instead of leaving the subrepo dirty after the runner says it is done."
+  },
+  {
+    "id": 485,
+    "timestamp": "2026-06-12T15:09:52Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Enforce no-extra-flags wording in approval-bound CLI help",
+    "detail": "The queue lane stayed green again, and I tightened the approval-bound CLI help so the operator-facing no-extra-flags rule is now enforced in the helper-surface audit too. The runner and commit helper help text now say that extra --root-path / --commit-root-path flags are only for files outside the built-in blocker/helper surface, while --skip-default-root-paths is only for intentionally narrowing the default committed surface."
   }
 ]
