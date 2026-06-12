@@ -3638,5 +3638,13 @@
     "status": "success",
     "summary": "Collapse Daily Income Research output orchestration into one publish helper",
     "detail": "Queue readiness still passed cleanly and the approval blocker did not change. I added a publish helper for the Daily Income Research lane so the overnight job can take one structured analysis JSON source, render the Discord report text, post both Discord messages, capture a best-effort discordLink, build the consolidated source-of-truth payload, and apply it back into the research JSON files from one orchestration command instead of chaining multiple helper calls manually. I patched the live 04:12 BST cron prompt to use that publish helper, updated the readiness checker to dry-run and verify the new one-command path, and documented plus staged the helper in the default approval-bound support-file path."
+  },
+  {
+    "id": 456,
+    "timestamp": "2026-06-12T00:08:43Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Scaffold the Daily Income Research analysis JSON before the publish path takes over",
+    "detail": "Queue readiness still passed cleanly and the approval blocker did not change. I added an analysis scaffold helper for the Daily Income Research lane so the overnight job now starts from the exact expected structured analysis shape instead of inventing that JSON schema from scratch, then hands that file to the builder and publish helpers. I patched the live 04:12 BST cron prompt to use the scaffold helper, updated the readiness checker to verify the new scaffold step along with the downstream publish path, and documented plus staged the helper in the default approval-bound support-file path."
   }
 ]
