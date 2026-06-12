@@ -3862,5 +3862,13 @@
     "status": "success",
     "summary": "Extend default-surface rule into Mission Control",
     "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening queue-prep docs. The useful follow-through this wake was extending the new committed-surface rule to the remaining top-level operator surface in Mission Control. `mission-control/todo.json` item `16` now carries the same no-extra-`--commit-root-path` guidance and `--skip-default-root-paths` wording as `HEARTBEAT.md`, and `scripts/check-queue-entry-points.py` now requires that wording in Mission Control item `16` as well as in `HEARTBEAT.md` and `MEMORY.md`. `MEMORY.md` now records that the audited queue entry-point contract includes the operator docs plus Mission Control item `16` for intentionally narrowing the built-in committed surface."
+  },
+  {
+    "id": 484,
+    "timestamp": "2026-06-12T14:09:05Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Include Mission Control todo in nested heartbeat commit",
+    "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening queue-prep docs. The useful follow-through this wake was fixing the nested-commit leak exposed by the final tree check: `scripts/commit-approval-bound-heartbeat.py` now includes `mission-control/todo.json` in the built-in Mission Control JSON commit set, and `MEMORY.md` now documents that the helper's default nested commit covers `action-log.json`, `agent-history.json`, `agent-status.json`, and `todo.json`. That means future queue-lane edits to Mission Control item `16` can finish inside the same one-command approval-bound flow instead of leaving the subrepo dirty after the runner says it is done."
   }
 ]
