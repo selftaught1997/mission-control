@@ -3934,5 +3934,13 @@
     "status": "success",
     "summary": "Behavior-check missing-file runner preflight",
     "detail": "The queue lane stayed green again, and I extended the approval-bound helper audit to cover the last missing runner preflight branch. It now proves that the top-level runner rejects both whitespace-only temp files and missing temp files before it can touch the admin or bookkeeping flow, so the file-based path is behavior-checked end to end instead of only described in MEMORY.md."
+  },
+  {
+    "id": 493,
+    "timestamp": "2026-06-12T18:38:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Fail fast on blank inline approval-bound text",
+    "detail": "The queue lane stayed green again, and I closed the last fail-fast gap in the approval-bound runner itself. Blank inline --detail / --note text is now rejected before the admin step can run, and the helper-surface audit verifies that behavior alongside the existing blank-file and missing-file preflight checks."
   }
 ]
