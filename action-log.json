@@ -3918,5 +3918,13 @@
     "status": "success",
     "summary": "Align inline detail wording with blank-text guard",
     "detail": "The queue lane stayed green again, and I closed the last operator-facing gap in the non-empty approval-bound input contract. The bookkeeping helper and top-level runner now both describe inline Mission Control detail text as non-empty too, not just file-backed inputs, and the helper-surface audit plus durable handoff now enforce that wording alongside the real blank-text guard behavior."
+  },
+  {
+    "id": 491,
+    "timestamp": "2026-06-12T17:38:08Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Quiet expected blank-file test output in helper audit",
+    "detail": "The queue lane stayed green again, and I tightened the new runner preflight behavior check so a successful helper-surface pass stays clean instead of printing the expected blank-file rejection from its own internal test. The audit still proves that whitespace-only temp files are rejected before the approval-bound runner touches bookkeeping, but it now reports that success without noisy false-alarm output."
   }
 ]
