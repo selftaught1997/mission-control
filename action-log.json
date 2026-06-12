@@ -3950,5 +3950,21 @@
     "status": "success",
     "summary": "Fail fast on blank approval-bound summaries",
     "detail": "The queue lane stayed green again, and I closed the last empty-field hole in the approval-bound bookkeeping stack. Mission Control action-log summaries are now treated as non-empty inputs too, the top-level runner rejects blank inline summaries before the admin flow starts, and the helper-surface audit behavior-checks those summary guards alongside the existing note/detail preflight rules."
+  },
+  {
+    "id": 495,
+    "timestamp": "2026-06-12T03:15:48Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Daily Income Research produced a new SKC family digital-product idea and saved the output cleanly.",
+    "detail": "The 04:12 BST Daily Income Research cron (job 7c5c35ff-a5b5-419b-acb9-af634b55c9b8, model openai-codex/gpt-5.4) completed successfully and selected 'Belt-by-Belt Home Grading Vault for Stratford Karate Club Families' as the winning idea. The run saved idea id 36 to research/income-ideas-log.json, updated research/todays-income-idea.json and research/usage-log.json, posted the full report to Discord #trading-desk, posted the morning-brief summary, and committed only the three source-of-truth research files as 9618434 ('chore: income research output 2026-06-12'). Recorded economics were roughly GBP735/month conservative, GBP1,275/month moderate, GBP1,890/month strong, with upside above GBP3,000/month, while keeping Aaron's ongoing time around 20-40 minutes per week after setup."
+  },
+  {
+    "id": 496,
+    "timestamp": "2026-06-12T19:39:08Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Keep approval-bound heartbeat helper wording aligned",
+    "detail": "Kept the Sunday-beginner queue lane execution-ready with another clean queue-readiness pass, then closed the last approval-bound helper-surface wording drift at the low-level Mission Control action-log layer. Updated scripts/log-mission-control-action.py so its --summary, --detail, and --detail-file help now explicitly says those inputs must be non-empty, extended scripts/check-approval-bound-helper-surface.py so that helper is part of the audited help surface and success contract, and refreshed MEMORY.md so the durable handoff records that the low-level action-log helper is included in the approval-bound helper-surface guard."
   }
 ]
