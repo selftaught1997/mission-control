@@ -3718,5 +3718,13 @@
     "status": "success",
     "summary": "Close stale income research Mission Control item",
     "detail": "Queue readiness still passed cleanly and the approval blocker did not change, so I used this wake to remove one stale Mission Control breadcrumb rather than manufacturing more queue-prep material. Mission Control item 18 still said the Daily Income Research completion regression was open even though the live 04:12 BST recovery is now confirmed. I updated mission-control/todo.json so that item is marked done and now records the actual resolution path: the 04:12 retime, compact helper-chain hardening, tighter validation and staging guards, and the successful 2026-06-12 run that produced idea id 36, delivered Discord posts, and created commit 9618434."
+  },
+  {
+    "id": 466,
+    "timestamp": "2026-06-12T05:38:25Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Refresh June 12 durable queue and cron memory",
+    "detail": "Queue readiness still passed cleanly, so I kept the Sunday lane in approval-bound maintenance mode instead of reopening the handoff docs. The useful drift this wake was in durable operator memory: MEMORY.md still advertised a 2026-06-11 snapshot and a stale cron table even though the June 12 AI-cron recovery is now confirmed and Mission Control item 18 has already been closed. I reran python3 scripts/check-ai-cron-health.py to verify the live state, confirmed Daily Activity Log Tidy is healthy on 20:12 Europe/London and Daily Income Research is healthy on 04:12 Europe/London with the June 12 idea output, then refreshed MEMORY.md so its top snapshot date, AI-cron recovery wording, Mission Control hygiene note, and cron table all reflect the live June 12 state instead of stale historical placeholders."
   }
 ]
