@@ -3886,5 +3886,13 @@
     "status": "success",
     "summary": "Normalize duplicated heartbeat note prefixes",
     "detail": "I corrected the malformed 16:09 BST daily-memory line and hardened scripts/log-daily-memory.py so it strips redundant leading HH:MM ZZZ heartbeat: or bare heartbeat: text before appending a new entry. I also updated scripts/log-heartbeat-bookkeeping.py help text plus MEMORY.md so the bookkeeping path documents that duplicate timestamp/prefix text is normalized automatically."
+  },
+  {
+    "id": 487,
+    "timestamp": "2026-06-12T15:38:13Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Expose note-normalization behavior across approval-bound helpers",
+    "detail": "The queue lane stayed green again, and I aligned the helper docs so the heartbeat-note normalization behavior is now explicit on the low-level daily-memory helper and the top-level approval-bound runner, not just on the bookkeeping helper. The helper-surface audit now enforces that wording too, so the no-double-prefix safeguard stays visible at every layer of the default approval-bound flow."
   }
 ]
