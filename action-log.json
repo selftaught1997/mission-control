@@ -3726,5 +3726,13 @@
     "status": "success",
     "summary": "Refresh June 12 durable queue and cron memory",
     "detail": "Queue readiness still passed cleanly, so I kept the Sunday lane in approval-bound maintenance mode instead of reopening the handoff docs. The useful drift this wake was in durable operator memory: MEMORY.md still advertised a 2026-06-11 snapshot and a stale cron table even though the June 12 AI-cron recovery is now confirmed and Mission Control item 18 has already been closed. I reran python3 scripts/check-ai-cron-health.py to verify the live state, confirmed Daily Activity Log Tidy is healthy on 20:12 Europe/London and Daily Income Research is healthy on 04:12 Europe/London with the June 12 idea output, then refreshed MEMORY.md so its top snapshot date, AI-cron recovery wording, Mission Control hygiene note, and cron table all reflect the live June 12 state instead of stale historical placeholders."
+  },
+  {
+    "id": 467,
+    "timestamp": "2026-06-12T06:08:46Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Refresh live cron table in durable memory",
+    "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening any queue-prep docs. The useful drift this wake was in MEMORY.md: its cron summary still treated Daily Diagnostic and Morning Brief as vague stale placeholders even though the live cron state is now easy to verify directly. I checked openclaw cron list plus the live job definitions, confirmed Daily Diagnostic is healthy on 18:00 Europe/London, Morning Brief is healthy on 10:00 Europe/London with openai-codex/gpt-5.4, and both latest runs delivered successfully. I then refreshed the MEMORY.md cron section so those two entries now match the verified June 12 live state instead of leaving future wakes with avoidable ambiguity."
   }
 ]
