@@ -3750,5 +3750,13 @@
     "status": "success",
     "summary": "Make approval shortcut wording date-proof",
     "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening any queue-prep docs. The useful drift this wake was in MEMORY.md: the Drafts/Pending Aaron's Review section still introduced the current approval shortcuts with an 'As of 2026-06-06' label even though those three paths are meant to be the live durable operator shortcuts rather than a dated historical snapshot. I refreshed that line to durable wording so future wakes can trust the shortcut list without second-guessing whether the old date implies hidden drift."
+  },
+  {
+    "id": 470,
+    "timestamp": "2026-06-12T07:37:28Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Unify cron recovery wording in durable memory",
+    "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening any queue-prep docs. The useful drift this wake was in MEMORY.md: the Cron Jobs section still framed the repaired lane as having been verified by 2026-06-04 / 2026-06-05 even though the same lane was re-confirmed again on 2026-06-12 after the staggered 20:12 / 04:12 schedule change and helper-chain hardening. I refreshed that intro line so the durable cron handoff now tells one consistent recovery story instead of making future wakes reconcile an older checkpoint with the newer June 12 notes elsewhere in the file."
   }
 ]
