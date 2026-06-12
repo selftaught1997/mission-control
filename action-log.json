@@ -3742,5 +3742,13 @@
     "status": "success",
     "summary": "Refresh June memory continuity note",
     "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening any queue-prep docs. The useful drift this wake was in MEMORY.md: its daily-memory continuity note still claimed the June range was contiguous only through memory/2026-06-11.md even though today\u2019s 2026-06-12 file now exists and is part of the live handoff surface. I refreshed that continuity note so the durable memory now matches the actual current range through memory/2026-06-12.md, keeping the operator handoff truthful without creating any new near-duplicate prep material."
+  },
+  {
+    "id": 469,
+    "timestamp": "2026-06-12T07:07:19Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Make approval shortcut wording date-proof",
+    "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening any queue-prep docs. The useful drift this wake was in MEMORY.md: the Drafts/Pending Aaron's Review section still introduced the current approval shortcuts with an 'As of 2026-06-06' label even though those three paths are meant to be the live durable operator shortcuts rather than a dated historical snapshot. I refreshed that line to durable wording so future wakes can trust the shortcut list without second-guessing whether the old date implies hidden drift."
   }
 ]
