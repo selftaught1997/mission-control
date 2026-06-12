@@ -3846,5 +3846,13 @@
     "status": "success",
     "summary": "Clarify default commit surface in HEARTBEAT",
     "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening queue-prep docs. The useful follow-through this wake was tightening the operator instruction in `HEARTBEAT.md` so it now explicitly matches the committed default runner behavior: routine blocker/helper surface tweaks do not need extra `--commit-root-path` flags, and `--skip-default-root-paths` is only for intentionally narrowing that default committed surface."
+  },
+  {
+    "id": 482,
+    "timestamp": "2026-06-12T13:37:54Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Audit HEARTBEAT default-surface rule",
+    "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening queue-prep docs. The useful follow-through this wake was promoting the newly explicit `HEARTBEAT.md` operator rule into the audited entry-point contract. `scripts/check-queue-entry-points.py` now requires the `--skip-default-root-paths` wording in `HEARTBEAT.md` and `MEMORY.md`, and `MEMORY.md` now records that the queue entry-point audit also guards the operator-doc rule for intentionally narrowing the built-in committed surface."
   }
 ]
