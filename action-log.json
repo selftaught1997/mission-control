@@ -3854,5 +3854,13 @@
     "status": "success",
     "summary": "Audit HEARTBEAT default-surface rule",
     "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening queue-prep docs. The useful follow-through this wake was promoting the newly explicit `HEARTBEAT.md` operator rule into the audited entry-point contract. `scripts/check-queue-entry-points.py` now requires the `--skip-default-root-paths` wording in `HEARTBEAT.md` and `MEMORY.md`, and `MEMORY.md` now records that the queue entry-point audit also guards the operator-doc rule for intentionally narrowing the built-in committed surface."
+  },
+  {
+    "id": 483,
+    "timestamp": "2026-06-12T14:08:09Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Extend default-surface rule into Mission Control",
+    "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening queue-prep docs. The useful follow-through this wake was extending the new committed-surface rule to the remaining top-level operator surface in Mission Control. `mission-control/todo.json` item `16` now carries the same no-extra-`--commit-root-path` guidance and `--skip-default-root-paths` wording as `HEARTBEAT.md`, and `scripts/check-queue-entry-points.py` now requires that wording in Mission Control item `16` as well as in `HEARTBEAT.md` and `MEMORY.md`. `MEMORY.md` now records that the audited queue entry-point contract includes the operator docs plus Mission Control item `16` for intentionally narrowing the built-in committed surface."
   }
 ]
