@@ -3822,5 +3822,13 @@
     "status": "success",
     "summary": "Centralize default approval-bound commit surface",
     "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening queue-prep docs. The useful follow-through this wake was removing the duplicated default commit-surface definition from the approval-bound flow. `scripts/commit-approval-bound-heartbeat.py` now owns the built-in blocker/helper file surface for workspace heartbeat commits, `scripts/run-approval-bound-heartbeat.py` now delegates to that lower layer instead of carrying its own copy, and `scripts/check-approval-bound-helper-surface.py` plus `MEMORY.md` now cover the commit helper too."
+  },
+  {
+    "id": 479,
+    "timestamp": "2026-06-12T12:08:17Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Align runner skip flag with commit helper",
+    "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening queue-prep docs. The useful follow-through this wake was aligning the top-level runner with the commit helper's canonical skip flag. `scripts/run-approval-bound-heartbeat.py` now exposes `--skip-default-root-paths` as the primary pass-through name, keeps the older `--skip-default-commit-root-paths` as a compatibility alias, and `scripts/check-approval-bound-helper-surface.py` plus `MEMORY.md` now document and verify that canonical vocabulary."
   }
 ]
