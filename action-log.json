@@ -3710,5 +3710,13 @@
     "status": "success",
     "summary": "Refresh heartbeat AI-cron closure note",
     "detail": "Queue readiness still passed cleanly and the approval blocker did not change, so I used this wake to refresh HEARTBEAT.md itself now that the live 04:12 BST Daily Income Research recovery is confirmed. The old Recently Completed note still said the AI cron lane was verified on 2026-06-04, which no longer reflected the fresh June 11-12 stagger recovery work. I updated that note so it now says the lane was re-confirmed on 2026-06-12 after the 20:12 and 04:12 schedule change plus helper-chain hardening, with both Daily Activity Log Tidy and Daily Income Research healthy again, then committed the resulting workspace and Mission Control bookkeeping."
+  },
+  {
+    "id": 465,
+    "timestamp": "2026-06-12T04:37:39Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Close stale income research Mission Control item",
+    "detail": "Queue readiness still passed cleanly and the approval blocker did not change, so I used this wake to remove one stale Mission Control breadcrumb rather than manufacturing more queue-prep material. Mission Control item 18 still said the Daily Income Research completion regression was open even though the live 04:12 BST recovery is now confirmed. I updated mission-control/todo.json so that item is marked done and now records the actual resolution path: the 04:12 retime, compact helper-chain hardening, tighter validation and staging guards, and the successful 2026-06-12 run that produced idea id 36, delivered Discord posts, and created commit 9618434."
   }
 ]
