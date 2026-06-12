@@ -3790,5 +3790,13 @@
     "status": "success",
     "summary": "Fail fast on missing approval-bound temp files",
     "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening any queue-prep docs. The useful follow-through this wake was hardening the approval-bound runner itself after the earlier missing-temp-file stumble. scripts/run-approval-bound-heartbeat.py now validates --detail-file and --note-file before it runs the admin flow or bookkeeping, and scripts/log-heartbeat-bookkeeping.py now raises a clear file-missing error if it is ever called directly with a bad path. I also documented that fail-fast behavior in MEMORY.md so future wakes know to create the temp files first when they choose the file-based path."
+  },
+  {
+    "id": 475,
+    "timestamp": "2026-06-12T10:09:06Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Broaden frozen queue-count guard across blocker surfaces",
+    "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening queue-prep docs. The useful follow-through this wake was broadening the count-drift protection across the full blocker surface. `scripts/check-queue-entry-points.py` now fails if the old frozen queue-count phrase reappears in any of the key queue entry points or in Mission Control item `16`, and `MEMORY.md` now documents that stronger contract without embedding the stale phrase verbatim."
   }
 ]
