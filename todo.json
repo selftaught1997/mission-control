@@ -156,9 +156,9 @@
     {
       "id": 18,
       "title": "Diagnose fresh Daily Income Research completion regression",
-      "detail": "A fresh regression appeared on 2026-06-06: the 04:00 BST `Daily Income Research` run stayed on the correct explicit model (`openai-codex/gpt-5.4`) but still finished with the generic error `Codex stopped before confirming the turn was complete`. The visible symptom was the 10:00 BST Morning Brief omitting `💡 Today's Income Idea` because `research/todays-income-idea.json` was still dated `2026-06-05`. `scripts/check-income-research-health.py` now audits that exact failure mode by comparing cron state with the idea-file date and printing the latest run/session breadcrumbs. Next recovery step is to inspect the failed isolated run/session (`60533a22-abf2-44c4-a861-65a2ba86c791`) or otherwise harden the cron lane before the next 04:00 BST run.",
+      "detail": "Resolved on 2026-06-12. The stale completion regression was first narrowed from repeated provider pressure and later hardened away by retiming `Daily Income Research` from `04:00` to `04:12` Europe/London, replacing the old broad prompt path with compact helper surfaces, tightening validation around the structured analysis contract, restricting staging to the three source-of-truth research files, and adding readiness checks for prompt regressions and prompt-size drift. Live confirmation arrived when the 04:12 BST run on 2026-06-12 completed successfully with idea `id=36` (`Belt-by-Belt Home Grading Vault for Stratford Karate Club Families`), delivered its Discord posts, and created commit `9618434`.",
       "priority": "high",
-      "status": "todo",
+      "status": "done",
       "category": "Automation",
       "createdAt": "2026-06-06T09:06:00Z"
     }
