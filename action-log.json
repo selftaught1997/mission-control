@@ -3878,5 +3878,13 @@
     "status": "success",
     "summary": "Enforce no-extra-flags wording in approval-bound CLI help",
     "detail": "The queue lane stayed green again, and I tightened the approval-bound CLI help so the operator-facing no-extra-flags rule is now enforced in the helper-surface audit too. The runner and commit helper help text now say that extra --root-path / --commit-root-path flags are only for files outside the built-in blocker/helper surface, while --skip-default-root-paths is only for intentionally narrowing the default committed surface."
+  },
+  {
+    "id": 486,
+    "timestamp": "2026-06-12T15:11:25Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Normalize duplicated heartbeat note prefixes",
+    "detail": "I corrected the malformed 16:09 BST daily-memory line and hardened scripts/log-daily-memory.py so it strips redundant leading HH:MM ZZZ heartbeat: or bare heartbeat: text before appending a new entry. I also updated scripts/log-heartbeat-bookkeeping.py help text plus MEMORY.md so the bookkeeping path documents that duplicate timestamp/prefix text is normalized automatically."
   }
 ]
