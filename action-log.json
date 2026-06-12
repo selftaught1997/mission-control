@@ -3694,5 +3694,13 @@
     "status": "success",
     "summary": "Add income research prompt size guard",
     "detail": "Queue readiness still passed cleanly and the approval blocker did not change, so I stayed on the approval-bound lane and turned the recent prompt-compaction work into a reusable guard before the 04:12 BST Daily Income Research run. I updated scripts/check-income-research-readiness.py so it now fails if the live income-research cron prompt grows past a 2400-character ceiling, then documented that ceiling in MEMORY.md and reran the readiness check successfully against the current 2274-character prompt. That keeps future wakes from silently reintroducing prompt bloat after the helper-chain hardening work."
+  },
+  {
+    "id": 463,
+    "timestamp": "2026-06-12T03:37:37Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Confirm AI cron recovery after live income run",
+    "detail": "Queue readiness still passed cleanly and the approval blocker did not change, so I used this wake to close the last stale caution note after the live 04:12 BST Daily Income Research run succeeded. I verified that check-ai-cron-health now reports both isolated openai-codex jobs healthy: Daily Activity Log Tidy remains green from the 20:12 BST recovery, and Daily Income Research recovered successfully at 04:12 BST on 2026-06-12 with idea id 36, delivered Discord posts, and commit 9618434. I updated MEMORY.md so the old 'remaining unconfirmed half of the stagger test' wording is replaced with a durable confirmation that the staggered schedule plus helper-chain hardening is now healthy unless a fresh regression appears."
   }
 ]
