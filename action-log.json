@@ -3926,5 +3926,13 @@
     "status": "success",
     "summary": "Quiet expected blank-file test output in helper audit",
     "detail": "The queue lane stayed green again, and I tightened the new runner preflight behavior check so a successful helper-surface pass stays clean instead of printing the expected blank-file rejection from its own internal test. The audit still proves that whitespace-only temp files are rejected before the approval-bound runner touches bookkeeping, but it now reports that success without noisy false-alarm output."
+  },
+  {
+    "id": 492,
+    "timestamp": "2026-06-12T18:07:48Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Behavior-check missing-file runner preflight",
+    "detail": "The queue lane stayed green again, and I extended the approval-bound helper audit to cover the last missing runner preflight branch. It now proves that the top-level runner rejects both whitespace-only temp files and missing temp files before it can touch the admin or bookkeeping flow, so the file-based path is behavior-checked end to end instead of only described in MEMORY.md."
   }
 ]
