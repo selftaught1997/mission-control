@@ -3662,5 +3662,13 @@
     "status": "success",
     "summary": "Tighten income research analysis schema validation",
     "detail": "Queue readiness still passed cleanly and the approval blocker did not change, so I stayed on the approval-bound lane and hardened the remaining Daily Income Research guard before the 04:12 BST checkpoint. I upgraded scripts/validate-income-research-analysis.py so it now rejects score, report, and candidate shape drift against the latest saved idea instead of only checking for non-empty required fields. I also updated MEMORY.md to document that stricter contract, then validated the change in both directions: a deliberately malformed sample now fails for missing score/report keys, while the normal check-income-research-readiness.py path still passes cleanly end to end."
+  },
+  {
+    "id": 459,
+    "timestamp": "2026-06-12T01:39:06Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Trim redundant income research prompt step",
+    "detail": "Queue readiness still passed cleanly and the approval blocker did not change, so I stayed on the approval-bound lane and reduced prompt overhead on the remaining Daily Income Research cron before the 04:12 BST checkpoint. The live overnight prompt still had a redundant optional artifact-builder dry-run step even though the publish helper already validates, builds, posts, and applies from the same analysis file. I removed that duplicate step from the live cron, updated scripts/check-income-research-readiness.py so it still locally dry-runs the builder helper but no longer insists that the live prompt mention it, documented the leaner prompt contract in MEMORY.md, and reran the readiness check successfully against the updated cron text."
   }
 ]
