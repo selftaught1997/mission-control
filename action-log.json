@@ -3806,5 +3806,13 @@
     "status": "success",
     "summary": "Promote approval shortcuts into audited blocker surface",
     "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening queue-prep docs. The useful follow-through this wake was promoting the two actual Aaron-facing approval shortcuts into the audited blocker surface. `scripts/check-queue-entry-points.py` now checks `drafts/sunday-beginner-queue-approval-pack-2026-06-04.md` and `drafts/review-priority-shortlist-2026-06-05.md` alongside the existing operator surfaces, and the cross-stack shortlist now explicitly points back to `drafts/review-tracker.md` as the live backlog and queue-ready source of truth."
+  },
+  {
+    "id": 477,
+    "timestamp": "2026-06-12T11:07:39Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Broaden committed runner staging for blocker surfaces",
+    "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening queue-prep docs. The useful follow-through this wake was fixing the last default committed-runner gap exposed by the prior pass: `scripts/run-approval-bound-heartbeat.py` now auto-stages `QUESTIONS.md` plus the key queue blocker and shortcut docs under `drafts/` when `--commit-after-run` is used, so routine blocker-surface tweaks do not spill into a second manual cleanup commit. `MEMORY.md` now documents that broader default commit surface too."
   }
 ]
