@@ -3774,5 +3774,13 @@
     "status": "success",
     "summary": "Guard blocker prompt against frozen queue counts",
     "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening any queue-prep docs. The useful drift this wake was in the queue audit itself: now that QUESTIONS.md no longer hard-codes `0` queued posts / `0` drafts, I updated scripts/check-queue-entry-points.py so it will actively fail if that fragile count wording ever comes back. This turns the count-proof blocker prompt into an enforced readiness rule instead of a one-off manual cleanup."
+  },
+  {
+    "id": 473,
+    "timestamp": "2026-06-12T09:07:47Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Require count-proof blocker wording in queue audit",
+    "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening any queue-prep docs. The useful follow-through this wake was tightening the queue audit itself: after making QUESTIONS.md count-proof last wake and adding a negative guard against the old `0` queued posts / `0` drafts wording, I updated scripts/check-queue-entry-points.py to require the positive replacement too. The entry-point audit now enforces that QUESTIONS.md points Aaron at drafts/review-tracker.md for the live queue-ready count, and MEMORY.md now documents that this count-proof blocker wording is part of the queue entry-point contract."
   }
 ]
