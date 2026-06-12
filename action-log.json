@@ -3838,5 +3838,13 @@
     "status": "success",
     "summary": "Tighten runner help around commit surface",
     "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening queue-prep docs. The useful follow-through this wake was tightening the operator-facing help around the approval-bound commit surface. `scripts/run-approval-bound-heartbeat.py` now describes `--commit-after-run` in terms of the broader blocker/helper surface it actually commits, and `scripts/check-approval-bound-helper-surface.py` now verifies that stable help wording so future refactors do not quietly narrow the described behavior again."
+  },
+  {
+    "id": 481,
+    "timestamp": "2026-06-12T13:07:46Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Clarify default commit surface in HEARTBEAT",
+    "detail": "Queue readiness still passed cleanly, so I stayed in approval-bound maintenance mode instead of reopening queue-prep docs. The useful follow-through this wake was tightening the operator instruction in `HEARTBEAT.md` so it now explicitly matches the committed default runner behavior: routine blocker/helper surface tweaks do not need extra `--commit-root-path` flags, and `--skip-default-root-paths` is only for intentionally narrowing that default committed surface."
   }
 ]
