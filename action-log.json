@@ -3966,5 +3966,13 @@
     "status": "success",
     "summary": "Keep approval-bound heartbeat helper wording aligned",
     "detail": "Kept the Sunday-beginner queue lane execution-ready with another clean queue-readiness pass, then closed the last approval-bound helper-surface wording drift at the low-level Mission Control action-log layer. Updated scripts/log-mission-control-action.py so its --summary, --detail, and --detail-file help now explicitly says those inputs must be non-empty, extended scripts/check-approval-bound-helper-surface.py so that helper is part of the audited help surface and success contract, and refreshed MEMORY.md so the durable handoff records that the low-level action-log helper is included in the approval-bound helper-surface guard."
+  },
+  {
+    "id": 497,
+    "timestamp": "2026-06-12T20:07:57Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Harden low-level action-log detail-file failure path",
+    "detail": "Kept the Sunday-beginner queue lane execution-ready with another clean queue-readiness pass, then hardened the low-level Mission Control action-log helper so missing --detail-file inputs now fail cleanly instead of throwing a raw traceback. Updated scripts/log-mission-control-action.py to validate file existence before reading, extended scripts/check-approval-bound-helper-surface.py so it behavior-checks the low-level helper against both missing and whitespace-only detail files, and refreshed MEMORY.md so the durable handoff records that this clean file-backed failure path is part of the audited approval-bound helper contract."
   }
 ]
