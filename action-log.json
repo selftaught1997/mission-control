@@ -4006,5 +4006,13 @@
     "status": "success",
     "summary": "Harden low-level daily-memory note-file failure path",
     "detail": "Kept the Sunday-beginner queue lane execution-ready with another clean queue-readiness pass, then hardened the low-level daily-memory helper so file-backed note inputs now fail cleanly instead of throwing a raw traceback. Updated scripts/log-daily-memory.py to validate --note-file existence before reading, extended scripts/check-approval-bound-helper-surface.py so it proves the helper accepts normalized file-backed note text and rejects missing or whitespace-only note files, and refreshed MEMORY.md so the durable handoff records that this low-level daily-memory file path is part of the audited approval-bound contract."
+  },
+  {
+    "id": 502,
+    "timestamp": "2026-06-12T22:38:23Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Harden bookkeeping helper file error labeling",
+    "detail": "Kept the Sunday-beginner queue lane execution-ready with another clean queue-readiness pass, then hardened the bookkeeping helper so file-backed text failures now name the offending --detail-file or --note-file flag instead of throwing a generic file error. Updated scripts/log-heartbeat-bookkeeping.py to thread the flag label through its low-level text reader, extended scripts/check-approval-bound-helper-surface.py so it proves the bookkeeping helper now reports flag-specific note/detail file failures as well as the existing non-empty behavior, and refreshed MEMORY.md so the durable handoff records that operator-facing bookkeeping error contract."
   }
 ]
