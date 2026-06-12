@@ -3654,5 +3654,13 @@
     "status": "success",
     "summary": "Validate Daily Income Research analysis content before publish/apply",
     "detail": "Queue readiness still passed cleanly and the approval blocker did not change. I added an analysis validator for the Daily Income Research lane so malformed or half-filled structured analysis content now gets caught before the publish helper posts anything or writes the source-of-truth research JSON files. I patched the live 04:12 BST cron prompt to call that validator explicitly after filling the scaffolded analysis file, updated the readiness checker to verify the new validator step alongside the downstream publish path, and documented plus staged the helper in the default approval-bound support-file path."
+  },
+  {
+    "id": 458,
+    "timestamp": "2026-06-12T01:09:43Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Tighten income research analysis schema validation",
+    "detail": "Queue readiness still passed cleanly and the approval blocker did not change, so I stayed on the approval-bound lane and hardened the remaining Daily Income Research guard before the 04:12 BST checkpoint. I upgraded scripts/validate-income-research-analysis.py so it now rejects score, report, and candidate shape drift against the latest saved idea instead of only checking for non-empty required fields. I also updated MEMORY.md to document that stricter contract, then validated the change in both directions: a deliberately malformed sample now fails for missing score/report keys, while the normal check-income-research-readiness.py path still passes cleanly end to end."
   }
 ]
