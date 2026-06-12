@@ -3646,5 +3646,13 @@
     "status": "success",
     "summary": "Scaffold the Daily Income Research analysis JSON before the publish path takes over",
     "detail": "Queue readiness still passed cleanly and the approval blocker did not change. I added an analysis scaffold helper for the Daily Income Research lane so the overnight job now starts from the exact expected structured analysis shape instead of inventing that JSON schema from scratch, then hands that file to the builder and publish helpers. I patched the live 04:12 BST cron prompt to use the scaffold helper, updated the readiness checker to verify the new scaffold step along with the downstream publish path, and documented plus staged the helper in the default approval-bound support-file path."
+  },
+  {
+    "id": 457,
+    "timestamp": "2026-06-12T00:39:42Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Validate Daily Income Research analysis content before publish/apply",
+    "detail": "Queue readiness still passed cleanly and the approval blocker did not change. I added an analysis validator for the Daily Income Research lane so malformed or half-filled structured analysis content now gets caught before the publish helper posts anything or writes the source-of-truth research JSON files. I patched the live 04:12 BST cron prompt to call that validator explicitly after filling the scaffolded analysis file, updated the readiness checker to verify the new validator step alongside the downstream publish path, and documented plus staged the helper in the default approval-bound support-file path."
   }
 ]
