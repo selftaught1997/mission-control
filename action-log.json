@@ -4038,5 +4038,13 @@
     "status": "success",
     "summary": "Move midnight memory bootstrap into continuity helper",
     "detail": "Kept the Sunday-beginner queue lane execution-ready with another clean queue-readiness pass, then moved the midnight memory-file bootstrap rule into the continuity helper that owns that check instead of leaving it duplicated in the admin wrapper. Updated scripts/check-memory-continuity.py to expose --bootstrap-today plus a shared ensure_memory_file helper, simplified scripts/run-queue-heartbeat-admin.py to delegate today's file bootstrap through that helper-owned CLI path, extended scripts/check-approval-bound-helper-surface.py so it verifies both the continuity helper's new flag surface and its bootstrap behavior directly, and refreshed MEMORY.md so the durable handoff records that ownership change."
+  },
+  {
+    "id": 506,
+    "timestamp": "2026-06-13T00:38:12Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Document admin runner midnight bootstrap behavior",
+    "detail": "Kept the Sunday-beginner queue lane execution-ready with another clean queue-readiness pass, then aligned the bundled queue admin runner's help surface with the midnight-safe continuity behavior it already performs. Updated scripts/run-queue-heartbeat-admin.py so its --help now explicitly says the default continuity path bootstraps today's memory file first and that --skip-memory-continuity skips that bootstrap too, extended scripts/check-approval-bound-helper-surface.py so that operator-facing wording is audited alongside the continuity helper's own bootstrap contract, and refreshed MEMORY.md so the durable handoff records that the admin wrapper now documents the same midnight-safe behavior it delegates."
   }
 ]
