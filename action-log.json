@@ -4070,5 +4070,13 @@
     "status": "success",
     "summary": "Audit bundled queue admin step ordering",
     "detail": "Kept the Sunday queue lane execution-ready, then exposed the bundled queue admin runner's assembled step plan as a direct helper surface so the approval-bound audit now proves both the default three-step order and the --skip-memory-continuity branch instead of only checking the individual command builders. Updated MEMORY.md so the durable handoff records that the admin runner contract now covers readiness, continuity bootstrap, refresh wiring, and step ordering together."
+  },
+  {
+    "id": 510,
+    "timestamp": "2026-06-13T02:38:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Align helper audit success summary with admin-runner coverage",
+    "detail": "Kept the Sunday queue lane execution-ready, then aligned the approval-bound helper-surface audit's own success summary with the contract it already proves. The audit output now explicitly names the memory continuity helper and bundled queue admin runner, plus the command wiring and step-order coverage that sit behind the admin-side heartbeat path."
   }
 ]
