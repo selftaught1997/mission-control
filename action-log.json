@@ -4078,5 +4078,13 @@
     "status": "success",
     "summary": "Align helper audit success summary with admin-runner coverage",
     "detail": "Kept the Sunday queue lane execution-ready, then aligned the approval-bound helper-surface audit's own success summary with the contract it already proves. The audit output now explicitly names the memory continuity helper and bundled queue admin runner, plus the command wiring and step-order coverage that sit behind the admin-side heartbeat path."
+  },
+  {
+    "id": 511,
+    "timestamp": "2026-06-13T03:08:35Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Audit memory continuity default London-time range",
+    "detail": "Kept the Sunday queue lane execution-ready, then hardened the memory continuity helper contract so its Europe/London month-start and today defaults are proved directly instead of only implied by help text. Updated the approval-bound helper-surface audit and MEMORY.md so the durable handoff now records that the continuity helper's default range and memory/YYYY-MM-DD.md path resolution are part of the audited admin-side heartbeat contract."
   }
 ]
