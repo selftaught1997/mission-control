@@ -4174,5 +4174,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue readiness is green, and the top-level approval-bound runner now rejects blank, missing, or out-of-workspace commit-root-path overrides before bookkeeping can run and the low-level commit step can fail late."
+  },
+  {
+    "id": 523,
+    "timestamp": "2026-06-13T09:11:11Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue readiness is green, and the Mission Control action-log path now rejects blank category or status overrides before empty metadata can leak into bookkeeping or the saved action log."
   }
 ]
