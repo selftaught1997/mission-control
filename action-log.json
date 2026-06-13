@@ -4390,5 +4390,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue readiness stayed green, and the one-command queue-readiness wrapper now fails with a clean operator-facing message when one of its child audit scripts is missing instead of delegating that failure to Python's raw open-file error, with the approval-bound helper audit proving both the happy path and the missing-script guard directly."
+  },
+  {
+    "id": 550,
+    "timestamp": "2026-06-13T21:07:37Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue readiness stayed green, and the queue entry-point checker now fails with a clean operator-facing message when one of its core operator docs is missing instead of surfacing a raw file-read exception, with the approval-bound helper audit proving that missing-file path directly alongside the existing Mission Control JSON guards."
   }
 ]
