@@ -4110,5 +4110,13 @@
     "status": "success",
     "summary": "Audited Mission Control refresh payload contract",
     "detail": "Queue readiness is green, and the approval-bound helper audit now proves the Mission Control refresh helper's explicit status/history payload builders directly so schema and state drift in agent-status.json or agent-history.json gets caught mechanically."
+  },
+  {
+    "id": 515,
+    "timestamp": "2026-06-13T05:08:16Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Locked Mission Control history retention contract",
+    "detail": "Queue readiness is green, and the approval-bound helper audit now proves the Mission Control refresh helper's newest-25 history retention behavior directly alongside its explicit status and history payload builders."
   }
 ]
