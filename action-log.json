@@ -4046,5 +4046,13 @@
     "status": "success",
     "summary": "Document admin runner midnight bootstrap behavior",
     "detail": "Kept the Sunday-beginner queue lane execution-ready with another clean queue-readiness pass, then aligned the bundled queue admin runner's help surface with the midnight-safe continuity behavior it already performs. Updated scripts/run-queue-heartbeat-admin.py so its --help now explicitly says the default continuity path bootstraps today's memory file first and that --skip-memory-continuity skips that bootstrap too, extended scripts/check-approval-bound-helper-surface.py so that operator-facing wording is audited alongside the continuity helper's own bootstrap contract, and refreshed MEMORY.md so the durable handoff records that the admin wrapper now documents the same midnight-safe behavior it delegates."
+  },
+  {
+    "id": 507,
+    "timestamp": "2026-06-13T01:08:11Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Audit admin runner continuity bootstrap wiring",
+    "detail": "Kept the Sunday-beginner queue lane execution-ready with another clean queue-readiness pass, then extended the approval-bound helper-surface audit so it now proves the bundled queue admin runner really passes --bootstrap-today to the continuity helper instead of only documenting that behavior. Updated scripts/run-queue-heartbeat-admin.py to expose its continuity command assembly as a small testable unit, extended scripts/check-approval-bound-helper-surface.py so it verifies the non-skip and skip branches directly, and refreshed MEMORY.md so the durable handoff records that this bootstrap wiring is now part of the audited contract."
   }
 ]
