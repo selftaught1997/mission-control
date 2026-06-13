@@ -4406,5 +4406,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue readiness stayed green, and the Mission Control publish-blocker helper now fails with a clean operator-facing message when one of its blocker surface files is missing instead of surfacing a raw file-read exception, with the approval-bound helper audit proving that missing-file path directly alongside the existing todo.json shape guards."
+  },
+  {
+    "id": 552,
+    "timestamp": "2026-06-13T22:09:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed green again. I hardened the Mission Control action-log helper so a missing mission-control/action-log.json now fails with a clean operator-facing file-not-found error instead of a raw file-read exception, and the approval-bound helper audit now proves that negative path directly."
   }
 ]
