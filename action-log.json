@@ -4254,5 +4254,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue readiness stayed green, and the approval-bound helper audit now proves the low-level Mission Control refresh helper trims and rejects blank detail, current-step, and history-task text directly instead of only checking the status path."
+  },
+  {
+    "id": 533,
+    "timestamp": "2026-06-13T14:10:39Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue readiness stayed green, and the approval-bound file-input helpers now reject blank detail-file and note-file path overrides before the runner can treat them like missing flags or fall into a later traceback path."
   }
 ]
