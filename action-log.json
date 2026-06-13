@@ -4102,5 +4102,13 @@
     "status": "success",
     "summary": "Blocked blank Mission Control status writes",
     "detail": "Queue readiness is green, and the approval-bound heartbeat stack now rejects blank Mission Control status, current-step, detail, and history-task text at the refresh helper, bundled admin runner, and top-level runner layers before any state write can happen."
+  },
+  {
+    "id": 514,
+    "timestamp": "2026-06-13T04:39:19Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Audited Mission Control refresh payload contract",
+    "detail": "Queue readiness is green, and the approval-bound helper audit now proves the Mission Control refresh helper's explicit status/history payload builders directly so schema and state drift in agent-status.json or agent-history.json gets caught mechanically."
   }
 ]
