@@ -4350,5 +4350,29 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue readiness stayed green, and the queue handoff audit now fails cleanly when a core handoff doc is missing or has lost all `drafts/...` references instead of quietly passing a gutted handoff surface, with the approval-bound helper audit proving both the happy path and the no-reference guard directly."
+  },
+  {
+    "id": 545,
+    "timestamp": "2026-06-13T03:18:05Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Ran the daily income research job and selected a primary-school PE confidence pack as today's strongest opportunity.",
+    "detail": "The 04:12 BST Daily Income Research cron completed successfully, evaluated five candidates, and chose 'Primary School PE Confidence Pack: Licensed Martial-Arts Movement Unit for Teachers' as idea #37. It updated research/income-ideas-log.json, research/todays-income-idea.json, and research/usage-log.json, committed the output in ec88b9d, and published the full report to Discord #trading-desk with a short summary to #morning-brief."
+  },
+  {
+    "id": 546,
+    "timestamp": "2026-06-13T03:18:06Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Fixed Daily Income Research Discord delivery so long reports are split into Discord-safe chunks.",
+    "detail": "Patched scripts/post-income-research-discord.py to split long reports into 1900-character chunks, reuse a shared Discord send-command builder, and capture multipart send results so oversized #trading-desk posts no longer fail on Discord length limits. Committed the fix in 756cb32 and updated ~/.openclaw/openclaw.json to explicitly allow the Discord plugin so openclaw message send works reliably in cron."
+  },
+  {
+    "id": 547,
+    "timestamp": "2026-06-13T19:38:44Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue readiness stayed green, and the review-tracker audit now fails with clean operator-facing errors when the source-of-truth tracker file is missing or has lost required section headings or quick-total lines instead of throwing a raw ValueError-style failure, with the approval-bound helper audit proving those negative paths directly."
   }
 ]
