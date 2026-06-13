@@ -4054,5 +4054,13 @@
     "status": "success",
     "summary": "Audit admin runner continuity bootstrap wiring",
     "detail": "Kept the Sunday-beginner queue lane execution-ready with another clean queue-readiness pass, then extended the approval-bound helper-surface audit so it now proves the bundled queue admin runner really passes --bootstrap-today to the continuity helper instead of only documenting that behavior. Updated scripts/run-queue-heartbeat-admin.py to expose its continuity command assembly as a small testable unit, extended scripts/check-approval-bound-helper-surface.py so it verifies the non-skip and skip branches directly, and refreshed MEMORY.md so the durable handoff records that this bootstrap wiring is now part of the audited contract."
+  },
+  {
+    "id": 508,
+    "timestamp": "2026-06-13T01:39:48Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Audit bundled queue admin readiness and refresh command wiring",
+    "detail": "Kept the Sunday queue lane execution-ready, then extended the approval-bound helper-surface contract so the bundled queue admin runner now proves its readiness and Mission Control refresh command wiring directly instead of only exposing those commands inline. Updated MEMORY.md so the durable handoff records that the admin runner audit now covers readiness, continuity-bootstrap, and refresh command assembly together."
   }
 ]
