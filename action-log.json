@@ -4246,5 +4246,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue readiness stayed green, and the approval-bound memory-file guards now reject datetime-shaped pinned targets so the exact memory/YYYY-MM-DD.md contract really means date-only direct-child daily files."
+  },
+  {
+    "id": 532,
+    "timestamp": "2026-06-13T13:38:12Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue readiness stayed green, and the approval-bound helper audit now proves the low-level Mission Control refresh helper trims and rejects blank detail, current-step, and history-task text directly instead of only checking the status path."
   }
 ]
