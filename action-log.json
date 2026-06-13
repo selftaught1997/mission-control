@@ -4262,5 +4262,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue readiness stayed green, and the approval-bound file-input helpers now reject blank detail-file and note-file path overrides before the runner can treat them like missing flags or fall into a later traceback path."
+  },
+  {
+    "id": 534,
+    "timestamp": "2026-06-13T14:37:53Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue readiness stayed green, and the low-level heartbeat bookkeeping helper now rejects a missing inline-or-file text input with a clean operator-facing error instead of relying on a raw internal assertion path."
   }
 ]
