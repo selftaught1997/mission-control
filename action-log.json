@@ -4310,5 +4310,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue readiness stayed green, and the stale Mission Control Pages approval blocker now has its own audit helper so the publish-blocker wording stays aligned across QUESTIONS.md, MEMORY.md, mission-control/todo.json item 3, and the local mission-control/index.html card instead of drifting as unverified prose."
+  },
+  {
+    "id": 540,
+    "timestamp": "2026-06-13T17:38:05Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue readiness stayed green, and the approval-bound helper audit now proves the new Mission Control publish-blocker helper directly while also checking that the default approval-bound commit surface still includes that helper by name."
   }
 ]
