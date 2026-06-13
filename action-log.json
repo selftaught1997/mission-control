@@ -4030,5 +4030,13 @@
     "status": "success",
     "summary": "Pin commit helper memory path to London date",
     "detail": "Kept the Sunday-beginner queue lane execution-ready with another clean queue-readiness pass, then aligned the approval-bound commit helper with the rest of the London-time heartbeat stack. Updated scripts/commit-approval-bound-heartbeat.py so its default memory/YYYY-MM-DD.md target is now resolved in Europe/London instead of relying on host-local timezone settings, extended scripts/check-approval-bound-helper-surface.py so it verifies that default memory-path behavior directly, and refreshed MEMORY.md so the durable handoff records that the default commit target is now pinned to the same timezone contract as the admin and bookkeeping helpers."
+  },
+  {
+    "id": 505,
+    "timestamp": "2026-06-13T00:08:48Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Move midnight memory bootstrap into continuity helper",
+    "detail": "Kept the Sunday-beginner queue lane execution-ready with another clean queue-readiness pass, then moved the midnight memory-file bootstrap rule into the continuity helper that owns that check instead of leaving it duplicated in the admin wrapper. Updated scripts/check-memory-continuity.py to expose --bootstrap-today plus a shared ensure_memory_file helper, simplified scripts/run-queue-heartbeat-admin.py to delegate today's file bootstrap through that helper-owned CLI path, extended scripts/check-approval-bound-helper-surface.py so it verifies both the continuity helper's new flag surface and its bootstrap behavior directly, and refreshed MEMORY.md so the durable handoff records that ownership change."
   }
 ]
