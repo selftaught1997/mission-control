@@ -4222,5 +4222,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue readiness stayed green, and the approval-bound memory-file guards now require the exact direct child form memory/YYYY-MM-DD.md so nested or non-date pinned targets cannot quietly drift into the helper lane."
+  },
+  {
+    "id": 529,
+    "timestamp": "2026-06-13T12:08:14Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue readiness stayed green, and the approval-bound helper help text now states the exact direct-child memory/YYYY-MM-DD.md contract instead of only relying on the runtime guard for pinned memory-file overrides."
   }
 ]
