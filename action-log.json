@@ -4302,5 +4302,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue readiness stayed green, and the low-level Mission Control refresh helper now fails cleanly when a malformed prior status/history payload carries a non-integer activity_counter or a non-list entries field instead of surfacing a raw coercion failure or weird list coercion later."
+  },
+  {
+    "id": 539,
+    "timestamp": "2026-06-13T17:09:48Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue readiness stayed green, and the stale Mission Control Pages approval blocker now has its own audit helper so the publish-blocker wording stays aligned across QUESTIONS.md, MEMORY.md, mission-control/todo.json item 3, and the local mission-control/index.html card instead of drifting as unverified prose."
   }
 ]
