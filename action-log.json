@@ -4374,5 +4374,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue readiness stayed green, and the review-tracker audit now fails with clean operator-facing errors when the source-of-truth tracker file is missing or has lost required section headings or quick-total lines instead of throwing a raw ValueError-style failure, with the approval-bound helper audit proving those negative paths directly."
+  },
+  {
+    "id": 548,
+    "timestamp": "2026-06-13T20:08:02Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue readiness stayed green, and the Sunday approval-pack audit now fails with clean operator-facing errors when the Aaron-facing shortcut doc or its tracker surface is missing, lacks the required approvals heading, or has an empty approvals section instead of throwing raw parser or file errors, with the approval-bound helper audit proving those negative paths directly."
   }
 ]
