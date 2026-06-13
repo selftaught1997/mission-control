@@ -4126,5 +4126,13 @@
     "status": "success",
     "summary": "Unified Mission Control refresh timestamps",
     "detail": "Queue readiness is green, and the approval-bound helper audit now proves the Mission Control refresh helper derives its millisecond and ISO status timestamps from one captured UTC instant so those fields cannot drift across a second boundary."
+  },
+  {
+    "id": 517,
+    "timestamp": "2026-06-13T06:08:22Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Locked commit-helper path-set contract",
+    "detail": "Queue readiness is green, and the approval-bound helper audit now proves the commit helper's explicit workspace path builder so the default, narrowed, and appended root-path commit surfaces stay mechanically defined."
   }
 ]
