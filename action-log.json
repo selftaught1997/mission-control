@@ -4134,5 +4134,13 @@
     "status": "success",
     "summary": "Locked commit-helper path-set contract",
     "detail": "Queue readiness is green, and the approval-bound helper audit now proves the commit helper's explicit workspace path builder so the default, narrowed, and appended root-path commit surfaces stay mechanically defined."
+  },
+  {
+    "id": 518,
+    "timestamp": "2026-06-13T06:37:56Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Locked nested commit surface contract",
+    "detail": "Queue readiness is green, and the approval-bound helper audit now proves the commit helper's explicit nested Mission Control file set alongside its workspace path-set builder so both committed surfaces stay mechanically defined."
   }
 ]
