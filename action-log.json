@@ -4094,5 +4094,13 @@
     "status": "success",
     "summary": "Hardened approval-bound runner audit coverage",
     "detail": "Queue readiness is green, and the helper audit now proves the top-level approval-bound runner's admin, bookkeeping, helper-surface, and commit command builders plus its default and helper-skip/commit step plans directly."
+  },
+  {
+    "id": 513,
+    "timestamp": "2026-06-13T04:10:49Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Blocked blank Mission Control status writes",
+    "detail": "Queue readiness is green, and the approval-bound heartbeat stack now rejects blank Mission Control status, current-step, detail, and history-task text at the refresh helper, bundled admin runner, and top-level runner layers before any state write can happen."
   }
 ]
