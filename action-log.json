@@ -4278,5 +4278,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue readiness stayed green, and the low-level daily-memory helper now rejects a missing inline-or-file note input with a clean operator-facing error instead of collapsing that direct-call bug into a generic empty-after-normalization failure."
+  },
+  {
+    "id": 536,
+    "timestamp": "2026-06-13T15:37:45Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue readiness stayed green, and the low-level Mission Control action-log helper now fails cleanly when action-log.json is malformed instead of surfacing a raw JSON traceback."
   }
 ]

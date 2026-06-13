@@ -1,11 +1,6 @@
 {
   "entries": [
     {
-      "status": "",
-      "task": "Heartbeat bundled queue admin sync",
-      "ts": 1781323640000
-    },
-    {
       "status": "working",
       "task": "Heartbeat approval-bound runner",
       "ts": 1781323848000
@@ -124,6 +119,11 @@
       "status": "working",
       "task": "Heartbeat approval-bound runner",
       "ts": 1781363257000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat approval-bound runner",
+      "ts": 1781365065000
     }
   ]
 }
