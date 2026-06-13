@@ -4270,5 +4270,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue readiness stayed green, and the low-level heartbeat bookkeeping helper now rejects a missing inline-or-file text input with a clean operator-facing error instead of relying on a raw internal assertion path."
+  },
+  {
+    "id": 535,
+    "timestamp": "2026-06-13T15:07:37Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue readiness stayed green, and the low-level daily-memory helper now rejects a missing inline-or-file note input with a clean operator-facing error instead of collapsing that direct-call bug into a generic empty-after-normalization failure."
   }
 ]
