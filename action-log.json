@@ -4230,5 +4230,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue readiness stayed green, and the approval-bound helper help text now states the exact direct-child memory/YYYY-MM-DD.md contract instead of only relying on the runtime guard for pinned memory-file overrides."
+  },
+  {
+    "id": 530,
+    "timestamp": "2026-06-13T12:38:37Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue readiness stayed green, and the top-level approval-bound runner now rejects commit-only flags when commit-after-run is absent so commit intent cannot be silently ignored."
   }
 ]
