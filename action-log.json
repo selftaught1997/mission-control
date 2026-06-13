@@ -4294,5 +4294,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue readiness stayed green, and the low-level Mission Control refresh helper now fails cleanly when its status/history JSON is malformed or not a JSON object instead of surfacing a raw decode or later type failure."
+  },
+  {
+    "id": 538,
+    "timestamp": "2026-06-13T16:38:41Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue readiness stayed green, and the low-level Mission Control refresh helper now fails cleanly when a malformed prior status/history payload carries a non-integer activity_counter or a non-list entries field instead of surfacing a raw coercion failure or weird list coercion later."
   }
 ]
