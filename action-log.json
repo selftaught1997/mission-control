@@ -4334,5 +4334,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue readiness stayed green, and the queue entry-point audit now rejects malformed or wrongly-shaped mission-control/todo.json payloads with clean operator-facing errors instead of raw JSON or shape failures, with the approval-bound helper audit proving those negative paths directly."
+  },
+  {
+    "id": 543,
+    "timestamp": "2026-06-13T18:38:44Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue readiness stayed green, and the queue entry-point audit now rejects malformed or wrongly-shaped mission-control/todo.json payloads with clean operator-facing errors instead of raw JSON or shape failures, with the approval-bound helper audit proving those negative paths directly."
   }
 ]
