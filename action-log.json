@@ -4318,5 +4318,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue readiness stayed green, and the approval-bound helper audit now proves the new Mission Control publish-blocker helper directly while also checking that the default approval-bound commit surface still includes that helper by name."
+  },
+  {
+    "id": 541,
+    "timestamp": "2026-06-13T18:08:08Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue readiness stayed green, and the Mission Control publish-blocker helper now rejects malformed or wrongly-shaped mission-control/todo.json payloads with clean operator-facing errors instead of surfacing raw JSON or shape failures, with the approval-bound helper audit proving those negative paths directly."
   }
 ]
