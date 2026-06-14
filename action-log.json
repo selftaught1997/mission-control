@@ -4710,5 +4710,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed green again. I hardened the top-level queue readiness wrapper so it now fails cleanly when a child audit script exists on disk but is not readable, instead of dropping into a lower-level Python file-open failure. The approval-bound helper audit now proves that unreadable child-script regression directly alongside the missing and non-file path guards, and the full queue readiness lane still passes with the cleaner operator-facing wording."
+  },
+  {
+    "id": 590,
+    "timestamp": "2026-06-14T17:10:54Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed structurally green, but a genuine new execution gap appeared in Buffer: the Instagram channel `stratford_karate_club` is disconnected. I hardened `automation/buffer-health-check.js` so the health check now produces channel-level status, flags the \u201cWe\u2019re having trouble connecting to your channel\u201d state, and fails safe when a known channel is visible but disconnected, missing, or otherwise unparseable instead of reporting a false healthy run from login/page success alone. I also logged the Aaron-side reconnect blocker in `QUESTIONS.md`, so the queue lane now surfaces both the process-quality fix and the needed owner action cleanly."
   }
 ]
