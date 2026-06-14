@@ -4742,5 +4742,21 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed structurally green, and I closed the last blind spot in the one-command readiness check by adding a dedicated Buffer publish-state helper and wiring it into scripts/check-queue-readiness.py. The wrapper now surfaces the latest cached Buffer state alongside the internal queue-pack audits instead of looking fully green while the publish lane is still blocked, and the helper refuses legacy pre-hardening JSON artifacts that could still report success without channel-status or health-issue fields. I also refreshed the live Buffer artifact with the hardened checker, which currently shows queuePosts=0 and stratford_karate_club in an unknown/unparsed scheduled-post state, so the blocker remains visible inside the standard readiness pass without reopening Buffer by hand."
+  },
+  {
+    "id": 594,
+    "timestamp": "2026-06-14T03:15:56Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Daily Income Research published idea #38 for a primary-school focus-breaks licensing offer.",
+    "detail": "The 04:12 BST Daily Income Research cron completed successfully and selected `Primary School Focus Breaks License: 5-Minute Movement & Regulation Videos for Teachers` as the winning idea. It appended the result to `research/income-ideas-log.json` as idea `id=38`, updated `research/todays-income-idea.json` and `research/usage-log.json`, posted the full report to Discord `#trading-desk`, and committed the research outputs as `8f6dd21` (`chore: income research output 2026-06-14`)."
+  },
+  {
+    "id": 595,
+    "timestamp": "2026-06-14T19:39:24Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed structurally green, and I aligned the blocker surfaces with the latest hardened Buffer artifact instead of leaving them stuck on the older disconnected/reconnect wording. The one-command readiness pass still shows the same real blocker state \u2014 queuePosts=0 and stratford_karate_club not publish-ready \u2014 but the current cached Buffer result is now described accurately as status unknown with an unparsed scheduled-post count, which is a Buffer fix-or-verify problem rather than something we should overstate as a clean disconnect. I updated the queue-facing operator docs, Aaron-facing questions, the Sunday handoff surfaces, and Mission Control item 16 to that more precise wording, then taught the queue entry-point audit and helper-surface test bundle to reject drift back to the older disconnected/reconnect phrasing."
   }
 ]
