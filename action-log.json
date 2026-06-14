@@ -4670,5 +4670,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed green again. I tightened the review-tracker audit so the active support-asset set now has to remain the exact intended bundle, instead of only proving that whatever assets are currently listed exist on disk and still add up to the right count. That closes the false-green case where a support asset could silently disappear or be swapped for a different file while the tracker still passed on existence plus totals alone. The approval-bound helper audit now proves that support-asset drift directly, and the full queue readiness lane still passes with the stricter tracker contract."
+  },
+  {
+    "id": 585,
+    "timestamp": "2026-06-14T14:38:03Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed green again. I hardened the blocker-surface file readers so the queue entry-point and Mission Control publish-blocker audits now fail cleanly when one of their expected files is actually a directory, instead of throwing a raw file-read exception. That closes another operator-surface gap in the approval-bound helper lane: a malformed path now produces a direct, user-facing non-file error, and the helper audit proves both of those directory-path regressions explicitly. The full queue readiness lane still passes unchanged."
   }
 ]
