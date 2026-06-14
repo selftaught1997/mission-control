@@ -4462,5 +4462,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed green again. I hardened the Mission Control refresh helper so persisted activity counters and history timestamps now reject boolean true/false values instead of silently coercing them to 1 or 0, and the approval-bound helper audit now proves those boolean-state guards directly."
+  },
+  {
+    "id": 559,
+    "timestamp": "2026-06-14T01:37:32Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed green again. I hardened the low-level Mission Control status payload helper so boolean prior activity_counter state now fails cleanly instead of being silently coerced into a numeric count, and the approval-bound helper audit now proves that lower-level boolean counter guard directly."
   }
 ]
