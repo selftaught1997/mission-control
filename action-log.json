@@ -4734,5 +4734,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed structurally green, and I folded the hardened Buffer health checker into the default approval-bound helper surface so future heartbeat commits carry that queue-critical diagnostic automatically instead of relying on one-off extra root-path flags. The helper audit now proves the default workspace commit path set includes the Buffer checker explicitly, and the full queue readiness lane still passes with the Instagram disconnect treated as live blocker state rather than stale healthy wording."
+  },
+  {
+    "id": 593,
+    "timestamp": "2026-06-14T19:09:10Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed structurally green, and I closed the last blind spot in the one-command readiness check by adding a dedicated Buffer publish-state helper and wiring it into scripts/check-queue-readiness.py. The wrapper now surfaces the latest cached Buffer state alongside the internal queue-pack audits instead of looking fully green while the publish lane is still blocked, and the helper refuses legacy pre-hardening JSON artifacts that could still report success without channel-status or health-issue fields. I also refreshed the live Buffer artifact with the hardened checker, which currently shows queuePosts=0 and stratford_karate_club in an unknown/unparsed scheduled-post state, so the blocker remains visible inside the standard readiness pass without reopening Buffer by hand."
   }
 ]
