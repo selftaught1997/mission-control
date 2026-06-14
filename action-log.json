@@ -4526,5 +4526,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed green again. I hardened the review-tracker helper so the start-here audit now fails cleanly when the top awaiting-review table is too short to cover the expected shortcut set, instead of under-reporting drift by only zipping against whatever rows still exist, and the approval-bound helper audit now proves that short-table guard directly."
+  },
+  {
+    "id": 567,
+    "timestamp": "2026-06-14T05:38:15Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed green again. I hardened the Sunday approval-pack helper so it now parses exact draft names from combined awaiting-review tracker rows split with ` + ` separators, instead of relying on loose substring matching or misreading the current multi-file tracker format, and the approval-bound helper audit now proves that tracker-row parsing path directly."
   }
 ]
