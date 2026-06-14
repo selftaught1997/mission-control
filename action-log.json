@@ -4614,5 +4614,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed green again. I hardened the review-tracker helper so the top Start here rows now have to keep the exact `Start here` status label as well as the exact single-draft shortcut target, which closes the false-green case where a shortcut row could drift to another status but still pass on draft-name matching alone. The approval-bound helper audit now proves that status-drift regression directly, and the full queue readiness lane still passes with the stricter check."
+  },
+  {
+    "id": 578,
+    "timestamp": "2026-06-14T11:08:14Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed green again. I tightened the queue entry-point audit so Mission Control item 16 now has to remain explicitly actionable with `status: todo`, instead of only carrying the right detail text. That closes the false-green case where the queue lane could silently drift back to `blocked` while the docs still looked aligned. The approval-bound helper audit now proves both the non-string / blank status guards and the blocked-status regression directly, and the full queue readiness lane still passes with the stricter entry-point check."
   }
 ]
