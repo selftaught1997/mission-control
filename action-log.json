@@ -4566,5 +4566,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed green again. I hardened the queue handoff helper so referenced draft paths must now be real files, not just existing filesystem entries, which closes the false-green case where a directory could masquerade as a valid handoff artifact. The approval-bound helper audit now proves that non-file reference guard directly, and the full queue readiness lane still passes with the stricter check."
+  },
+  {
+    "id": 572,
+    "timestamp": "2026-06-14T08:08:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed green again. I hardened the Sunday approval-pack helper so referenced pack items must now be real files, not just any existing filesystem entries, which closes the false-green case where a directory could masquerade as a valid approval artifact. The approval-bound helper audit now proves that non-file approval-item guard directly, and the full queue readiness lane still passes with the stricter check."
   }
 ]
