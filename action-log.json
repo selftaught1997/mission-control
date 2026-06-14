@@ -4702,5 +4702,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed green again. I hardened the top-level queue readiness wrapper so it now distinguishes a missing child audit script from a wrong-shape child path, and reports directory paths as non-file audit scripts instead of falsely saying they were not found. The approval-bound helper audit now proves that non-file child-script regression directly, and the full queue readiness lane still passes with the cleaner operator-facing guard wording."
+  },
+  {
+    "id": 589,
+    "timestamp": "2026-06-14T16:38:32Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed green again. I hardened the top-level queue readiness wrapper so it now fails cleanly when a child audit script exists on disk but is not readable, instead of dropping into a lower-level Python file-open failure. The approval-bound helper audit now proves that unreadable child-script regression directly alongside the missing and non-file path guards, and the full queue readiness lane still passes with the cleaner operator-facing wording."
   }
 ]
