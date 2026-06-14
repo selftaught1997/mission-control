@@ -4582,5 +4582,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed green again. I hardened the review-tracker helper so the live backlog source now verifies that every listed draft reference in the awaiting-review and background tables resolves to a real file, not just a counted table cell. That closes the false-green case where a missing or directory-backed draft entry could leave totals and start-here ordering looking fine while the source-of-truth tracker itself had drifted. The approval-bound helper audit now proves the split draft-name parsing and non-file path guard directly."
+  },
+  {
+    "id": 574,
+    "timestamp": "2026-06-14T09:08:02Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed green again. I hardened the review-tracker helper so counted table rows in the live backlog source must now yield at least one draft name, instead of letting an empty draft cell quietly count as a valid review item. That closes the false-green case where quick totals, row counts, and even some file checks could still look fine while a broken table row carried no actionable draft reference. The approval-bound helper audit now proves that empty draft-cell guard directly, and the full queue readiness lane still passes with the stricter parser."
   }
 ]
