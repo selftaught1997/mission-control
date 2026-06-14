@@ -4654,5 +4654,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed green again. I extended the approval-bound helper audit so the stricter Mission Control item 16 identity contract is now proved beyond status and title: it also rejects exact priority and category drift. That closes the remaining helper-surface gap around the queue entry-point checker, so the queue lane now has direct regression coverage for item 16 being repurposed under the wrong label even if the backlog wording stays present. The full queue readiness lane still passes unchanged."
+  },
+  {
+    "id": 583,
+    "timestamp": "2026-06-14T13:37:57Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed green again. I extended the approval-bound helper audit so Mission Control item 3 now also proves exact publish-blocker identity drift, not just type and blank-field failures. That means the blocker helper now directly rejects wrong title, priority, status, or category values for the publish-blocker task instead of only relying on the live checker path. The full queue readiness lane still passes unchanged, and the approval-bound helper surface now has tighter regression coverage around the blocker/task identity model we\u2019ve been hardening all day."
   }
 ]
