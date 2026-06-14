@@ -4598,5 +4598,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed green again. I hardened the review-tracker helper so the top Start Here rows now require exact single-draft matches instead of substring matches, which closes the false-green case where a misleading draft name could still pass merely because it contained the expected filename. The row parser now shares one exact draft-name splitter across file validation and Start Here checking, and the approval-bound helper audit proves both the empty-cell guard and the substring-mismatch regression directly."
+  },
+  {
+    "id": 576,
+    "timestamp": "2026-06-14T10:08:03Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed green again. I hardened the review-tracker helper so the support-assets section now parses normalized asset names from the backticked bullet list and verifies that each listed support file actually exists on disk as a real file. That closes the false-green case where the tracker could count support assets correctly while never proving the listed asset bullets resolved to real artifacts. The approval-bound helper audit now proves both the normalized support-asset parsing and the missing-support-asset guard directly."
   }
 ]
