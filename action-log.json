@@ -4438,5 +4438,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed green again. I hardened the Mission Control refresh helper so malformed persisted history lists now fail when any entries item is not a JSON object instead of silently carrying junk forward, and the approval-bound helper audit now proves that negative path directly."
+  },
+  {
+    "id": 556,
+    "timestamp": "2026-06-14T00:08:05Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed green again. I hardened the Mission Control refresh helper so persisted history entries now fail unless each item has non-empty status and task text plus an integer ts value, and the approval-bound helper audit now proves those malformed-entry paths directly."
   }
 ]
