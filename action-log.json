@@ -4774,5 +4774,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed structurally green, and I closed the last freshness gap in the one-command readiness path by teaching scripts/check-queue-readiness.py to refresh Buffer itself before trusting the cached publish-state audit. The wrapper now runs node automation/buffer-health-check.js first, then proves the internal queue stack plus the freshly updated Buffer helper output in one pass instead of relying on whatever cached Buffer artifact happened to exist from an earlier wake. I also extended the approval-bound helper-surface audit so missing or non-file Buffer refresh script paths are caught mechanically, and the live refreshed artifact still confirms the same real blocker state: queuePosts=0 and stratford_karate_club disconnected in Buffer while approvals are still pending."
+  },
+  {
+    "id": 598,
+    "timestamp": "2026-06-14T21:39:43Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed structurally green, and I tightened the one-command readiness wrapper so the live Buffer refresh is now concise and operator-friendly instead of dumping the full raw JSON blob ahead of the actual audit results. scripts/check-queue-readiness.py still refreshes Buffer first, but it now validates that refresh output as JSON, checks that the expected stratford_karate_club channel is present, and prints a compact summary with the refreshed snapshot time, queue/draft counts, and current Instagram channel status. I also extended the approval-bound helper-surface bundle so malformed JSON from that refresh step is caught mechanically, alongside the existing missing-script and non-file-path guards. The live wrapper still confirms the same real blocker state on a fresh Buffer snapshot: queuePosts=0 and stratford_karate_club disconnected while approvals are still pending."
   }
 ]
