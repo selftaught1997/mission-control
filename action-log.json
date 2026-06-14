@@ -4686,5 +4686,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed green again. I hardened the Sunday approval-pack and review-tracker source readers so they now fail cleanly when an expected source path is actually a directory instead of a file, rather than throwing raw file-read exceptions. The approval-bound helper audit now proves both of those non-file path regressions directly, and the full queue readiness lane still passes with the cleaner operator-facing guard paths."
+  },
+  {
+    "id": 587,
+    "timestamp": "2026-06-14T15:37:53Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed green again. I hardened the queue handoff reader so it now fails cleanly when an expected handoff doc path is actually a directory instead of a file, rather than throwing a raw file-read exception. The approval-bound helper audit now proves that non-file handoff-doc regression directly, and the full queue readiness lane still passes with the cleaner operator-facing guard path."
   }
 ]
