@@ -4478,5 +4478,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed green again. I hardened the low-level Mission Control status payload helper so boolean prior activity_counter state now fails cleanly instead of being silently coerced into a numeric count, and the approval-bound helper audit now proves that lower-level boolean counter guard directly."
+  },
+  {
+    "id": 561,
+    "timestamp": "2026-06-14T02:38:08Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed green again. I hardened the Mission Control action-log helper so malformed persisted entries now fail cleanly when an entry is not a JSON object or its id is boolean/non-integer instead of being silently coerced through raw int(...) during next-id selection, and the approval-bound helper audit now proves those action-log id guards directly."
   }
 ]
