@@ -4790,5 +4790,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue-execution diagnostics now classify Buffer's Instagram blocker from the channel row itself instead of depending on a transient page-wide alert. The Buffer health checker dismisses the schedule overlays, reads the sidebar row metadata, and treats the row-level accessibility warning on `stratford_karate_club` as a disconnected signal, so the status no longer drifts to `unknown` just because the reconnect banner did not render in body text.\n\nThe Python helper surfaces were tightened to carry that clearer blocker context all the way through. `scripts/check-buffer-publish-state.py` and the one-command `scripts/check-queue-readiness.py` wrapper now print a reconnect clue when the channel is disconnected, and the approval-bound helper-surface audit still passes after the wording change.\n\nFresh validation on the final pass stayed structurally green and showed the live blocker explicitly: queue posts `0`, draft posts `0`, Instagram channel `stratford_karate_club` status `disconnected`, reconnect clue `There is a problem with this channel, you may need to refresh it.`"
+  },
+  {
+    "id": 600,
+    "timestamp": "2026-06-14T22:09:02Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue-execution diagnostics stayed green on the live lane, and the main improvement this wake was locking the Buffer classifier behavior into the approval-bound helper audit. `scripts/check-approval-bound-helper-surface.py` now proves that `automation/buffer-health-check.js` classifies `stratford_karate_club` as disconnected when the only signal is the row-level DOM warning label, preserving the reconnect clue instead of drifting back to an untested implementation detail.\n\nThat matters because the live blocker is still the same one called out in the queue lane: queue posts `0`, draft posts `0`, Instagram channel `stratford_karate_club` status `disconnected`, reconnect clue `There is a problem with this channel, you may need to refresh it.` By teaching the audit to verify the row-warning path directly, the Buffer helper surface is less likely to regress back to ambiguous `unknown` results in a future edit."
   }
 ]
