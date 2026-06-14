@@ -4454,5 +4454,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed green again. I hardened the Mission Control refresh helper so persisted status now fails cleanly if the saved emoji field is blank or non-string instead of silently carrying malformed emoji state forward, and the approval-bound helper audit now proves those malformed-emoji paths directly."
+  },
+  {
+    "id": 558,
+    "timestamp": "2026-06-14T01:07:34Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed green again. I hardened the Mission Control refresh helper so persisted activity counters and history timestamps now reject boolean true/false values instead of silently coercing them to 1 or 0, and the approval-bound helper audit now proves those boolean-state guards directly."
   }
 ]
