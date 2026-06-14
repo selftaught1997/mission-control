@@ -4758,5 +4758,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed structurally green, and I aligned the blocker surfaces with the latest hardened Buffer artifact instead of leaving them stuck on the older disconnected/reconnect wording. The one-command readiness pass still shows the same real blocker state \u2014 queuePosts=0 and stratford_karate_club not publish-ready \u2014 but the current cached Buffer result is now described accurately as status unknown with an unparsed scheduled-post count, which is a Buffer fix-or-verify problem rather than something we should overstate as a clean disconnect. I updated the queue-facing operator docs, Aaron-facing questions, the Sunday handoff surfaces, and Mission Control item 16 to that more precise wording, then taught the queue entry-point audit and helper-surface test bundle to reject drift back to the older disconnected/reconnect phrasing."
+  },
+  {
+    "id": 596,
+    "timestamp": "2026-06-14T20:39:19Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed structurally green, and I removed the last status-churn problem from the Buffer blocker surfaces. The Buffer publish-state helper now rejects stale snapshots older than two hours, so the one-command queue-readiness pass cannot keep trusting an old cached Buffer artifact indefinitely. After refreshing the live Buffer check, the current artifact shows queuePosts=0 and stratford_karate_club still blocked as disconnected, but I no longer want the operator docs and Mission Control item to hard-code whichever transient Buffer wording happened last. I updated the queue-facing blocker surfaces to stay status-agnostic and point at python3 scripts/check-buffer-publish-state.py for the exact live Buffer state, then extended the queue entry-point audit and helper-surface bundle so both stale disconnected wording and stale unknown/parsing wording are rejected unless they live inside the dedicated Buffer helper output instead of drifting through the operator docs."
   }
 ]
