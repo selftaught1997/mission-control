@@ -4630,5 +4630,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed green again. I tightened the queue handoff audit so it now proves the live handoff docs still include their required linked draft set, instead of only proving that whatever references remain happen to resolve on disk. That closes the false-green case where a critical handoff reference could silently disappear from the master stack while the audit still passed. The approval-bound helper audit now proves that dropped-link regression directly, and the full queue readiness lane still passes with the stricter handoff-set check."
+  },
+  {
+    "id": 580,
+    "timestamp": "2026-06-14T12:08:13Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed green again. I tightened the Sunday approval-pack audit so it now proves the live recommended approval set itself still matches the intended shortcut bundle, instead of only proving that whatever items are currently listed happen to exist on disk and appear in the tracker. That closes the false-green case where a key approval item could silently disappear and be replaced by a duplicate or different file while the audit still passed. The approval-bound helper audit now proves that dropped-item shortcut drift directly, and the full queue readiness lane still passes with the stricter approval-pack-set check."
   }
 ]
