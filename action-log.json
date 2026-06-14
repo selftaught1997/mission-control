@@ -4574,5 +4574,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed green again. I hardened the Sunday approval-pack helper so referenced pack items must now be real files, not just any existing filesystem entries, which closes the false-green case where a directory could masquerade as a valid approval artifact. The approval-bound helper audit now proves that non-file approval-item guard directly, and the full queue readiness lane still passes with the stricter check."
+  },
+  {
+    "id": 573,
+    "timestamp": "2026-06-14T08:38:40Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed green again. I hardened the review-tracker helper so the live backlog source now verifies that every listed draft reference in the awaiting-review and background tables resolves to a real file, not just a counted table cell. That closes the false-green case where a missing or directory-backed draft entry could leave totals and start-here ordering looking fine while the source-of-truth tracker itself had drifted. The approval-bound helper audit now proves the split draft-name parsing and non-file path guard directly."
   }
 ]
