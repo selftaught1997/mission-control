@@ -4646,5 +4646,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed green again. I tightened the queue entry-point audit so Mission Control item 16 now has to stay anchored to the exact live queue task identity, not just an actionable status plus matching detail text. That means the lane now proves the item keeps its expected title, priority, category, and `status: todo`, which closes the false-green case where the right queue wording could survive inside a mislabeled or repurposed Mission Control item. The approval-bound helper audit now proves those item-identity guards directly, and the full queue readiness lane still passes with the stricter entry-point contract."
+  },
+  {
+    "id": 582,
+    "timestamp": "2026-06-14T13:07:56Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed green again. I extended the approval-bound helper audit so the stricter Mission Control item 16 identity contract is now proved beyond status and title: it also rejects exact priority and category drift. That closes the remaining helper-surface gap around the queue entry-point checker, so the queue lane now has direct regression coverage for item 16 being repurposed under the wrong label even if the backlog wording stays present. The full queue readiness lane still passes unchanged."
   }
 ]
