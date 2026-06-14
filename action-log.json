@@ -4518,5 +4518,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed green again. I hardened the Mission Control publish-blocker and queue entry-point helpers so malformed  entries now fail cleanly when an item is not a JSON object or its id is missing/invalid instead of silently making item  or  look absent, and the approval-bound helper audit now proves those selector guards directly."
+  },
+  {
+    "id": 566,
+    "timestamp": "2026-06-14T05:08:17Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed green again. I hardened the review-tracker helper so the start-here audit now fails cleanly when the top awaiting-review table is too short to cover the expected shortcut set, instead of under-reporting drift by only zipping against whatever rows still exist, and the approval-bound helper audit now proves that short-table guard directly."
   }
 ]
