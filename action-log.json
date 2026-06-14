@@ -4718,5 +4718,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed structurally green, but a genuine new execution gap appeared in Buffer: the Instagram channel `stratford_karate_club` is disconnected. I hardened `automation/buffer-health-check.js` so the health check now produces channel-level status, flags the \u201cWe\u2019re having trouble connecting to your channel\u201d state, and fails safe when a known channel is visible but disconnected, missing, or otherwise unparseable instead of reporting a false healthy run from login/page success alone. I also logged the Aaron-side reconnect blocker in `QUESTIONS.md`, so the queue lane now surfaces both the process-quality fix and the needed owner action cleanly."
+  },
+  {
+    "id": 591,
+    "timestamp": "2026-06-14T17:40:15Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane still passes structurally, but I aligned the operator surfaces to the real new execution gap instead of leaving stale calm behind. HEARTBEAT, MEMORY, QUESTIONS, the Sunday master handoff, the cross-stack review shortlist, and Mission Control item 16 now all reflect that the Buffer queue is empty and the Instagram channel `stratford_karate_club` is currently disconnected, so the blocker is approval plus reconnect rather than missing prep. I also hardened the queue entry-point audit so those surfaces now fail if the old \u201cBuffer is healthy\u201d wording ever drifts back in, and the approval-bound helper audit proves both the stale-entry-point and stale-Mission-Control wording guards directly."
   }
 ]
