@@ -4542,5 +4542,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed green again. I repaired the malformed 05:38 BST daily memory entry from the earlier inline-quoted run so the queue-lane history now correctly names `todo.json` plus items `3` and `16`, and I kept the file-backed approval-bound heartbeat path in use for shell-active text."
+  },
+  {
+    "id": 569,
+    "timestamp": "2026-06-14T06:38:05Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed green again. I fixed a real review-tracker integrity mismatch by teaching the support-asset count helper to exclude the archived debug screenshots bucket and aligning the tracker quick-total line to the true active asset count, so the queue readiness audit now reports `14` real support assets instead of silently counting the archive bucket as live review surface."
   }
 ]
