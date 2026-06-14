@@ -4798,5 +4798,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue-execution diagnostics stayed green on the live lane, and the main improvement this wake was locking the Buffer classifier behavior into the approval-bound helper audit. `scripts/check-approval-bound-helper-surface.py` now proves that `automation/buffer-health-check.js` classifies `stratford_karate_club` as disconnected when the only signal is the row-level DOM warning label, preserving the reconnect clue instead of drifting back to an untested implementation detail.\n\nThat matters because the live blocker is still the same one called out in the queue lane: queue posts `0`, draft posts `0`, Instagram channel `stratford_karate_club` status `disconnected`, reconnect clue `There is a problem with this channel, you may need to refresh it.` By teaching the audit to verify the row-warning path directly, the Buffer helper surface is less likely to regress back to ambiguous `unknown` results in a future edit."
+  },
+  {
+    "id": 601,
+    "timestamp": "2026-06-14T22:40:21Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue-execution diagnostics now store and surface the *source* of Buffer's Instagram disconnect classification instead of leaving downstream helpers to infer it from free-text snippets. `automation/buffer-health-check.js` writes a structured `disconnectSource` for each channel, and the live queue lane currently reports `row_problem_indicator` for `stratford_karate_club`, alongside the reconnect clue `There is a problem with this channel, you may need to refresh it.`\n\nThe Python readers were tightened to validate and print that field. `scripts/check-buffer-publish-state.py` now shows both the disconnect source and reconnect clue, and the one-command `scripts/check-queue-readiness.py` wrapper carries the same structured signal through its refresh section. The approval-bound helper audit was also fixed to regenerate the Buffer artifact before validating the standalone publish-state checker, so the new schema is no longer order-dependent inside the audit run.\n\nFresh validation on the final pass stayed structurally green and still exposed the live blocker explicitly: queue posts `0`, draft posts `0`, Instagram channel `stratford_karate_club` status `disconnected`, disconnect source `row_problem_indicator`, reconnect clue `There is a problem with this channel, you may need to refresh it.`"
   }
 ]
