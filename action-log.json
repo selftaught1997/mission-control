@@ -4502,5 +4502,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed green again. I hardened the Mission Control refresh and action-log helpers so persisted float values now fail cleanly where counters, history timestamps, and action-log ids are expected to be true integers instead of being silently truncated through raw int(...) coercion, and the approval-bound helper audit now proves those float guards directly."
+  },
+  {
+    "id": 564,
+    "timestamp": "2026-06-14T04:07:52Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed green again. I hardened the Mission Control refresh and action-log helpers so malformed persisted values now fail cleanly when counters or history timestamps go negative, or when action-log ids are zero/negative, instead of silently carrying impossible signed state forward, and the approval-bound helper audit now proves those signedness guards directly."
   }
 ]
