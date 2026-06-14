@@ -4662,5 +4662,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed green again. I extended the approval-bound helper audit so Mission Control item 3 now also proves exact publish-blocker identity drift, not just type and blank-field failures. That means the blocker helper now directly rejects wrong title, priority, status, or category values for the publish-blocker task instead of only relying on the live checker path. The full queue readiness lane still passes unchanged, and the approval-bound helper surface now has tighter regression coverage around the blocker/task identity model we\u2019ve been hardening all day."
+  },
+  {
+    "id": 584,
+    "timestamp": "2026-06-14T14:08:05Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed green again. I tightened the review-tracker audit so the active support-asset set now has to remain the exact intended bundle, instead of only proving that whatever assets are currently listed exist on disk and still add up to the right count. That closes the false-green case where a support asset could silently disappear or be swapped for a different file while the tracker still passed on existence plus totals alone. The approval-bound helper audit now proves that support-asset drift directly, and the full queue readiness lane still passes with the stricter tracker contract."
   }
 ]
