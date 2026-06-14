@@ -4726,5 +4726,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane still passes structurally, but I aligned the operator surfaces to the real new execution gap instead of leaving stale calm behind. HEARTBEAT, MEMORY, QUESTIONS, the Sunday master handoff, the cross-stack review shortlist, and Mission Control item 16 now all reflect that the Buffer queue is empty and the Instagram channel `stratford_karate_club` is currently disconnected, so the blocker is approval plus reconnect rather than missing prep. I also hardened the queue entry-point audit so those surfaces now fail if the old \u201cBuffer is healthy\u201d wording ever drifts back in, and the approval-bound helper audit proves both the stale-entry-point and stale-Mission-Control wording guards directly."
+  },
+  {
+    "id": 592,
+    "timestamp": "2026-06-14T18:09:13Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed structurally green, and I folded the hardened Buffer health checker into the default approval-bound helper surface so future heartbeat commits carry that queue-critical diagnostic automatically instead of relying on one-off extra root-path flags. The helper audit now proves the default workspace commit path set includes the Buffer checker explicitly, and the full queue readiness lane still passes with the Instagram disconnect treated as live blocker state rather than stale healthy wording."
   }
 ]
