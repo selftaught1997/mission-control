@@ -4590,5 +4590,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed green again. I hardened the review-tracker helper so counted table rows in the live backlog source must now yield at least one draft name, instead of letting an empty draft cell quietly count as a valid review item. That closes the false-green case where quick totals, row counts, and even some file checks could still look fine while a broken table row carried no actionable draft reference. The approval-bound helper audit now proves that empty draft-cell guard directly, and the full queue readiness lane still passes with the stricter parser."
+  },
+  {
+    "id": 575,
+    "timestamp": "2026-06-14T09:38:18Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed green again. I hardened the review-tracker helper so the top Start Here rows now require exact single-draft matches instead of substring matches, which closes the false-green case where a misleading draft name could still pass merely because it contained the expected filename. The row parser now shares one exact draft-name splitter across file validation and Start Here checking, and the approval-bound helper audit proves both the empty-cell guard and the substring-mismatch regression directly."
   }
 ]
