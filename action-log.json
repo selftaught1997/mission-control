@@ -4486,5 +4486,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue lane stayed green again. I hardened the Mission Control action-log helper so malformed persisted entries now fail cleanly when an entry is not a JSON object or its id is boolean/non-integer instead of being silently coerced through raw int(...) during next-id selection, and the approval-bound helper audit now proves those action-log id guards directly."
+  },
+  {
+    "id": 562,
+    "timestamp": "2026-06-14T03:07:31Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue lane heartbeat",
+    "detail": "Queue lane stayed green again. I hardened the Mission Control action-log helper so malformed persisted entries now fail cleanly when an entry is missing its id field instead of silently falling back to 0 during next-id selection, and the approval-bound helper audit now proves that missing-id guard directly."
   }
 ]
