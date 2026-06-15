@@ -4854,5 +4854,13 @@
     "status": "success",
     "summary": "Surfaced the Buffer disconnect screenshot path throughout the approval-bound queue helpers so the reconnect blocker now carries both text diagnostics and the latest visual artifact.",
     "detail": "Ran the required queue-readiness pass and confirmed the execution pack still holds together: review tracker totals/order, Sunday approval-pack items, handoff references, and queue entry-point surfaces all passed again. Then hardened the blocker surface by exposing the existing Buffer screenshot artifact through both check-buffer-publish-state.py and check-queue-readiness.py, and expanded the helper audit so that path is now validated alongside the disconnected Instagram status, disconnect source row_problem_indicator, reconnect clue text, and single-snapshot pre-refreshed flow. Fresh Buffer state still shows queue posts 0, draft posts 0, stratford_karate_club disconnected, and approvals pending in drafts/review-tracker.md, but the next manual fix/verification pass now has the latest screenshot path inline instead of needing a second lookup."
+  },
+  {
+    "id": 608,
+    "timestamp": "2026-06-15T02:08:43Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Upgraded the Aaron-facing Buffer reconnect blocker in QUESTIONS.md so it now carries the exact disconnect status, reconnect clue, and latest screenshot artifact instead of just a generic publish-ready warning.",
+    "detail": "Ran the required queue-readiness pass first and confirmed the same live state from fresh Buffer data: queue posts 0, draft posts 0, stratford_karate_club disconnected, disconnect source row_problem_indicator, reconnect clue present, and the queue handoff / review surfaces still consistent. Then tightened the owner-side blocker surface in QUESTIONS.md so the Buffer reconnect ask now includes the exact publish-state command, the current disconnected status, the reconnect clue text, and the latest screenshot artifact path automation/logs/buffer-health-latest.png in one place. This keeps the queue pack execution-ready without adding more prep docs, while making the approval-plus-reconnect handoff more actionable if Aaron wants to clear the channel himself."
   }
 ]
