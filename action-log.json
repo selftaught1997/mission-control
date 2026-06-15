@@ -4990,5 +4990,13 @@
     "status": "success",
     "summary": "Revalidated the approval-bound Sunday queue lane against a fresh Buffer snapshot and extended the helper audit so unreadable Buffer artifact JSON and refresh-script paths are now proven directly.",
     "detail": "Fresh queue readiness still passes internally after a live Buffer refresh and still shows the same real blocker state: the Buffer queue is empty, the Instagram channel stratford_karate_club is disconnected, the disconnect source is row_problem_indicator, and the reconnect clue remains \"There is a problem with this channel, you may need to refresh it.\" While that approval plus Buffer reconnect blocker stayed unchanged, I extended the approval-bound helper audit so it now proves three more unreadable-file negative paths directly: the standalone Buffer publish-state helper rejects unreadable artifact JSON and unreadable refresh scripts, the queue-readiness wrapper rejects unreadable Buffer refresh scripts, and the queue blocker-surface sync helper rejects unreadable artifact JSON."
+  },
+  {
+    "id": 625,
+    "timestamp": "2026-06-15T10:40:51Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Revalidated the approval-bound Sunday queue lane against a fresh Buffer snapshot, confirmed the same live blocker state, and updated long-term workflow memory so the approval-bound helper-audit note now explicitly records the direct unreadable Buffer artifact JSON and unreadable Buffer refresh-script proof paths.",
+    "detail": "Fresh queue-readiness check completed at 10:38 UTC / 11:38 BST.\nBuffer publish state remains the same live blocker: queue posts 0, draft posts 0, Instagram channel stratford_karate_club disconnected via row_problem_indicator, reconnect clue still present.\nReview tracker, Sunday approval-pack, queue handoff references, queue entry-point surfaces, and Buffer publish-state audits all passed again.\nUpdated MEMORY.md so the approval-bound helper-surface note now explicitly records the direct unreadable Buffer artifact JSON and unreadable Buffer refresh-script proofs across the standalone publish-state helper, queue-readiness wrapper, and blocker-surface sync helper.\nNo new queue-prep docs were added because the blocker is still approval plus Buffer reconnection, not missing prep."
   }
 ]
