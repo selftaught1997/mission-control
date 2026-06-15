@@ -4910,5 +4910,13 @@
     "status": "success",
     "summary": "Queue blocker sync runner hardening",
     "detail": "Integrated the queue-blocker sync helper into the default approval-bound admin flow so each approval-bound wake now refreshes queue readiness, syncs the live Buffer reconnect evidence into QUESTIONS.md and Mission Control item 16 automatically, then continues through the existing helper audit, bookkeeping, and commit path. Fresh readiness still shows the same real blocker: the Buffer queue is empty, `stratford_karate_club` is disconnected, and the lane remains approval-bound."
+  },
+  {
+    "id": 615,
+    "timestamp": "2026-06-15T05:09:28Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue runner memory drift fix",
+    "detail": "Updated long-term operator memory so the documented approval-bound wake flow matches the current implementation again: the bundled queue admin runner now explicitly includes the live Buffer blocker-surface sync before memory continuity and Mission Control refresh, and the top-level approval-bound runner entry now says that same default admin flow includes the blocker sync. Fresh readiness still shows the same real blocker: Buffer queue empty, stratford_karate_club disconnected, approvals pending."
   }
 ]
