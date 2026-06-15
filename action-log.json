@@ -4862,5 +4862,13 @@
     "status": "success",
     "summary": "Upgraded the Aaron-facing Buffer reconnect blocker in QUESTIONS.md so it now carries the exact disconnect status, reconnect clue, and latest screenshot artifact instead of just a generic publish-ready warning.",
     "detail": "Ran the required queue-readiness pass first and confirmed the same live state from fresh Buffer data: queue posts 0, draft posts 0, stratford_karate_club disconnected, disconnect source row_problem_indicator, reconnect clue present, and the queue handoff / review surfaces still consistent. Then tightened the owner-side blocker surface in QUESTIONS.md so the Buffer reconnect ask now includes the exact publish-state command, the current disconnected status, the reconnect clue text, and the latest screenshot artifact path automation/logs/buffer-health-latest.png in one place. This keeps the queue pack execution-ready without adding more prep docs, while making the approval-plus-reconnect handoff more actionable if Aaron wants to clear the channel himself."
+  },
+  {
+    "id": 609,
+    "timestamp": "2026-06-15T02:39:18Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Hardened the queue entry-point audit so it now enforces the exact Aaron-facing Buffer reconnect details in QUESTIONS.md, including the disconnected status, reconnect clue, disconnect source, and latest screenshot path.",
+    "detail": "Started with the required queue-readiness pass and confirmed the live blocker state is still unchanged from fresh Buffer data: queue posts 0, draft posts 0, stratford_karate_club disconnected, disconnect source row_problem_indicator, reconnect clue present, and approvals still pending in drafts/review-tracker.md. Then tightened scripts/check-queue-entry-points.py so the owner-facing blocker surface is no longer validated only by file presence and broad shortcuts: QUESTIONS.md must now explicitly keep the publish-state command, the current disconnected status text, the row_problem_indicator disconnect source, the reconnect clue, and the latest screenshot path automation/logs/buffer-health-latest.png. Expanded the approval-bound helper audit to prove that this new entry-point requirement fails if that reconnect detail drops out, so future wakes cannot silently regress the owner-side handoff while the queue remains blocked on approval plus reconnect."
   }
 ]
