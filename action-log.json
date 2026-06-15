@@ -4934,5 +4934,13 @@
     "status": "success",
     "summary": "Queue repo identity hygiene",
     "detail": "Configured explicit local git user.name and user.email in both the workspace repo and the nested mission-control repo so the approval-bound heartbeat commits stop relying on auto-detected fallback identity. Fresh queue readiness is still structurally green apart from the known blocker: Buffer queue empty, stratford_karate_club disconnected, approvals pending."
+  },
+  {
+    "id": 618,
+    "timestamp": "2026-06-15T06:38:37Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue repo identity memory note",
+    "detail": "Updated long-term operator memory so the approval-bound workflow notes now explicitly record that both the workspace repo and the nested mission-control repo have pinned local git user.name and user.email. That keeps the current commit-path hygiene discoverable instead of relying on recent daily memory alone. Fresh readiness still shows the same real blocker: Buffer queue empty, stratford_karate_club disconnected, approvals pending."
   }
 ]

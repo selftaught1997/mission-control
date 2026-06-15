@@ -3,13 +3,13 @@
   "agent": "Gustav",
   "status": "working",
   "state": "working",
-  "detail": "Queue readiness, live Buffer blocker sync, and memory continuity are green; the Sunday lane remains approval-bound and the local repo commit identity is now pinned explicitly in both repos.",
+  "detail": "Queue readiness, live Buffer blocker sync, and memory continuity are green; the Sunday lane remains approval-bound and the long-term workflow notes now capture the pinned repo-local commit identity too.",
   "current_step": "Keeping the approval-bound Sunday queue lane execution-ready",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1781503690000,
-  "last_updated": "2026-06-15T06:08:10Z",
-  "last_activity_at": "2026-06-15T06:08:10Z",
-  "activity_counter": 332,
+  "updatedAt": 1781505486000,
+  "last_updated": "2026-06-15T06:38:06Z",
+  "last_activity_at": "2026-06-15T06:38:06Z",
+  "activity_counter": 333,
   "emoji": "\ud83e\uddbe"
 }
