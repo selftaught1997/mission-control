@@ -5126,5 +5126,13 @@
     "status": "success",
     "summary": "Revalidated the approval-bound Sunday queue lane and hardened the Sunday approval shortcut so its approval-reply and queue-build wording no longer overstates approval as immediate publish-ready execution.",
     "detail": "Fresh queue-readiness validation completed at 2026-06-15 18:06 UTC / 19:06 BST.\n\nThe live queue blocker is unchanged: queue posts 0, draft posts 0, and Instagram channel `stratford_karate_club` is still disconnected via `row_problem_indicator` with the reconnect clue `There is a problem with this channel, you may need to refresh it.`\n\nThis wake tightened the Sunday-beginner approval shortcut itself so its intro, unlocked-state wording, easiest-reply section, and mini-wave note no longer read like approval immediately creates a ready-to-schedule queue build. `drafts/sunday-beginner-queue-approval-pack-2026-06-04.md` now says approval clears the approval side of the queue build while the live Buffer step still has to be verified or fixed before scheduling. `scripts/check-sunday-approval-pack.py` now rejects the older `immediately unlocks the first queue build` / `unblock the next step` phrasing directly, and `scripts/check-approval-bound-helper-surface.py` now proves that stale-wording path.\n\nNo new prep docs were added. This was another blocker-surface hardening pass on the existing Sunday approval shortcut, followed by the normal approval-bound refresh path."
+  },
+  {
+    "id": 642,
+    "timestamp": "2026-06-15T19:39:48Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Hardened owner-facing queue approval wording",
+    "detail": "Revalidated the Sunday approval-bound queue lane against a fresh Buffer snapshot and tightened the owner-facing approval prompt so it no longer reads like Sunday-batch approval alone lets Gustav move straight into queue assembly. QUESTIONS.md now keeps the live Buffer Instagram verification-or-fix step explicit before queue assembly, the queue entry-point audit requires that reminder, and the approval-bound helper audit now proves both the missing-reminder path and the stale approval-only wording path directly. Live blocker state is unchanged: Buffer queue remains empty, Instagram channel stratford_karate_club is still disconnected via row_problem_indicator, and approvals are still pending in drafts/review-tracker.md."
   }
 ]
