@@ -3,13 +3,13 @@
   "agent": "Gustav",
   "status": "working",
   "state": "working",
-  "detail": "Queue readiness, live Buffer blocker sync, and memory continuity are green; the Sunday lane remains approval-bound and the documented default heartbeat flow now matches the live runner behavior again.",
+  "detail": "Queue readiness, live Buffer blocker sync, and memory continuity are green; the Sunday lane remains approval-bound and the durable operator snapshot now matches the current queue state again.",
   "current_step": "Keeping the approval-bound Sunday queue lane execution-ready",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1781500138000,
-  "last_updated": "2026-06-15T05:08:58Z",
-  "last_activity_at": "2026-06-15T05:08:58Z",
-  "activity_counter": 330,
+  "updatedAt": 1781501885000,
+  "last_updated": "2026-06-15T05:38:05Z",
+  "last_activity_at": "2026-06-15T05:38:05Z",
+  "activity_counter": 331,
   "emoji": "\ud83e\uddbe"
 }
