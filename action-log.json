@@ -5166,5 +5166,13 @@
     "status": "success",
     "summary": "Fixed deeper-doc commit-surface gap",
     "detail": "Revalidated the Sunday approval-bound queue lane after tightening the deeper visual-loading docs and fixed the follow-on workflow gap that surfaced in the final sanity check: the default approval-bound workspace commit surface still was not carrying drafts/content-queue-visual-shortlist-v1-2026-06-04.md or drafts/content-queue-buffer-ready-pack-v1-2026-06-04.md. The commit helper now includes those two deeper execution-pack docs alongside the assembly checklist in its built-in blocker/helper surface, MEMORY.md records that expanded commit-surface contract, and the approval-bound helper audit now proves all three queue-loading docs stay in DEFAULT_ROOT_PATHS. That means future Buffer-gating edits inside the actual Sunday loading pack should commit cleanly through the standard heartbeat flow instead of leaking out as manual cleanup work. Live blocker state is still unchanged: Buffer queue empty, stratford_karate_club disconnected via row_problem_indicator, approvals still pending in drafts/review-tracker.md."
+  },
+  {
+    "id": 647,
+    "timestamp": "2026-06-15T21:41:39Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Hardened last-mile queue loading docs",
+    "detail": "Revalidated the Sunday approval-bound queue lane against a fresh Buffer snapshot and tightened the last-mile loading pack so it no longer reads like Aaron approval alone is enough to start loading the Sunday wave. The content-queue loading sheet now keeps the live Buffer Instagram verification-or-fix step explicit before any queue loading, the Buffer entry matrix now treats that same Buffer step as part of the blocker state for every row, and the queue handoff audit plus approval-bound helper audit now prove those two deeper loading docs cannot quietly drift back to approval-only loading wording. The default approval-bound workspace commit surface now also includes both docs, so future Buffer-gating edits inside the real loading pack should commit automatically through the standard heartbeat flow. Live blocker state is still unchanged: Buffer queue empty, stratford_karate_club disconnected via row_problem_indicator, approvals still pending in drafts/review-tracker.md."
   }
 ]
