@@ -5134,5 +5134,13 @@
     "status": "success",
     "summary": "Hardened owner-facing queue approval wording",
     "detail": "Revalidated the Sunday approval-bound queue lane against a fresh Buffer snapshot and tightened the owner-facing approval prompt so it no longer reads like Sunday-batch approval alone lets Gustav move straight into queue assembly. QUESTIONS.md now keeps the live Buffer Instagram verification-or-fix step explicit before queue assembly, the queue entry-point audit requires that reminder, and the approval-bound helper audit now proves both the missing-reminder path and the stale approval-only wording path directly. Live blocker state is unchanged: Buffer queue remains empty, Instagram channel stratford_karate_club is still disconnected via row_problem_indicator, and approvals are still pending in drafts/review-tracker.md."
+  },
+  {
+    "id": 643,
+    "timestamp": "2026-06-15T20:10:14Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Hardened queue assembly checklist gating",
+    "detail": "Revalidated the Sunday approval-bound queue lane against a fresh Buffer snapshot and tightened the execution pack itself so it no longer implies Sunday-batch approval alone lets the next wake move straight into queue assembly. The content-queue assembly checklist now keeps the live Buffer Instagram verification-or-fix step explicit before queue assembly and scheduling, the queue handoff audit now enforces that checklist wording directly instead of only checking file references, and the approval-bound helper audit now proves both the missing-checklist-text path and the stale approval-only checklist wording path. Live blocker state is unchanged: Buffer queue remains empty, Instagram channel stratford_karate_club is still disconnected via row_problem_indicator, and approvals are still pending in drafts/review-tracker.md."
   }
 ]
