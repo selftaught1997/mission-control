@@ -4838,5 +4838,13 @@
     "status": "success",
     "summary": "Queue lane heartbeat",
     "detail": "Queue-execution diagnostics stayed structurally green, and this wake removed the remaining duplicate-refresh path inside the one-command readiness wrapper. `scripts/check-queue-readiness.py` still does a live Buffer refresh up front, but it now tells `scripts/check-buffer-publish-state.py` to reuse that just-written artifact instead of performing a second refresh inside the same readiness pass.\n\nThat means one readiness run now maps to one Buffer snapshot. On the final pass, the refresh section and the publish-state audit both referenced the same `startedAt` timestamp rather than slightly different refreshes a few seconds apart. The operator-facing output makes the distinction explicit: the standalone exact-status command still prints `Live refresh source: automation/buffer-health-check.js`, while the nested publish-state audit inside the one-command wrapper now prints `Artifact source: automation/logs/buffer-health-latest.json (pre-refreshed)`.\n\nFresh validation on the final pass still showed the live blocker clearly: queue posts `0`, draft posts `0`, Instagram channel `stratford_karate_club` status `disconnected`, disconnect source `row_problem_indicator`, reconnect clue `There is a problem with this channel, you may need to refresh it.`"
+  },
+  {
+    "id": 606,
+    "timestamp": "2026-06-15T01:11:18Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Expanded the Buffer approval-bound helper audit to cover both the live-refresh publish-state path and the nested pre-refreshed artifact path used by queue-readiness.",
+    "detail": "Validated the approval-bound queue helper surface after tightening the Buffer publish-state checks. The helper audit now proves both Buffer paths: the standalone live-refresh command and the nested pre-refreshed artifact mode used inside check-queue-readiness so a single readiness run stays on one fresh snapshot. A fresh queue-readiness pass still shows the same live blocker cleanly: queue posts 0, draft posts 0, stratford_karate_club disconnected, disconnect source row_problem_indicator, reconnect clue present, and approvals still pending in drafts/review-tracker.md."
   }
 ]
