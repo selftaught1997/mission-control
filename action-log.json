@@ -4982,5 +4982,13 @@
     "status": "success",
     "summary": "Revalidated the approval-bound Sunday queue lane against a fresh Buffer snapshot and hardened the screenshot-evidence chain so unreadable screenshot artifacts now fail cleanly instead of being treated as healthy evidence.",
     "detail": "Fresh queue readiness still passes internally after a live Buffer refresh and still shows the same real blocker state: the Buffer queue is empty, the Instagram channel stratford_karate_club is disconnected, the disconnect source is row_problem_indicator, and the reconnect clue remains \"There is a problem with this channel, you may need to refresh it.\" While that approval plus Buffer reconnect blocker stayed unchanged, I hardened the Buffer screenshot-evidence chain again so the standalone publish-state checker, the queue-readiness refresh summary, and the blocker-surface sync helper now all fail if the referenced screenshot artifact exists but is unreadable, and the approval-bound helper audit now proves those unreadable-screenshot guards directly."
+  },
+  {
+    "id": 624,
+    "timestamp": "2026-06-15T10:10:18Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Revalidated the approval-bound Sunday queue lane against a fresh Buffer snapshot and extended the helper audit so unreadable Buffer artifact JSON and refresh-script paths are now proven directly.",
+    "detail": "Fresh queue readiness still passes internally after a live Buffer refresh and still shows the same real blocker state: the Buffer queue is empty, the Instagram channel stratford_karate_club is disconnected, the disconnect source is row_problem_indicator, and the reconnect clue remains \"There is a problem with this channel, you may need to refresh it.\" While that approval plus Buffer reconnect blocker stayed unchanged, I extended the approval-bound helper audit so it now proves three more unreadable-file negative paths directly: the standalone Buffer publish-state helper rejects unreadable artifact JSON and unreadable refresh scripts, the queue-readiness wrapper rejects unreadable Buffer refresh scripts, and the queue blocker-surface sync helper rejects unreadable artifact JSON."
   }
 ]
