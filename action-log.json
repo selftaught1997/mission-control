@@ -4950,5 +4950,13 @@
     "status": "success",
     "summary": "Queue repo identity audit guard",
     "detail": "Extended the approval-bound helper audit so it now verifies the pinned local git user.name and user.email in both the workspace repo and the nested mission-control repo. That turns the recent commit-path hygiene fix into a checked invariant instead of a one-off local tweak. Fresh readiness still shows the same real blocker: Buffer queue empty, stratford_karate_club disconnected, approvals pending."
+  },
+  {
+    "id": 620,
+    "timestamp": "2026-06-15T08:10:18Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Revalidated the approval-bound Sunday queue lane against a fresh Buffer snapshot and updated long-term workflow memory so the helper-audit note now explicitly includes the pinned repo-local git identity checks.",
+    "detail": "Fresh queue readiness still passes internally after a live Buffer refresh and still shows the same real blocker state: the Buffer queue is empty, the Instagram channel stratford_karate_club is disconnected, the disconnect source is row_problem_indicator, and the reconnect clue remains \"There is a problem with this channel, you may need to refresh it.\" While that approval plus Buffer reconnect blocker stayed unchanged, I tightened the durable operator memory so it now explicitly records that the approval-bound helper audit verifies the pinned local git user.name and user.email in both the workspace repo and the nested mission-control repo."
   }
 ]
