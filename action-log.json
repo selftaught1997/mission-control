@@ -5006,5 +5006,13 @@
     "status": "success",
     "summary": "Revalidated the approval-bound Sunday queue lane against a fresh Buffer snapshot and tightened the existing approval shortcuts so they now expose the exact current Instagram reconnect clue while keeping the handoff stack otherwise unchanged.",
     "detail": "Fresh queue-readiness check completed at 11:08 UTC / 12:08 BST.\nBuffer publish state is still the same live blocker: queue posts 0, draft posts 0, Instagram channel stratford_karate_club disconnected via row_problem_indicator, reconnect clue still reads There is a problem with this channel, you may need to refresh it.\nReview tracker, Sunday approval-pack, queue handoff references, queue entry-point surfaces, and Buffer publish-state audits all passed again after the edits.\nUpdated drafts/review-priority-shortlist-2026-06-05.md and drafts/content-queue-master-handoff-v1-2026-06-04.md so the fastest review shortcuts now carry the exact current reconnect clue instead of a generic not-publish-ready note, and removed the duplicated queue-empty line from the master handoff current-reality section.\nNo new prep documents were added; this was a blocker-surface clarity pass on the existing handoff stack."
+  },
+  {
+    "id": 627,
+    "timestamp": "2026-06-15T11:39:03Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Revalidated the approval-bound Sunday queue lane against a fresh Buffer snapshot and tightened the current Aaron-facing approval shortcut so it now carries the exact Instagram reconnect clue and the real post-approval Buffer verification step.",
+    "detail": "Fresh queue-readiness check completed at 11:37 UTC / 12:37 BST.\nBuffer publish state is still the same live blocker: queue posts 0, draft posts 0, Instagram channel stratford_karate_club disconnected via row_problem_indicator, reconnect clue still reads There is a problem with this channel, you may need to refresh it.\nReview tracker, Sunday approval-pack, queue handoff references, queue entry-point surfaces, and Buffer publish-state audits all passed again after the edit.\nUpdated drafts/sunday-beginner-queue-approval-pack-2026-06-04.md so the current Aaron-facing shortcut now states that approval is still the main decision but not the only live blocker, includes the exact current Instagram reconnect clue, and makes the post-approval Buffer verification step explicit.\nNo new prep documents were added; this was a blocker-surface alignment pass on the existing approval shortcut."
   }
 ]
