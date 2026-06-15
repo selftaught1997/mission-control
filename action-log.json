@@ -5038,5 +5038,13 @@
     "status": "success",
     "summary": "Revalidated the approval-bound Sunday queue lane against a fresh Buffer snapshot and hardened the queue entry-point audit so the cross-stack approval shortcut cannot silently lose the exact Instagram reconnect clue or the Buffer-side fix-or-verification reminder.",
     "detail": "Fresh queue-readiness check completed at 13:08 UTC / 14:08 BST.\nBuffer publish state is still the same live blocker: queue posts 0, draft posts 0, Instagram channel stratford_karate_club disconnected via row_problem_indicator, reconnect clue still reads There is a problem with this channel, you may need to refresh it.\nReview tracker, Sunday approval-pack, queue handoff references, queue entry-point surfaces, and Buffer publish-state audits all passed again after the entry-point hardening.\nHardened scripts/check-queue-entry-points.py so the cross-stack shortcut drafts/review-priority-shortlist-2026-06-05.md must now keep python3 scripts/check-buffer-publish-state.py, the exact stratford_karate_club disconnected / row_problem_indicator reconnect wording, and the explicit Buffer-side fix-or-verification reminder instead of only pointing at the right linked docs.\nExtended scripts/check-approval-bound-helper-surface.py so it now proves that missing cross-stack reconnect-detail path directly, and updated MEMORY.md so the queue entry-point helper note records that stronger cross-stack shortcut enforcement."
+  },
+  {
+    "id": 631,
+    "timestamp": "2026-06-15T13:39:19Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Revalidated the approval-bound Sunday queue lane against a fresh Buffer snapshot and aligned the long-term helper note so it now explicitly records the cross-stack reconnect-detail proof path already enforced by the approval-bound helper audit.",
+    "detail": "Fresh queue-readiness check completed at 13:37 UTC / 14:37 BST.\nBuffer publish state is still the same live blocker: queue posts 0, draft posts 0, Instagram channel stratford_karate_club disconnected via row_problem_indicator, reconnect clue still reads There is a problem with this channel, you may need to refresh it.\nReview tracker, Sunday approval-pack, queue handoff references, queue entry-point surfaces, and Buffer publish-state audits all passed again before the bookkeeping run.\nUpdated MEMORY.md so the approval-bound helper-surface note now explicitly records that the helper audit proves the missing cross-stack reconnect-detail path in drafts/review-priority-shortlist-2026-06-05.md, not just the lower-level Buffer artifact plumbing.\nNo new prep documents were added; this was a long-term operator-memory alignment pass on the existing helper-audit surface."
   }
 ]
