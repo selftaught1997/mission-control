@@ -5046,5 +5046,13 @@
     "status": "success",
     "summary": "Revalidated the approval-bound Sunday queue lane against a fresh Buffer snapshot and aligned the long-term helper note so it now explicitly records the cross-stack reconnect-detail proof path already enforced by the approval-bound helper audit.",
     "detail": "Fresh queue-readiness check completed at 13:37 UTC / 14:37 BST.\nBuffer publish state is still the same live blocker: queue posts 0, draft posts 0, Instagram channel stratford_karate_club disconnected via row_problem_indicator, reconnect clue still reads There is a problem with this channel, you may need to refresh it.\nReview tracker, Sunday approval-pack, queue handoff references, queue entry-point surfaces, and Buffer publish-state audits all passed again before the bookkeeping run.\nUpdated MEMORY.md so the approval-bound helper-surface note now explicitly records that the helper audit proves the missing cross-stack reconnect-detail path in drafts/review-priority-shortlist-2026-06-05.md, not just the lower-level Buffer artifact plumbing.\nNo new prep documents were added; this was a long-term operator-memory alignment pass on the existing helper-audit surface."
+  },
+  {
+    "id": 632,
+    "timestamp": "2026-06-15T14:08:25Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Revalidated the approval-bound Sunday queue lane and aligned the long-term queue entry-point helper note so it now explicitly records that the approval-bound helper audit proves the cross-stack reconnect-detail failure path directly.",
+    "detail": "Fresh queue-readiness check completed at 13:37 UTC / 14:37 BST before the final memory alignment pass.\nBuffer publish state is still the same live blocker: queue posts 0, draft posts 0, Instagram channel stratford_karate_club disconnected via row_problem_indicator, reconnect clue still reads There is a problem with this channel, you may need to refresh it.\nAll queue audits were already green on the strengthened helper path.\nUpdated MEMORY.md so the queue entry-point helper note now explicitly records that the approval-bound helper audit proves the missing cross-stack reconnect-detail path directly, not just the lower-level blocker wording itself.\nNo new prep documents were added; this was the matching operator-memory alignment for the strengthened cross-stack queue guard."
   }
 ]
