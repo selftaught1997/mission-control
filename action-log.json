@@ -4942,5 +4942,13 @@
     "status": "success",
     "summary": "Queue repo identity memory note",
     "detail": "Updated long-term operator memory so the approval-bound workflow notes now explicitly record that both the workspace repo and the nested mission-control repo have pinned local git user.name and user.email. That keeps the current commit-path hygiene discoverable instead of relying on recent daily memory alone. Fresh readiness still shows the same real blocker: Buffer queue empty, stratford_karate_club disconnected, approvals pending."
+  },
+  {
+    "id": 619,
+    "timestamp": "2026-06-15T07:39:35Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue repo identity audit guard",
+    "detail": "Extended the approval-bound helper audit so it now verifies the pinned local git user.name and user.email in both the workspace repo and the nested mission-control repo. That turns the recent commit-path hygiene fix into a checked invariant instead of a one-off local tweak. Fresh readiness still shows the same real blocker: Buffer queue empty, stratford_karate_club disconnected, approvals pending."
   }
 ]
