@@ -4926,5 +4926,13 @@
     "status": "success",
     "summary": "Queue memory snapshot drift fix",
     "detail": "Updated long-term operator memory so the top snapshot date and the June daily-memory continuity note now match the real current state again. The durable queue-lane snapshot now points at 2026-06-15 instead of 2026-06-13, and the continuity note now reflects that the daily-memory range is contiguous through memory/2026-06-15 rather than stopping at memory/2026-06-12. Fresh readiness still shows the same real blocker: Buffer queue empty, stratford_karate_club disconnected, approvals pending."
+  },
+  {
+    "id": 617,
+    "timestamp": "2026-06-15T06:08:41Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Queue repo identity hygiene",
+    "detail": "Configured explicit local git user.name and user.email in both the workspace repo and the nested mission-control repo so the approval-bound heartbeat commits stop relying on auto-detected fallback identity. Fresh queue readiness is still structurally green apart from the known blocker: Buffer queue empty, stratford_karate_club disconnected, approvals pending."
   }
 ]
