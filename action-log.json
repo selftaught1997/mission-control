@@ -4870,5 +4870,13 @@
     "status": "success",
     "summary": "Hardened the queue entry-point audit so it now enforces the exact Aaron-facing Buffer reconnect details in QUESTIONS.md, including the disconnected status, reconnect clue, disconnect source, and latest screenshot path.",
     "detail": "Started with the required queue-readiness pass and confirmed the live blocker state is still unchanged from fresh Buffer data: queue posts 0, draft posts 0, stratford_karate_club disconnected, disconnect source row_problem_indicator, reconnect clue present, and approvals still pending in drafts/review-tracker.md. Then tightened scripts/check-queue-entry-points.py so the owner-facing blocker surface is no longer validated only by file presence and broad shortcuts: QUESTIONS.md must now explicitly keep the publish-state command, the current disconnected status text, the row_problem_indicator disconnect source, the reconnect clue, and the latest screenshot path automation/logs/buffer-health-latest.png. Expanded the approval-bound helper audit to prove that this new entry-point requirement fails if that reconnect detail drops out, so future wakes cannot silently regress the owner-side handoff while the queue remains blocked on approval plus reconnect."
+  },
+  {
+    "id": 610,
+    "timestamp": "2026-06-15T03:10:50Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Aligned Mission Control item 16 with the audited reconnect evidence so the internal queue lane now carries the same exact Buffer disconnect status, disconnect source, reconnect clue, and screenshot breadcrumb as QUESTIONS.md.",
+    "detail": "Ran the required queue-readiness pass first and confirmed the live blocker state is still unchanged from fresh Buffer data: queue posts 0, draft posts 0, stratford_karate_club disconnected, disconnect source row_problem_indicator, reconnect clue present, screenshot artifact current, and approvals still pending in drafts/review-tracker.md. Then tightened the queue entry-point audit so mission-control/todo.json item 16 must now keep the same exact reconnect signals already enforced in QUESTIONS.md: , , reconnect clue , and latest screenshot artifact . Updated the live Mission Control item 16 detail to match, and expanded the approval-bound helper audit so older stale-wording fixtures still fail for the intended reason while any future drift in the internal Mission Control blocker surface is caught automatically."
   }
 ]
