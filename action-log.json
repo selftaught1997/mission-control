@@ -4974,5 +4974,13 @@
     "status": "success",
     "summary": "Revalidated the approval-bound Sunday queue lane against a fresh Buffer snapshot and hardened the blocker-surface sync helper so it now rejects missing screenshot artifacts instead of propagating a stale screenshot path.",
     "detail": "Fresh queue readiness still passes internally after a live Buffer refresh and still shows the same real blocker state: the Buffer queue is empty, the Instagram channel stratford_karate_club is disconnected, the disconnect source is row_problem_indicator, and the reconnect clue remains \"There is a problem with this channel, you may need to refresh it.\" While that approval plus Buffer reconnect blocker stayed unchanged, I hardened the queue blocker-surface sync helper so it now fails if the referenced Buffer screenshot artifact path is missing or not a real file instead of propagating a stale string-only screenshot reference into QUESTIONS.md and Mission Control item 16, and the approval-bound helper audit now proves that missing-screenshot path directly."
+  },
+  {
+    "id": 623,
+    "timestamp": "2026-06-15T09:39:50Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Revalidated the approval-bound Sunday queue lane against a fresh Buffer snapshot and hardened the screenshot-evidence chain so unreadable screenshot artifacts now fail cleanly instead of being treated as healthy evidence.",
+    "detail": "Fresh queue readiness still passes internally after a live Buffer refresh and still shows the same real blocker state: the Buffer queue is empty, the Instagram channel stratford_karate_club is disconnected, the disconnect source is row_problem_indicator, and the reconnect clue remains \"There is a problem with this channel, you may need to refresh it.\" While that approval plus Buffer reconnect blocker stayed unchanged, I hardened the Buffer screenshot-evidence chain again so the standalone publish-state checker, the queue-readiness refresh summary, and the blocker-surface sync helper now all fail if the referenced screenshot artifact exists but is unreadable, and the approval-bound helper audit now proves those unreadable-screenshot guards directly."
   }
 ]
