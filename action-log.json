@@ -5054,5 +5054,13 @@
     "status": "success",
     "summary": "Revalidated the approval-bound Sunday queue lane and aligned the long-term queue entry-point helper note so it now explicitly records that the approval-bound helper audit proves the cross-stack reconnect-detail failure path directly.",
     "detail": "Fresh queue-readiness check completed at 13:37 UTC / 14:37 BST before the final memory alignment pass.\nBuffer publish state is still the same live blocker: queue posts 0, draft posts 0, Instagram channel stratford_karate_club disconnected via row_problem_indicator, reconnect clue still reads There is a problem with this channel, you may need to refresh it.\nAll queue audits were already green on the strengthened helper path.\nUpdated MEMORY.md so the queue entry-point helper note now explicitly records that the approval-bound helper audit proves the missing cross-stack reconnect-detail path directly, not just the lower-level blocker wording itself.\nNo new prep documents were added; this was the matching operator-memory alignment for the strengthened cross-stack queue guard."
+  },
+  {
+    "id": 633,
+    "timestamp": "2026-06-15T14:39:19Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Revalidated the approval-bound Sunday queue lane and hardened the approval-bound helper audit so the cross-stack approval shortcut now fails both when reconnect detail is missing and when stale approval-only wording creeps back in.",
+    "detail": "Direct helper-audit pass completed at 14:37 UTC / 15:37 BST before the standard wrapper run.\nBuffer publish state is still the same live blocker: queue posts 0, draft posts 0, Instagram channel stratford_karate_club disconnected via row_problem_indicator, reconnect clue still reads There is a problem with this channel, you may need to refresh it.\nHardened scripts/check-approval-bound-helper-surface.py so it now proves the cross-stack shortlist fails not only when reconnect detail is missing, but also when stale approval-only wording such as approval alone is enough slips back in despite the live Buffer blocker.\nUpdated MEMORY.md so the queue entry-point helper note now records that both the missing-detail and stale approval-only cross-stack failure paths are proven directly by the approval-bound helper audit.\nNo new prep documents were added; this was helper-audit hardening plus the matching operator-memory alignment."
   }
 ]
