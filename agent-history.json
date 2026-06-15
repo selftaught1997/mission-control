@@ -1,11 +1,6 @@
 {
   "entries": [
     {
-      "status": "working",
-      "task": "Heartbeat approval-bound runner",
-      "ts": 1781493042000
-    },
-    {
       "status": "idle",
       "task": "Logged Daily Income Research completion",
       "ts": 1781494715000
@@ -124,6 +119,11 @@
       "status": "working",
       "task": "Heartbeat approval-bound runner",
       "ts": 1781537978000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat approval-bound runner",
+      "ts": 1781539753000
     }
   ]
 }
