@@ -5150,5 +5150,13 @@
     "status": "success",
     "summary": "Fixed checklist commit-surface gap",
     "detail": "Revalidated the Sunday approval-bound queue lane after the execution-pack checklist hardening and fixed the follow-on workflow gap that surfaced in the final sanity check: the default approval-bound workspace commit surface was not yet carrying drafts/content-queue-assembly-checklist-v1-2026-06-04.md. The commit helper now includes that checklist in its built-in blocker/helper surface, MEMORY.md records that commit-surface contract, and the approval-bound helper audit now proves the checklist path stays in DEFAULT_ROOT_PATHS. That means future queue-execution-pack gating tweaks should commit cleanly through the standard heartbeat flow instead of needing an extra manual workspace commit. Live blocker state is still unchanged: Buffer queue empty, stratford_karate_club disconnected via row_problem_indicator, approvals still pending in drafts/review-tracker.md."
+  },
+  {
+    "id": 645,
+    "timestamp": "2026-06-15T20:39:53Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Hardened deeper queue loading docs",
+    "detail": "Revalidated the Sunday approval-bound queue lane against a fresh Buffer snapshot and hardened two deeper execution-pack docs that still read too close to an approval-only loading path. The visual shortlist now says the first wave is only ready to load once approval lands and the live Buffer Instagram verification-or-fix step is cleared, the Buffer-ready pack now keeps that same Buffer gate explicit both in its purpose statement and its final load constraint, and the queue handoff audit plus approval-bound helper audit now prove those deeper docs cannot quietly drift back to approval-only Buffer-loading wording. Live blocker state is unchanged: Buffer queue remains empty, Instagram channel stratford_karate_club is still disconnected via row_problem_indicator, and approvals are still pending in drafts/review-tracker.md."
   }
 ]
