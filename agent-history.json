@@ -3,11 +3,6 @@
     {
       "status": "working",
       "task": "Heartbeat approval-bound runner",
-      "ts": 1781516358000
-    },
-    {
-      "status": "working",
-      "task": "Heartbeat approval-bound runner",
       "ts": 1781518187000
     },
     {
@@ -124,6 +119,11 @@
       "status": "working",
       "task": "Heartbeat approval-bound runner",
       "ts": 1781559666000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat approval-bound runner",
+      "ts": 1781561563000
     }
   ]
 }

@@ -5174,5 +5174,13 @@
     "status": "success",
     "summary": "Hardened last-mile queue loading docs",
     "detail": "Revalidated the Sunday approval-bound queue lane against a fresh Buffer snapshot and tightened the last-mile loading pack so it no longer reads like Aaron approval alone is enough to start loading the Sunday wave. The content-queue loading sheet now keeps the live Buffer Instagram verification-or-fix step explicit before any queue loading, the Buffer entry matrix now treats that same Buffer step as part of the blocker state for every row, and the queue handoff audit plus approval-bound helper audit now prove those two deeper loading docs cannot quietly drift back to approval-only loading wording. The default approval-bound workspace commit surface now also includes both docs, so future Buffer-gating edits inside the real loading pack should commit automatically through the standard heartbeat flow. Live blocker state is still unchanged: Buffer queue empty, stratford_karate_club disconnected via row_problem_indicator, approvals still pending in drafts/review-tracker.md."
+  },
+  {
+    "id": 648,
+    "timestamp": "2026-06-15T22:13:12Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Hardened remaining execution-path queue helpers",
+    "detail": "Revalidated the Sunday-beginner queue lane against a fresh Buffer snapshot, then tightened the remaining active execution helpers that still read too much like approval alone was enough to move toward scheduling. The ready-captions helper now keeps the live Buffer Instagram verification-or-fix step explicit before any scheduling or Buffer-ready variant work, the timing matrix now frames its scenarios and first scheduling decision as post-approval plus post-Buffer-clear rather than approval-only, and the first-three-posts bundle now requires the same live Buffer step before treating the mini-wave as ready to load. I extended the queue handoff audit, the approval-bound helper-surface audit, and the default approval-bound commit surface so those three still-live handoff docs fail directly if the approval-only wording returns and future fixes to them commit automatically."
   }
 ]
