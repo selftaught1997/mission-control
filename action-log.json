@@ -5070,5 +5070,13 @@
     "status": "success",
     "summary": "Revalidated the approval-bound Sunday queue lane against a fresh Buffer snapshot and hardened the Sunday approval-pack guard so stale approval-only wording now fails directly instead of underplaying the live Buffer verification step.",
     "detail": "Fresh queue-readiness validation completed at 2026-06-15 15:11 UTC / 16:11 BST.\n\nThe live Buffer blocker is unchanged: queue posts 0, draft posts 0, and Instagram channel `stratford_karate_club` is still disconnected via `row_problem_indicator` with the reconnect clue `There is a problem with this channel, you may need to refresh it.`\n\nThis wake tightened the Aaron-facing Sunday approval shortcut and its helper surface so stale approval-only wording can no longer imply the queue can move straight into execution without the live Buffer verification step. `scripts/check-sunday-approval-pack.py` now rejects that wording directly, `scripts/check-approval-bound-helper-surface.py` now proves that failure path, and `MEMORY.md` now records the stronger Sunday approval-pack guard explicitly.\n\nNo new prep docs were added. This was blocker-surface hardening on the existing approval shortcut stack, followed by a fresh full queue-readiness pass against a live Buffer snapshot."
+  },
+  {
+    "id": 635,
+    "timestamp": "2026-06-15T15:40:07Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Revalidated the approval-bound Sunday queue lane against a fresh Buffer snapshot and hardened the top-level master handoff so stale approval-only wording now fails directly instead of underplaying the live Buffer verification-or-fix step.",
+    "detail": "Fresh queue-readiness validation completed at 2026-06-15 15:38 UTC / 16:38 BST.\n\nThe live Buffer blocker is unchanged: queue posts 0, draft posts 0, and Instagram channel `stratford_karate_club` is still disconnected via `row_problem_indicator` with the reconnect clue `There is a problem with this channel, you may need to refresh it.`\n\nThis wake tightened the top-level Sunday master handoff so its closing recommendation now keeps the live Buffer verification-or-fix step explicit instead of collapsing the lane into an approval-first-then-execution story. `scripts/check-queue-entry-points.py` now requires that master-handoff wording and rejects the stale `approval first, then execution` phrasing directly, `scripts/check-approval-bound-helper-surface.py` now proves that failure path, and `MEMORY.md` now records the stronger master-handoff guard explicitly.\n\nNo new prep docs were added. This was a blocker-surface hardening pass on the existing working index, followed by a fresh full queue-readiness pass against a live Buffer snapshot."
   }
 ]
