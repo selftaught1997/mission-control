@@ -4894,5 +4894,13 @@
     "status": "success",
     "summary": "Logged Daily Income Research idea 39 completion",
     "detail": "Recorded the successful 2026-06-15 Daily Income Research completion in Mission Control after the queue lane remained approval-bound. The selected winner was `School Staff Mobility & Reset License: 5-Minute Wellbeing Videos for Teachers`, chosen because Aaron can record a teacher-only mobility/reset library once while Gustav handles packaging, school outreach, checkout, onboarding, renewals, and support with ongoing time around 10-20 minutes per week. The published output used idea id `39`, updated today's pointer for 2026-06-15, posted the Discord report at `discord:channel:1488508835369844801/message:1515917551245463627`, and landed the required commit `c3fa447` with message `chore: income research output 2026-06-15`."
+  },
+  {
+    "id": 613,
+    "timestamp": "2026-06-15T04:13:52Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Added a reusable queue-blocker sync helper so the live Buffer reconnect evidence can be pushed into QUESTIONS.md and Mission Control item 16 automatically instead of being hand-aligned wake after wake.",
+    "detail": "Ran the required queue-readiness pass first and confirmed the live blocker is still unchanged from fresh Buffer data: queue posts 0, draft posts 0, stratford_karate_club disconnected, disconnect source row_problem_indicator, reconnect clue present, screenshot artifact current, and approvals still pending in drafts/review-tracker.md. Then turned the repeated blocker-surface hand edits into a reusable helper by adding `scripts/sync-queue-blocker-surfaces.py`. The new script reads the latest Buffer health artifact and rewrites the live reconnect evidence into `QUESTIONS.md` and Mission Control item 16 in one pass so the owner-facing prompt and internal queue lane stay aligned automatically. Added that script to the default approval-bound committed surface, expanded the approval-bound helper audit to execute it on temp fixtures, and reran the full queue-readiness stack so the live normalized surfaces, the new sync helper, and the existing entry-point / publish-state audits all agree on the same exact reconnect evidence: `status: disconnected`, `disconnectSource: row_problem_indicator`, reconnect clue `There is a problem with this channel, you may need to refresh it.`, and screenshot path `automation/logs/buffer-health-latest.png`."
   }
 ]
