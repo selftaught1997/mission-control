@@ -5182,5 +5182,13 @@
     "status": "success",
     "summary": "Hardened remaining execution-path queue helpers",
     "detail": "Revalidated the Sunday-beginner queue lane against a fresh Buffer snapshot, then tightened the remaining active execution helpers that still read too much like approval alone was enough to move toward scheduling. The ready-captions helper now keeps the live Buffer Instagram verification-or-fix step explicit before any scheduling or Buffer-ready variant work, the timing matrix now frames its scenarios and first scheduling decision as post-approval plus post-Buffer-clear rather than approval-only, and the first-three-posts bundle now requires the same live Buffer step before treating the mini-wave as ready to load. I extended the queue handoff audit, the approval-bound helper-surface audit, and the default approval-bound commit surface so those three still-live handoff docs fail directly if the approval-only wording returns and future fixes to them commit automatically."
+  },
+  {
+    "id": 649,
+    "timestamp": "2026-06-15T22:41:05Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Hardened platform-variants queue helper",
+    "detail": "Revalidated the Sunday-beginner queue lane against a fresh Buffer snapshot and tightened the remaining live execution helper that was still outside the stricter Buffer-gating path. The platform-variants helper now keeps the live Buffer Instagram verification-or-fix step explicit before the Buffer-ready variants are reused or lighter-channel variants are treated as ready, and the queue handoff audit plus approval-bound helper-surface audit now fail directly if that active referenced doc drifts back to approval-only wording. I also expanded the default approval-bound workspace commit surface and the durable operator notes so this platform-variants helper now ships automatically with the rest of the Sunday execution pack instead of relying on one-off extra root-path flags."
   }
 ]
