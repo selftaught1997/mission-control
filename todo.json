@@ -21,7 +21,7 @@
     {
       "id": 3,
       "title": "Push Mission Control repo to GitHub Pages origin",
-      "detail": "Local `mission-control` repo is still clean but is now well over `400` commits ahead of `origin/main`, so GitHub Pages is definitely stale and still not reflecting the current local dashboard. The exact ahead count drifts as local housekeeping commits land, but the blocker does not: publishing still needs an explicit push to `origin/main`. This remains a pure approval blocker because pushing would leave the machine and refresh the public site.",
+      "detail": "Local `mission-control` repo is still clean but is now well over `400` commits ahead of `origin/main`, and the last remote `origin/main` commit is still from `2026-04-08 20:05:28+01:00`, so GitHub Pages is definitely stale and still not reflecting the current local dashboard. The exact ahead count drifts as local housekeeping commits land, but the blocker does not: publishing still needs an explicit push to `origin/main`. This remains a pure approval blocker because pushing would leave the machine and refresh the public site.",
       "priority": "high",
       "status": "blocked",
       "category": "Infrastructure",
