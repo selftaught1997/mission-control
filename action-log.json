@@ -5022,5 +5022,13 @@
     "status": "success",
     "summary": "Revalidated the approval-bound Sunday queue lane against a fresh Buffer snapshot and hardened the Sunday approval-pack audit so the current Aaron-facing shortcut cannot silently lose the exact Instagram reconnect clue or the post-approval Buffer verification step.",
     "detail": "Fresh queue-readiness check completed at 12:07 UTC / 13:07 BST.\nBuffer publish state is still the same live blocker: queue posts 0, draft posts 0, Instagram channel stratford_karate_club disconnected via row_problem_indicator, reconnect clue still reads There is a problem with this channel, you may need to refresh it.\nReview tracker, Sunday approval-pack, queue handoff references, queue entry-point surfaces, and Buffer publish-state audits all passed again after the audit hardening.\nHardened scripts/check-sunday-approval-pack.py so the Aaron-facing Sunday approval shortcut must now keep its current publish-blocker section, exact disconnected reconnect wording, and explicit post-approval Buffer verification step instead of only proving the recommended file list.\nUpdated MEMORY.md so the Sunday approval-pack helper note now documents that stronger blocker-wording enforcement."
+  },
+  {
+    "id": 629,
+    "timestamp": "2026-06-15T12:40:09Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Revalidated the approval-bound Sunday queue lane and hardened the approval-bound helper audit so it now proves the Aaron-facing Sunday approval shortcut fails if it loses the current publish-blocker section, exact Instagram reconnect clue, or post-approval Buffer verification step.",
+    "detail": "Direct helper audit pass completed at 12:37 UTC / 13:37 BST before the standard wrapper run.\nBuffer publish state is still the same live blocker: queue posts 0, draft posts 0, Instagram channel stratford_karate_club disconnected via row_problem_indicator, reconnect clue still reads There is a problem with this channel, you may need to refresh it.\nHardened scripts/check-approval-bound-helper-surface.py so it now proves the Sunday approval-pack checker fails end to end when the Aaron-facing shortcut loses its required Current Publish Blocker section, exact reconnect clue, or explicit post-approval Buffer verification step.\nUpdated MEMORY.md so the Sunday approval-pack helper note now records that this missing-blocker-section proof path is part of the approval-bound helper audit too.\nNo new prep docs were added; this was helper-audit hardening on the existing approval shortcut guard."
   }
 ]
