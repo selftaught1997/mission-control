@@ -2,11 +2,6 @@
   "entries": [
     {
       "status": "working",
-      "task": "Heartbeat bundled queue admin sync with blocker surface refresh",
-      "ts": 1781498490000
-    },
-    {
-      "status": "working",
       "task": "Heartbeat bundled queue admin sync with runner-memory alignment",
       "ts": 1781500138000
     },
@@ -124,6 +119,11 @@
       "status": "working",
       "task": "Heartbeat approval-bound runner",
       "ts": 1781543382000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat approval-bound runner",
+      "ts": 1781545132000
     }
   ]
 }
