@@ -4958,5 +4958,13 @@
     "status": "success",
     "summary": "Revalidated the approval-bound Sunday queue lane against a fresh Buffer snapshot and updated long-term workflow memory so the helper-audit note now explicitly includes the pinned repo-local git identity checks.",
     "detail": "Fresh queue readiness still passes internally after a live Buffer refresh and still shows the same real blocker state: the Buffer queue is empty, the Instagram channel stratford_karate_club is disconnected, the disconnect source is row_problem_indicator, and the reconnect clue remains \"There is a problem with this channel, you may need to refresh it.\" While that approval plus Buffer reconnect blocker stayed unchanged, I tightened the durable operator memory so it now explicitly records that the approval-bound helper audit verifies the pinned local git user.name and user.email in both the workspace repo and the nested mission-control repo."
+  },
+  {
+    "id": 621,
+    "timestamp": "2026-06-15T08:39:53Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Revalidated the approval-bound Sunday queue lane against a fresh Buffer snapshot and hardened the screenshot-evidence path so the Buffer helper chain now rejects missing screenshot artifacts instead of trusting a stale string path.",
+    "detail": "Fresh queue readiness still passes internally after a live Buffer refresh and still shows the same real blocker state: the Buffer queue is empty, the Instagram channel stratford_karate_club is disconnected, the disconnect source is row_problem_indicator, and the reconnect clue remains \"There is a problem with this channel, you may need to refresh it.\" While that approval plus Buffer reconnect blocker stayed unchanged, I hardened the Buffer helper chain so both the standalone publish-state checker and the queue-readiness refresh summary now fail if the referenced screenshot artifact path is missing or not a real file, and the approval-bound helper audit now proves those screenshot-artifact guards directly."
   }
 ]
