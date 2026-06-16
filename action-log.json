@@ -5254,5 +5254,13 @@
     "status": "success",
     "summary": "Hardened owner-facing Buffer gate",
     "detail": "Revalidated the Sunday-beginner queue lane against a fresh Buffer snapshot and tightened the Aaron-facing Sunday approval shortcut so its final execution sentence now names the live Buffer Instagram verification-or-fix step explicitly instead of the vaguer current Buffer verification wording. The Sunday approval-pack helper and the approval-bound helper audit now fail directly if that older owner-facing shortcut line returns."
+  },
+  {
+    "id": 658,
+    "timestamp": "2026-06-16T03:10:56Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Hardened cross-stack Buffer gate",
+    "detail": "Revalidated the Sunday-beginner queue lane against a fresh Buffer snapshot and tightened the cross-stack approval shortcut so it now names the live Buffer Instagram verification-or-fix step explicitly instead of the broader Buffer-side fix wording. The queue entry-point audit and the approval-bound helper audit now fail directly if that older generic cross-stack wording or the older approval-only shorthand returns."
   }
 ]
