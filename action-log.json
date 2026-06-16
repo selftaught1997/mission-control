@@ -5222,5 +5222,13 @@
     "status": "success",
     "summary": "Hardened Scenario B timing gate",
     "detail": "Revalidated the Sunday-beginner queue lane against a fresh Buffer snapshot and tightened the active timing matrix so Scenario B no longer reduces the schedule choice to approval timing alone. It now states explicitly that the batch can miss the practical pre-Sunday window because the live Buffer Instagram step clears too late, and the queue handoff plus approval-bound helper audits now fail directly if that older approval-only decision sentence comes back."
+  },
+  {
+    "id": 654,
+    "timestamp": "2026-06-16T01:09:28Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Hardened Scenario A/C timing gates",
+    "detail": "Revalidated the Sunday-beginner queue lane against a fresh Buffer snapshot and tightened the active timing matrix so Scenario A and Scenario C no longer slip back into approval-only shorthand. The operative decision lines now state explicitly that the next-Sunday path requires the live Buffer Instagram step to clear early enough, and the fastest mini-wave path assumes that same Buffer step is already cleared. The queue handoff and approval-bound helper audits now fail directly if those older approval-only scenario sentences return."
   }
 ]
