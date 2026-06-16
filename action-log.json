@@ -5366,5 +5366,13 @@
     "status": "success",
     "summary": "Harden execution-state proof-memory guard",
     "detail": "Revalidated the Sunday-beginner queue lane against a fresh Buffer snapshot and tightened the durable operator-memory guard instead of touching the queue pack again. `scripts/check-queue-entry-points.py` now enforces that `MEMORY.md` keeps the helper-audit proof path for the missing master-handoff execution-state reminder guard, and `scripts/check-approval-bound-helper-surface.py` now proves that failure path directly too. Fresh readiness is unchanged: Buffer queue empty, Instagram channel `stratford_karate_club` disconnected with `row_problem_indicator`, reconnect clue still present, and approvals remain the live blocker."
+  },
+  {
+    "id": 672,
+    "timestamp": "2026-06-16T10:11:50Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Aligned durable approval-bound helper-surface note with full queue proof set",
+    "detail": "Refreshed the live Sunday queue readiness lane before touching docs: Buffer still shows 0 queued posts, 0 drafts, and the Instagram channel stratford_karate_club remains disconnected with the row_problem_indicator refresh clue, so the blocker is still approvals plus Buffer verification or fix rather than missing prep.\nAligned the durable approval-bound helper-surface note in MEMORY.md with the full cross-stack and master-handoff proof set it is meant to describe, including the reconnect-detail path, next-step reminder path, stale approval-only and unblock wording guards, the master-handoff minimal-stack and execution-state reminder paths, and the platform-variants gating path.\nExtended the entry-point and helper-surface audits to require the unique full cross-stack and master-handoff proof set wording, then reran scripts/check-queue-entry-points.py and scripts/check-approval-bound-helper-surface.py successfully so that durable operator note cannot quietly shrink again."
   }
 ]
