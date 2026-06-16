@@ -5334,5 +5334,13 @@
     "status": "success",
     "summary": "Harden next-step proof-memory guard",
     "detail": "Revalidated the Sunday-beginner queue lane against a fresh Buffer snapshot and tightened the durable operator-memory guard instead of touching the queue pack again. `scripts/check-queue-entry-points.py` now enforces that `MEMORY.md` keeps the helper-audit proof path for the missing cross-stack next-step reminder, and `scripts/check-approval-bound-helper-surface.py` now proves that failure path directly too. Fresh readiness is unchanged: Buffer queue empty, Instagram channel `stratford_karate_club` disconnected with `row_problem_indicator`, reconnect clue still present, and approvals remain the live blocker."
+  },
+  {
+    "id": 668,
+    "timestamp": "2026-06-16T08:09:17Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Harden unblock-wording proof-memory guard",
+    "detail": "Revalidated the Sunday-beginner queue lane against a fresh Buffer snapshot and tightened the durable operator-memory guard instead of touching the queue pack again. `scripts/check-queue-entry-points.py` now enforces that `MEMORY.md` keeps the helper-audit proof path for the stale cross-stack unblock wording guard, and `scripts/check-approval-bound-helper-surface.py` now proves that failure path directly too. Fresh readiness is unchanged: Buffer queue empty, Instagram channel `stratford_karate_club` disconnected with `row_problem_indicator`, reconnect clue still present, and approvals remain the live blocker."
   }
 ]
