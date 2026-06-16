@@ -5374,5 +5374,13 @@
     "status": "success",
     "summary": "Aligned durable approval-bound helper-surface note with full queue proof set",
     "detail": "Refreshed the live Sunday queue readiness lane before touching docs: Buffer still shows 0 queued posts, 0 drafts, and the Instagram channel stratford_karate_club remains disconnected with the row_problem_indicator refresh clue, so the blocker is still approvals plus Buffer verification or fix rather than missing prep.\nAligned the durable approval-bound helper-surface note in MEMORY.md with the full cross-stack and master-handoff proof set it is meant to describe, including the reconnect-detail path, next-step reminder path, stale approval-only and unblock wording guards, the master-handoff minimal-stack and execution-state reminder paths, and the platform-variants gating path.\nExtended the entry-point and helper-surface audits to require the unique full cross-stack and master-handoff proof set wording, then reran scripts/check-queue-entry-points.py and scripts/check-approval-bound-helper-surface.py successfully so that durable operator note cannot quietly shrink again."
+  },
+  {
+    "id": 673,
+    "timestamp": "2026-06-16T10:40:55Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Added mini-wave pointer to Buffer-ready queue pack",
+    "detail": "Refreshed the live Sunday queue readiness lane again: Buffer still shows 0 queued posts, 0 drafts, and the Instagram channel stratford_karate_club remains disconnected with the row_problem_indicator refresh clue, so the blocker is still approvals plus Buffer verification or fix rather than missing prep.\nFound a genuine execution-gap inside the existing handoff stack: the Buffer-ready caption pack did not point the operator at the faster three-post mini-wave path when only that subset is approved, which could slow a partial-approval execution pass even though the dedicated mini-wave bundle already exists.\nFixed that gap in drafts/content-queue-buffer-ready-pack-v1-2026-06-04.md by explicitly routing partial approvals to drafts/content-queue-first-three-posts-bundle-v1-2026-06-04.md, then tightened scripts/check-queue-handoff.py so the queue handoff audit now fails if that mini-wave pointer disappears again."
   }
 ]
