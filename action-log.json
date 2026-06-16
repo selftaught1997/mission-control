@@ -5278,5 +5278,13 @@
     "status": "success",
     "summary": "Hardened owner-facing post-approval step order",
     "detail": "Revalidated the Sunday-beginner queue lane against a fresh Buffer snapshot and tightened the Aaron-facing Sunday approval shortcut so its post-approval sequence now keeps the live Buffer Instagram verification-or-fix step ahead of queue assembly instead of implying that the first Buffer posts get assembled first. The Sunday approval-pack helper and the approval-bound helper audit now fail directly if that stale owner-facing order returns."
+  },
+  {
+    "id": 661,
+    "timestamp": "2026-06-16T04:40:59Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Proved owner-facing post-approval step order",
+    "detail": "Revalidated the Sunday-beginner queue lane against a fresh Buffer snapshot and hardened the Aaron-facing Sunday approval-pack guard so it now proves the owner-facing post-approval sequence directly: the live Buffer Instagram verification-or-fix step must appear before queue assembly in the shortcut, not just as a nearby line. The Sunday approval-pack helper and the approval-bound helper audit now fail directly if that owner-facing order is reversed."
   }
 ]
