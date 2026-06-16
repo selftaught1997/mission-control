@@ -5246,5 +5246,13 @@
     "status": "success",
     "summary": "Hardened partial-load Buffer gate",
     "detail": "Revalidated the Sunday-beginner queue lane against a fresh Buffer snapshot and tightened the active loading sheet so the partial-approval operator rule no longer reads like approval alone is enough to start loading posts. It now states explicitly that even a partial approved batch only moves into loading after that same live Buffer Instagram step is cleared, and the queue handoff plus approval-bound helper audits now fail directly if the older approval-only partial-load rule returns."
+  },
+  {
+    "id": 657,
+    "timestamp": "2026-06-16T02:39:45Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Hardened owner-facing Buffer gate",
+    "detail": "Revalidated the Sunday-beginner queue lane against a fresh Buffer snapshot and tightened the Aaron-facing Sunday approval shortcut so its final execution sentence now names the live Buffer Instagram verification-or-fix step explicitly instead of the vaguer current Buffer verification wording. The Sunday approval-pack helper and the approval-bound helper audit now fail directly if that older owner-facing shortcut line returns."
   }
 ]
