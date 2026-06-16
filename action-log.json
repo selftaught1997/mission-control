@@ -5398,5 +5398,13 @@
     "status": "success",
     "summary": "Added mini-wave pointer to loading sheet",
     "detail": "Refreshed the live Sunday queue readiness lane again: Buffer still shows 0 queued posts, 0 drafts, and the Instagram channel stratford_karate_club remains disconnected with the row_problem_indicator refresh clue, so the blocker is still approvals plus Buffer verification or fix rather than missing prep.\nFound another genuine operator gap inside the active execution stack: the loading sheet already told the operator to load Posts 1-3 first on a fastest-path approval, but it did not explicitly route that partial approval to the dedicated three-post mini-wave bundle, which left the fastest execution path less explicit than the surrounding handoff docs.\nFixed that gap in drafts/content-queue-loading-sheet-v1-2026-06-04.md by pointing the fastest mini-wave case to drafts/content-queue-first-three-posts-bundle-v1-2026-06-04.md as the single-file execution pack, then tightened scripts/check-queue-handoff.py and the approval-bound helper-surface fixture so the queue audits now fail if that loading-sheet pointer disappears again."
+  },
+  {
+    "id": 676,
+    "timestamp": "2026-06-16T12:11:11Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Added mini-wave pointer to assembly checklist",
+    "detail": "Refreshed the live Sunday queue readiness lane again: Buffer still shows 0 queued posts, 0 drafts, and the Instagram channel stratford_karate_club remains disconnected with the row_problem_indicator refresh clue, so the blocker is still approvals plus Buffer verification or fix rather than missing prep.\nFound another genuine fastest-path operator gap inside the active execution stack: the assembly checklist already told the operator to expand from the first 3 posts, but it did not explicitly route that partial approval to the dedicated three-post mini-wave bundle, which made the fastest execution path less explicit than the surrounding loading-sheet, visual, and Buffer-ready docs.\nFixed that gap in drafts/content-queue-assembly-checklist-v1-2026-06-04.md by pointing fastest-path approvals to drafts/content-queue-first-three-posts-bundle-v1-2026-06-04.md before expanding back out to the wider Sunday stack, then tightened scripts/check-queue-handoff.py and the approval-bound helper-surface fixture so the queue audits now fail if that assembly-checklist pointer disappears again."
   }
 ]
