@@ -5430,5 +5430,13 @@
     "status": "success",
     "summary": "Added mini-wave pointer to platform variants",
     "detail": "Refreshed the live Sunday queue readiness lane again: Buffer still shows 0 queued posts, 0 drafts, and the Instagram channel stratford_karate_club remains disconnected with the row_problem_indicator refresh clue, so the blocker is still approvals plus Buffer verification or fix rather than missing prep.\nFound another genuine fastest-path operator gap inside the active execution stack: the platform-variants doc already explained how to adapt copy for WhatsApp and local community channels, but it did not explicitly route a fastest-path approval to the dedicated three-post mini-wave bundle first, which made the lighter-channel lane less explicit than the loading, visual, scheduling, assembly, Buffer-ready, and caption docs.\nFixed that gap in drafts/content-queue-platform-variants-v1-2026-06-04.md by pointing fastest-path approvals to drafts/content-queue-first-three-posts-bundle-v1-2026-06-04.md as the execution pack first, then tightened scripts/check-queue-handoff.py and the approval-bound helper-surface fixture so the queue audits now fail if that platform-variant pointer disappears again."
+  },
+  {
+    "id": 680,
+    "timestamp": "2026-06-16T14:11:40Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Guarded stale first-batch queue note",
+    "detail": "Cleaned up a stale secondary queue doc that was still implying \"load the first 3 posts into Buffer\" without the current Buffer Instagram verification-or-fix gate.\n\nUpdated drafts/content-queue-first-batch-plan-2026-06-04.md so it now explicitly says it is not the live execution handoff, routes fastest-mini-wave approvals to drafts/content-queue-first-three-posts-bundle-v1-2026-06-04.md, and requires the current Buffer Instagram step to be verified or fixed before treating any Sunday queue lane as ready to load.\n\nUpdated drafts/review-tracker.md so that same file is described as a secondary queue-shape note rather than a main execution path, then tightened scripts/check-review-tracker.py to assert that wording and prevent drift.\n\nValidation passed after the cleanup: scripts/check-review-tracker.py and scripts/check-queue-readiness.py both passed; the live blocker is still unchanged at Buffer queue posts 0, draft posts 0, and Instagram channel stratford_karate_club disconnected with the refresh clue that the channel may need to be refreshed."
   }
 ]
