@@ -5270,5 +5270,13 @@
     "status": "success",
     "summary": "Hardened owner-facing ready-state gate",
     "detail": "Revalidated the Sunday-beginner queue lane against a fresh Buffer snapshot and tightened the Aaron-facing Sunday approval shortcut so its \"what is ready\" section now names the live Buffer Instagram verification-or-fix step explicitly instead of the older generic live Buffer step wording. The Sunday approval-pack helper and the approval-bound helper audit now fail directly if that owner-facing shorthand returns."
+  },
+  {
+    "id": 660,
+    "timestamp": "2026-06-16T04:11:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Hardened owner-facing post-approval step order",
+    "detail": "Revalidated the Sunday-beginner queue lane against a fresh Buffer snapshot and tightened the Aaron-facing Sunday approval shortcut so its post-approval sequence now keeps the live Buffer Instagram verification-or-fix step ahead of queue assembly instead of implying that the first Buffer posts get assembled first. The Sunday approval-pack helper and the approval-bound helper audit now fail directly if that stale owner-facing order returns."
   }
 ]
