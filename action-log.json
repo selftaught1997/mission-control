@@ -5310,5 +5310,13 @@
     "status": "success",
     "summary": "Aligned durable helper-surface note",
     "detail": "Revalidated the Sunday-beginner queue lane against a fresh Buffer snapshot and aligned the long-term approval-bound helper-surface note so it now explicitly records that the helper audit proves the durable Sunday approval-pack helper note path in `MEMORY.md` too, not just the live Sunday docs. The queue entry-point/helper audits now fail if that long-term note loses the durable-memory proof wording, which keeps the operator memory aligned with the live approval-pack guardrails instead of relying on daily history alone."
+  },
+  {
+    "id": 665,
+    "timestamp": "2026-06-16T06:40:31Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Harden MEMORY queue-proof guard",
+    "detail": "Revalidated the Sunday-beginner queue lane against a fresh Buffer snapshot and tightened the durable operator-note guard instead of touching the queue pack again. `scripts/check-queue-entry-points.py` now enforces that `MEMORY.md` keeps the active platform-variants gating proof path visible alongside the durable Sunday approval-pack helper-note path, and `scripts/check-approval-bound-helper-surface.py` now proves that failure path directly too. Fresh readiness is unchanged: Buffer queue empty, Instagram channel `stratford_karate_club` disconnected with `row_problem_indicator`, reconnect clue still present, and approvals remain the live blocker."
   }
 ]
