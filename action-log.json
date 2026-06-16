@@ -5454,5 +5454,13 @@
     "status": "success",
     "summary": "Strengthened Sunday approval shortcut mini-wave path",
     "detail": "Strengthened the Aaron-facing Sunday approval shortcut so post-approval mini-wave handling now explicitly points to drafts/content-queue-first-three-posts-bundle-v1-2026-06-04.md instead of generic \"first 3 posts\" wording.\n\nUpdated drafts/sunday-beginner-queue-approval-pack-2026-06-04.md so that once the live Buffer Instagram verification-or-fix step is clear, the shortcut now says to use the dedicated first-three-posts bundle for the fastest mini-wave and keeps that path explicit in the mini-wave fallback section too.\n\nUpdated scripts/check-sunday-approval-pack.py to require that stronger owner-facing wording and to reject the older generic queue-assembly phrasing, then updated scripts/check-queue-handoff.py because the approval-pack now intentionally references the first-three-posts bundle as part of the live handoff path.\n\nUpdated scripts/check-approval-bound-helper-surface.py so the approval-bound self-tests expect the new approval-pack wording and the approval-pack handoff count of four referenced draft paths.\n\nValidation passed after the change: scripts/check-sunday-approval-pack.py, scripts/check-queue-handoff.py, scripts/check-queue-readiness.py, and scripts/check-approval-bound-helper-surface.py all passed. The live blocker is still unchanged at Buffer queue posts 0, draft posts 0, and Instagram channel stratford_karate_club disconnected with the refresh clue that the channel may need to be refreshed."
+  },
+  {
+    "id": 683,
+    "timestamp": "2026-06-16T15:39:20Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Hardened approval-pack helper proof",
+    "detail": "Hardened the approval-bound self-test around the Aaron-facing Sunday approval shortcut so it now explicitly proves the new dedicated mini-wave execution-pack line cannot disappear silently.\n\nUpdated scripts/check-approval-bound-helper-surface.py so the stale approval-pack fixture must now trigger the expected missing-line error when the owner-facing fallback sentence about using drafts/content-queue-first-three-posts-bundle-v1-2026-06-04.md is absent.\n\nValidation passed after the change: scripts/check-approval-bound-helper-surface.py passed cleanly, which means the helper layer now covers the newer owner-facing mini-wave route in addition to the existing blocker and step-order checks.\n\nThe live queue blocker is still unchanged: Buffer queue posts 0, draft posts 0, and Instagram channel stratford_karate_club disconnected with the refresh clue that the channel may need to be refreshed."
   }
 ]
