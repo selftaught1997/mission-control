@@ -5238,5 +5238,13 @@
     "status": "success",
     "summary": "Hardened final schedule-choice gate",
     "detail": "Revalidated the Sunday-beginner queue lane against a fresh Buffer snapshot and tightened the active timing matrix plus master handoff so the final schedule-choice milestone no longer reads like an approval-only checkpoint. The timing matrix now labels that branch as the first decision once approval and Buffer clearance are both in, and the master handoff now says explicitly that the next-Sunday influence decision happens after the live Buffer Instagram step clears. The queue handoff, queue entry-point, and approval-bound helper audits now fail directly if those older approval-only labels return."
+  },
+  {
+    "id": 656,
+    "timestamp": "2026-06-16T02:15:48Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Hardened partial-load Buffer gate",
+    "detail": "Revalidated the Sunday-beginner queue lane against a fresh Buffer snapshot and tightened the active loading sheet so the partial-approval operator rule no longer reads like approval alone is enough to start loading posts. It now states explicitly that even a partial approved batch only moves into loading after that same live Buffer Instagram step is cleared, and the queue handoff plus approval-bound helper audits now fail directly if the older approval-only partial-load rule returns."
   }
 ]
