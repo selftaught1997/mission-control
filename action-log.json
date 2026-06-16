@@ -5478,5 +5478,21 @@
     "status": "success",
     "summary": "Escalation threshold added for repeated Buffer blocker confirmations",
     "detail": "Started with the required queue-readiness pass and confirmed the handoff stack is still structurally green on a fresh 2026-06-16T17:07:01.300Z Buffer snapshot: review-tracker totals still line up, the Sunday approval pack and handoff references still resolve cleanly, the queue is still empty, and the Instagram channel `stratford_karate_club` is still disconnected with `disconnectSource: row_problem_indicator` plus the reconnect clue `There is a problem with this channel, you may need to refresh it.` I treated the newly surfaced process gap as the real execution issue: repeated same-day confirmation of the exact same Buffer blocker had been staying in quiet maintenance mode instead of escalating. To close that gap, I taught `scripts/sync-queue-blocker-surfaces.py` to inspect today\u2019s memory log, count repeated same-day Buffer blocker confirmations, and switch both `QUESTIONS.md` and Mission Control item 16 into explicit escalation wording once the repeat threshold is crossed. I also expanded `scripts/check-approval-bound-helper-surface.py` so the helper bundle now proves that threshold behavior directly, including the live reconnect evidence, the escalation note, and the below-threshold quiet path."
+  },
+  {
+    "id": 686,
+    "timestamp": "2026-06-16T03:15:11Z",
+    "category": "Automation",
+    "status": "failed",
+    "summary": "Daily Income Research failed before it could publish or confirm completion",
+    "detail": "Reviewed the latest Daily Income Research cron run via `openclaw cron runs --id 7c5c35ff-a5b5-419b-acb9-af634b55c9b8 --limit 3` and found the 2026-06-16 run ended with status `error`, delivery `not-delivered`, and the failure message `Codex stopped before confirming the turn was complete. Some work may already have been performed; verify the current state before retrying.` The corresponding 25-hour git history did not contain a new `chore: income research output 2026-06-16` commit, which indicates today's research output was not cleanly written and committed like the successful 2026-06-15 run. Logged this as a failed automation so the missing daily research result is visible in Mission Control instead of silently disappearing behind routine heartbeat work."
+  },
+  {
+    "id": 687,
+    "timestamp": "2026-06-16T19:40:19Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Hardened Daily Income Research against post-scaffold drift",
+    "detail": "After revalidating the unchanged Sunday queue blocker, I treated the fresh Daily Income Research failure as the new actionable lane because HEARTBEAT.md explicitly said the cron lane should stay closed only until a fresh regression appeared. The local readiness surfaces were still healthy: `research/income-ideas-log.json`, `research/todays-income-idea.json`, `research/usage-log.json`, the Discord-post/publish helpers, and the explicit three-file git staging path all passed. The failed isolated cron session `88f7e71f-eec5-4342-9fbc-ddb8069610d6` showed a different problem: it never reached publish or commit, and instead drifted into extra schema/script inspection after scaffolding `/tmp/income-research-analysis.json`. I hardened the live Daily Income Research cron prompt with a post-scaffold finish-fast guard telling Codex not to inspect large script sources or idea JSON blobs after step 3 unless validation fails, and to fill, validate, publish, commit, then stop. I also updated `scripts/check-income-research-readiness.py` so this guard is mechanically enforced alongside the existing compact-helper, publish-helper, and explicit git-add checks. The refreshed readiness run now passes against the live job with the new guard present and the prompt still under the 2400-character ceiling, so the next 04:12 BST run is at least protected against the exact wandering failure path that showed up today."
   }
 ]
