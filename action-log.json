@@ -5230,5 +5230,13 @@
     "status": "success",
     "summary": "Hardened Scenario A/C timing gates",
     "detail": "Revalidated the Sunday-beginner queue lane against a fresh Buffer snapshot and tightened the active timing matrix so Scenario A and Scenario C no longer slip back into approval-only shorthand. The operative decision lines now state explicitly that the next-Sunday path requires the live Buffer Instagram step to clear early enough, and the fastest mini-wave path assumes that same Buffer step is already cleared. The queue handoff and approval-bound helper audits now fail directly if those older approval-only scenario sentences return."
+  },
+  {
+    "id": 655,
+    "timestamp": "2026-06-16T01:42:35Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Hardened final schedule-choice gate",
+    "detail": "Revalidated the Sunday-beginner queue lane against a fresh Buffer snapshot and tightened the active timing matrix plus master handoff so the final schedule-choice milestone no longer reads like an approval-only checkpoint. The timing matrix now labels that branch as the first decision once approval and Buffer clearance are both in, and the master handoff now says explicitly that the next-Sunday influence decision happens after the live Buffer Instagram step clears. The queue handoff, queue entry-point, and approval-bound helper audits now fail directly if those older approval-only labels return."
   }
 ]
