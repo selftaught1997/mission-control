@@ -5446,5 +5446,13 @@
     "status": "success",
     "summary": "Tightened mini-wave loading-sheet guardrails",
     "detail": "Tightened the Sunday queue loading-sheet rules so the fastest mini-wave no longer says \"load Posts 1-3 first\" in a loose way.\n\nUpdated drafts/content-queue-loading-sheet-v1-2026-06-04.md so mini-wave handling now explicitly says to load only Posts 1-3 after the Buffer Instagram verification-or-fix step clears, keep Posts 4-5 pending unless they are also approved, and use drafts/content-queue-first-three-posts-bundle-v1-2026-06-04.md before expanding.\n\nUpdated scripts/check-queue-handoff.py so the handoff audit now requires that stronger loading-sheet wording and explicitly rejects the weaker variants that were still slipping through.\n\nValidation passed after the change: scripts/check-queue-handoff.py and scripts/check-queue-readiness.py both passed. The live blocker is still unchanged at Buffer queue posts 0, draft posts 0, and Instagram channel stratford_karate_club disconnected with the refresh clue that the channel may need to be refreshed."
+  },
+  {
+    "id": 682,
+    "timestamp": "2026-06-16T15:11:15Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Strengthened Sunday approval shortcut mini-wave path",
+    "detail": "Strengthened the Aaron-facing Sunday approval shortcut so post-approval mini-wave handling now explicitly points to drafts/content-queue-first-three-posts-bundle-v1-2026-06-04.md instead of generic \"first 3 posts\" wording.\n\nUpdated drafts/sunday-beginner-queue-approval-pack-2026-06-04.md so that once the live Buffer Instagram verification-or-fix step is clear, the shortcut now says to use the dedicated first-three-posts bundle for the fastest mini-wave and keeps that path explicit in the mini-wave fallback section too.\n\nUpdated scripts/check-sunday-approval-pack.py to require that stronger owner-facing wording and to reject the older generic queue-assembly phrasing, then updated scripts/check-queue-handoff.py because the approval-pack now intentionally references the first-three-posts bundle as part of the live handoff path.\n\nUpdated scripts/check-approval-bound-helper-surface.py so the approval-bound self-tests expect the new approval-pack wording and the approval-pack handoff count of four referenced draft paths.\n\nValidation passed after the change: scripts/check-sunday-approval-pack.py, scripts/check-queue-handoff.py, scripts/check-queue-readiness.py, and scripts/check-approval-bound-helper-surface.py all passed. The live blocker is still unchanged at Buffer queue posts 0, draft posts 0, and Instagram channel stratford_karate_club disconnected with the refresh clue that the channel may need to be refreshed."
   }
 ]
