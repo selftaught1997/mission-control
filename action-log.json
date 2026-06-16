@@ -5438,5 +5438,13 @@
     "status": "success",
     "summary": "Guarded stale first-batch queue note",
     "detail": "Cleaned up a stale secondary queue doc that was still implying \"load the first 3 posts into Buffer\" without the current Buffer Instagram verification-or-fix gate.\n\nUpdated drafts/content-queue-first-batch-plan-2026-06-04.md so it now explicitly says it is not the live execution handoff, routes fastest-mini-wave approvals to drafts/content-queue-first-three-posts-bundle-v1-2026-06-04.md, and requires the current Buffer Instagram step to be verified or fixed before treating any Sunday queue lane as ready to load.\n\nUpdated drafts/review-tracker.md so that same file is described as a secondary queue-shape note rather than a main execution path, then tightened scripts/check-review-tracker.py to assert that wording and prevent drift.\n\nValidation passed after the cleanup: scripts/check-review-tracker.py and scripts/check-queue-readiness.py both passed; the live blocker is still unchanged at Buffer queue posts 0, draft posts 0, and Instagram channel stratford_karate_club disconnected with the refresh clue that the channel may need to be refreshed."
+  },
+  {
+    "id": 681,
+    "timestamp": "2026-06-16T14:42:30Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Tightened mini-wave loading-sheet guardrails",
+    "detail": "Tightened the Sunday queue loading-sheet rules so the fastest mini-wave no longer says \"load Posts 1-3 first\" in a loose way.\n\nUpdated drafts/content-queue-loading-sheet-v1-2026-06-04.md so mini-wave handling now explicitly says to load only Posts 1-3 after the Buffer Instagram verification-or-fix step clears, keep Posts 4-5 pending unless they are also approved, and use drafts/content-queue-first-three-posts-bundle-v1-2026-06-04.md before expanding.\n\nUpdated scripts/check-queue-handoff.py so the handoff audit now requires that stronger loading-sheet wording and explicitly rejects the weaker variants that were still slipping through.\n\nValidation passed after the change: scripts/check-queue-handoff.py and scripts/check-queue-readiness.py both passed. The live blocker is still unchanged at Buffer queue posts 0, draft posts 0, and Instagram channel stratford_karate_club disconnected with the refresh clue that the channel may need to be refreshed."
   }
 ]
