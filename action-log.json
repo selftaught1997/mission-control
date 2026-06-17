@@ -5494,5 +5494,13 @@
     "status": "success",
     "summary": "Hardened Daily Income Research against post-scaffold drift",
     "detail": "After revalidating the unchanged Sunday queue blocker, I treated the fresh Daily Income Research failure as the new actionable lane because HEARTBEAT.md explicitly said the cron lane should stay closed only until a fresh regression appeared. The local readiness surfaces were still healthy: `research/income-ideas-log.json`, `research/todays-income-idea.json`, `research/usage-log.json`, the Discord-post/publish helpers, and the explicit three-file git staging path all passed. The failed isolated cron session `88f7e71f-eec5-4342-9fbc-ddb8069610d6` showed a different problem: it never reached publish or commit, and instead drifted into extra schema/script inspection after scaffolding `/tmp/income-research-analysis.json`. I hardened the live Daily Income Research cron prompt with a post-scaffold finish-fast guard telling Codex not to inspect large script sources or idea JSON blobs after step 3 unless validation fails, and to fill, validate, publish, commit, then stop. I also updated `scripts/check-income-research-readiness.py` so this guard is mechanically enforced alongside the existing compact-helper, publish-helper, and explicit git-add checks. The refreshed readiness run now passes against the live job with the new guard present and the prompt still under the 2400-character ceiling, so the next 04:12 BST run is at least protected against the exact wandering failure path that showed up today."
+  },
+  {
+    "id": 688,
+    "timestamp": "2026-06-17T03:07:34Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Bootstrapped the 2026-06-17 heartbeat log after revalidating the unchanged Sunday queue blocker.",
+    "detail": "Ran the required queue readiness audit at 03:06 BST. The Sunday approval pack, handoff references, review tracker ordering, and queue entry-point surfaces all still pass, while Buffer still shows queue posts 0, draft posts 0, and the Instagram channel stratford_karate_club disconnected via row_problem_indicator with approvals still pending. No genuinely new execution gap appeared in the queue pack itself, so this wake used the open workspace-hygiene gap instead: bootstrapping the new 2026-06-17 daily heartbeat log and matching Mission Control record."
   }
 ]
