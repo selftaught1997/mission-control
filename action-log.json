@@ -5502,5 +5502,13 @@
     "status": "success",
     "summary": "Bootstrapped the 2026-06-17 heartbeat log after revalidating the unchanged Sunday queue blocker.",
     "detail": "Ran the required queue readiness audit at 03:06 BST. The Sunday approval pack, handoff references, review tracker ordering, and queue entry-point surfaces all still pass, while Buffer still shows queue posts 0, draft posts 0, and the Instagram channel stratford_karate_club disconnected via row_problem_indicator with approvals still pending. No genuinely new execution gap appeared in the queue pack itself, so this wake used the open workspace-hygiene gap instead: bootstrapping the new 2026-06-17 daily heartbeat log and matching Mission Control record."
+  },
+  {
+    "id": 689,
+    "timestamp": "2026-06-17T07:39:43Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Recorded an approval-bound heartbeat pass after a fresh Sunday queue readiness audit.",
+    "detail": "Ran the required queue-readiness pass at 08:36 BST and confirmed the Sunday lane is still blocked by approval plus Buffer Instagram reconnect work rather than missing prep. Fresh checks showed queue posts 0, draft posts 0, and Instagram channel stratford_karate_club disconnected via row_problem_indicator while the review tracker, Sunday approval pack, handoff, entry-point, and publish-state audits all passed, so I used the approval-bound runner to log and commit the wake without generating more duplicate prep surfaces."
   }
 ]
