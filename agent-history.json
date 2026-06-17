@@ -2,11 +2,6 @@
   "entries": [
     {
       "status": "working",
-      "task": "Heartbeat queue-blocker escalation hardening",
-      "ts": 1781629916000
-    },
-    {
-      "status": "working",
       "task": "Heartbeat approval-bound runner",
       "ts": 1781681952000
     },
@@ -124,6 +119,11 @@
       "status": "working",
       "task": "Heartbeat approval-bound runner",
       "ts": 1781725070000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat approval-bound runner",
+      "ts": 1781726863000
     }
   ]
 }
