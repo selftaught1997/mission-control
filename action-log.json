@@ -6806,5 +6806,13 @@
     "status": "success",
     "summary": "Hardened the approval-bound heartbeat flow so the queue-readiness state ledger now updates and commits automatically while the Sunday lane remains blocked by approvals plus the Buffer Instagram reconnect step.",
     "detail": "The 2026-06-20 19:36 BST approval-bound heartbeat pass reconfirmed the same live blocker state: the refreshed Buffer snapshot still shows queue posts 0, draft posts 0, and Instagram channel stratford_karate_club disconnected via row_problem_indicator while the review tracker, Sunday approval-pack, queue handoff, queue entry-point, and Buffer publish-state audits all passed again. During this wake I also tightened the helper path itself: scripts/run-queue-heartbeat-admin.py now refreshes memory/heartbeat-state.json immediately after the readiness audit, scripts/commit-approval-bound-heartbeat.py now includes memory/heartbeat-state.json in the default committed surface, and scripts/check-approval-bound-helper-surface.py now audits that heartbeat-state update path directly, so future approval-bound wakes no longer need a manual follow-up commit just to keep the persisted queue-readiness ledger current."
+  },
+  {
+    "id": 852,
+    "timestamp": "2026-06-20T19:07:58Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Logged the fresh 20:07 BST Sunday queue readiness pass after reconfirming that the live blocker is still approvals plus the Buffer Instagram reconnect step.",
+    "detail": "The 2026-06-20 20:07 BST queue-readiness pass reconfirmed there is still no genuinely new execution gap in the Sunday queue pack. The refreshed Buffer snapshot still shows queue posts 0, draft posts 0, and Instagram channel stratford_karate_club disconnected via row_problem_indicator with the same reconnect clue. The review tracker audit, Sunday approval-pack audit, queue handoff audit, queue entry-point audit, and Buffer publish-state audit all passed again, so the blocker remains approvals plus the Buffer reconnect or verification step rather than missing prep."
   }
 ]
