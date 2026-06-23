@@ -3,21 +3,6 @@
     {
       "status": "working",
       "task": "Heartbeat approval-bound runner",
-      "ts": 1782034646000
-    },
-    {
-      "status": "working",
-      "task": "Heartbeat approval-bound runner",
-      "ts": 1782036444000
-    },
-    {
-      "status": "working",
-      "task": "Heartbeat approval-bound runner",
-      "ts": 1782038244000
-    },
-    {
-      "status": "working",
-      "task": "Heartbeat approval-bound runner",
       "ts": 1782040073000
     },
     {
@@ -124,6 +109,21 @@
       "status": "idle",
       "task": "Hardened channel-derived Buffer fallbacks and revalidated the Sunday queue blocker surfaces",
       "ts": 1782232751000
+    },
+    {
+      "status": "Heartbeat: Mission Control publish blocker hardening",
+      "task": "Hardened Mission Control publish blocker wording and live-count checker after stale Pages diagnostic",
+      "ts": 1782234623000
+    },
+    {
+      "status": "Queue lane blocked on approval + Buffer reconnect",
+      "task": "Committing Mission Control hygiene updates after publish-blocker hardening",
+      "ts": 1782236240000
+    },
+    {
+      "status": "Queue lane blocked on approval + Buffer reconnect",
+      "task": "Committing Mission Control hygiene updates after publish-blocker hardening",
+      "ts": 1782236250000
     }
   ]
 }

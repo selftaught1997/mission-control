@@ -1,15 +1,15 @@
 {
   "schema_version": "1.1",
   "agent": "Gustav",
-  "status": "idle",
-  "state": "idle",
-  "detail": "Queue-readiness helper surfaces are stable again; the Sunday lane remains blocked by approval plus the disconnected Instagram channel after hardening channel-derived Buffer metric fallbacks.",
-  "current_step": "Keeping the approval-bound Sunday queue lane execution-ready after hardening channel-derived Buffer fallbacks",
+  "status": "Queue lane blocked on approval + Buffer reconnect",
+  "state": "Queue lane blocked on approval + Buffer reconnect",
+  "detail": "The Sunday-beginner queue pack remains execution-ready, but queue assembly is still blocked by Aaron approval plus the disconnected Buffer Instagram channel stratford_karate_club. The Mission Control publish-blocker surface is now hardened and the repo hygiene lane is being cleaned up.",
+  "current_step": "Committing accumulated Mission Control status/history updates without reopening the approval-bound queue docs.",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1782232751000,
-  "last_updated": "2026-06-23T16:39:11Z",
-  "last_activity_at": "2026-06-23T16:39:11Z",
-  "activity_counter": 616,
+  "updatedAt": 1782236250000,
+  "last_updated": "2026-06-23T17:37:30Z",
+  "last_activity_at": "2026-06-23T17:37:30Z",
+  "activity_counter": 619,
   "emoji": "\ud83e\uddbe"
 }

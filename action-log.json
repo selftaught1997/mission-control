@@ -7198,5 +7198,53 @@
     "status": "success",
     "summary": "Logged the fresh 20:07 BST Sunday queue readiness pass after reconfirming that the live blocker is still approvals plus the Buffer Instagram reconnect step.",
     "detail": "The 2026-06-21 20:07 BST queue-readiness pass reconfirmed there is still no genuinely new execution gap in the Sunday queue pack. The refreshed Buffer snapshot still shows queue posts 0, draft posts 0, and Instagram channel stratford_karate_club disconnected via row_problem_indicator with the same reconnect clue. The review tracker audit, Sunday approval-pack audit, queue handoff audit, queue entry-point audit, and Buffer publish-state audit all passed again, so the blocker remains approvals plus the Buffer reconnect or verification step rather than missing prep."
+  },
+  {
+    "id": 901,
+    "timestamp": "2026-06-21T03:15:29Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Ran the daily income research job and selected a martial arts club onboarding automation kit as the strongest new income opportunity for UK dojo owners.",
+    "detail": "Reviewed the latest Daily Income Research cron run via `openclaw cron runs --id 7c5c35ff-a5b5-419b-acb9-af634b55c9b8 --limit 3` and confirmed the 2026-06-21 run finished successfully. The job selected idea 43, `Martial Arts Club Onboarding Automation Kit for UK Dojo Owners`, because it best matched Aaron's existing authority and assets while offering strong automation potential and a realistic path to GBP149-GBP799 per sale with under 2 hours per week from Aaron after setup. The run checked prior ideas to avoid repeats, scored five fresh candidates, published the output, posted the report to Discord `#trading-desk`, and committed the updated research output as `9d2cdd2` (`chore: income research output 2026-06-21`)."
+  },
+  {
+    "id": 902,
+    "timestamp": "2026-06-21T21:33:00Z",
+    "category": "Content",
+    "status": "success",
+    "summary": "Built the JKA Nationals promo poster through twelve iterative drafts and landed a polished centered cutout version for Aaron review.",
+    "detail": "From 20:17-22:33 BST on 2026-06-21, I handled the national-championship promo poster lane end-to-end in `scratch/championship-poster/`. I built the opening 4:5 HTML/CSS composite drafts, revised the layout after feedback about missing images and cropped faces, switched to a cutout-led concept using a reusable native Swift helper at `scratch/championship-poster/person_cutout.swift`, used the real Stratford Karate Club logo asset, kept only verified result text (`5TH OVERALL`, `AGAINST 30+ CLUBS NATIONWIDE`, `FROM 12TH IN 2022 TO TOP 5 IN 2026`), and iterated up to `draft-12.html` / `draft-12.png` as the final polished centered composition. Each key revision was rendered locally and sent to Aaron on Telegram for review."
+  },
+  {
+    "id": 903,
+    "timestamp": "2026-06-22T03:15:12Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Ran the daily income research job and selected a failed-payment recovery pack as the strongest new income opportunity for UK martial arts clubs.",
+    "detail": "Reviewed the latest Daily Income Research cron run via `openclaw cron runs --id 7c5c35ff-a5b5-419b-acb9-af634b55c9b8 --limit 3` and confirmed the 2026-06-22 run finished successfully. The job selected idea 44, `Martial Arts Failed-Payment Recovery Pack for UK Clubs`. The run validated the analysis with `python3 scripts/validate-income-research-analysis.py --analysis-file /tmp/income-research-analysis.json`, published the output for `2026-06-22`, posted the report to Discord `#trading-desk`, and committed the research output as `0cf3864` (`chore: income research output 2026-06-22`)."
+  },
+  {
+    "id": 904,
+    "timestamp": "2026-06-22T11:50:00Z",
+    "category": "Setup",
+    "status": "success",
+    "summary": "Upgraded Lyra's poster-review system with reusable checklists, handoff notes, and a style catalogue based on the nationals poster work.",
+    "detail": "Using lessons from the JKA Nationals poster lane, I improved Lyra's poster workflow rather than leaving the learning trapped in chat history. I expanded `lyra/qa/checklist.md` with practical poster review checks, added `lyra/memory/playbooks/poster-review-loop.md` for critique-to-layout iteration guidance, updated `lyra/templates/MODES.md` with event-mode heuristics such as central-hero and flanking-support composition, wrote `drafts/lyra-poster-process-upgrade-2026-06-22.md` as a clean future handoff note, and created `lyra/memory/playbooks/poster-style-catalogue.md` with initial reusable style families plus reuse-vs-variation rules."
+  },
+  {
+    "id": 905,
+    "timestamp": "2026-06-22T17:11:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Repaired the queue tracker and readiness checks so Mission Control now reflects the real blocker state again.",
+    "detail": "After daily diagnostics exposed that `drafts/review-tracker.md` had stopped acting as a complete source of truth and Mission Control status had gone stale, I repaired the queue lane. I classified the missing live drafts, updated the tracker totals and date stamp, strengthened `scripts/check-review-tracker.py` so future top-level draft omissions fail loudly, re-ran `python3 scripts/check-queue-readiness.py` to confirm the queue stack is structurally green again, and refreshed `mission-control/agent-status.json` plus `mission-control/agent-history.json` so the live status now shows the true blocker: approval plus the disconnected Instagram channel, not missing prep."
+  },
+  {
+    "id": 906,
+    "timestamp": "2026-06-23T17:37:45Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Committed Mission Control hygiene after publish-blocker hardening",
+    "detail": "After hardening the Mission Control Pages blocker wording and live-count checker, I refreshed Gustav status/history back onto the real blocked queue lane, then cleaned up the Mission Control repo so those operational updates stop sitting uncommitted. The queue pack itself remains execution-ready but blocked by Aaron approval plus the disconnected Buffer Instagram channel stratford_karate_club."
   }
 ]
