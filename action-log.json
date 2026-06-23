@@ -7246,5 +7246,21 @@
     "status": "success",
     "summary": "Committed Mission Control hygiene after publish-blocker hardening",
     "detail": "After hardening the Mission Control Pages blocker wording and live-count checker, I refreshed Gustav status/history back onto the real blocked queue lane, then cleaned up the Mission Control repo so those operational updates stop sitting uncommitted. The queue pack itself remains execution-ready but blocked by Aaron approval plus the disconnected Buffer Instagram channel stratford_karate_club."
+  },
+  {
+    "id": 907,
+    "timestamp": "2026-06-23T03:15:35Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Ran the daily income research job and selected a karate-inspired PE resource shop as the strongest new income opportunity.",
+    "detail": "Reviewed the latest Daily Income Research cron run via `openclaw cron runs --id 7c5c35ff-a5b5-419b-acb9-af634b55c9b8 --limit 3` and confirmed the 2026-06-23 run finished successfully. The job selected idea 45, `Karate-Inspired Primary PE Resource Shop on Tes + Gumroad`, because it turns Aaron's existing school and coaching expertise into downloadable PE warm-ups, focus games, agility circuits, and rainy-day movement packs that Gustav can package, list, bundle, and promote with only 30-60 minutes per week needed from Aaron after setup. The run published the updated idea files, posted the report to Discord `#trading-desk`, delivered the summary output, and committed the research output as `ec6f12d` (`chore: income research output 2026-06-23`)."
+  },
+  {
+    "id": 908,
+    "timestamp": "2026-06-23T17:38:12Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Hardened the Buffer queue-readiness helpers so empty queue and draft counts stay explicit instead of intermittently disappearing.",
+    "detail": "Across the 2026-06-23 queue-lane hardening passes, I repaired the flaky Buffer metric surface that was occasionally collapsing back to null queue and draft counts even when the standalone publish-state checks still showed an empty queue. I patched `automation/buffer-health-check.js` to accept both `Queue 0` and `0 Queue` style labels, retry schedule snapshot capture before finalizing metrics, and keep the best non-null metric snapshot. I also updated `scripts/check-buffer-publish-state.py` and `scripts/check-queue-readiness.py` so they can derive explicit `0` queue and `0` draft counts from channel-row data when the top-level Buffer counters vanish. Re-runs of both checks confirmed the wrapped readiness view and the direct publish-state check now agree on explicit zero counts while the real live blocker remains unchanged: the disconnected Instagram channel `stratford_karate_club` plus pending approval."
   }
 ]
