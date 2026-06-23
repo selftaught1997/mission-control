@@ -3,11 +3,6 @@
     {
       "status": "working",
       "task": "Heartbeat approval-bound runner",
-      "ts": 1782029248000
-    },
-    {
-      "status": "working",
-      "task": "Heartbeat approval-bound runner",
       "ts": 1782031047000
     },
     {
@@ -124,6 +119,11 @@
       "status": "idle",
       "task": "Hardened Buffer metric parsing and revalidated the Sunday queue blocker surfaces",
       "ts": 1782220212000
+    },
+    {
+      "status": "idle",
+      "task": "Stabilized Buffer capture retries and revalidated the Sunday queue blocker surfaces",
+      "ts": 1782225550000
     }
   ]
 }
