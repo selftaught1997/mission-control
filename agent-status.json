@@ -1,15 +1,15 @@
 {
   "schema_version": "1.1",
   "agent": "Gustav",
-  "status": "working",
-  "state": "working",
-  "detail": "Review-tracker coverage and queue-readiness surfaces are current again; the Sunday lane is back to being blocked by approval plus the disconnected Instagram channel, not missing prep.",
-  "current_step": "Keeping the approval-bound Sunday queue lane execution-ready after repairing tracker drift",
+  "status": "idle",
+  "state": "idle",
+  "detail": "Queue-readiness helper surfaces are current again; the Sunday lane is still blocked by approval plus the disconnected Instagram channel after restoring explicit Buffer queue/draft counts.",
+  "current_step": "Keeping the approval-bound Sunday queue lane execution-ready after hardening Buffer metric parsing",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1782148245000,
-  "last_updated": "2026-06-22T17:10:45Z",
-  "last_activity_at": "2026-06-22T17:10:45Z",
-  "activity_counter": 612,
+  "updatedAt": 1782220212000,
+  "last_updated": "2026-06-23T13:10:12Z",
+  "last_activity_at": "2026-06-23T13:10:12Z",
+  "activity_counter": 613,
   "emoji": "\ud83e\uddbe"
 }
