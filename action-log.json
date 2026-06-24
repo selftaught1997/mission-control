@@ -7262,5 +7262,13 @@
     "status": "success",
     "summary": "Hardened the Buffer queue-readiness helpers so empty queue and draft counts stay explicit instead of intermittently disappearing.",
     "detail": "Across the 2026-06-23 queue-lane hardening passes, I repaired the flaky Buffer metric surface that was occasionally collapsing back to null queue and draft counts even when the standalone publish-state checks still showed an empty queue. I patched `automation/buffer-health-check.js` to accept both `Queue 0` and `0 Queue` style labels, retry schedule snapshot capture before finalizing metrics, and keep the best non-null metric snapshot. I also updated `scripts/check-buffer-publish-state.py` and `scripts/check-queue-readiness.py` so they can derive explicit `0` queue and `0` draft counts from channel-row data when the top-level Buffer counters vanish. Re-runs of both checks confirmed the wrapped readiness view and the direct publish-state check now agree on explicit zero counts while the real live blocker remains unchanged: the disconnected Instagram channel `stratford_karate_club` plus pending approval."
+  },
+  {
+    "id": 909,
+    "timestamp": "2026-06-24T13:11:38Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Hardened Buffer queue-readiness refresh against concurrent artifact races",
+    "detail": "Added an on-disk lock to automation/buffer-health-check.js so overlapping queue-readiness and Buffer publish-state checks serialize writes to the latest Buffer health artifact instead of producing contradictory snapshots. Revalidated with overlapping checks: queue-readiness now passes cleanly again, queue posts remain 0, draft posts remain 0, Instagram channel stratford_karate_club is still disconnected via row_problem_indicator, and the review tracker still shows 41 awaiting-review items."
   }
 ]
