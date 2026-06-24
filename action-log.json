@@ -7270,5 +7270,13 @@
     "status": "success",
     "summary": "Hardened Buffer queue-readiness refresh against concurrent artifact races",
     "detail": "Added an on-disk lock to automation/buffer-health-check.js so overlapping queue-readiness and Buffer publish-state checks serialize writes to the latest Buffer health artifact instead of producing contradictory snapshots. Revalidated with overlapping checks: queue-readiness now passes cleanly again, queue posts remain 0, draft posts remain 0, Instagram channel stratford_karate_club is still disconnected via row_problem_indicator, and the review tracker still shows 41 awaiting-review items."
+  },
+  {
+    "id": 910,
+    "timestamp": "2026-06-24T13:42:22Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Added regression coverage for the Buffer lock and refreshed queue helper expectations",
+    "detail": "Extended scripts/check-approval-bound-helper-surface.py with a regression probe that proves automation/buffer-health-check.js serializes overlapping refreshes through the on-disk artifact lock. Also replaced stale hardcoded review-tracker row-count expectations in the same helper-surface suite with live parsed counts from drafts/review-tracker.md so the audit tracks structure instead of an old backlog snapshot. Revalidated with python3 scripts/check-approval-bound-helper-surface.py, python3 scripts/check-queue-readiness.py, and python3 scripts/check-buffer-publish-state.py. Live blocker is unchanged: queue posts 0, draft posts 0, Instagram channel stratford_karate_club remains disconnected via row_problem_indicator, and the review tracker still shows 41 awaiting-review items."
   }
 ]
