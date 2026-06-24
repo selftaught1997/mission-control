@@ -7278,5 +7278,13 @@
     "status": "success",
     "summary": "Added regression coverage for the Buffer lock and refreshed queue helper expectations",
     "detail": "Extended scripts/check-approval-bound-helper-surface.py with a regression probe that proves automation/buffer-health-check.js serializes overlapping refreshes through the on-disk artifact lock. Also replaced stale hardcoded review-tracker row-count expectations in the same helper-surface suite with live parsed counts from drafts/review-tracker.md so the audit tracks structure instead of an old backlog snapshot. Revalidated with python3 scripts/check-approval-bound-helper-surface.py, python3 scripts/check-queue-readiness.py, and python3 scripts/check-buffer-publish-state.py. Live blocker is unchanged: queue posts 0, draft posts 0, Instagram channel stratford_karate_club remains disconnected via row_problem_indicator, and the review tracker still shows 41 awaiting-review items."
+  },
+  {
+    "id": 911,
+    "timestamp": "2026-06-24T17:07:57Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Refreshed stale Gustav Mission Control detail after the daily diagnostic",
+    "detail": "Updated mission-control/agent-status.json and mission-control/agent-history.json so the Gustav panel no longer shows the stale 23 June current_step about committing old Mission Control status/history updates. The refreshed detail now matches the real lane: the Sunday-beginner queue pack is execution-ready but blocked by Aaron approval plus the disconnected Buffer Instagram channel stratford_karate_club, with queuePosts 0, draftPosts 0, and 41 items still awaiting Aaron review. Stayed off the full approval-bound wrapper because unrelated live workspace edits still make a mixed queue-lane commit inappropriate."
   }
 ]

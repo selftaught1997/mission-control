@@ -3,11 +3,6 @@
     {
       "status": "working",
       "task": "Heartbeat approval-bound runner",
-      "ts": 1782040073000
-    },
-    {
-      "status": "working",
-      "task": "Heartbeat approval-bound runner",
       "ts": 1782041848000
     },
     {
@@ -124,6 +119,11 @@
       "status": "Queue lane blocked on approval + Buffer reconnect",
       "task": "Committing Mission Control hygiene updates after publish-blocker hardening",
       "ts": 1782236250000
+    },
+    {
+      "status": "Queue lane blocked on approval + Buffer reconnect",
+      "task": "Refreshed Gustav Mission Control status after the daily diagnostic reconfirmed the approval-plus-Buffer queue blocker",
+      "ts": 1782320877000
     }
   ]
 }
