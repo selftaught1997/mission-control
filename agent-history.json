@@ -1,129 +1,129 @@
 {
   "entries": [
     {
-      "status": "working",
-      "task": "Heartbeat approval-bound runner",
-      "ts": 1782041848000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation",
+      "ts": 1782796070000
     },
     {
-      "status": "working",
-      "task": "Heartbeat approval-bound runner",
-      "ts": 1782043653000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation",
+      "ts": 1782797875000
     },
     {
-      "status": "working",
-      "task": "Heartbeat approval-bound runner",
-      "ts": 1782045446000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation",
+      "ts": 1782799663000
     },
     {
-      "status": "working",
-      "task": "Heartbeat approval-bound runner",
-      "ts": 1782047248000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation",
+      "ts": 1782801471000
     },
     {
-      "status": "working",
-      "task": "Heartbeat approval-bound runner",
-      "ts": 1782049050000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation",
+      "ts": 1782803269000
     },
     {
-      "status": "working",
-      "task": "Heartbeat approval-bound runner",
-      "ts": 1782050846000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation",
+      "ts": 1782805072000
     },
     {
-      "status": "working",
-      "task": "Heartbeat approval-bound runner",
-      "ts": 1782052644000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation",
+      "ts": 1782806875000
     },
     {
-      "status": "working",
-      "task": "Heartbeat approval-bound runner",
-      "ts": 1782054448000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation",
+      "ts": 1782808680000
     },
     {
-      "status": "working",
-      "task": "Heartbeat approval-bound runner",
-      "ts": 1782056255000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation",
+      "ts": 1782810480000
     },
     {
-      "status": "working",
-      "task": "Heartbeat approval-bound runner",
-      "ts": 1782058102000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation",
+      "ts": 1782812270000
     },
     {
-      "status": "working",
-      "task": "Heartbeat approval-bound runner",
-      "ts": 1782059846000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation after transient Buffer retry",
+      "ts": 1782814121000
     },
     {
-      "status": "working",
-      "task": "Heartbeat approval-bound runner",
-      "ts": 1782061683000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation",
+      "ts": 1782815864000
     },
     {
-      "status": "working",
-      "task": "Heartbeat approval-bound runner",
-      "ts": 1782063443000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation",
+      "ts": 1782817767000
     },
     {
-      "status": "working",
-      "task": "Heartbeat approval-bound runner",
-      "ts": 1782065237000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation",
+      "ts": 1782819473000
     },
     {
-      "status": "working",
-      "task": "Heartbeat approval-bound runner",
-      "ts": 1782067041000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation",
+      "ts": 1782821275000
     },
     {
-      "status": "working",
-      "task": "Heartbeat approval-bound runner",
-      "ts": 1782068839000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation",
+      "ts": 1782823075000
     },
     {
-      "status": "working",
-      "task": "Refreshed review-tracker coverage and revalidated the Sunday queue blocker surfaces",
-      "ts": 1782148245000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation",
+      "ts": 1782824866000
     },
     {
-      "status": "idle",
-      "task": "Hardened Buffer metric parsing and revalidated the Sunday queue blocker surfaces",
-      "ts": 1782220212000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation",
+      "ts": 1782826678000
     },
     {
-      "status": "idle",
-      "task": "Stabilized Buffer capture retries and revalidated the Sunday queue blocker surfaces",
-      "ts": 1782225550000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation",
+      "ts": 1782828465000
     },
     {
-      "status": "idle",
-      "task": "Widened Buffer capture retries and revalidated the Sunday queue blocker surfaces",
-      "ts": 1782230967000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation",
+      "ts": 1782830260000
     },
     {
-      "status": "idle",
-      "task": "Hardened channel-derived Buffer fallbacks and revalidated the Sunday queue blocker surfaces",
-      "ts": 1782232751000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation",
+      "ts": 1782832058000
     },
     {
-      "status": "Heartbeat: Mission Control publish blocker hardening",
-      "task": "Hardened Mission Control publish blocker wording and live-count checker after stale Pages diagnostic",
-      "ts": 1782234623000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation",
+      "ts": 1782833874000
     },
     {
-      "status": "Queue lane blocked on approval + Buffer reconnect",
-      "task": "Committing Mission Control hygiene updates after publish-blocker hardening",
-      "ts": 1782236240000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation",
+      "ts": 1782835686000
     },
     {
-      "status": "Queue lane blocked on approval + Buffer reconnect",
-      "task": "Committing Mission Control hygiene updates after publish-blocker hardening",
-      "ts": 1782236250000
+      "status": "blocked",
+      "task": "Heartbeat narrow queue-readiness revalidation",
+      "ts": 1782837469000
     },
     {
-      "status": "Queue lane blocked on approval + Buffer reconnect",
-      "task": "Refreshed Gustav Mission Control status after the daily diagnostic reconfirmed the approval-plus-Buffer queue blocker",
-      "ts": 1782320877000
+      "status": "blocked",
+      "task": "Added earlier-day queue readiness preflight while the live blocker persists",
+      "ts": 1782839724000
     }
   ]
 }

@@ -7286,5 +7286,77 @@
     "status": "success",
     "summary": "Refreshed stale Gustav Mission Control detail after the daily diagnostic",
     "detail": "Updated mission-control/agent-status.json and mission-control/agent-history.json so the Gustav panel no longer shows the stale 23 June current_step about committing old Mission Control status/history updates. The refreshed detail now matches the real lane: the Sunday-beginner queue pack is execution-ready but blocked by Aaron approval plus the disconnected Buffer Instagram channel stratford_karate_club, with queuePosts 0, draftPosts 0, and 41 items still awaiting Aaron review. Stayed off the full approval-bound wrapper because unrelated live workspace edits still make a mixed queue-lane commit inappropriate."
+  },
+  {
+    "id": 912,
+    "timestamp": "2026-06-24T03:16:37Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Ran the daily income research job and selected Year 6 transition confidence workshops as the strongest new income opportunity.",
+    "detail": "Reviewed the latest Daily Income Research cron run via `openclaw cron runs --id 7c5c35ff-a5b5-419b-acb9-af634b55c9b8 --limit 3` and confirmed the 2026-06-24 run finished successfully. The job selected idea 46, `Year 6 Transition Confidence Workshops for East London Primary Schools`, because it best fit Aaron's existing credibility, offered a fast path to GBP990-GBP3,180+/month, and could be run with Gustav handling outreach and ops while keeping Aaron under 2 hours per week after setup. Validation passed, outputs were published, the result was posted to Discord `#trading-desk`, and the updated research files were committed as `9316eb5` (`chore: income research output 2026-06-24`)."
+  },
+  {
+    "id": 913,
+    "timestamp": "2026-06-25T03:16:20Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Ran the daily income research job and selected a playground confidence leaders license as the strongest new income opportunity.",
+    "detail": "Reviewed the latest Daily Income Research cron run via `openclaw cron runs --id 7c5c35ff-a5b5-419b-acb9-af634b55c9b8 --limit 3` and confirmed the 2026-06-25 run finished successfully. The job selected `Playground Confidence Leaders License for Primary Schools` because it fit Aaron's school credibility, worked as a digital or low-touch offer, kept Aaron's ongoing time low, and left strong room for Gustav-led automation. Validation passed, outputs were published, the report was posted to Discord `#trading-desk`, and the updated research files were committed as `dce341c` (`chore: income research output 2026-06-25`)."
+  },
+  {
+    "id": 914,
+    "timestamp": "2026-06-26T17:09:03Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Refreshed heartbeat evidence after the 18:00 queue diagnostic",
+    "detail": "The 18:00 BST diagnostic reconfirmed the live Sunday queue blocker without exposing a new prep gap: Buffer still shows queue posts 0, draft posts 0, and the Instagram channel stratford_karate_club disconnected with the same reconnect clue, while drafts/review-tracker.md still shows 41 awaiting-review items. Rather than reopen queue prep docs, this heartbeat restored the missing continuity evidence by refreshing heartbeat-state, Gustav Mission Control status/history, and today\u2019s daily memory trail while leaving the mixed-commit wrapper alone because unrelated workspace edits are still live elsewhere."
+  },
+  {
+    "id": 915,
+    "timestamp": "2026-06-26T03:15:44Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Ran the daily income research job and selected a lunchtime supervisor positive-play training plus replay license as the strongest new income opportunity.",
+    "detail": "Reviewed the latest Daily Income Research cron run via `openclaw cron runs --id 7c5c35ff-a5b5-419b-acb9-af634b55c9b8 --limit 3` and confirmed the 2026-06-26 run finished successfully. The job selected idea 48, `Lunchtime Supervisor Positive-Play Training + Replay License for Primary Schools`, then validated and published the updated research outputs, posted the report to Discord `#trading-desk`, and committed the output as `d4f6288` (`chore: income research output 2026-06-26`)."
+  },
+  {
+    "id": 916,
+    "timestamp": "2026-06-27T03:15:48Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Ran the daily income research job and selected a calm-transitions CPD plus annual staff replay license as the strongest new income opportunity.",
+    "detail": "Reviewed the latest Daily Income Research cron run via `openclaw cron runs --id 7c5c35ff-a5b5-419b-acb9-af634b55c9b8 --limit 3` and confirmed the 2026-06-27 run finished successfully. The job selected idea 49, `Primary School Calm Transitions CPD + Annual Staff Replay License`, because it combines school-budget-friendly pricing with strong Gustav automation potential while keeping Aaron under 2 hours per week after setup. The validator passed after correcting the scaffolded candidate shape, the updated research outputs were published, the report was posted to Discord `#trading-desk`, the morning brief summary was delivered, and the output was committed as `4ba8169` (`chore: income research output [2026-06-27]`)."
+  },
+  {
+    "id": 917,
+    "timestamp": "2026-06-28T03:15:59Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Ran the daily income research job and selected an anti-bullying and confidence assembly replay license as the strongest new income opportunity.",
+    "detail": "Reviewed the latest Daily Income Research cron run via `openclaw cron runs --id 7c5c35ff-a5b5-419b-acb9-af634b55c9b8 --limit 3` and confirmed the 2026-06-28 run finished successfully. The job selected idea 50, `Primary School Anti-Bullying & Confidence Assembly Replay License`, because it strongly fits Aaron's school credibility, only needs a one-time recording, offers high Gustav automation potential, and supports realistic school pricing. Validation passed, `research/income-ideas-log.json`, `research/todays-income-idea.json`, and `research/usage-log.json` were updated, the report was published to Discord `#trading-desk`, and the output was committed as `6cb09e7` (`chore: income research output 2026-06-28`)."
+  },
+  {
+    "id": 918,
+    "timestamp": "2026-06-28T21:09:00Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Tightened the queue-readiness helper so transient Buffer login or schedule capture failures stop reporting a false green state.",
+    "detail": "While reviewing the Sunday beginner queue lane, a transient Buffer capture showed `scripts/check-buffer-publish-state.py` correctly rejecting `schedulePageOk=false` while `scripts/check-queue-readiness.py` still returned green. I patched `scripts/check-queue-readiness.py` so its Buffer refresh summary now rejects missing or false `loginOk` and `schedulePageOk` flags, plus the same success-with-health-issues inconsistency already enforced by the standalone publish-state checker. Re-ran both checks from the direct heartbeat path and confirmed the helper surfaces now agree again; the real blocker remains unchanged with 41 awaiting-review items, queue posts 0, draft posts 0, and Instagram channel `stratford_karate_club` still disconnected."
+  },
+  {
+    "id": 919,
+    "timestamp": "2026-06-29T03:15:13Z",
+    "category": "Research",
+    "status": "success",
+    "summary": "Ran the daily income research job and selected a PE cover lessons video vault plus school site license as the strongest new income opportunity.",
+    "detail": "Reviewed the latest Daily Income Research cron run via `openclaw cron runs --id 7c5c35ff-a5b5-419b-acb9-af634b55c9b8 --limit 3` and confirmed the 2026-06-29 run finished successfully. The job selected idea 51, `Primary PE Cover Lessons Video Vault + School Site License`, because it offered the best balance of school-budget fit, low ongoing time, strong automation potential, and realistic monthly upside once the first lesson vault is recorded. The run validated `/tmp/income-research-analysis.json`, updated `research/income-ideas-log.json`, `research/todays-income-idea.json`, and `research/usage-log.json`, published the result to Discord `#trading-desk`, and committed the output as `909c161` (`chore: income research output 2026-06-29`)."
+  },
+  {
+    "id": 920,
+    "timestamp": "2026-06-30T17:15:40Z",
+    "category": "Automation",
+    "status": "success",
+    "summary": "Added a quiet earlier-day queue readiness preflight",
+    "detail": "Added scripts/check-queue-preflight.py plus a new isolated `Queue Readiness Preflight` cron scheduled for 13:00 BST. The helper reuses the live queue-readiness and Buffer refresh checks, classifies the current state, and stays silent when the blocker is unchanged (`queuePosts 0`, `draftPosts 0`, and Instagram channel `stratford_karate_club` still disconnected). If the state changes or the checks fail, the cron is now ready to post the full report to Discord `#diagnostics` instead of interrupting Aaron. Revalidated the live blocker after landing the helper: all queue-prep audits still pass, drafts/review-tracker.md still shows 41 awaiting-review items, and Buffer still reports the same disconnected-channel blocker."
   }
 ]

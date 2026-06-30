@@ -1,15 +1,15 @@
 {
   "schema_version": "1.1",
   "agent": "Gustav",
-  "status": "Queue lane blocked on approval + Buffer reconnect",
-  "state": "Queue lane blocked on approval + Buffer reconnect",
-  "detail": "The Sunday-beginner queue pack remains execution-ready, but queue assembly is still blocked by Aaron approval plus the disconnected Buffer Instagram channel stratford_karate_club. Daily diagnostics reconfirmed queuePosts 0, draftPosts 0, the review backlog is still 41 items, and the heartbeat lane is staying on narrow direct checks while unrelated workspace edits are still live elsewhere.",
-  "current_step": "Keeping Mission Control\u2019s Gustav detail aligned with the live approval-plus-Buffer blocker without creating a mixed queue-lane commit.",
+  "status": "blocked",
+  "state": "blocked",
+  "detail": "Queue lane remains blocked at 18:15 BST on the narrow direct path: all queue-prep audits still pass, drafts/review-tracker.md still shows 41 awaiting-review items, Buffer queue posts and draft posts remain at 0, Instagram channel stratford_karate_club is still disconnected via row_problem_indicator, and a new 13:00 BST Queue Readiness Preflight cron now watches for changed state without reposting the known blocker.",
+  "current_step": "Wait for Aaron approval plus Buffer reconnect while the new earlier-day preflight watches for changed queue state.",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1782320877000,
-  "last_updated": "2026-06-24T17:07:57Z",
-  "last_activity_at": "2026-06-24T17:07:57Z",
-  "activity_counter": 620,
+  "updatedAt": 1782839724000,
+  "last_updated": "2026-06-30T17:15:24Z",
+  "last_activity_at": "2026-06-30T17:15:24Z",
+  "activity_counter": 721,
   "emoji": "\ud83e\uddbe"
 }
