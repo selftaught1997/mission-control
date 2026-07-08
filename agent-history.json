@@ -3,41 +3,6 @@
     {
       "status": "blocked",
       "task": "Heartbeat narrow queue-readiness revalidation",
-      "ts": 1782796070000
-    },
-    {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation",
-      "ts": 1782797875000
-    },
-    {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation",
-      "ts": 1782799663000
-    },
-    {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation",
-      "ts": 1782801471000
-    },
-    {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation",
-      "ts": 1782803269000
-    },
-    {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation",
-      "ts": 1782805072000
-    },
-    {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation",
-      "ts": 1782806875000
-    },
-    {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation",
       "ts": 1782808680000
     },
     {
@@ -124,6 +89,41 @@
       "status": "blocked",
       "task": "Added earlier-day queue readiness preflight while the live blocker persists",
       "ts": 1782839724000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue direct-check admin refresh",
+      "ts": 1782934724000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue direct-check admin refresh",
+      "ts": 1782941907000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue direct-check admin refresh",
+      "ts": 1782947302000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue direct-check admin refresh",
+      "ts": 1782954491000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue direct-check admin refresh after stale dashboard diagnostic",
+      "ts": 1783098490000
+    },
+    {
+      "status": "working",
+      "task": "Hardened direct queue-readiness heartbeat-state persistence",
+      "ts": 1783102108000
+    },
+    {
+      "status": "working",
+      "task": "Revalidated queue readiness after fresh diagnostics and logged today's queue plus Mission Control publish-blocker state.",
+      "ts": 1783530539000
     }
   ]
 }

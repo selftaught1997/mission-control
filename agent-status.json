@@ -1,15 +1,15 @@
 {
   "schema_version": "1.1",
   "agent": "Gustav",
-  "status": "blocked",
-  "state": "blocked",
-  "detail": "Queue lane remains blocked at 18:15 BST on the narrow direct path: all queue-prep audits still pass, drafts/review-tracker.md still shows 41 awaiting-review items, Buffer queue posts and draft posts remain at 0, Instagram channel stratford_karate_club is still disconnected via row_problem_indicator, and a new 13:00 BST Queue Readiness Preflight cron now watches for changed state without reposting the known blocker.",
-  "current_step": "Wait for Aaron approval plus Buffer reconnect while the new earlier-day preflight watches for changed queue state.",
+  "status": "working",
+  "state": "working",
+  "detail": "Queue readiness remains approval-bound and Buffer-blocked; the 18:00 diagnostics plus direct helper reruns reconfirmed the disconnected Instagram channel, empty queue, and passing integrity audits.",
+  "current_step": "Keeping the Sunday queue execution-ready while waiting on Aaron approvals and the owner-side Buffer Instagram reconnection or verification step.",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1782839724000,
-  "last_updated": "2026-06-30T17:15:24Z",
-  "last_activity_at": "2026-06-30T17:15:24Z",
-  "activity_counter": 721,
+  "updatedAt": 1783530539000,
+  "last_updated": "2026-07-08T17:08:59Z",
+  "last_activity_at": "2026-07-08T17:08:59Z",
+  "activity_counter": 728,
   "emoji": "\ud83e\uddbe"
 }
