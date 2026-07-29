@@ -25,7 +25,8 @@ const AGENTS = [
   { id: 'gustav', name: 'Gustav', root: ROOT, statusPath: path.join(ROOT, 'agent-status.json') },
   { id: 'altair', name: 'Altair', root: path.join(WORKSPACE, 'altair'), statusPath: path.join(WORKSPACE, 'altair/status.json') },
   { id: 'lyra', name: 'Lyra', root: path.join(WORKSPACE, 'lyra'), statusPath: path.join(WORKSPACE, 'lyra/status.json') },
-  { id: 'vega', name: 'Vega', root: path.join(WORKSPACE, 'vega'), statusPath: path.join(WORKSPACE, 'vega/status.json'), optional: true }
+  { id: 'vega', name: 'Vega', root: path.join(WORKSPACE, 'vega'), statusPath: path.join(WORKSPACE, 'vega/status.json'), optional: true },
+  { id: 'sirius', name: 'Sirius', root: ROOT, statusPath: path.join(ROOT, 'sirius-status.json'), optional: true }
 ];
 
 const clients = new Set();
@@ -569,9 +570,8 @@ async function handleRuntimeEvent(evt) {
 
 async function loadRuntimeModules() {
   if (runtimeModel.modules) return runtimeModel.modules;
-  const scopes = await import('/opt/homebrew/lib/node_modules/openclaw/dist/method-scopes-DhuXuLfv.js');
-  const channel = await import('/opt/homebrew/lib/node_modules/openclaw/dist/message-channel-ZzTqBBLH.js');
-  runtimeModel.modules = { scopes, channel };
+  const { GatewayClient } = await import('/opt/homebrew/lib/node_modules/openclaw/dist/plugin-sdk/gateway-runtime.js');
+  runtimeModel.modules = { GatewayClient };
   return runtimeModel.modules;
 }
 
@@ -581,14 +581,15 @@ async function startRuntimeBridge() {
   process.env.OPENCLAW_ALLOW_INSECURE_PRIVATE_WS ||= '1';
   await replayRuntimeLogs();
   try {
-    const { scopes, channel } = await loadRuntimeModules();
-    const client = new scopes.u({
+    const { GatewayClient } = await loadRuntimeModules();
+    const client = new GatewayClient({
       url: GATEWAY_URL,
-      clientName: channel.h.GATEWAY_CLIENT,
+      clientName: 'gateway-client',
       clientDisplayName: 'Mission Control v2',
-      mode: channel.m.BACKEND,
-      caps: [channel.f.TOOL_EVENTS],
-      scopes: [scopes.a, scopes.t],
+      mode: 'backend',
+      caps: ['tool-events'],
+      scopes: ['operator.admin', 'operator.read', 'operator.write'],
+      allowUnauthenticated: true,
       onHelloOk: async (hello) => {
         runtimeState.connected = true;
         runtimeState.connecting = false;
