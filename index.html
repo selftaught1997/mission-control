@@ -446,50 +446,23 @@
   <div class="card span-full">
     <div class="card-header">
       <div class="card-title">🔧 To-Do — Infrastructure & Setup</div>
-      <span class="badge badge-yellow">5 tracked</span>
+      <span class="badge badge-yellow" id="todo-count">— tracked</span>
     </div>
     <ul class="task-list" id="todo-list">
-      <li class="task-item">
-        <div class="task-dot dot-red"></div>
-        <div>
-          <div><strong>Push Mission Control repo to GitHub Pages origin</strong></div>
-          <div class="task-meta">Local mission-control repo is far ahead of origin/main, so the public dashboard is stale. Needs an explicit push to publish the current dashboard state.</div>
-          <div class="task-meta" style="margin-top:4px;">⛔ Blocked pending Aaron approval · Priority: High · Category: Infrastructure</div>
-        </div>
-      </li>
-      <li class="task-item">
-        <div class="task-dot dot-gold"></div>
-        <div>
-          <div><strong>Investigate gateway reconnect 1005 noise</strong></div>
-          <div class="task-meta">Gateway is healthy right now, but recurring Discord reconnect/code-1005 exceptions are still showing up in the logs and need a proper review.</div>
-          <div class="task-meta" style="margin-top:4px;">📅 Added 16 May 2026 · Priority: Medium · Category: Infrastructure</div>
-        </div>
-      </li>
-      <li class="task-item">
-        <div class="task-dot dot-blue"></div>
-        <div>
-          <div><strong>Add Buffer smoke-test / queue-health logging</strong></div>
-          <div class="task-meta">Current automation evidence is too old to prove Buffer queue health, so diagnostics need a lightweight fresh smoke test or structured queue log.</div>
-          <div class="task-meta" style="margin-top:4px;">📅 Added 16 May 2026 · Priority: Medium · Category: Automation</div>
-        </div>
-      </li>
-      <li class="task-item">
-        <div class="task-dot dot-gold"></div>
-        <div>
-          <div><strong>Set up elevated access for Gustav</strong></div>
-          <div class="task-meta">Create dedicated admin account or configure passwordless sudo for specific trusted commands (tailscaled, gateway restarts etc.) so Gustav can operate without Aaron's personal password being sent over Telegram.</div>
-          <div class="task-meta" style="margin-top:4px;">📅 Added 1 Apr 2026 · Priority: Medium · Category: Infrastructure</div>
-        </div>
-      </li>
-      <li class="task-item">
-        <div class="task-dot dot-blue"></div>
-        <div>
-          <div><strong>Weekly Sonnet diagnostic + monthly Opus strategic review</strong></div>
-          <div class="task-meta">Add a light weekly health-check cadence plus a heavier monthly architecture review, both reporting into #diagnostics.</div>
-          <div class="task-meta" style="margin-top:4px;">📅 Added 2 Apr 2026 · Priority: Low · Category: Automation</div>
-        </div>
-      </li>
+      <li class="task-item"><div class="task-dot dot-blue"></div><div style="color:#444;font-style:italic;">Loading...</div></li>
     </ul>
+    <noscript>
+      <ul class="task-list">
+        <li class="task-item">
+          <div class="task-dot dot-red"></div>
+          <div>
+            <div><strong>Push Mission Control repo to GitHub Pages origin</strong></div>
+            <div class="task-meta">Local mission-control repo is far ahead of origin/main, so the public dashboard is stale. Needs an explicit push to publish the current dashboard state.</div>
+            <div class="task-meta" style="margin-top:4px;">Blocked pending Aaron approval · Priority: High · Category: Infrastructure</div>
+          </div>
+        </li>
+      </ul>
+    </noscript>
   </div>
 
   <!-- AGENT WORKSPACE -->
@@ -613,6 +586,58 @@
   }
   loadROI();
   setInterval(loadROI, 30000);
+
+  // To-Do Infrastructure & Setup (renders from todo.json)
+  async function loadTodo() {
+    const list = document.getElementById('todo-list');
+    const countEl = document.getElementById('todo-count');
+    try {
+      const res = await fetch('./todo.json?t=' + Date.now());
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      const items = Array.isArray(data && data.items) ? data.items : [];
+      const active = items.filter(i => String(i.status || '').toLowerCase() !== 'done');
+      if (countEl) countEl.textContent = active.length + ' tracked';
+      if (!list) return;
+      if (active.length === 0) {
+        list.innerHTML = '<li class="task-item"><div class="task-dot dot-green"></div><div style="color:#444;font-style:italic;">No open items</div></li>';
+        return;
+      }
+      const dotFor = (item) => {
+        const p = String(item.priority || '').toLowerCase();
+        const s = String(item.status || '').toLowerCase();
+        if (s === 'blocked' || p === 'high') return 'dot-red';
+        if (p === 'medium') return 'dot-gold';
+        if (p === 'low') return 'dot-blue';
+        return 'dot-purple';
+      };
+      list.innerHTML = active.map(item => {
+        const title = item.title || 'Untitled task';
+        const detail = item.detail || '';
+        const pri = String(item.priority || 'medium');
+        const cat = item.category || '';
+        const status = String(item.status || 'todo').toLowerCase();
+        let metaStatus = '';
+        if (status === 'blocked') metaStatus = '⛔ Blocked · ';
+        else metaStatus = '📅 ';
+        const created = item.createdAt ? new Date(item.createdAt).toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'}) : '';
+        return `
+          <li class="task-item">
+            <div class="task-dot ${dotFor(item)}"></div>
+            <div>
+              <div><strong>${title}</strong></div>
+              <div class="task-meta">${detail}</div>
+              <div class="task-meta" style="margin-top:4px;">${metaStatus}Priority: ${pri.charAt(0).toUpperCase() + pri.slice(1)} · Category: ${cat}</div>
+            </div>
+          </li>
+        `;
+      }).join('');
+    } catch (e) {
+      if (countEl) countEl.textContent = '— tracked';
+      if (list) list.innerHTML = '<li class="task-item"><div class="task-dot dot-red"></div><div style="color:#e63946;font-style:italic;">Failed to load todo.json</div></li>';
+    }
+  }
+  loadTodo();
 </script>
 
 <footer>
