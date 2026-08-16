@@ -3,61 +3,6 @@
     {
       "status": "blocked",
       "task": "Heartbeat narrow queue-readiness revalidation",
-      "ts": 1782808680000
-    },
-    {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation",
-      "ts": 1782810480000
-    },
-    {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation",
-      "ts": 1782812270000
-    },
-    {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation after transient Buffer retry",
-      "ts": 1782814121000
-    },
-    {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation",
-      "ts": 1782815864000
-    },
-    {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation",
-      "ts": 1782817767000
-    },
-    {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation",
-      "ts": 1782819473000
-    },
-    {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation",
-      "ts": 1782821275000
-    },
-    {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation",
-      "ts": 1782823075000
-    },
-    {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation",
-      "ts": 1782824866000
-    },
-    {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation",
-      "ts": 1782826678000
-    },
-    {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation",
       "ts": 1782828465000
     },
     {
@@ -124,6 +69,56 @@
       "status": "working",
       "task": "Revalidated queue readiness after fresh diagnostics and logged today's queue plus Mission Control publish-blocker state.",
       "ts": 1783530539000
+    },
+    {
+      "status": "working",
+      "task": "User-requested pause on GHL custom fields lane; switched priority to Mission Control v2 live sync update/repair.",
+      "ts": 1785338311000
+    },
+    {
+      "status": "working",
+      "task": "Updated Mission Control v2 dashboard for full dynamic truthfulness (runtime error surfacing + accurate stale timestamps).",
+      "ts": 1785338634000
+    },
+    {
+      "status": "approval-bound",
+      "task": "Repaired review-tracker coverage drift and revalidated queue readiness",
+      "ts": 1785355738000
+    },
+    {
+      "status": "approval-bound",
+      "task": "Reduced queue-readiness heartbeat commit noise while queue remains approval/Buffer-bound",
+      "ts": 1785949786000
+    },
+    {
+      "status": "approval-bound",
+      "task": "Heartbeat narrow queue-readiness + Buffer recheck (2026-08-15)",
+      "ts": 1786766857000
+    },
+    {
+      "status": "approval-bound",
+      "task": "Heartbeat confirmation - no state change",
+      "ts": 1786768604000
+    },
+    {
+      "status": "approval-bound",
+      "task": "Heartbeat poll - status confirmed unchanged",
+      "ts": 1786788407000
+    },
+    {
+      "status": "approval-bound",
+      "task": "Heartbeat poll - status confirmed unchanged (repeated)",
+      "ts": 1786802806000
+    },
+    {
+      "status": "healthy",
+      "task": "Daily Diagnostic 2026-08-15: confirmed one standing Buffer channel issue; all else green. Updated memory note + action log.",
+      "ts": 1786813372000
+    },
+    {
+      "status": "approval-bound",
+      "task": "Revalidated queue readiness and refreshed the live review-tracker blocker wording",
+      "ts": 1786900125000
     }
   ]
 }

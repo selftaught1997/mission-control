@@ -1,15 +1,15 @@
 {
   "schema_version": "1.1",
   "agent": "Gustav",
-  "status": "working",
-  "state": "working",
-  "detail": "Queue readiness remains approval-bound and Buffer-blocked; the 18:00 diagnostics plus direct helper reruns reconfirmed the disconnected Instagram channel, empty queue, and passing integrity audits.",
-  "current_step": "Keeping the Sunday queue execution-ready while waiting on Aaron approvals and the owner-side Buffer Instagram reconnection or verification step.",
+  "status": "approval-bound",
+  "state": "approval-bound",
+  "detail": "Queue-readiness revalidated on 2026-08-16. Buffer Instagram still disconnected; Sunday queue remains approval-bound.",
+  "current_step": "Queue readiness direct check",
   "task": null,
   "startedAt": null,
-  "updatedAt": 1783530539000,
-  "last_updated": "2026-07-08T17:08:59Z",
-  "last_activity_at": "2026-07-08T17:08:59Z",
-  "activity_counter": 728,
+  "updatedAt": 1786900125000,
+  "last_updated": "2026-08-16T17:08:45Z",
+  "last_activity_at": "2026-08-16T17:08:45Z",
+  "activity_counter": 740,
   "emoji": "\ud83e\uddbe"
 }
