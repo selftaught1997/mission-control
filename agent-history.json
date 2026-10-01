@@ -1,11 +1,6 @@
 {
   "entries": [
     {
-      "status": "approval-bound",
-      "task": "Heartbeat poll - status confirmed unchanged (repeated)",
-      "ts": 1786802806000
-    },
-    {
       "status": "healthy",
       "task": "Daily Diagnostic 2026-08-15: confirmed one standing Buffer channel issue; all else green. Updated memory note + action log.",
       "ts": 1786813372000
@@ -124,6 +119,11 @@
       "status": "idle",
       "task": "Detected changed Buffer Instagram state during queue readiness heartbeat.",
       "ts": 1790863702000
+    },
+    {
+      "status": "idle",
+      "task": "Rechecked Buffer after transient missing-state signal; status returned to disconnected.",
+      "ts": 1790865462000
     }
   ]
 }
