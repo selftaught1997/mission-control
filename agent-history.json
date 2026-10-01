@@ -1,106 +1,6 @@
 {
   "entries": [
     {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation",
-      "ts": 1782828465000
-    },
-    {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation",
-      "ts": 1782830260000
-    },
-    {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation",
-      "ts": 1782832058000
-    },
-    {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation",
-      "ts": 1782833874000
-    },
-    {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation",
-      "ts": 1782835686000
-    },
-    {
-      "status": "blocked",
-      "task": "Heartbeat narrow queue-readiness revalidation",
-      "ts": 1782837469000
-    },
-    {
-      "status": "blocked",
-      "task": "Added earlier-day queue readiness preflight while the live blocker persists",
-      "ts": 1782839724000
-    },
-    {
-      "status": "working",
-      "task": "Heartbeat queue direct-check admin refresh",
-      "ts": 1782934724000
-    },
-    {
-      "status": "working",
-      "task": "Heartbeat queue direct-check admin refresh",
-      "ts": 1782941907000
-    },
-    {
-      "status": "working",
-      "task": "Heartbeat queue direct-check admin refresh",
-      "ts": 1782947302000
-    },
-    {
-      "status": "working",
-      "task": "Heartbeat queue direct-check admin refresh",
-      "ts": 1782954491000
-    },
-    {
-      "status": "working",
-      "task": "Heartbeat queue direct-check admin refresh after stale dashboard diagnostic",
-      "ts": 1783098490000
-    },
-    {
-      "status": "working",
-      "task": "Hardened direct queue-readiness heartbeat-state persistence",
-      "ts": 1783102108000
-    },
-    {
-      "status": "working",
-      "task": "Revalidated queue readiness after fresh diagnostics and logged today's queue plus Mission Control publish-blocker state.",
-      "ts": 1783530539000
-    },
-    {
-      "status": "working",
-      "task": "User-requested pause on GHL custom fields lane; switched priority to Mission Control v2 live sync update/repair.",
-      "ts": 1785338311000
-    },
-    {
-      "status": "working",
-      "task": "Updated Mission Control v2 dashboard for full dynamic truthfulness (runtime error surfacing + accurate stale timestamps).",
-      "ts": 1785338634000
-    },
-    {
-      "status": "approval-bound",
-      "task": "Repaired review-tracker coverage drift and revalidated queue readiness",
-      "ts": 1785355738000
-    },
-    {
-      "status": "approval-bound",
-      "task": "Reduced queue-readiness heartbeat commit noise while queue remains approval/Buffer-bound",
-      "ts": 1785949786000
-    },
-    {
-      "status": "approval-bound",
-      "task": "Heartbeat narrow queue-readiness + Buffer recheck (2026-08-15)",
-      "ts": 1786766857000
-    },
-    {
-      "status": "approval-bound",
-      "task": "Heartbeat confirmation - no state change",
-      "ts": 1786768604000
-    },
-    {
       "status": "approval-bound",
       "task": "Heartbeat poll - status confirmed unchanged",
       "ts": 1786788407000
@@ -119,6 +19,111 @@
       "status": "approval-bound",
       "task": "Revalidated queue readiness and refreshed the live review-tracker blocker wording",
       "ts": 1786900125000
+    },
+    {
+      "status": "blocked",
+      "task": "Revalidated Sunday queue blocker and refreshed Mission Control after the daily diagnostic surfaced stale dashboard state.",
+      "ts": 1787591305000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue readiness narrow recheck",
+      "ts": 1788057498000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue readiness narrow recheck",
+      "ts": 1788059261000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue readiness audit",
+      "ts": 1788061071000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue readiness narrow recheck",
+      "ts": 1788062862000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue readiness narrow recheck",
+      "ts": 1788064653000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue readiness narrow recheck",
+      "ts": 1788066451000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue readiness audit",
+      "ts": 1788068257000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue readiness audit",
+      "ts": 1788070055000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue readiness narrow recheck",
+      "ts": 1788071856000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue readiness narrow recheck",
+      "ts": 1788073650000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue readiness narrow recheck",
+      "ts": 1788075454000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue readiness audit",
+      "ts": 1788077276000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue readiness narrow recheck",
+      "ts": 1788079053000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue readiness narrow recheck",
+      "ts": 1788080854000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue readiness audit",
+      "ts": 1788082653000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue readiness audit",
+      "ts": 1788084454000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue readiness audit",
+      "ts": 1788086253000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue readiness narrow recheck",
+      "ts": 1788088072000
+    },
+    {
+      "status": "working",
+      "task": "Heartbeat queue readiness narrow recheck",
+      "ts": 1788089854000
+    },
+    {
+      "status": "idle",
+      "task": "Rechecked Sunday beginner queue readiness and Buffer state during heartbeat.",
+      "ts": 1790861925000
     }
   ]
 }
