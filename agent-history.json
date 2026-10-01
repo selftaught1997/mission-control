@@ -2,11 +2,6 @@
   "entries": [
     {
       "status": "approval-bound",
-      "task": "Heartbeat poll - status confirmed unchanged",
-      "ts": 1786788407000
-    },
-    {
-      "status": "approval-bound",
       "task": "Heartbeat poll - status confirmed unchanged (repeated)",
       "ts": 1786802806000
     },
@@ -124,6 +119,11 @@
       "status": "idle",
       "task": "Rechecked Sunday beginner queue readiness and Buffer state during heartbeat.",
       "ts": 1790861925000
+    },
+    {
+      "status": "idle",
+      "task": "Detected changed Buffer Instagram state during queue readiness heartbeat.",
+      "ts": 1790863702000
     }
   ]
 }
