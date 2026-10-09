@@ -1,21 +1,6 @@
 {
   "entries": [
     {
-      "status": "healthy",
-      "task": "Daily Diagnostic 2026-08-15: confirmed one standing Buffer channel issue; all else green. Updated memory note + action log.",
-      "ts": 1786813372000
-    },
-    {
-      "status": "approval-bound",
-      "task": "Revalidated queue readiness and refreshed the live review-tracker blocker wording",
-      "ts": 1786900125000
-    },
-    {
-      "status": "blocked",
-      "task": "Revalidated Sunday queue blocker and refreshed Mission Control after the daily diagnostic surfaced stale dashboard state.",
-      "ts": 1787591305000
-    },
-    {
       "status": "working",
       "task": "Heartbeat queue readiness narrow recheck",
       "ts": 1788057498000
@@ -124,6 +109,21 @@
       "status": "idle",
       "task": "Rechecked Buffer after transient missing-state signal; status returned to disconnected.",
       "ts": 1790865462000
+    },
+    {
+      "status": "active",
+      "task": "Mission Control v2 executive freshness repair",
+      "ts": 1791583422000
+    },
+    {
+      "status": "idle",
+      "task": "Mission Control v2 executive freshness repair completed",
+      "ts": 1791583575000
+    },
+    {
+      "status": "idle",
+      "task": "Mission Control v2 runtime and executive freshness repair completed",
+      "ts": 1791583647000
     }
   ]
 }

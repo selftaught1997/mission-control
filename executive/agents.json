@@ -1,21 +1,23 @@
 {
-  "updatedAt": "2026-05-23T18:40:00Z",
-  "source": "local agent identity files and Mission Control v2 architecture",
-  "asOf": "2026-05-23",
+  "updatedAt": "2026-10-09T22:10:00Z",
+  "source": "workspace identity files, Mission Control runtime config, and current agent status files",
+  "asOf": "2026-10-09",
+  "freshnessMaxAgeDays": 30,
+  "trustLevel": "manual profile map",
   "notes": "Role descriptions only. Current activity is supplied by runtime/file-backed live status elsewhere.",
   "items": [
     {
       "id": "gustav",
       "name": "Gustav",
       "role": "Life assistant and operations partner",
-      "owns": ["memory", "heartbeats", "Mission Control", "business operations"],
-      "bestFor": ["daily coordination", "owner context", "local automation", "review preparation"]
+      "owns": ["memory", "heartbeats", "Mission Control", "business operations", "club-growth coordination"],
+      "bestFor": ["daily coordination", "owner context", "local automation", "review preparation", "hub stewardship"]
     },
     {
       "id": "altair",
       "name": "Altair",
       "role": "Codex execution backend and engineering agent",
-      "owns": ["code changes", "repo audits", "validation", "result packets"],
+      "owns": ["code changes", "repo audits", "validation", "result packets", "implementation lanes"],
       "bestFor": ["multi-file implementation", "debugging", "refactors", "local product builds"]
     },
     {
@@ -31,6 +33,13 @@
       "role": "Video editing lane",
       "owns": ["video editing workflows", "reel processing", "media outputs"],
       "bestFor": ["fight clips", "short-form edits", "rendered video assets"]
+    },
+    {
+      "id": "sirius",
+      "name": "Sirius",
+      "role": "Systems and CRM engineering lane",
+      "owns": ["GHL implementation", "CRM attribution", "systems architecture", "automation mapping", "Supabase control tables"],
+      "bestFor": ["GoHighLevel setup", "contact pipelines", "custom fields", "operational integrations"]
     }
   ]
 }

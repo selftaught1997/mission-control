@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Sirius portrait</title><desc id="desc">Vector Ops systems portrait with a teal intelligence accent.</desc>
+  <defs><linearGradient id="g" x1="18" y1="14" x2="140" y2="146" gradientUnits="userSpaceOnUse"><stop stop-color="#1f403d"/><stop offset="1" stop-color="#10191d"/></linearGradient></defs>
+  <path d="M80 8 137 32v55c0 34-23 55-57 65-34-10-57-31-57-65V32L80 8Z" fill="url(#g)" stroke="#5AD7C8" stroke-opacity=".48" stroke-width="3"/>
+  <path d="M39 103c8-22 24-34 41-34s33 12 41 34v28H39v-28Z" fill="#233238" stroke="#A6FFF3" stroke-opacity=".28" stroke-width="3"/>
+  <circle cx="80" cy="58" r="28" fill="#d7dde7"/>
+  <path d="M52 55c4-21 17-32 35-30 14 2 23 13 22 30-15-9-36-9-57 0Z" fill="#172a2d"/>
+  <path d="M60 65c12 7 28 7 40 0" fill="none" stroke="#405b60" stroke-width="4" stroke-linecap="round"/>
+  <path d="M59 105h42l-9 31H68l-9-31Z" fill="#5AD7C8" fill-opacity=".92"/>
+  <path d="M80 91 96 75l8 26-24 17-24-17 8-26 16 16Z" fill="#f3f7fb" fill-opacity=".9"/>
+  <circle cx="80" cy="128" r="7" fill="#A6FFF3"/>
+  <path d="M39 42h20M101 42h20M37 122h19M104 122h19" stroke="#5AD7C8" stroke-opacity=".68" stroke-width="4" stroke-linecap="round"/>
+  <path d="M116 67c8 2 13 8 15 16M44 67c-8 2-13 8-15 16" fill="none" stroke="#A6FFF3" stroke-opacity=".5" stroke-width="3" stroke-linecap="round"/>
+</svg>

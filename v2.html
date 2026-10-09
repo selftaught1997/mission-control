@@ -233,6 +233,25 @@
     .executive-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 14px; align-items: start; }
     .executive-grid .wide { min-width: 0; }
     .source-note { color: var(--quiet); font-size: 0.72rem; line-height: 1.35; overflow-wrap: anywhere; }
+    .data-quality {
+      grid-column: 1 / -1;
+      display: grid;
+      gap: 8px;
+      padding: 12px 14px;
+      border: 1px solid rgba(245, 184, 75, 0.45);
+      border-radius: var(--radius);
+      background: rgba(245, 184, 75, 0.07);
+    }
+    .data-quality.current {
+      border-color: rgba(84, 216, 135, 0.38);
+      background: rgba(84, 216, 135, 0.06);
+    }
+    .data-quality.failed {
+      border-color: rgba(255, 92, 102, 0.42);
+      background: rgba(255, 92, 102, 0.07);
+    }
+    .data-quality-title { font-weight: 850; font-size: 0.86rem; }
+    .data-quality-list { display: flex; flex-wrap: wrap; gap: 7px; }
     .value-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(45, 51, 61, 0.65); }
     .value-row:last-child { border-bottom: 0; }
     .value-main { font-size: 1.35rem; font-weight: 850; }
@@ -277,7 +296,7 @@
     .office-desks {
       min-height: 250px;
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 12px;
       align-items: end;
       padding: 20px 18px 16px;
@@ -564,6 +583,7 @@
         <div class="runtime-cell"><span class="runtime-value" id="runtimeBackfill">0/0</span><div class="runtime-label">Backfilled</div></div>
         <div class="runtime-cell"><span class="runtime-value" id="runtimeLast">unknown</span><div class="runtime-label">Last runtime event</div></div>
       </section>
+      <div id="runtimeError" class="runtime-error" style="display:none; color:#ff5c66; font-size:0.72rem; margin:4px 0 12px 12px;"></div>
 
       <section class="summary-grid" aria-label="System summary">
         <div class="metric"><span class="metric-value" id="metricRunning">0</span><span class="metric-label">Running agents</span></div>
@@ -662,7 +682,8 @@
         gustav: { name: 'Gustav', role: 'Orchestrator', accent: '#5DA8FF', portrait: '/assets/agents/portraits/gustav.svg', workstation: '/assets/agents/workstations/gustav.svg', office_label: 'coordination desk' },
         altair: { name: 'Altair', role: 'Engineering', accent: '#59D185', portrait: '/assets/agents/portraits/altair.svg', workstation: '/assets/agents/workstations/altair.svg', office_label: 'build desk' },
         lyra: { name: 'Lyra', role: 'Creative', accent: '#9B7DFF', portrait: '/assets/agents/portraits/lyra.svg', workstation: '/assets/agents/workstations/lyra.svg', office_label: 'studio desk' },
-        vega: { name: 'Vega', role: 'Motion', accent: '#F0B35A', portrait: '/assets/agents/portraits/vega.svg', workstation: '/assets/agents/workstations/vega.svg', office_label: 'media desk' }
+        vega: { name: 'Vega', role: 'Motion', accent: '#F0B35A', portrait: '/assets/agents/portraits/vega.svg', workstation: '/assets/agents/workstations/vega.svg', office_label: 'media desk' },
+        sirius: { name: 'Sirius', role: 'Systems', accent: '#5AD7C8', portrait: '/assets/agents/portraits/sirius.svg', workstation: '/assets/agents/workstations/sirius.svg', office_label: 'systems desk' }
       }
     };
     const PANEL_REGISTRY = {
@@ -694,6 +715,7 @@
       { id: 'altair', label: 'Altair' },
       { id: 'lyra', label: 'Lyra' },
       { id: 'vega', label: 'Vega' },
+      { id: 'sirius', label: 'Sirius' },
       { id: 'messages', label: 'Messages' },
       { id: 'tools', label: 'Tools' },
       { id: 'reports', label: 'Reports / outputs' },
@@ -801,6 +823,7 @@
       runtimeSubscribed: document.getElementById('runtimeSubscribed'),
       runtimeBackfill: document.getElementById('runtimeBackfill'),
       runtimeLast: document.getElementById('runtimeLast'),
+      runtimeError: document.getElementById('runtimeError'),
       snapshotTime: document.getElementById('snapshotTime'),
       agentOffice: document.getElementById('agentOffice'),
       officeStateBadge: document.getElementById('officeStateBadge'),
@@ -1061,8 +1084,17 @@
     }
 
     function agentActivityTimestamp(agent) {
-      const runtimeTs = agent.runtime?.recent_activity?.[0]?.timestamp || agent.runtime?.sessions?.[0]?.lastActivity;
-      return runtimeTs || agent.last_activity_at || agent.last_updated || null;
+      // Prefer authoritative controlled fields from agent-status.json (via refresh script)
+      // Runtime data is secondary and only used when the bridge is actually live
+      if (agent.last_activity_at) return agent.last_activity_at;
+      if (agent.last_updated) return agent.last_updated;
+      if (agent.updatedAt) return agent.updatedAt;
+
+      // Only fall back to runtime when bridge reports connected + fresh data
+      const runtimeTs = (state.runtime?.connected && !state.runtime?.degraded)
+        ? (agent.runtime?.recent_activity?.[0]?.timestamp || agent.runtime?.sessions?.[0]?.lastActivity)
+        : null;
+      return runtimeTs || null;
     }
 
     function agentLiveText(agent, seconds = 4) {
@@ -1184,19 +1216,32 @@
       const done = runtime.backfill?.complete ?? 0;
       const total = done + (runtime.backfill?.pending ?? 0) + (runtime.backfill?.failed ?? 0);
       els.runtimeBackfill.textContent = `${done}/${total}`;
+
+      // Show real last event or clear stale data
       if (runtime.lastRuntimeEventAt) {
         els.runtimeLast.dataset.timestamp = runtime.lastRuntimeEventAt;
         els.runtimeLast.dataset.prefix = '';
         els.runtimeLast.textContent = ago(runtime.lastRuntimeEventAt);
       } else {
         delete els.runtimeLast.dataset.timestamp;
-        els.runtimeLast.textContent = 'unknown';
+        els.runtimeLast.textContent = 'never (bridge offline)';
       }
+
+      // Surface the actual bridge error when degraded so the board is truthful
+      if (els.runtimeError) {
+        if (runtime.lastError && !connected) {
+          els.runtimeError.textContent = runtime.lastError;
+          els.runtimeError.style.display = 'block';
+        } else {
+          els.runtimeError.style.display = 'none';
+        }
+      }
+
       updateStickySummary();
     }
 
     function renderOffice(agents) {
-      const expected = ['gustav', 'altair', 'lyra', 'vega'];
+      const expected = ['gustav', 'altair', 'lyra', 'vega', 'sirius'];
       const ordered = expected.map((id) => agents.find(agent => agent.id === id) || { id, name: id.charAt(0).toUpperCase() + id.slice(1), status: 'missing', state: 'missing' });
       const counts = ordered.reduce((acc, agent) => {
         const stateName = officeState(agent);
@@ -1407,11 +1452,11 @@
         const agent = String(event.agent || '').toLowerCase();
         const type = String(event.event_type || '').toLowerCase();
         const summary = String(event.summary || '').toLowerCase();
-        if (['gustav', 'altair', 'lyra', 'vega'].includes(filter)) return agent === filter;
+        if (['gustav', 'altair', 'lyra', 'vega', 'sirius'].includes(filter)) return agent === filter;
         if (filter === 'messages') return type.includes('transcript') || type.includes('message') || summary.includes('message');
         if (filter === 'tools') return type.includes('tool') || summary.includes('tool');
         if (filter === 'reports') return type.includes('report') || type.includes('output') || summary.includes('report') || summary.includes('output');
-        if (filter === 'system') return !['gustav', 'altair', 'lyra', 'vega'].includes(agent) || type.includes('health') || type.includes('session');
+        if (filter === 'system') return !['gustav', 'altair', 'lyra', 'vega', 'sirius'].includes(agent) || type.includes('health') || type.includes('session');
         return true;
       });
     }
@@ -1488,6 +1533,7 @@
       const wins = data.recentWins?.items || [];
       const agents = data.agentDirectory?.items || [];
       els.executiveGrid.innerHTML = [
+        renderDataQualityBanner(data.dataQuality),
         renderRoiPanel(roi),
         renderReviewQueuePanel(rq),
         renderProjectsPanel(data.projects, projects),
@@ -1499,6 +1545,30 @@
       ].join('');
       applyPanelLayout();
       refreshRelativeTimes(els.executiveLayer);
+    }
+
+    function renderDataQualityBanner(dataQuality) {
+      if (!dataQuality) return '';
+      const stale = dataQuality.staleBlocks || [];
+      const status = dataQuality.status || 'unknown';
+      const cls = status === 'current' ? 'current' : status === 'errors' ? 'failed' : 'pending';
+      const title = status === 'current'
+        ? 'Executive data is current'
+        : status === 'errors'
+          ? 'Executive data has loader errors'
+          : 'Executive data has stale blocks';
+      const detail = stale.length
+        ? stale.map(block => `<span class="badge pending">${escapeHtml(block.name)}${block.asOf ? ' / ' + escapeHtml(block.asOf) : ''}</span>`).join('')
+        : '<span class="badge done">No stale blocks</span>';
+      return `
+        <section class="data-quality ${cls}">
+          <div class="item-head">
+            <div class="data-quality-title">${escapeHtml(title)}</div>
+            <span class="badge ${cls}">${escapeHtml(status)}</span>
+          </div>
+          <div class="data-quality-list">${detail}</div>
+        </section>
+      `;
     }
 
     function renderRoiPanel(roi) {
@@ -1570,7 +1640,7 @@
         const res = await fetch('/assets/agents/manifest.json', { cache: 'no-store' });
         if (!res.ok) throw new Error(`agent manifest ${res.status}`);
         const manifest = await res.json();
-        if (manifest?.agents?.gustav && manifest?.agents?.altair && manifest?.agents?.lyra && manifest?.agents?.vega) {
+        if (manifest?.agents?.gustav && manifest?.agents?.altair && manifest?.agents?.lyra && manifest?.agents?.vega && manifest?.agents?.sirius) {
           state.avatarManifest = manifest;
         }
       } catch {
@@ -1743,59 +1813,6 @@
     startSse();
     setInterval(() => refreshRelativeTimes(), 1000);
     setInterval(() => loadExecutive().catch(() => {}), 90000);
-  
-    function normalizeMissionControlAssetUrl(raw) {
-      if (!raw) return raw;
-      if (/^(data:|blob:|https?:)/i.test(raw)) return raw;
-      const value = String(raw);
-      if (value.startsWith('/files/')) return value;
-      if (value.startsWith('/Users/gustava-i/.openclaw/workspace/')) {
-        return '/files/' + value.replace('/Users/gustava-i/.openclaw/workspace/', '');
-      }
-      if (value.startsWith('mission-control/')) {
-        return '/files/' + value;
-      }
-      if (value.startsWith('/mission-control/')) {
-        return '/files' + value;
-      }
-      if (value.startsWith('assets/')) {
-        return '/files/mission-control/' + value;
-      }
-      if (value.startsWith('/assets/')) {
-        return '/files/mission-control' + value;
-      }
-      return value;
-    }
-
-    function normalizeMissionControlAssetNodes(root = document) {
-      root.querySelectorAll('.agent-avatar img, .office-station img').forEach((node) => {
-        const current = node.getAttribute('src');
-        const desired = normalizeMissionControlAssetUrl(current);
-        if (desired && desired !== current) node.setAttribute('src', desired);
-      });
-
-      root.querySelectorAll('.agent-avatar image, .office-station image').forEach((node) => {
-        const current = node.getAttribute('href') || node.getAttribute('xlink:href');
-        const desired = normalizeMissionControlAssetUrl(current);
-        if (!desired || desired === current) return;
-        node.setAttribute('href', desired);
-        node.setAttribute('xlink:href', desired);
-      });
-    }
-
-    if (typeof render === 'function' && !render.__missionControlAssetPatch) {
-      const originalRender = render;
-      render = function (...args) {
-        const result = originalRender.apply(this, args);
-        normalizeMissionControlAssetNodes();
-        return result;
-      };
-      render.__missionControlAssetPatch = true;
-    }
-
-    window.addEventListener('load', () => normalizeMissionControlAssetNodes());
-    setInterval(() => normalizeMissionControlAssetNodes(), 1000);
-    setTimeout(() => normalizeMissionControlAssetNodes(), 0);
 
 </script>
 </body>

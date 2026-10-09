@@ -1,36 +1,38 @@
 {
-  "updatedAt": "2026-05-23T18:40:00Z",
-  "source": "USER.md club operations detail",
-  "asOf": "2026-05-23",
-  "notes": "Static operating facts until a live member register integration is added.",
+  "updatedAt": "2026-10-09T22:10:00Z",
+  "source": "USER.md club operations detail and MEMORY.md operating snapshot",
+  "asOf": "2026-10-09",
+  "freshnessMaxAgeDays": 30,
+  "trustLevel": "manual operating snapshot",
+  "notes": "Manual operating facts. Member and attendance values remain estimates until a live member-register integration is added.",
   "items": [
     {
       "id": "active-members",
       "label": "Active members",
       "value": "100-120",
       "status": "estimate",
-      "source": "USER.md"
+      "source": "USER.md / MEMORY.md estimate"
     },
     {
       "id": "sunday-average",
       "label": "Sunday 10am average",
       "value": "10-12",
       "status": "estimate",
-      "source": "USER.md"
+      "source": "USER.md / MEMORY.md estimate"
     },
     {
       "id": "sunday-capacity",
       "label": "Sunday 10am capacity",
       "value": 30,
       "status": "known",
-      "source": "USER.md"
+      "source": "USER.md / MEMORY.md"
     },
     {
       "id": "classes-per-week",
       "label": "Classes per week",
       "value": 11,
       "status": "known",
-      "source": "USER.md"
+      "source": "USER.md / MEMORY.md"
     }
   ],
   "locations": [

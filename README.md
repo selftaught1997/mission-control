@@ -76,4 +76,17 @@ Runtime-backed continuity is stored in append-only NDJSON logs:
 - `runtime-events.ndjson`
 - `transcript-events.ndjson`
 
-These logs support restart/reconnect recovery and should remain runtime-generated artifacts, not source-controlled project history.
+These logs support restart/reconnect recovery and should remain runtime-generated artifacts, not source-controlled project history. Startup reads only the recent tail of large NDJSON logs and compacts oversized logs so the dashboard remains restartable as the runtime history grows.
+
+## Local service
+
+The dashboard is managed by the user LaunchAgent `ai.gustav.workspace-server`, which runs:
+
+`/opt/homebrew/bin/node /Users/gustava-i/.openclaw/workspace/mission-control/server.js`
+
+Expected local URL: `http://127.0.0.1:18792/v2.html`
+
+Logs:
+
+- `/Users/gustava-i/Library/Logs/mission-control.stdout.log`
+- `/Users/gustava-i/Library/Logs/mission-control.stderr.log`

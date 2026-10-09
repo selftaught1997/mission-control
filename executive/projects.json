@@ -1,7 +1,9 @@
 {
-  "updatedAt": "2026-05-23T18:40:00Z",
-  "source": "workspace memory, current Mission Control TODOs, and active agent outputs",
-  "asOf": "2026-05-23",
+  "updatedAt": "2026-10-09T22:10:00Z",
+  "source": "workspace memory, current Mission Control TODOs, audit-2026-10-09, and active agent outputs",
+  "asOf": "2026-10-09",
+  "freshnessMaxAgeDays": 7,
+  "trustLevel": "manual project snapshot",
   "notes": "Prioritized owner-facing project map. Runtime/current activity still comes from the live console.",
   "items": [
     {
@@ -9,9 +11,18 @@
       "title": "Mission Control v2",
       "status": "active",
       "priority": "high",
-      "summary": "Live local agent operations console with runtime sessions, transcripts, timeline, reports, and executive overview.",
-      "links": ["mission-control/v2.html", "drafts/mission-control-v2-1-executive-carryover-implementation-brief.md"],
-      "updatedAt": "2026-05-23T18:40:00Z"
+      "summary": "Live local agent operations console. Runtime plane is online again; current lane is executive data freshness and visible stale-data warnings.",
+      "links": ["mission-control/v2.html", "mission-control/audit-2026-10-09.md", "mission-control/README.md"],
+      "updatedAt": "2026-10-09T22:10:00Z"
+    },
+    {
+      "id": "mission-control-runtime-health",
+      "title": "Mission Control runtime health",
+      "status": "operational",
+      "priority": "high",
+      "summary": "Launchd service is running locally on port 18792 with OpenClaw runtime session tracking restored after log-tail and compaction hardening.",
+      "links": ["mission-control/server.js", "mission-control/audit-2026-10-09.md"],
+      "updatedAt": "2026-10-09T22:10:00Z"
     },
     {
       "id": "altair-true-agent",
@@ -20,7 +31,7 @@
       "priority": "high",
       "summary": "Local engineering agent with queue, lifecycle, backend execution, reports, and status visibility.",
       "links": ["altair/README.md", "altair/reports/altair-v2-foundation-result.json"],
-      "updatedAt": "2026-05-23T00:02:43Z"
+      "updatedAt": "2026-10-09T22:10:00Z"
     },
     {
       "id": "lyra-creative-agent",
@@ -29,16 +40,34 @@
       "priority": "medium",
       "summary": "Creative agent foundation with lead-gen poster mode, supplied-image support, and review artifacts.",
       "links": ["lyra/README.md", "altair/reports/lyra-v2-foundation-result.json"],
-      "updatedAt": "2026-05-23T00:31:51Z"
+      "updatedAt": "2026-10-09T22:10:00Z"
+    },
+    {
+      "id": "sirius-ghl-mvs",
+      "title": "Sirius GHL MVS implementation",
+      "status": "paused",
+      "priority": "medium",
+      "summary": "Sirius control tables were applied live in Supabase; recurring sync and unattended automation remain deliberately disabled pending approval.",
+      "links": ["mission-control/sirius-status.json"],
+      "updatedAt": "2026-08-02T04:17:08Z"
     },
     {
       "id": "club-growth-drafts",
       "title": "Club growth review queue",
-      "status": "awaiting_review",
+      "status": "blocked",
       "priority": "high",
-      "summary": "Sunday beginners, referrals, school outreach, paid ad, and community growth drafts are ready for Aaron review.",
-      "links": ["drafts/review-tracker.md"],
-      "updatedAt": "2026-05-23T18:40:00Z"
+      "summary": "Sunday beginners and wider growth drafts are prepared, but execution is blocked on Aaron review plus Buffer Instagram reconnect/verification.",
+      "links": ["drafts/review-tracker.md", "drafts/sunday-beginner-queue-approval-pack-2026-06-04.md", "drafts/review-priority-shortlist-2026-06-05.md"],
+      "updatedAt": "2026-10-09T22:10:00Z"
+    },
+    {
+      "id": "wordpress-seo",
+      "title": "Stratford Karate WordPress SEO",
+      "status": "operational",
+      "priority": "medium",
+      "summary": "SureRank MCP route is validated for live page SEO reads/writes; use it for page descriptions, robots.txt, sitemap, and related WordPress SEO work.",
+      "links": ["MEMORY.md", "TOOLS.md"],
+      "updatedAt": "2026-08-30T00:00:00Z"
     }
   ]
 }

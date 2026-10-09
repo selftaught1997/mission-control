@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 190" role="img" aria-labelledby="title desc">
+  <title id="title">Sirius workstation</title><desc id="desc">Systems engineering desk avatar with teal CRM and integration displays.</desc>
+  <rect x="26" y="124" width="208" height="22" rx="7" fill="#252b34" stroke="rgba(255,255,255,.16)"/>
+  <rect x="47" y="145" width="16" height="35" rx="4" fill="#1b2028"/><rect x="197" y="145" width="16" height="35" rx="4" fill="#1b2028"/>
+  <rect x="58" y="35" width="68" height="66" rx="10" fill="#10262b" stroke="#5AD7C8" stroke-opacity=".38" stroke-width="3"/>
+  <rect x="135" y="35" width="68" height="66" rx="10" fill="#142033" stroke="#A6FFF3" stroke-opacity=".24" stroke-width="3"/>
+  <path d="M78 57h29M78 73h21M78 88h33M153 57h32M153 73h21M153 88h27" stroke="#A6FFF3" stroke-width="4" stroke-linecap="round" opacity=".72"/>
+  <path d="M126 68h9" stroke="#5AD7C8" stroke-width="5" stroke-linecap="round"/>
+  <path d="M88 138c6-28 78-28 84 0v13H88z" fill="#2d3643" stroke="#5AD7C8" stroke-opacity=".42" stroke-width="3"/>
+  <circle cx="130" cy="101" r="24" fill="#d7dde7"/>
+  <path d="M105 97c5-19 17-27 32-25 13 2 21 11 22 25-17-8-36-8-54 0Z" fill="#172a2d"/>
+  <path d="M118 126h24l-6 24h-12l-6-24Z" fill="#5AD7C8"/>
+  <circle cx="216" cy="50" r="7" fill="#5AD7C8"/><circle cx="216" cy="50" r="15" fill="none" stroke="#5AD7C8" stroke-opacity=".34" stroke-width="4"/>
+  <path d="M213 71h6v18h-6zM204 80h24" stroke="#A6FFF3" stroke-opacity=".58" stroke-width="4" stroke-linecap="round"/>
+</svg>

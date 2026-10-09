@@ -20,6 +20,8 @@ const SESSION_STALE_MS = Math.max(10000, Number(process.env.MISSION_CONTROL_SESS
 const HISTORY_LIMIT = Math.max(10, Number(process.env.MISSION_CONTROL_HISTORY_LIMIT || 80));
 const SESSION_LIMIT = Math.max(10, Number(process.env.MISSION_CONTROL_SESSION_LIMIT || 80));
 const TIMELINE_LIMIT = Math.max(20, Number(process.env.MISSION_CONTROL_TIMELINE_LIMIT || 220));
+const NDJSON_MAX_BYTES = Math.max(16 * 1024 * 1024, Number(process.env.MISSION_CONTROL_NDJSON_MAX_BYTES || 256 * 1024 * 1024));
+const NDJSON_KEEP_BYTES = Math.max(8 * 1024 * 1024, Number(process.env.MISSION_CONTROL_NDJSON_KEEP_BYTES || 64 * 1024 * 1024));
 
 const AGENTS = [
   { id: 'gustav', name: 'Gustav', root: ROOT, statusPath: path.join(ROOT, 'agent-status.json') },
@@ -292,7 +294,23 @@ async function appendNdjson(filePath, row) {
 
 async function readNdjson(filePath, limit = 500) {
   try {
-    const text = await fsp.readFile(filePath, 'utf8');
+    const stat = await fsp.stat(filePath);
+    const maxBytes = Math.max(1024 * 1024, Number(process.env.MISSION_CONTROL_NDJSON_TAIL_BYTES || 8 * 1024 * 1024));
+    let text;
+    if (stat.size > maxBytes) {
+      const handle = await fsp.open(filePath, 'r');
+      try {
+        const buffer = Buffer.alloc(maxBytes);
+        await handle.read(buffer, 0, maxBytes, stat.size - maxBytes);
+        text = buffer.toString('utf8');
+        const firstNewline = text.indexOf('\n');
+        if (firstNewline >= 0) text = text.slice(firstNewline + 1);
+      } finally {
+        await handle.close();
+      }
+    } else {
+      text = await fsp.readFile(filePath, 'utf8');
+    }
     const lines = text.trim().split('\n').filter(Boolean).slice(-limit);
     return lines.map((line) => {
       try {
@@ -303,6 +321,33 @@ async function readNdjson(filePath, limit = 500) {
     }).filter(Boolean);
   } catch {
     return [];
+  }
+}
+
+async function compactNdjsonLog(filePath) {
+  try {
+    const stat = await fsp.stat(filePath);
+    if (stat.size <= NDJSON_MAX_BYTES) return false;
+    const keepBytes = Math.min(NDJSON_KEEP_BYTES, stat.size);
+    const handle = await fsp.open(filePath, 'r');
+    let text;
+    try {
+      const buffer = Buffer.alloc(keepBytes);
+      await handle.read(buffer, 0, keepBytes, stat.size - keepBytes);
+      text = buffer.toString('utf8');
+      const firstNewline = text.indexOf('\n');
+      if (firstNewline >= 0) text = text.slice(firstNewline + 1);
+      if (text && !text.endsWith('\n')) text += '\n';
+    } finally {
+      await handle.close();
+    }
+    const tmpPath = `${filePath}.${process.pid}.compact`;
+    await fsp.writeFile(tmpPath, text);
+    await fsp.rename(tmpPath, filePath);
+    return true;
+  } catch (error) {
+    console.error(`ndjson compaction failed for ${filePath}:`, error);
+    return false;
   }
 }
 
@@ -342,7 +387,11 @@ function upsertRuntimeEvent(row, opts = {}) {
     const oldest = [...runtimeModel.runtimeEvents.values()].sort((a, b) => Date.parse(a.timestamp) - Date.parse(b.timestamp)).slice(0, 200);
     for (const item of oldest) runtimeModel.runtimeEvents.delete(item.dedupeKey);
   }
-  runtimeState.lastRuntimeEventAt = normalizedRow.timestamp;
+  const currentRuntimeTs = Date.parse(runtimeState.lastRuntimeEventAt || 0);
+  const nextRuntimeTs = Date.parse(normalizedRow.timestamp);
+  if (Number.isFinite(nextRuntimeTs) && (!Number.isFinite(currentRuntimeTs) || nextRuntimeTs >= currentRuntimeTs)) {
+    runtimeState.lastRuntimeEventAt = normalizedRow.timestamp;
+  }
   if (!opts.replay) appendNdjson(RUNTIME_LOG, normalizedRow).catch((error) => console.error('runtime append failed:', error));
   return true;
 }
@@ -981,12 +1030,15 @@ function staleFrom(updatedAt, maxAgeDays = 14) {
 
 function sourceEnvelope(source, data, maxAgeDays = 14) {
   const updatedAt = data?.updatedAt || data?.updated_at || null;
+  const freshnessMaxAgeDays = Number(data?.freshnessMaxAgeDays || maxAgeDays);
   return {
     updatedAt,
     source: data?.source || source,
     asOf: data?.asOf || null,
-    stale: staleFrom(updatedAt, maxAgeDays),
-    notes: data?.notes || null
+    stale: staleFrom(updatedAt, freshnessMaxAgeDays),
+    freshnessMaxAgeDays,
+    notes: data?.notes || null,
+    trustLevel: data?.trustLevel || null
   };
 }
 
@@ -1029,6 +1081,7 @@ function parseSupportAssets(lines, startIndex) {
     const line = lines[i].trim();
     if (line.startsWith('## ')) break;
     if (!line.startsWith('- ')) continue;
+    if (line.includes('archive-debug-screenshots/')) continue;
     const match = line.match(/`([^`]+)`(?:\s*[–-]\s*(.*))?/);
     if (match) assets.push([match[1], 'Support asset', match[2] || 'Supports a review item.']);
   }
@@ -1175,13 +1228,28 @@ async function buildExecutiveOverview() {
   for (const [name, block] of Object.entries(blocks)) {
     if (block?.error) errors.push({ source: name, error: block.error });
   }
+  const staleBlocks = Object.entries(blocks)
+    .filter(([, block]) => block?.stale)
+    .map(([name, block]) => ({
+      name,
+      source: block.source || name,
+      updatedAt: block.updatedAt || null,
+      asOf: block.asOf || null,
+      notes: block.notes || null
+    }));
   return {
     schema_version: '1.0',
     updatedAt: new Date().toISOString(),
     source: 'mission-control executive loaders',
     private_local_first: true,
-    degraded: errors.length > 0,
+    degraded: errors.length > 0 || staleBlocks.length > 0,
     errors,
+    dataQuality: {
+      status: errors.length > 0 ? 'errors' : staleBlocks.length > 0 ? 'stale' : 'current',
+      staleBlocks,
+      errorCount: errors.length,
+      checkedAt: new Date().toISOString()
+    },
     goals,
     clubSnapshot,
     projects,
@@ -1417,6 +1485,8 @@ const server = http.createServer(async (req, res) => {
 
 async function startServer() {
   await fsp.appendFile(EVENT_LOG, '', { flag: 'a' });
+  await compactNdjsonLog(RUNTIME_LOG);
+  await compactNdjsonLog(TRANSCRIPT_LOG);
   const stat = await statSafe(EVENT_LOG);
   lastEventLogSize = stat?.size || 0;
   await startRuntimeBridge();

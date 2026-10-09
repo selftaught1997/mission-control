@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.1",
+  "agent": "Sirius",
+  "status": "control_tables_live",
+  "state": "control_tables_live",
+  "detail": "Sirius Engineer Mode v1.6 - ENG-003J control tables applied live in Supabase; automation remains disabled and globally paused",
+  "current_step": "Build or await approval for the next capped-batch sync package; no recurring sync or unattended automation is approved",
+  "task": "Sirius / GHL MVS implementation",
+  "startedAt": "2026-07-30T02:21:40Z",
+  "updatedAt": 1785644228000,
+  "last_updated": "2026-08-02T04:17:08Z",
+  "last_activity_at": "2026-08-02T04:17:08Z",
+  "activity_counter": 20,
+  "emoji": "\ud83e\udde0"
+}

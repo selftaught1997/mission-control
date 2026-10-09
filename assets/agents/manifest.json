@@ -46,6 +46,16 @@
       "workstation": "/assets/agents/workstations/vega.svg",
       "office_label": "media desk",
       "z_index": 1
+    },
+    "sirius": {
+      "name": "Sirius",
+      "role": "Systems",
+      "accent": "#5AD7C8",
+      "secondary": "#A6FFF3",
+      "portrait": "/assets/agents/portraits/sirius.svg",
+      "workstation": "/assets/agents/workstations/sirius.svg",
+      "office_label": "systems desk",
+      "z_index": 5
     }
   }
 }

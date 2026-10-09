@@ -1,8 +1,10 @@
 {
-  "updatedAt": "2026-05-23T18:40:00Z",
-  "source": "USER.md and Mission Control operating memory",
-  "asOf": "2026-05-23",
-  "notes": "Owner-facing goals carried over from Mission Control v1. Values are shown only where the current workspace has an explicit source.",
+  "updatedAt": "2026-10-09T22:10:00Z",
+  "source": "USER.md and MEMORY.md operating goals",
+  "asOf": "2026-10-09",
+  "freshnessMaxAgeDays": 30,
+  "trustLevel": "manual strategic snapshot",
+  "notes": "Owner-facing goals. Numeric values are estimates from durable workspace memory until live member/trading integrations exist.",
   "items": [
     {
       "id": "club-members",
@@ -11,8 +13,8 @@
       "target": 200,
       "unit": "members",
       "status": "active",
-      "source": "USER.md active member estimate",
-      "notes": "USER.md gives the current range as 100-120 active members; the upper bound is used as the optimistic working value."
+      "source": "USER.md / MEMORY.md active member estimate",
+      "notes": "Durable memory gives the current range as about 100-120 active members; the upper bound is used as the optimistic working value."
     },
     {
       "id": "sunday-fill-rate",
@@ -21,8 +23,8 @@
       "target": 30,
       "unit": "students",
       "status": "active",
-      "source": "USER.md Sunday 10am capacity note",
-      "notes": "USER.md gives average attendance as 10-12; the upper bound is used as the optimistic working value."
+      "source": "USER.md / MEMORY.md Sunday 10am capacity note",
+      "notes": "Durable memory gives average attendance as 10-12; the upper bound is used as the optimistic working value."
     },
     {
       "id": "trading-consistency",
@@ -31,7 +33,7 @@
       "target": null,
       "unit": "reliable process",
       "status": "unknown",
-      "source": "USER.md goals",
+      "source": "USER.md / MEMORY.md goals",
       "notes": "No current metric is stored in Mission Control yet."
     },
     {
@@ -41,7 +43,7 @@
       "target": null,
       "unit": "long-term outcome",
       "status": "unknown",
-      "source": "USER.md goals",
+      "source": "USER.md / MEMORY.md goals",
       "notes": "Tracked as a strategic goal, not a live metric."
     }
   ]

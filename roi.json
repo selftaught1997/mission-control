@@ -1,8 +1,9 @@
 {
   "startDate": "2026-04-01",
+  "updatedAt": "2026-10-09T22:10:00Z",
   "hardware": 1200,
   "monthlySubscription": 180,
   "valueReturned": 0,
   "entries": [],
-  "notes": "Hardware amortised over 24 months (£50/mo). Value counted when money physically returns to Aaron."
+  "notes": "Hardware amortised over 24 months (£50/mo). Value counted only when money physically returns to Aaron. No verified ROI entries have been added yet, so this panel is a cost baseline rather than a benefit claim."
 }
