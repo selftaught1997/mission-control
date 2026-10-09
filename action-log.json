@@ -8838,5 +8838,13 @@
     "status": "blocked",
     "summary": "Queue readiness spot-check passed; Buffer still disconnected",
     "detail": "Heartbeat narrow-check path ran on 2026-10-09 at 23:37 Europe/London because queueReadiness was still inside the 120-minute freshness window. scripts/check-queue-readiness.py passed and scripts/check-buffer-publish-state.py refreshed Buffer: queue posts 0, draft posts 0, Instagram channel stratford_karate_club disconnected via row_problem_indicator, reconnect clue: There is a problem with this channel, you may need to refresh it. No new queue prep docs were needed; blocker remains Aaron approval plus Buffer/Instagram reconnect or verification."
+  },
+  {
+    "id": 1106,
+    "timestamp": "2026-10-09T23:08:06Z",
+    "category": "Content Queue",
+    "status": "blocked",
+    "summary": "Queue readiness spot-check passed; Buffer still disconnected",
+    "detail": "Heartbeat narrow-check path ran on 2026-10-10 at 00:07 Europe/London because queueReadiness was still inside the 120-minute freshness window and the workspace had unrelated live edits. scripts/check-queue-readiness.py passed tracker, Sunday approval pack, handoff, entry-point, and Buffer-state audits. scripts/check-buffer-publish-state.py refreshed Buffer: queue posts 0, draft posts 0, Instagram channel stratford_karate_club disconnected via row_problem_indicator, reconnect clue: There is a problem with this channel, you may need to refresh it. No new queue prep docs were needed; blocker remains Aaron approval plus Buffer/Instagram reconnect or verification."
   }
 ]
