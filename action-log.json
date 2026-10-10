@@ -8910,5 +8910,13 @@
     "status": "blocked",
     "summary": "Heartbeat queue readiness narrow check",
     "detail": "Queue readiness and Buffer publish-state checks passed at 2026-10-10T08:37Z. Tracker, Sunday approval pack, handoff references, and entry-point surfaces remain consistent. Buffer remains blocked with 0 queued posts, 0 draft posts, and Instagram channel stratford_karate_club disconnected via row_problem_indicator; blocker remains Aaron approval plus Buffer/Instagram reconnect or verification."
+  },
+  {
+    "id": 1115,
+    "timestamp": "2026-10-10T11:07:45.167Z",
+    "category": "Content Queue",
+    "status": "blocked",
+    "summary": "Heartbeat queue readiness direct check",
+    "detail": "Queue readiness and Buffer publish-state checks passed at 2026-10-10T11:07Z. Tracker, Sunday approval pack, handoff references, and entry-point surfaces remain consistent. Buffer remains blocked with 0 queued posts, 0 draft posts, and Instagram channel stratford_karate_club disconnected via row_problem_indicator; blocker remains Aaron approval plus Buffer/Instagram reconnect or verification."
   }
 ]
