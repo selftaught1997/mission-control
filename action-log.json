@@ -8894,5 +8894,13 @@
     "status": "blocked",
     "summary": "Queue readiness checked; blocker unchanged",
     "detail": "Heartbeat narrow check at 2026-10-10 03:07 BST: scripts/check-queue-readiness.py passed tracker, Sunday approval-pack, handoff, entry-point, and Buffer-state audits and refreshed memory/heartbeat-state.json. scripts/check-buffer-publish-state.py refreshed Buffer with 0 queued posts, 0 drafts, and Instagram channel stratford_karate_club still disconnected via row_problem_indicator. No new prep docs needed; blocker remains Aaron approval plus Buffer/Instagram reconnect or verification."
+  },
+  {
+    "id": 1113,
+    "timestamp": "2026-10-10T06:07:52.528Z",
+    "category": "Content",
+    "status": "blocked",
+    "summary": "Heartbeat queue readiness narrow check",
+    "detail": "Ran narrow heartbeat queue readiness verification at 07:07 BST. check-queue-readiness passed tracker, Sunday approval-pack, handoff, entry-point, and Buffer-state audits. check-buffer-publish-state refreshed Buffer: 0 queue posts, 0 draft posts, Instagram channel stratford_karate_club still disconnected via row_problem_indicator with reconnect clue 'There is a problem with this channel, you may need to refresh it.' No new prep docs needed; blocker remains Aaron approval plus Buffer/Instagram reconnect or verification."
   }
 ]
